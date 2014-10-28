@@ -23,7 +23,7 @@
 \address{Department of Computer Science, The University of Oxford, UK}
 \email{dimpase@cs.ox.ac.uk}
 
-\title{On $k$-walks in $t$-tough $2K_2$-free graphs}
+\title{On $k$-walks in $2K_2$-free graphs}
 \begin{abstract}
 We show that for any $\epsilon>0$ every $(\frac{1}{k-1}+\epsilon)$-tough
 $2K_2$-free graph admits a $k$-walk, making a step towards proving a
@@ -49,7 +49,7 @@ was introduced in 1973 by V. Chv\'{a}tal
 while studying   Hamiltonicity of graphs. For a survey of results on this topic till 2006
 cf. \cite{MR2221006}. Our graph-theoretic notation is mostly from \cite{bomu08}.
 
-In 1990 Jackson and Wormald conjectured in \cite{jackson1990k} that every
+In 1990 B.~Jackson and N.~Wormald conjectured in \cite{jackson1990k} that every
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
 visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
 
@@ -59,12 +59,14 @@ that is $G$ does not contain an induced copy of $2K_2$, i.e. the disjoint union 
 Here by ``almost'' we mean that we need to replace
 $\frac{1}{k-1}$-tough by $(\frac{1}{k-1}+\epsilon)$-tough, with $\epsilon>0$
 arbitrarily small.
+In fact $\epsilon$ can be set to 0 for most $2K_2$-free graphs, and the outcome of Theorem~\ref{thm2}
+will remain true, cf. Theorem~\ref{opt} for details.
 \begin{theorem}\label{thm2}
 For any $\epsilon>0$, and integer $k\ge2$,
 every $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk. 
 \end{theorem}
 
-Note that if we let the toughness value $\frac{1}{k-1}+\epsilon$ to increase to $\frac{1}{k-2}$
+If we let the toughness value $\frac{1}{k-1}+\epsilon$ to increase to $\frac{1}{k-2}$ then
 one does not need $2K_2$-freeness. Indeed, the following holds.
 \begin{theorem}\cite{jackson1990k}\label{cthm1}
 Every $1/(k-2)$-tough graph has a $k$-walk. 
@@ -77,7 +79,6 @@ More generally, note
 If $G$ has a $k$-walk, then $G$ is $\frac{1}{k}$-tough. \qed
 \end{theorem}
 
-A Hamiltonian graph is obiviusly 1-tough, but the converse need not be true.
 This more or less summarises the situation with $t$-tough graphs, $t\leq 1$.
 On the $t>1$ side 
 a famous conjecture of V.~Chv\'{a}tal \cite{chvatal1973tough} claims
