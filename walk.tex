@@ -129,12 +129,11 @@ Further, let $\omega(G)$ denote the maximum size of cliques in $G$.
 \subsection{Properties of $2K_2$-free Graphs}
 The following properties of $2K_2$-free graphs are very useful in the proof of Theorem \ref{thm1} and Theorem \ref{thm2}.
 
-\begin{theorem}\label{trivial}
+\begin{lemma}\label{trivial}
 A graph $G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
-\end{theorem}
-The proof of this statement is trivial.
+\end{lemma}
 
-\begin{lemma}\label{lm1}{\cite[Theorem 2.]{chung1990maximum}\cite[Lemma 2.]{broersma2014toughness}}
+\begin{lemma}\label{lm1}{\cite[Theorem 2]{chung1990maximum}, \cite[Lemma 2]{broersma2014toughness}}
 Assume that $G$ is $2K_2$-free, $\omega(G)=2$, then $G$ is in one of the following cases.
 \begin{enumerate}
 \item $G$ is a bipartite.
@@ -142,26 +141,31 @@ Assume that $G$ is $2K_2$-free, $\omega(G)=2$, then $G$ is in one of the followi
 \end{enumerate}
 \end{lemma}
 
-
-
-\begin{lemma}\label{lm2}{\cite[Theorem 3.]{chung1990maximum}}
+\begin{lemma}\label{lm2}{\cite[Theorem 3]{chung1990maximum}}
 If $G$ is $2K_2$-free and the maximum size of cliques $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$. \qed
 \end{lemma}
 
-\begin{lemma}\label{lm3}{\cite[Observation 1.]{broersma2014toughness}}
+\begin{lemma}\label{lm3}{\cite[Observation 1]{broersma2014toughness}}
 A graph $G=(V,E)$ is $2K_2$-free if and only if for every $A\subset V$, at most one component of the graph $G-A$ contains edges. \qed
 \end{lemma}
 
-
-
-
-
-
-Given a $2K_2$-free graph, assuming $\omega(G)\ge3$, by Lemma \ref{lm2}, we can find one of its maximum dominating clique, namely $Q_1$. Obviously, any induced subgraph of a $2K_2$-free graph is also $2K_2$-free. Then $G-Q_1$ is also a $2K_2$-free graph. By Lemma \ref{lm3}, $G-Q_1$ is made up by two parts, one is an independent subset (possibly empty) of $G-Q_1$, denoted by $D_1$, another part is a non-trivial component (possibly does not exist), denoted by $G_1$, which is also $2K_2$-free. For the same reason, we can find a maximum dominating clique in $G_1$ namely $Q_2$, and a non-trivial component in $G_1-Q_2$, namely $G_2$ and an independent subset in $G_1-Q_2$ namely $D_2$. During such process, possibly, there is a subscript $m$ such that $\omega(G_m)=2$ (such a $m$ may not exist). Then, we find a weakly-dominating clique $Q_{m+1}$ in $G_m$. Also, we get a non-trivial component in $G_m-Q_{m+1}$, namely $G_{m+2}$ and an independent subset in $G_m-Q_{m+1}$, namely $D_{m+1}$, and so on.
+Given a $2K_2$-free graph, assuming $\omega(G)\ge3$, by Lemma \ref{lm2}, let
+$Q_1$ be a maximum dominating clique. As any induced subgraph of a $2K_2$-free
+graph is also $2K_2$-free, $G-Q_1$ is also a $2K_2$-free graph.  By Lemma
+\ref{lm3}, $G-Q_1$ is made up by two parts, one is an independent subset
+(possibly empty) of $G-Q_1$, denoted by $D_1$, and the other part is a connected
+component (either empty or with a least two vertices), denoted by $G_1$, which is also
+$2K_2$-free. If $G_1$ contains a triangle, we can find a maximum dominating clique in
+$G_1$, namely $Q_2$, and a connected component in $G_1-Q_2$, namely $G_2$ and
+an independent subset in $G_1-Q_2$ namely $D_2$. During such process, possibly,
+there is a subscript $m$ such that $\omega(G_m)=2$ (such a $m$ may not exist).
+Then, we find a weakly-dominating clique $Q_{m+1}$ in $G_m$. Also, we get a
+non-trivial component in $G_m-Q_{m+1}$, namely $G_{m+2}$ and an independent
+subset in $G_m-Q_{m+1}$, namely $D_{m+1}$, and so on.
 
 Then we have proved:
 \begin{lemma}\label{lm5}
-For a $2K_2$-free graph $G=G_0$, we can find a sequence of cliques $\{Q_i;i=1,\ldots,m+s\}$, where $|Q_i|\ge3$ when $1\le i\le m$ and $|Q_i|=2$ when $i=m+1,\ldots,m+s$. Additionally, $|Q_i|\ge|Q_{i+1}|$ for any $i$. $Q_i$ is a maximum dominating clique in $G_{i-1}$ when $i\le m$, and $Q_i$ is weakly-dominating clique (edge) in $G_{i-1}$ when $i>m$.
+For a $2K_2$-free graph $G=G_0$, we can find a sequence of cliques $\{Q_i;i=1,\ldots,m+s\}$, where $|Q_i|\ge3$ when $1\le i\le m$ and $|Q_i|=2$ when $i=m+1,\ldots,m+s$. Additionally, $|Q_i|\ge|Q_{i+1}|$ for any $i$. $Q_i$ is a maximum dominating clique in $G_{i-1}$ when $i\le m$, and $Q_i$ is weakly-dominating clique (edge) in $G_{i-1}$ when $i>m$. \qed
 \end{lemma}
 
 
@@ -174,7 +178,7 @@ The vertex set of a $2K_2$-free graph $G$ can be divided into three disjoint par
 \item $V(Q_{\infty})=\cup_{i=m+1,\ldots,m+s}V(Q_i).$
 \item $V(D)=\cup_{i=1,\ldots,m+s}V(D_i)$
 \end{enumerate}
-Here, $Q_0$ is the induced subgraph of $G$ on the vertex set $V(Q_0)$, $Q_{\infty}$ is the induced subgraph of $G$ on the vertex set $V(Q_{\infty})$ and $D$ is the induced subgraph of $G$ on the vertex set $V(D)$. And we denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$ on the vertex set $V(Q)$. Obviously, $V(G)=V(Q)\cup V(D)$. Note that we allow any of these sets talked above to be empty.
+Here, $Q_0$ is the induced subgraph of $G$ on the vertex set $V(Q_0)$, $Q_{\infty}$ is the induced subgraph of $G$ on the vertex set $V(Q_{\infty})$ and $D$ is the induced subgraph of $G$ on the vertex set $V(D)$. And we denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$ on the vertex set $V(Q)$. Obviously, $V(G)=V(Q)\cup V(D)$. Note that we allow any of these sets mentioned above to be empty.
 \end{lemma}
 
 
@@ -215,7 +219,7 @@ If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weakly-dominating
 
 Thus, by mathematical induction, we know that $Q_{\infty}$ has a spanning path, with all the edges $Q_{m+i},i=1,\ldots,s$ are in the path.
 
-\item If $Q_{\infty}$ is not a bipartite, by Lemma \ref{lm1}, $Q_{\infty}$ can be obtained from a five-circle by vertex multiplication. We denote $V(Q_{\infty})=V_1\cup V_2\cup V_3\cup V_4\cup V_5$, and $E(Q_{\infty})=E_1\cup E_2\cup E_3\cup E_4\cup E_5$, where each $V_i$ is an independent set, and  for any two vertices $v_1\in V_i$ and $v_2\in V_{i+1}$ (we consider $V_6=V_1$), we have an edge $e\in E_i$, such that $e=v_1v_2$. We denote $E'=\{v_{i,1}v_{i,2};i=1,\ldots,s\}$, and $E'_i=E_i\cap E'$. Obviously, $|V_i|=|E'_{i-1}|+|E'_i|$. Please note $|V_i|>0$ for $i=1,2,3,4,5$, otherwise, $Q_{\infty}$ is a bipartite. Thus for any $i$, $|E'_i|$ and $|E'_{i+1}|$ cannot be both 0. Without loss of generality, we can assume $|E'_1|,|E'_3|,|E'_5|>0$ and $|E'_2|,|E'_4|\ge0$.
+\item If $Q_{\infty}$ is not a bipartite, by Lemma \ref{lm1}, $Q_{\infty}$ can be obtained from a five-circle by vertex multiplication. We denote $V(Q_{\infty})=V_1\cup V_2\cup V_3\cup V_4\cup V_5$, and $E(Q_{\infty})=E_1\cup E_2\cup E_3\cup E_4\cup E_5$, where each $V_i$ is an independent set, and  for any two vertices $v_1\in V_i$ and $v_2\in V_{i+1}$ (we consider $V_6=V_1$), we have an edge $e\in E_i$, such that $e=v_1v_2$. We denote $E'=\{v_{i,1}v_{i,2};i=1,\ldots,s\}$, and $E'_i=E_i\cap E'$. Obviously, $|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $i=1,2,3,4,5$, otherwise, $Q_{\infty}$ is a bipartite. Thus for any $i$, $|E'_i|$ and $|E'_{i+1}|$ cannot be both 0. Without loss of generality, we can assume $|E'_1|,|E'_3|,|E'_5|>0$ and $|E'_2|,|E'_4|\ge0$.
 
  So, the vertices in the five subset $V_i$ can be denoted as following:
 
@@ -233,7 +237,7 @@ $$v_{2,|E'_1|+1}v_{3,2}\cdots v_{2,|E'_1|+|E'_2|}v_{3,|E'_2|+1}v_{4,1}v_{3,|E'_2
 $$v_{4,|E'_3|}v_{5,1}v_{4,|E'_3|+1}v_{5,2}v_{4,|E'_3|+2}\cdots v_{4,|E'_3|+|E'_4|}$$
 $$v_{5,|E'_4|+1}v_{1,|E'_1|+1}v_{5,|E'_4|+2}v_{1,|E'_1|+2}\cdots v_{5,|E'_4|+|E'_5|}v_{1,|E'_1|+|E'_5|}.$$
 
-Please note that if $|E'_2|=0$, the section $$v_{3,1}v_{2,|E_1'|+1}v_{3,2}\cdots v_{2,|E'_1|+|E'_2|}v_{3,|E'_2|+1}v_{4,1}$$ in the path is shortened to $v_{3,1}v_{4,1}$. And if $|E'_4|=0$ then the section $$v_{5,1}v_{4,|E'_3|+1}v_{5,2}v_{4,|E'_3|+2}\cdots v_{4,|E'_3|+|E'_4|}v_{5,|E'_4|+1}v_{1,|E'_1|+1}$$ in the path is shortened to $v_{5,1}v_{1,|E'_1|+1}$.
+Note that if $|E'_2|=0$, the section $$v_{3,1}v_{2,|E_1'|+1}v_{3,2}\cdots v_{2,|E'_1|+|E'_2|}v_{3,|E'_2|+1}v_{4,1}$$ in the path is shortened to $v_{3,1}v_{4,1}$. And if $|E'_4|=0$ then the section $$v_{5,1}v_{4,|E'_3|+1}v_{5,2}v_{4,|E'_3|+2}\cdots v_{4,|E'_3|+|E'_4|}v_{5,|E'_4|+1}v_{1,|E'_1|+1}$$ in the path is shortened to $v_{5,1}v_{1,|E'_1|+1}$.
 \end{enumerate}\end{proof}
 
 \subsection{The proof of Theorem \ref{thm1}}
@@ -298,12 +302,12 @@ In the following text, we prove Theorem \ref{opt} instead of Theorem \ref{thm2}.
 
 \subsubsection{Preparation}
 
-Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. If it has only 2 vertices, this is a trivial case. So, we always consider there are at least 3 vertices. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defind in Lemma \ref{lm6}. Please note it is possible that $s=0$ and $Q_{\infty}$ does not exist in the whole discussion. And if $Q_{\infty}$ does not exist, we can safely skip all the discussion about it in the proof.
+Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. If it has only 2 vertices, this is a trivial case. So, we always consider there are at least 3 vertices. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defind in Lemma \ref{lm6}. Note it is possible that $s=0$ and $Q_{\infty}$ does not exist in the whole discussion. And if $Q_{\infty}$ does not exist, we can safely skip all the discussion about it in the proof.
 
 First, if $|Q_1|=2$, then $G$ is triangle-free, by Theorem \ref{thm4}, $G$ has a Hamiltonian path, thus $G$ has a $k$-walk for $k\ge2$. So, we always assume $|Q_1|\ge3$ in our proof.
 
 \subsubsection{Finding The Collapsed Matching $M$}
-By Theorem \ref{thm4}, there is a spanning path in $Q_{\infty}$, we denote its two endpoint as $v_a$ and $v_b$. $Q_0$ is the induced subgraph of $G$ on all the vertices of all the cliques with size at least 3, as defined in Lemma \ref{lm6}. Now, let us consider the neighbor set of $v_a$ and $v_b$ in $V(Q_0)$. First, neither $N_{Q_0}(v_a)$ nor $N_{Q_0}(v_b)$ is empty, since $Q_{\infty}$ is dominated by all the cliques of size at least 3. If there is only one vertex in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, denote this vertex as $v_{\infty}$. If there are at least two vertices in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, then we can choose two distinct vertices $v'_a,v'_b\in V(Q_0)$ such that $v_av'_a,v_bv'_b\in E(G)$. Please note that if $v_{\infty}$ exist, then there must be only one clique with size at least 3 in the sequence $\{Q_i\}$ we are talking about, i.e. $m=1$.
+By Theorem \ref{thm4}, there is a spanning path in $Q_{\infty}$, we denote its two endpoint as $v_a$ and $v_b$. $Q_0$ is the induced subgraph of $G$ on all the vertices of all the cliques with size at least 3, as defined in Lemma \ref{lm6}. Now, let us consider the neighbor set of $v_a$ and $v_b$ in $V(Q_0)$. First, neither $N_{Q_0}(v_a)$ nor $N_{Q_0}(v_b)$ is empty, since $Q_{\infty}$ is dominated by all the cliques of size at least 3. If there is only one vertex in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, denote this vertex as $v_{\infty}$. If there are at least two vertices in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, then we can choose two distinct vertices $v'_a,v'_b\in V(Q_0)$ such that $v_av'_a,v_bv'_b\in E(G)$. Note that if $v_{\infty}$ exist, then there must be only one clique with size at least 3 in the sequence $\{Q_i\}$ we are talking about, i.e. $m=1$.
 Recall that $D$ stands for the independent set described in Lemma \ref{lm5} and Lemma \ref{lm6}. 
 
 \begin{case}$m\ge2$\end{case}
@@ -377,7 +381,7 @@ Recall that the name of the two endpoint of the spanning path in $Q_{\infty}$ ar
 
 If in $\Psi$, $w_{\infty}$ is adjacent to two distinct vertices $w_1$ and $w_m$, then we can find a vertex $v'_a\in V(Q_1)$ and a vertex $v'_b\in V(Q_m)$ such that $v_av_a',v_bv_b'\in E(G)$, since $Q_{\infty}$ is dominated by both $Q_1$ and $Q_m$. We call $v_av_a'$ and $v_bv_b'$ {\bf second-class edges}.
 
-If in $\Psi$, $w_{\infty}$ is adjacent to only one vertex $w_1$, and if there are two distinct vertices $v_a'$ and $v_b'$ in $V(Q_1)$ such that $v_av_a',v_bv_b'\in E(G)$, then we choose $v_av_a'$ and $v_bv_b'$ to be the {\bf second-class edges} we want. If there is only one vertex in $Q_1$ which is adjacent to $v_a$ and $v_b$ in $G$, recall that we have already named it as $v_{\infty}$, and there are at most $k-2$ edges in the collapsed matching $M$ connect to it. Then we select $v_av_{\infty}$ and $v_bv_{\infty}$ into $T$ as {\bf second-class edges}. Please note this is the {\bf only case} where we allow two second-class edges connecting to one vertex in $T$.
+If in $\Psi$, $w_{\infty}$ is adjacent to only one vertex $w_1$, and if there are two distinct vertices $v_a'$ and $v_b'$ in $V(Q_1)$ such that $v_av_a',v_bv_b'\in E(G)$, then we choose $v_av_a'$ and $v_bv_b'$ to be the {\bf second-class edges} we want. If there is only one vertex in $Q_1$ which is adjacent to $v_a$ and $v_b$ in $G$, recall that we have already named it as $v_{\infty}$, and there are at most $k-2$ edges in the collapsed matching $M$ connect to it. Then we select $v_av_{\infty}$ and $v_bv_{\infty}$ into $T$ as {\bf second-class edges}. Note this is the {\bf only case} where we allow two second-class edges connecting to one vertex in $T$.
 
 
 
