@@ -1,12 +1,5 @@
-\documentclass[12pt]{article}
-\usepackage{fancyhdr}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{color}
-\usepackage{latexsym}
-\usepackage{amssymb}
+\documentclass{amsart}
 \usepackage{amsthm}
-\usepackage{graphicx}
 \usepackage{enumerate}
 
 
@@ -20,102 +13,116 @@
 \newtheorem{step}{Step}
 \newtheorem{case}{Case}
 \newtheorem{definition}{Definition}
+\newcommand{\ncc}{c}
 
-\author{Gao Mou\thanks{Nanyang Technological University. Email: gaom0002@e.ntu.edu.sg}; Dmitrii Pasechnik}
-\title{The $k$-walks in $2K_2$-free graphs}
 \begin{document}
+\author{Gao Mou}
+\address{School of Physical and Mathematical Sciences, Nanyang Technological University, Singapore} 
+\email{gaom0002@e.ntu.edu.sg} 
+\author{Dmitrii V. Pasechnik}
+\address{Department of Computer Science, The University of Oxford, UK}
+\email{dimpase@cs.ox.ac.uk}
+
+\title{On $k$-walks in $t$-tough $2K_2$-free graphs}
+\begin{abstract}
+We show that for any $\epsilon>0$ every $(\frac{1}{k-1}+\epsilon)$-tough
+$2K_2$-free graph admits a $k$-walk, making a step towards proving a
+long-standing conjecture from \cite{jackson1990k}. The proof uses a
+decomposition of $2K_2$-free graphs which might be of independent interest.
+\end{abstract}
+
 \maketitle
 
-\abstract{We show that every $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk, making a step towards proving a long-standing conjecture from \cite{jackson1990k}. The proof uses a decomposition of $2K_2$-free graphs which might be of independent interest.}
-
 \section{Introduction}
-In 1990, Jackson and Wormald conjectured \cite{jackson1990k} that every $\frac{1}{k-1}$-tough graph admits a $k$-walk, for any integer $k\ge2$. In this paper, we prove this conjecture is "almost" true, under the assumption of $2K_2$-freeness. Here by "almost" we mean that we need to replace $\frac{1}{k-1}$-tough by $(\frac{1}{k-1}+\epsilon)$-tough, with $\epsilon>0$ arbitrarily small.
 
-Let $G$ be a graph, with vertex set $V(G)$ and edge set $E(G)$. For any $v\in V(G)$, $N_G(v)$ denotes the set of neighbors of $v$ in $G$. 
-
-In 1973, V. Chv\'{a}tal suggestes the concept {\bf toughness}, which turned out to be very important to the research of Hamiltonicity.
+Let  $\ncc(G)$ denote the number of connected components of a graph $G$ with vertex set $V:=V(G)$ and edge set $E:=E(G)$. For $S\subset V$, let $G-S$ denote the subgraph of $G$ indiced on $V-S$.
 \begin{definition}
-$G$ is $\beta$-{\em tough},
-for a positive real $\beta$, if $\Omega(G-S)>1$ implies $|S|\ge \beta\cdot \Omega(G-S)$ 
-for each $S\subset G$.
+$G$ is called $\beta$-{\em tough},
+for a real $\beta>0$, if $\ncc(G-S)>1$ implies $|S|\ge \beta\cdot \ncc(G-S)$ 
+for each $S\subset V$.
 \end{definition}
-
-That is, $G$ is $\beta$-tough if
+That is, a $\beta$-tough 
 $G$ cannot be split into $p$ (with $p>1$) components by removing less than
-$p\beta$ vertices.  The {\bf toughness} of $G$, denoted $\tau(G)$, is the maximum
-value of $\beta$ for which $G$ is $\beta$-tough.  Clearly, if $G$ is
-Hamiltonian, then $G$ is 1-tough, however, the converse is not true.  A famous
-conjecture of V.~Chv\'{a}tal \cite{chvatal1973tough}, which is still open, claims
-that the converse holds at least in an approximate sense.
-\begin{conjecture}[Chv\'{a}tal 1973]\label{conj1} There exists a constant $\beta$ such that every
-$\beta$-tough graph is Hamiltonian.  \end{conjecture}
+$p\beta$ vertices.  
+This concept, a measure of graph connectivity and ``resilience'' under vertex subsets removal,
+was introduced in 1973 by V. Chv\'{a}tal 
+while studying   Hamiltonicity of graphs. For a survey of results on this topic till 2006
+cf. \cite{MR2221006}. Our graph-theoretic notation is mostly from \cite{bomu08}.
 
-The concept of a $k$-walk is a generalization of the concept of a Hamilton cycle.
-A {\bf $k$-walk} of $G$ is a spanning closed walk of $G$ visiting each vertex at most $k$ times.  Obviously, an 1-walk is a Hamilton cycle in $G$.
-For an integer $p$, $p*G$ denotes the multigraph obtained from $G$ by taking each edge $p$ times. So, a $k$-walk is obviously a subgraph of $(2k)*G$. 
+In 1990 Jackson and Wormald conjectured in \cite{jackson1990k} that every
+$\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
+visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
 
-In \cite{jackson1990k} B.~Jackson and N.C.~Wormald investigated $k$-walks and obtained the following results.
-\begin{theorem}[Jackson and Wormald 1990]\label{cthm1}
-Every $1/(k-2)$-tough graph has a $k$-walk. 
-In particular every 1-tough graph has a 3-walk. 
-\end{theorem}
-
-In \cite{ellingham2000toughness}, it is proved that
-\begin{theorem}[Ellingham and Zha 2000]\label{cthm3}
-Every 4-tough graph has a 2-walk.
-\end{theorem}
-For another direction, it is proved, in \cite{jackson1990k}, that:
-\begin{theorem}[Jackson and Wormald 1990]\label{add}
-If $G$ has a $k$-walk, then $G$ is $(1/k)$-tough.
-\end{theorem}
-
-
-The following long-standing well-known conjecture related to $k$-walks appeared also in \cite{jackson1990k}.
-\begin{conjecture}[Jackson and Wormald 1990]\label{conj2}
-Every $1/(k-1)$-tough graph has a $k$-walk.
-\end{conjecture}
-
-
-
-In this paper, we shall prove this conjecture is "almost" true for $2K_2$-free graphs.
-
-
-
-
-
-A {\bf $2K_2$-free graph} is a graph which does not contain an induced copy of $2K_2$, the graph on four vertices consisting of two vertex disjoint edges.
- Obviously, every split graph is a $2K_2$-free graph. What is more, every co-chordal graph, i.e. the complement of a chordal graph, is also a $2K_2$-free graph. That means that the class of $2K_2$-free graphs is as rich as the class of chordal graphs.
-
-Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin proved the following. 
-\begin{theorem}[Broersma, Patel and Pyatkin 2014]\label{cthm6}
-Every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
-\end{theorem}
-
-We use $\Omega(G)$ to denote the number of connected components of $G$, and $\omega(G)$ to denote the maximum size of cliques in $G$. Here, a clique means a complete subgraph. Additionally, a {\bf coclique} means a induced subgraph containing no edge. For a subset of vertices in $G$, $A=\{v_1,\ldots,v_m\}\subset V(G)$, a subgraph $P$ in $G$ of the form $V(P)=A$ and $E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$ is called a path, where all $v_i$ are distinct in $G$.
-
-For a subset $A\subset V(G)$, let $Dom(A)$ denote the set of vertices dominated by $A$, i.e. $Dom(A)=A\cup\{y\in V(G); there~exist~x\in A~such~that~xy\in E(G)\}$. A subset $A\subset V(G)$ is said to be dominating if $Dom(A)=V(G)$. A {\bf dominating clique} of $G$ is a dominating set, which induces a complete subgraph in $G$. A subset $B\subset V(G)$ is said to be {\bf weakly-dominating} if for any edge $v_1v_2\in E(G)$, we have $v_1\in Dom(B)$ or $v_2\in Dom(B)$. And a weakly-dominating clique of $G$ is a weakly-dominating set, which induces a complete subgraph in $G$. We say a clique $Q_i$ is dominated by a clique $Q_j$, if every vertex in $Q_i$ is adjacent to some vertices in $Q_j$. We say a clique $Q_i$ is weakly-dominated by a clique $Q_j$, if for any pair $(v_1,v_2)$ of vertices $Q_i$, we have at least one of $v_1$ and $v_2$ is adjacent to some vertices in $Q_j$.
-
-
-
-
-
-
-In this paper we claim the following properties of $2K_2$-free graphs.
-
-\begin{theorem}\label{thm1}
-The vertex set $V(G)$ of every $2K_2$-free graph $G$ can be partitioned into three disjoint parts $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these three parts are possibly empty), where the three induced subgraphs (if exist) here $Q_0$ is dominating in $G$ and Hamiltonian, $Q_{\infty}$ admits a spanning path (also called Hamilton path) and $D$ is a coclique.
-\end{theorem}
-
-
-
+In this paper, we prove this conjecture is ``almost'' true, under the assumption that $G$ is  
+$2K_2$-free, 
+that is $G$ does not contain an induced copy of $2K_2$, i.e. the disjoint union of 2 edges.
+Here by ``almost'' we mean that we need to replace
+$\frac{1}{k-1}$-tough by $(\frac{1}{k-1}+\epsilon)$-tough, with $\epsilon>0$
+arbitrarily small.
 \begin{theorem}\label{thm2}
-Every $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk, for any $\epsilon>0$, and integer $k\ge2$.
+For any $\epsilon>0$, and integer $k\ge2$,
+every $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk. 
 \end{theorem}
 
+Note that if we let the toughness value $\frac{1}{k-1}+\epsilon$ to increase to $\frac{1}{k-2}$
+one does not need $2K_2$-freeness. Indeed, the following holds.
+\begin{theorem}\cite{jackson1990k}\label{cthm1}
+Every $1/(k-2)$-tough graph has a $k$-walk. 
+In particular every 1-tough graph has a 3-walk. \qed
+\end{theorem}
+Clearly, if $G$ is
+Hamiltonian, then $G$ is 1-tough, however, the converse is not true.  
+More generally, note 
+\begin{theorem}\cite{jackson1990k}\label{add}
+If $G$ has a $k$-walk, then $G$ is $\frac{1}{k}$-tough. \qed
+\end{theorem}
 
+A Hamiltonian graph is obiviusly 1-tough, but the converse need not be true.
+This more or less summarises the situation with $t$-tough graphs, $t\leq 1$.
+On the $t>1$ side 
+a famous conjecture of V.~Chv\'{a}tal \cite{chvatal1973tough} claims
+that there exists a constant $\beta$ such that every
+$\beta$-tough graph is Hamiltonian.  
 
+The concept of a $k$-walk is a generalization of the concept of a Hamiltonian cycle.
+Ellingham and Zha \cite{ellingham2000toughness} proved that
+every 4-tough graph has a 2-walk.
 
-\section{The Structural Properties of $2K_2$-free Graphs and The Proof of Theorem \ref{thm1}}
+Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin proved that 
+every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
+Our Theorem~\ref{thm2} was inspired by this result.  However, our
+approach is technically quite different.
+To prove the latter, we first prove the following.
+\begin{theorem}\label{thm1}
+For any $2K_2$-free graph $G$ the set $V(G)$ 
+can be partitioned into three disjoint parts $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
+$Q_0$, $Q_\infty$, and $D$ the following holds: $Q_0$ is dominating in $G$ and Hamiltonian, 
+$Q_{\infty}$ admits a spanning path (also called Hamilton path), 
+and $D$ is a coclique.
+\end{theorem}
+
+Here, a {\em clique} means a complete subgraph, a {\em coclique} means a
+induced subgraph containing no edge. For a subset of vertices in $G$,
+$A=\{v_1,\ldots,v_m\}\subset V(G)$, a subgraph $P$ in $G$ of the form $V(P)=A$
+and $E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$, where all $v_i$ are distinct in $G$,
+is called a {\em path}.
+
+For $A\subset V$, let $Dom(A)$ denote the set of vertices dominated
+by $A$, i.e. $Dom(A)=A\cup\{y\in V\mid\text{there exist } x\in A \text{ s.t. } xy\in
+E(G)\}$. A subset $A\subset V$ is said to be dominating if $Dom(A)=V$. 
+
+\section{Some Properties of $2K_2$-free Graphs and Proof of Theorem \ref{thm1}}
+A {\em dominating clique} of $G$ is a dominating set, which induces a complete
+subgraph in $G$. A subset $B\subset V(G)$ is said to be {\em weakly-dominating}
+if for any edge $v_1v_2\in E(G)$, we have $v_1\in Dom(B)$ or $v_2\in Dom(B)$.
+And a weakly-dominating clique of $G$ is a weakly-dominating set, which induces
+a complete subgraph in $G$. We say a clique $Q_i$ is dominated by a clique
+$Q_j$, if every vertex in $Q_i$ is adjacent to some vertices in $Q_j$. We say a
+clique $Q_i$ is weakly-dominated by a clique $Q_j$, if for any pair $(v_1,v_2)$
+of vertices $Q_i$, we have at least one of $v_1$ and $v_2$ is adjacent to some
+vertices in $Q_j$.
+Futher, let $\omega(G)$ denote the maximum size of cliques in $G$. 
+
 \subsection{Some Properties of $2K_2$-free Graphs}
 The following properties of $2K_2$-free graphs are very useful in the proof of Theorem \ref{thm1} and Theorem \ref{thm2}.
 
@@ -195,9 +202,11 @@ Now let us make an induction on the size $t$. We shall prove in each of the $Q^t
 
 If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $Q^t_{\infty}$, whose vertex set $V(Q^t_{\infty})=\cup_{i=1,\ldots,t}V(Q_{m+i})$, admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, with each $v'_{p,1}v'_{p,2}=v_{q,1}v_{q,2}$ for some $q$. Then let us look at a larger induced subgraph $Q^{t+1}_{\infty}$, with $V(Q^{t+1}_{\infty})=V(Q^t_{\infty})\cup\{v_{t+1,1},v_{t+1,2}\}$.
 
-If $v'_{t,2}v_{t+1,1}\in E(G)$, we get the spanning path in $Q^{t+1}_{\infty}$, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,2}v_{t+1,1}v_{t+1,2}$.
+If $v'_{t,2}v_{t+1,1}\in E(G)$, we get the spanning path in $Q^{t+1}_{\infty}$, 
+namely\\ $v'_{1,1} v'_{1,2}\cdots v'_{t,2} v_{t+1,1} v_{t+1,2}$.
 
-If $v'_{1,1}v_{t+1,2}\in E(G)$, we get the spanning path in $Q^{t+1}_{\infty}$, namely $v_{t+1,1}v_{t+2,2}v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,2}$.
+If $v'_{1,1}v_{t+1,2}\in E(G)$, we get the spanning path in $Q^{t+1}_{\infty}$, 
+namely\\ $v_{t+1,1} v_{t+2,2} v'_{1,1} v'_{1,2} v'_{2,1}\cdots v'_{t,2}$.
 
 If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weakly-dominating property we get $v'_{t,1}v_{t+1,2}\in E(G)$ and $v'_{1,2}v_{t+1,1}\in E(G)$. Now, we denote $q$ as the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That means $v'_{q-1,1}v_{t+1,2}\not\in E(G)$. Again, by the weakly-dominating property, we get $v'_{q-1,2}v_{t+1,1}\in E(G)$. Then, we get a spanning path in $Q^{t+1}_{\infty}$, namely $$v'_{1,1}\cdots v'_{q-1,2}v_{t+1,1}v_{t+1,2}v'_{q,1}\cdots v'_{t,2}.$$
 
@@ -266,29 +275,12 @@ Here we want to find a path, in each $Q_i$, $i=1,\dots,m$, of {\bf yellow edges}
 
 For any $Q_i$, there are two distinct vertices incident to green edges, denoted as $v_{i,a}$ and $v_{i,b}$. Because $Q_i$ is a clique, so we can find a path in $Q_i$ with endpoints $v_{i,a}$ and $v_{i,b}$ and visiting each vertex in $Q_i$ exactly once. All the edges in this path are called {\bf yellow edges}.
 
-Obviously, all the green edges and yellow edges together here make a Hamilton cycle in $Q_0$.
-
-
-
-
-
-
-
-
-\qed
-
-
-
-
-
-
-
-
-
-
-
+Obviously, all the green edges and yellow edges together here make a Hamilton cycle in $Q_0$.  \qed
 
 \section{The Proof of Theorem \ref{thm2}}
+
+For an integer $p$, let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
+Thus a $k$-walk is a subgraph of $(2k)*G$. 
 
 The proof of Theorem \ref{thm2} is also divided into two parts, in the first part, we construct an auxiliary graph $\Psi$, which is an Eulerian multigraph. In the second part, with the help of $\Psi$, we find a subgraph $T$ of $2*G$, which is an Eulerian multigraph and with all vertices of even degree and at most $2k$. And $T$ is the $k$-walk we want.
 
@@ -296,7 +288,10 @@ In fact, in our proof, we can prove a slight stronger result: the $(\frac{1}{k-1
 \begin{theorem}\label{opt}
 For any $2K_2$-free graph $G$, if $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, $\epsilon>0$, then $G$ admits a $k$-walk. Additionally, if $G$ has at least two dominating cliques with size at least 3, in a dominating cliques sequence defined as Lemma \ref{lm5}, i.e. $m\ge2$, and if $G$ is $\frac{1}{k-1}$-tough, then $G$ admits a $k$-walk.
 \end{theorem}
-In the following text, we prove Theorem \ref{opt} instead of Theorem \ref{thm2}
+In the following text, we prove Theorem \ref{opt} instead of Theorem \ref{thm2}.
+For any $v\in V$, let 
+$N_G(v)$ denote the set of neighbors of $v$ in $G$. 
+
 
 \subsection{The Construction of $\Psi$}
 
@@ -339,7 +334,8 @@ Additionally, when $v_{\infty}$ exist, it is incident to at most $k-2$ edges in 
 \subsubsection{The construction of $\Psi$}
 Now, let us construct the auxiliary graph $\Psi$.
 
-First, the vertex set of $\Psi$, $V(\Psi)=\{w_{\infty},w_1,\ldots,w_m\}\cup D'$, each $w_i~(i=\infty,1,\ldots,m)$ corresponds to $Q_{\infty}$ or $Q_i~(i=1,\ldots,m)$. (Note that if $Q_{\infty}$ does not exist, $w_{\infty}$ does not appear either.) And each vertex $v'_j\in D'$ corresponds to a vertex $v_j\in D$. For each edge $e$ in the collapsed matching $M$, we draw a pair of parallel edges $e'$ and $e''$ on $\Psi$, i.e. if $e=v_iv_j\in E(G)$, with $v_i\in V(D)$ and $v_j\in V(Q_t)$, then we have $e'=v'_iw_t,~e''=v'_iw_t\in E(\Psi)$. We call them {\bf blue edges} in $\Psi$. Note that the degrees of vertices in $\Psi$ count parallel edges with multiplicity.
+First, the vertex set of $\Psi$, $V(\Psi)=\{w_{\infty},w_1,\ldots,w_m\}\cup D'$, each $w_i$, for 
+$i=\infty,1,\ldots,m$ corresponds to $Q_{\infty}$ or $Q_i$, for $i=1,\ldots,m$. (Note that if $Q_{\infty}$ does not exist, $w_{\infty}$ does not appear either.) And each vertex $v'_j\in D'$ corresponds to a vertex $v_j\in D$. For each edge $e$ in the collapsed matching $M$, we draw a pair of parallel edges $e'$ and $e''$ on $\Psi$, i.e. if $e=v_iv_j\in E(G)$, with $v_i\in V(D)$ and $v_j\in V(Q_t)$, then we have $e'=v'_iw_t,~e''=v'_iw_t\in E(\Psi)$. We call them {\bf blue edges} in $\Psi$. Note that the degrees of vertices in $\Psi$ count parallel edges with multiplicity.
 
 
 Now, we connect all the vertices in $\{w_i;i=\infty,1,\ldots,m\}$, by a circle of {\bf red edges}. For convenience, let the red edges be $$w_1w_2,~w_2w_3,\ldots,w_{m-1}w_m,~w_mw_{\infty},~w_{\infty}w_1.$$
