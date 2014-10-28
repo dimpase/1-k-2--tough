@@ -46,21 +46,21 @@ $G$ cannot be split into $p$ (with $p>1$) components by removing less than
 $p\beta$ vertices.  
 This concept, a measure of graph connectivity and ``resilience'' under vertex subsets removal,
 was introduced in 1973 by V. Chv\'{a}tal 
-while studying   Hamiltonicity of graphs. For a survey of results on this topic till 2006
+while studying   Hamiltonicity of graphs. For a survey of results on graph toughness till 2006
 cf. \cite{MR2221006}. Our graph-theoretic notation is mostly from \cite{bomu08}.
 
-In 1990 B.~Jackson and N.~Wormald conjectured in \cite{jackson1990k} that every
+In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that every
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
 visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
 
 In this paper, we prove this conjecture is ``almost'' true, under the assumption that $G$ is  
 $2K_2$-free, 
-that is $G$ does not contain an induced copy of $2K_2$, i.e. the disjoint union of 2 edges.
+that is $G$ does not contain an induced copy of $2K_2$, i.e. the disjoint union of two edges.
 Here by ``almost'' we mean that we need to replace
 $\frac{1}{k-1}$-tough by $(\frac{1}{k-1}+\epsilon)$-tough, with $\epsilon>0$
 arbitrarily small.
 In fact $\epsilon$ can be set to 0 for most $2K_2$-free graphs, and the outcome of Theorem~\ref{thm2}
-will remain true, cf. Theorem~\ref{opt} for details.
+will remain true, cf. Theorem~\ref{opt} below for details.
 \begin{theorem}\label{thm2}
 For any $\epsilon>0$, and integer $k\ge2$,
 every $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk. 
@@ -69,7 +69,7 @@ every $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk.
 If we let the toughness value $\frac{1}{k-1}+\epsilon$ to increase to $\frac{1}{k-2}$ then
 one does not need $2K_2$-freeness. Indeed, the following holds.
 \begin{theorem}\cite{jackson1990k}\label{cthm1}
-Every $1/(k-2)$-tough graph has a $k$-walk. 
+Every $\frac{1}{k-2}$-tough graph has a $k$-walk. 
 In particular every 1-tough graph has a 3-walk. \qed
 \end{theorem}
 Clearly, if $G$ is
@@ -91,44 +91,46 @@ every 4-tough graph has a 2-walk.
 
 Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin proved that 
 every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
-Our Theorem~\ref{thm2} was inspired by this result.  However, our
-approach is technically quite different.
-To prove the latter, we first prove the following.
+Our Theorem~\ref{thm2} was inspired by this result.  
+However, our
+approach is technically quite different, and, unlike \cite{broersma2014toughness}, we do not seem to be
+able to make any algorithmic conclusions about the problem at hand.
+To prove Theorem~\ref{thm2}, we first prove the following.
 \begin{theorem}\label{thm1}
 For any $2K_2$-free graph $G$ the set $V(G)$ 
 can be partitioned into three disjoint parts $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
 $Q_0$, $Q_\infty$, and $D$ the following holds: $Q_0$ is dominating in $G$ and Hamiltonian, 
-$Q_{\infty}$ admits a spanning path (also called Hamilton path), 
+$Q_{\infty}$ admits a spanning path (also called Hamiltonian path), 
 and $D$ is a coclique.
 \end{theorem}
-
+The terminology just used is standard; we include the following for the sake of clarity.
 Here, a {\em clique} means a complete subgraph, a {\em coclique} means a
-induced subgraph containing no edge. For a subset of vertices in $G$,
-$A=\{v_1,\ldots,v_m\}\subset V(G)$, a subgraph $P$ in $G$ of the form $V(P)=A$
-and $E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$, where all $v_i$ are distinct in $G$,
+induced subgraph containing no edge. Let 
+$A=\{v_1,\ldots,v_m\}\subseteq V$. A subgraph $P$ in $G$ with $V(P)=A$
+and $E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$
 is called a {\em path}.
+For any $v\in V$, let 
+$v^\perp:=v^{\perp_G}$ denote the union of $\{v\}$ and the set of neighbors of $v$ in $G$. 
+More generally, 
+for $A\subset V$, let $A^\perp:=A^{\perp_G}$ denote the set of vertices {\em dominated}
+by $A$, i.e. $A^\perp=\bigcup\limits_{y\in A}v^\perp$, and
+$A$ is said to be {\em dominating} if $A^\perp=V$. 
+It should also lead to no confusion when we talk about  
+dominating induced subgraphs $H$ of $G$, in the sense of $V(H)$ being
+dominating, respectively
+a subset of vertices (e.g. set of vertices of a subgraph) being dominated by $H$, etc.
 
-For $A\subset V$, let $Dom(A)$ denote the set of vertices dominated
-by $A$, i.e. $Dom(A)=A\cup\{y\in V\mid\text{there exist } x\in A \text{ s.t. } xy\in
-E(G)\}$. A subset $A\subset V$ is said to be dominating if $Dom(A)=V$. 
+\section{Properties of $2K_2$-free Graphs and Proof of Theorem \ref{thm1}}
+An induced subgraph $H$ of $G$ with $B=V(H)$ (resp. $B\subset V$) is said to be {\em weakly-dominating}
+an induced subgraph $F$ (we allow $F=G$ here) 
+if for any $v_1v_2\in E(F)$, we have $v_1\in B^\perp$ or $v_2\in B^\perp$.
+Further, let $\omega(G)$ denote the maximum size of cliques in $G$. 
 
-\section{Some Properties of $2K_2$-free Graphs and Proof of Theorem \ref{thm1}}
-A {\em dominating clique} of $G$ is a dominating set, which induces a complete
-subgraph in $G$. A subset $B\subset V(G)$ is said to be {\em weakly-dominating}
-if for any edge $v_1v_2\in E(G)$, we have $v_1\in Dom(B)$ or $v_2\in Dom(B)$.
-And a weakly-dominating clique of $G$ is a weakly-dominating set, which induces
-a complete subgraph in $G$. We say a clique $Q_i$ is dominated by a clique
-$Q_j$, if every vertex in $Q_i$ is adjacent to some vertices in $Q_j$. We say a
-clique $Q_i$ is weakly-dominated by a clique $Q_j$, if for any pair $(v_1,v_2)$
-of vertices $Q_i$, we have at least one of $v_1$ and $v_2$ is adjacent to some
-vertices in $Q_j$.
-Futher, let $\omega(G)$ denote the maximum size of cliques in $G$. 
-
-\subsection{Some Properties of $2K_2$-free Graphs}
+\subsection{Properties of $2K_2$-free Graphs}
 The following properties of $2K_2$-free graphs are very useful in the proof of Theorem \ref{thm1} and Theorem \ref{thm2}.
 
 \begin{theorem}\label{trivial}
-A graph $G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating.
+A graph $G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
 \end{theorem}
 The proof of this statement is trivial.
 
@@ -136,18 +138,18 @@ The proof of this statement is trivial.
 Assume that $G$ is $2K_2$-free, $\omega(G)=2$, then $G$ is in one of the following cases.
 \begin{enumerate}
 \item $G$ is a bipartite.
-\item $G$ can be obtained from a five-circle by vertex multiplication.
+\item $G$ can be obtained from a five-circle by vertex multiplication. \qed
 \end{enumerate}
 \end{lemma}
 
 
 
 \begin{lemma}\label{lm2}{\cite[Theorem 3.]{chung1990maximum}}
-If $G$ is $2K_2$-free and the maximum size of cliques $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$.
+If $G$ is $2K_2$-free and the maximum size of cliques $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$. \qed
 \end{lemma}
 
 \begin{lemma}\label{lm3}{\cite[Observation 1.]{broersma2014toughness}}
-A graph $G=(V,E)$ is $2K_2$-free if and only if for every $A\subset V$, at most one component of the graph $G-A$ contains edges.
+A graph $G=(V,E)$ is $2K_2$-free if and only if for every $A\subset V$, at most one component of the graph $G-A$ contains edges. \qed
 \end{lemma}
 
 
@@ -236,7 +238,7 @@ Please note that if $|E'_2|=0$, the section $$v_{3,1}v_{2,|E_1'|+1}v_{3,2}\cdots
 
 \subsection{The proof of Theorem \ref{thm1}}
 By Lemma \ref{lm6} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
-The proof is divided into two parts. In the first part, we construct an auxiliary graph, a cycle, namely $\Gamma$. In the second part, with the help of $\Gamma$, we find a subgraph $H$ of $Q_0$,  which is the Hamilton cycle we want.
+The proof is divided into two parts. In the first part, we construct an auxiliary graph, a cycle, namely $\Gamma$. In the second part, with the help of $\Gamma$, we find a subgraph $H$ of $Q_0$,  which is the Hamiltonian cycle we want.
 \subsubsection{Three trivial cases}
 \begin{enumerate}
 \item If $G$ is triangle-free, then $Q_0$ does not exist at all, then there is nothing to prove.
@@ -245,7 +247,7 @@ The proof is divided into two parts. In the first part, we construct an auxiliar
 
 Since $|Q_1|-1\ge2$, then we can choose two distinct vertices in $Q_1$, namely $v_5$ and $v_6$ such that $v_1v_5,~v_2v_6\in E(G)$. And we have a path in  $Q_1$, with $v_5$ and $v_6$ as endpoints and visiting each vertex in $Q_1$ exactly once, and also a path in $Q_2$, with $v_1$ and $v_2$ as endpoints and visiting each vertex in $Q_2$ exactly once.
 
-Then these two paths and $v_1v_5$ and $v_2v_6$ form the Hamilton cycle we want.
+Then these two paths and $v_1v_5$ and $v_2v_6$ form the Hamiltonian cycle we want.
 \end{enumerate}
 
 \subsubsection{The construction of $\Gamma$}
@@ -259,8 +261,8 @@ Then we connect all these $u_i$ (i=1,\ldots,m) with a cycle, and we call this cy
 
 
 \subsubsection{The construction of $H$}
-Now, with the help of $\Gamma$, we are going to find a Hamilton cycle in $Q_0$. 
-The construction of $H$ is divided into two steps. In the first step, we find some {\bf green edges} in $Q_0$ corresponding to the edges in $\Gamma$. In the second step, we draw a path with {\bf yellow edges} in each $Q_i$, $i=1,\ldots,m$. Then the green edges and the yellow paths will make the Hamilton cycle in $Q_0$.
+Now, with the help of $\Gamma$, we are going to find a Hamiltonian cycle in $Q_0$. 
+The construction of $H$ is divided into two steps. In the first step, we find some {\bf green edges} in $Q_0$ corresponding to the edges in $\Gamma$. In the second step, we draw a path with {\bf yellow edges} in each $Q_i$, $i=1,\ldots,m$. Then the green edges and the yellow paths will make the Hamiltonian cycle in $Q_0$.
 
 For the first step:
 
@@ -276,7 +278,7 @@ Here we want to find a path, in each $Q_i$, $i=1,\dots,m$, of {\bf yellow edges}
 
 For any $Q_i$, there are two distinct vertices incident to green edges, denoted as $v_{i,a}$ and $v_{i,b}$. Because $Q_i$ is a clique, so we can find a path in $Q_i$ with endpoints $v_{i,a}$ and $v_{i,b}$ and visiting each vertex in $Q_i$ exactly once. All the edges in this path are called {\bf yellow edges}.
 
-Obviously, all the green edges and yellow edges together here make a Hamilton cycle in $Q_0$.  \qed
+Obviously, all the green edges and yellow edges together here make a Hamiltonian cycle in $Q_0$.  \qed
 
 \section{The Proof of Theorem \ref{thm2}}
 
@@ -290,8 +292,6 @@ In fact, in our proof, we can prove a slight stronger result: the $(\frac{1}{k-1
 For any $2K_2$-free graph $G$, if $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, $\epsilon>0$, then $G$ admits a $k$-walk. Additionally, if $G$ has at least two dominating cliques with size at least 3, in a dominating cliques sequence defined as Lemma \ref{lm5}, i.e. $m\ge2$, and if $G$ is $\frac{1}{k-1}$-tough, then $G$ admits a $k$-walk.
 \end{theorem}
 In the following text, we prove Theorem \ref{opt} instead of Theorem \ref{thm2}.
-For any $v\in V$, let 
-$N_G(v)$ denote the set of neighbors of $v$ in $G$. 
 
 
 \subsection{The Construction of $\Psi$}
@@ -300,7 +300,7 @@ $N_G(v)$ denote the set of neighbors of $v$ in $G$.
 
 Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. If it has only 2 vertices, this is a trivial case. So, we always consider there are at least 3 vertices. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defind in Lemma \ref{lm6}. Please note it is possible that $s=0$ and $Q_{\infty}$ does not exist in the whole discussion. And if $Q_{\infty}$ does not exist, we can safely skip all the discussion about it in the proof.
 
-First, if $|Q_1|=2$, then $G$ is triangle-free, by Theorem \ref{thm4}, $G$ has a Hamilton path, thus $G$ has a $k$-walk for $k\ge2$. So, we always assume $|Q_1|\ge3$ in our proof.
+First, if $|Q_1|=2$, then $G$ is triangle-free, by Theorem \ref{thm4}, $G$ has a Hamiltonian path, thus $G$ has a $k$-walk for $k\ge2$. So, we always assume $|Q_1|\ge3$ in our proof.
 
 \subsubsection{Finding The Collapsed Matching $M$}
 By Theorem \ref{thm4}, there is a spanning path in $Q_{\infty}$, we denote its two endpoint as $v_a$ and $v_b$. $Q_0$ is the induced subgraph of $G$ on all the vertices of all the cliques with size at least 3, as defined in Lemma \ref{lm6}. Now, let us consider the neighbor set of $v_a$ and $v_b$ in $V(Q_0)$. First, neither $N_{Q_0}(v_a)$ nor $N_{Q_0}(v_b)$ is empty, since $Q_{\infty}$ is dominated by all the cliques of size at least 3. If there is only one vertex in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, denote this vertex as $v_{\infty}$. If there are at least two vertices in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, then we can choose two distinct vertices $v'_a,v'_b\in V(Q_0)$ such that $v_av'_a,v_bv'_b\in E(G)$. Please note that if $v_{\infty}$ exist, then there must be only one clique with size at least 3 in the sequence $\{Q_i\}$ we are talking about, i.e. $m=1$.
