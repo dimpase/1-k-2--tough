@@ -2,7 +2,9 @@
 \usepackage{amsthm}
 \usepackage{enumerate}
 
-\theoremstyle{definition}
+
+
+
 \newtheorem{theorem}{Theorem}
 \newtheorem{problem}{Problem}
 \newtheorem{remarks}{Remarks}
@@ -33,7 +35,7 @@ decomposition of $2K_2$-free graphs which might be of independent interest.
 
 \section{Introduction}
 
-Let  $\ncc(G)$ denote the number of connected components of a graph $G$ with vertex set $V:=V(G)$ and edge set $E:=E(G)$. For $S\subset V$, let $G-S$ denote the subgraph of $G$ induced on $V-S$.
+Let  $\ncc(G)$ denote the number of connected components of a graph $G$ with vertex set $V:=V(G)$ and edge set $E:=E(G)$. For $S\subset V$, let $G-S$ denote the subgraph of $G$ indiced on $V-S$.
 \begin{definition}
 $G$ is called $\beta$-{\em tough},
 for a real $\beta>0$, if $\ncc(G-S)>1$ implies $|S|\ge \beta\cdot \ncc(G-S)$ 
@@ -51,31 +53,31 @@ In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that every
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
 visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
 
-In this paper, we prove this conjecture is ``almost'' true, under the
-assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
-copy of $2K_2$, i.e. the disjoint union of two edges.  Here by ``almost'' we
-mean that we need to replace $\frac{1}{k-1}$-tough by
-$(\frac{1}{k-1}+\epsilon)$-tough, with $\epsilon>0$ arbitrarily small.  In fact
-$\epsilon$ can be set to 0 for most $2K_2$-free graphs, and the outcome of
-Theorem~\ref{thm2} will remain true, cf. Theorem~\ref{opt} below for details.
-\begin{theorem}\label{thm2} 
-For any $\epsilon>0$, and integer $k\ge2$, every
-$(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk.
+In this paper, we prove this conjecture is ``almost'' true, under the assumption that $G$ is  
+$2K_2$-free, 
+that is $G$ does not contain an induced copy of $2K_2$, i.e. the disjoint union of two edges.
+Here by ``almost'' we mean that we need to replace
+$\frac{1}{k-1}$-tough by $(\frac{1}{k-1}+\epsilon)$-tough, with $\epsilon>0$
+arbitrarily small.
+In fact $\epsilon$ can be set to 0 for most $2K_2$-free graphs, and the outcome of Theorem~\ref{thm2}
+will remain true, cf. Theorem~\ref{opt} below for details.
+\begin{theorem}\label{thm2}
+For any $\epsilon>0$, and integer $k\ge2$,
+every $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk. 
 \end{theorem}
 
-If we let the toughness value $\frac{1}{k-1}+\epsilon$ to increase to 
-$\frac{1}{k-2}$ then
+If we let the toughness value $\frac{1}{k-1}+\epsilon$ to increase to $\frac{1}{k-2}$ then
 one does not need $2K_2$-freeness. Indeed, the following holds.
 \begin{theorem}\cite{jackson1990k}\label{cthm1}
 Every $\frac{1}{k-2}$-tough graph has a $k$-walk. 
 In particular every 1-tough graph has a 3-walk. \qed
 \end{theorem}
 Clearly, if $G$ is
-Hamiltonian, then $G$ is 1-tough.  More generally:
+Hamiltonian, then $G$ is 1-tough, however, the converse is not true.  
+More generally, note 
 \begin{theorem}\cite{jackson1990k}\label{add}
 If $G$ has a $k$-walk, then $G$ is $\frac{1}{k}$-tough. \qed
-\end{theorem} 
-However, the converse is not true already for $k=1$.  
+\end{theorem}
 
 This more or less summarises the situation with $t$-tough graphs, $t\leq 1$.
 On the $t>1$ side 
@@ -92,32 +94,31 @@ every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
 Our Theorem~\ref{thm2} was inspired by this result.  
 However, our
 approach is technically quite different, and, unlike \cite{broersma2014toughness}, we do not seem to be
-able to make any good algorithmic conclusions about the problem at hand.
-Indeed, the construction relies on finding maximum cliques in
-$2K_2$-free graphs, and this is known to be NP-hard. 
-To prove Theorem~\ref{thm2}, we first prove
+able to make any algorithmic conclusions about the problem at hand.
+To prove Theorem~\ref{thm2}, we first prove the following.
 \begin{theorem}\label{thm1}
 For any $2K_2$-free graph $G$ the set $V(G)$ 
 can be partitioned into three disjoint parts $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
 $Q_0$, $Q_\infty$, and $D$ the following holds: $Q_0$ is dominating in $G$ and Hamiltonian, 
-and
-$Q_{\infty}$ admits a spanning path (also called Hamiltonian path). 
-% and $D$ is a coclique. NO!
+$Q_{\infty}$ admits a spanning path (also called Hamiltonian path), 
+and $D$ is a coclique.
 \end{theorem}
-
-The terminology just used is standard; we include the following for the sake of
-clarity.  A {\em clique} means a complete subgraph, a {\em coclique} means a
-induced subgraph containing no edge. For $A=\{v_1,\ldots,v_m\}\subseteq V$, a
-subgraph $P$ in $G$ with $V(P)=A$ and
-$E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$ is called a {\em path}.  For any
-$v\in V$, let $v^\perp:=v^{\perp_G}$ denote the union of $\{v\}$ and the set of
-neighbors of $v$ in $G$.  More generally, for $A\subset V$, let
-$A^\perp:=A^{\perp_G}$ denote the set of vertices {\em dominated} by $A$, i.e.
-$A^\perp=\bigcup\limits_{y\in A}v^\perp$, and $A$ is said to be {\em
-dominating} if $A^\perp=V$.  It should also lead to no confusion when we talk
-about  dominating induced subgraphs $H$ of $G$, in the sense of $V(H)$ being
-dominating, respectively a subset of vertices (e.g. set of vertices of a
-subgraph) being dominated by $H$, etc.
+The terminology just used is standard; we include the following for the sake of clarity.
+Here, a {\em clique} means a complete subgraph, a {\em coclique} means a
+induced subgraph containing no edge. Let 
+$A=\{v_1,\ldots,v_m\}\subseteq V$. A subgraph $P$ in $G$ with $V(P)=A$
+and $E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$
+is called a {\em path}.
+For any $v\in V$, let 
+$v^\perp:=v^{\perp_G}$ denote the union of $\{v\}$ and the set of neighbors of $v$ in $G$. 
+More generally, 
+for $A\subset V$, let $A^\perp:=A^{\perp_G}$ denote the set of vertices {\em dominated}
+by $A$, i.e. $A^\perp=\bigcup\limits_{y\in A}v^\perp$, and
+$A$ is said to be {\em dominating} if $A^\perp=V$. 
+It should also lead to no confusion when we talk about  
+dominating induced subgraphs $H$ of $G$, in the sense of $V(H)$ being
+dominating, respectively
+a subset of vertices (e.g. set of vertices of a subgraph) being dominated by $H$, etc.
 
 \section{Properties of $2K_2$-free Graphs and Proof of Theorem \ref{thm1}}
 An induced subgraph $H$ of $G$ with $B=V(H)$ (resp. $B\subset V$) is said to be {\em weakly-dominating}
@@ -129,7 +130,7 @@ Further, let $\omega(G)$ denote the maximum size of cliques in $G$.
 The following properties of $2K_2$-free graphs are very useful in the proof of Theorem \ref{thm1} and Theorem \ref{thm2}.
 
 \begin{lemma}\label{trivial}
-$G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
+A graph $G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
 \end{lemma}
 
 \begin{lemma}\label{lm1}{\cite[Theorem 2]{chung1990maximum}, \cite[Lemma 2]{broersma2014toughness}}
@@ -141,56 +142,56 @@ Assume that $G$ is $2K_2$-free, $\omega(G)=2$, then $G$ is in one of the followi
 \end{lemma}
 
 \begin{lemma}\label{lm2}{\cite[Theorem 3]{chung1990maximum}}
-If $G$ is $2K_2$-free with $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$. \qed
+If $G$ is $2K_2$-free and the maximum size of cliques $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$. \qed
 \end{lemma}
 
 \begin{lemma}\label{lm3}{\cite[Observation 1]{broersma2014toughness}}
 A graph $G=(V,E)$ is $2K_2$-free if and only if for every $A\subset V$, at most one component of the graph $G-A$ contains edges. \qed
 \end{lemma}
 
+Given a $2K_2$-free graph, assuming $\omega(G)\ge3$, by Lemma \ref{lm2}, let
+$Q_1$ be a maximum dominating clique. As any induced subgraph of a $2K_2$-free
+graph is also $2K_2$-free, $G-Q_1$ is also a $2K_2$-free graph.  By Lemma
+\ref{lm3}, $G-Q_1$ is made up by two parts, one is an independent subset
+(possibly empty) of $G-Q_1$, denoted by $D_1$, and the other part is a connected
+component (either empty or with a least two vertices), denoted by $G_1$, which is also
+$2K_2$-free. If $G_1$ contains a triangle, we can find a maximum dominating clique in
+$G_1$, namely $Q_2$, and a connected component in $G_1-Q_2$, namely $G_2$ and
+an independent subset in $G_1-Q_2$ namely $D_2$. During such process, possibly,
+there is a subscript $m$ such that $\omega(G_m)=2$ (such a $m$ may not exist).
+Then, we find a weakly-dominating clique $Q_{m+1}$ in $G_m$. Also, we get a
+non-trivial component in $G_m-Q_{m+1}$, namely $G_{m+2}$ and an independent
+subset in $G_m-Q_{m+1}$, namely $D_{m+1}$, and so on.
+
+Then we have proved:
 \begin{lemma}\label{lm5}
-In a $2K_2$-free graph $G=:G_0$, there exists a sequence of cliques
-$Q_i\subseteq G_{i-1}$ of size at least $2$, cocliques $D_i\subseteq G_{i-1}$
-with $V(Q_i)\cap V(D_i)=\emptyset$,  
-and connected subgraphs $G_{i}:=(G_{i-1}-Q_{i})-D_{i}$, for
-$i=1,\ldots,m+s$, where
-$|Q_i|\ge3$ for $1\le i\le m$ and $|Q_i|=2$ for $i=m+1,\ldots,m+s$.
-Moreover, $|Q_i|\ge|Q_{i+1}|$ for any $i$, $Q_i$ is a maximum
-(respectively, weakly-) dominating
-clique in $G_{i-1}$ for $1\leq i\leq m$ (respectively, for $i>m$).
+For a $2K_2$-free graph $G=G_0$, we can find a sequence of cliques $\{Q_i;i=1,\ldots,m+s\}$, where $|Q_i|\ge3$ when $1\le i\le m$ and $|Q_i|=2$ when $i=m+1,\ldots,m+s$. Additionally, $|Q_i|\ge|Q_{i+1}|$ for any $i$. $Q_i$ is a maximum dominating clique in $G_{i-1}$ when $i\le m$, and $Q_i$ is weakly-dominating clique (edge) in $G_{i-1}$ when $i>m$. \qed
 \end{lemma}
-\begin{proof}
-We construct the claimed sequences of $Q_i$, $D_i$
-and $G_i$ directly, as follows. As any induced subgraph of $2K_2$-free
-graph is also $2K_2$-free, $G_i-Q_{i+1}$ is also a $2K_2$-free graph.
-If $\omega(G_i)\ge3$ then by Lemma \ref{lm2}, there exists a
-maximum dominating clique $Q_{i+1}$.
-Otherwise $G_i$ is triangle-free, and any edge $Q_{i+1}$ is weakly-dominating
-there.
-By Lemma \ref{lm3}, $G_i-Q_{i+1}$ is made of two parts, one is a coclique
-(possibly empty) $D_{i+1}$, and the other is a connected
-component (either empty or with a least two vertices) $G_{i+1}$, which is also
-$2K_2$-free.
-\end{proof}
 
 
-\begin{definition}\label{lm6}
+In addition, we get:
+
+\begin{lemma}\label{lm6}
 The vertex set of a $2K_2$-free graph $G$ can be divided into three disjoint parts:
 \begin{enumerate}
-\item $V(Q_0)=\cup_{i=1,\ldots,m}V(Q_i).$\label{Vq0}
-\item $V(Q_{\infty})=\cup_{i=m+1,\ldots,m+s}V(Q_i).$\label{Vqinfty}
-\item $V(D)=\cup_{i=1,\ldots,m+s}V(D_i)$\label{Vd}
+\item $V(Q_0)=\cup_{i=1,\ldots,m}V(Q_i).$
+\item $V(Q_{\infty})=\cup_{i=m+1,\ldots,m+s}V(Q_i).$
+\item $V(D)=\cup_{i=1,\ldots,m+s}V(D_i)$
 \end{enumerate}
-Here, $Q_0$ is the induced subgraph of $G$ on $V(Q_0)$, $Q_{\infty}$ is the induced subgraph of $G$ on $V(Q_{\infty})$ and $D$ is the induced subgraph of $G$ on $V(D)$. 
-Denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$ on $V(Q)$. 
-\end{definition}
-Note that obviously $V(G)=V(Q)\cup V(D)$, and we allow any of these sets 
-in (\ref{Vq0})-(\ref{Vd}) to be empty.
+Here, $Q_0$ is the induced subgraph of $G$ on the vertex set $V(Q_0)$, $Q_{\infty}$ is the induced subgraph of $G$ on the vertex set $V(Q_{\infty})$ and $D$ is the induced subgraph of $G$ on the vertex set $V(D)$. And we denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$ on the vertex set $V(Q)$. Obviously, $V(G)=V(Q)\cup V(D)$. Note that we allow any of these sets mentioned above to be empty.
+\end{lemma}
 
-\subsection{Spanning path in $Q_{\infty}$.}
+
+
+
+
+
+
+
+\subsection{Spanning Path in The Induced Subgraph $Q_{\infty}$ Made up by All Cliques of Size 2}
 Now, let us look at the behavior of all the cliques of size 2.
 \begin{theorem}\label{thm4}
-For a $2K_2$-free graph $G$, $Q_{\infty}$, cf. Definition~\ref{lm6}, is the induced subgraph on all the vertices of all the 2-cliques in a maximum (weakly) dominating sequence. 
+For a $2K_2$-free graph $G$, $Q_{\infty}$, as defined in Lemma \ref{lm6}, is the induced subgraph on all the vertices of all the 2-cliques in a maximum (weakly) dominating sequence. 
 Then $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
 \end{theorem}
 
@@ -198,6 +199,7 @@ Then $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q
 \begin{proof}
 Denote $Q_{m+i}=v_{i,1}v_{i,2}$ for $i=1,\ldots,s$. By definition, $\omega(Q_{\infty})=2$.
 \begin{enumerate}
+
 \item If $Q_{\infty}$ is a bipartite, denote the two independent part as $B_1=\{v_{i,1};i=1,\ldots,s\}$ and $B_2=\{v_{i,2};i=1,\ldots,s\}$. 
 
 
@@ -257,7 +259,7 @@ Then these two paths and $v_1v_5$ and $v_2v_6$ form the Hamiltonian cycle we wan
 Now, we assume there are at least three cliques, as defined in Lemma \ref{lm5}, of size at least 3, i.e. $m\ge3$.
 
 First, the vertex set of $\Gamma$, $V(\Gamma)=\{u_1,\ldots,u_m\}$, each $u_i$ corresponds to $Q_i$. 
-Then we connect all these $u_i$ ($i=1,\ldots,m$) with a cycle, and we call this cycle $\Gamma$.
+Then we connect all these $u_i$ (i=1,\ldots,m) with a cycle, and we call this cycle $\Gamma$.
 
 
 
@@ -272,7 +274,7 @@ For any edge $u_iu_j$ $(1\le i<j\le m)$, we want to realize it into $H$ as a {\b
 
 Now we can assume $v_{j,2}v_1,~v_{j,3}v_2\in E(G)$, where $v_1,~v_2\in Q_i$. What is more, in $v_1$ and $v_2$, there is at most one of them, say $v_1$, is incident to another green edge, since there are only two edges incident to $u_i$ in $\Gamma$. Then we select $v_{j,3}v_2$ into $H$ as a {\bf green edge}.
 
-From this process, we guarantee that each vertex in $Q_0$ is incident to at most one green edge in $H$.
+From this process, we garantee that each vertex in $Q_0$ is incident to at most one green edge in $H$.
 
 For the second step:
 
@@ -287,36 +289,26 @@ Obviously, all the green edges and yellow edges together here make a Hamiltonian
 For an integer $p$, let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
 Thus a $k$-walk is a subgraph of $(2k)*G$. 
 
-The proof of Theorem \ref{thm2} is also divided into two parts. In the first
-part, we construct an auxiliary graph $\Psi$, which is an Eulerian multigraph.
-In the second part, with the help of $\Psi$, we find a subgraph $T$ of $2*G$,
-which is an Eulerian multigraph with all vertices of even degree at
-most $2k$. This $T$ is the $k$-walk we want.
+The proof of Theorem \ref{thm2} is also divided into two parts, in the first part, we construct an auxiliary graph $\Psi$, which is an Eulerian multigraph. In the second part, with the help of $\Psi$, we find a subgraph $T$ of $2*G$, which is an Eulerian multigraph and with all vertices of even degree and at most $2k$. And $T$ is the $k$-walk we want.
 
-The $(\frac{1}{k-1}+\epsilon)$-toughness condition with $\epsilon>0$ 
-is only used for the dominating cliques sequence defined in Lemma \ref{lm5} 
-satisfying $m=1$ and $s\geq 1$. Namely, we prove the following
-slightly stronger
+In fact, in our proof, we can prove a slight stronger result: the $(\frac{1}{k-1}+\epsilon)$-tough condition is only used when the dominating cliques seuqence defined in Lemma \ref{lm5} has $m=1$. And when the $2K_2$-free graph $G$ has a dominating cliques sequence $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$ defined as Lemma \ref{lm5} with $m\ge2$, then $\frac{1}{k-1}$-tough condition is good enough to find the $k$-walk. That is:
 \begin{theorem}\label{opt}
-For any $2K_2$-free graph $G$, if $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, 
-$\epsilon>0$, then $G$ admits a $k$-walk. 
-
-Moreover, a $\frac{1}{k-1}$-tough $G$ admits a $k$-walk if $G$ either has at
-least two dominating cliques with size at least 3 in the dominating cliques
-sequence defined in Lemma \ref{lm5}, i.e. $m\ge2$, or if $G$ is {\em split},
-i.e. $m=1$, $s=0$.  
+For any $2K_2$-free graph $G$, if $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, $\epsilon>0$, then $G$ admits a $k$-walk. Additionally, if $G$ has at least two dominating cliques with size at least 3, in a dominating cliques sequence defined as Lemma \ref{lm5}, i.e. $m\ge2$, and if $G$ is $\frac{1}{k-1}$-tough, then $G$ admits a $k$-walk.
 \end{theorem}
+In the following text, we prove Theorem \ref{opt} instead of Theorem \ref{thm2}.
 
-\subsection{The Construction of $\Psi$} 
+
+\subsection{The Construction of $\Psi$}
 
 \subsubsection{Preparation}
-Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. If it has only 2 vertices, this is a trivial case. So, we always consider there are at least 3 vertices. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defined in Lemma \ref{lm6}. Note it is possible that $s=0$ and $Q_{\infty}$ does not exist in the whole discussion. And if $Q_{\infty}$ does not exist, we can safely skip all the discussion about it in the proof.
+
+Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. If it has only 2 vertices, this is a trivial case. So, we always consider there are at least 3 vertices. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defind in Lemma \ref{lm6}. Note it is possible that $s=0$ and $Q_{\infty}$ does not exist in the whole discussion. And if $Q_{\infty}$ does not exist, we can safely skip all the discussion about it in the proof.
 
 First, if $|Q_1|=2$, then $G$ is triangle-free, by Theorem \ref{thm4}, $G$ has a Hamiltonian path, thus $G$ has a $k$-walk for $k\ge2$. So, we always assume $|Q_1|\ge3$ in our proof.
 
 \subsubsection{Finding The Collapsed Matching $M$}
 By Theorem \ref{thm4}, there is a spanning path in $Q_{\infty}$, we denote its two endpoint as $v_a$ and $v_b$. $Q_0$ is the induced subgraph of $G$ on all the vertices of all the cliques with size at least 3, as defined in Lemma \ref{lm6}. Now, let us consider the neighbor set of $v_a$ and $v_b$ in $V(Q_0)$. First, neither $N_{Q_0}(v_a)$ nor $N_{Q_0}(v_b)$ is empty, since $Q_{\infty}$ is dominated by all the cliques of size at least 3. If there is only one vertex in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, denote this vertex as $v_{\infty}$. If there are at least two vertices in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, then we can choose two distinct vertices $v'_a,v'_b\in V(Q_0)$ such that $v_av'_a,v_bv'_b\in E(G)$. Note that if $v_{\infty}$ exist, then there must be only one clique with size at least 3 in the sequence $\{Q_i\}$ we are talking about, i.e. $m=1$.
-Recall that $D$ stands for the independent set described in Lemma \ref{lm6}. 
+Recall that $D$ stands for the independent set described in Lemma \ref{lm5} and Lemma \ref{lm6}. 
 
 \begin{case}$m\ge2$\end{case}
 If $m\ge2$, then $v_{\infty}$ does not exist. Then we only need the $2K_2$-free graph $G$ to be $\frac{1}{k-1}$-tough, rather than $(\frac{1}{k-1}+\epsilon)$-tough.
@@ -329,7 +321,7 @@ After that, let each group of $k-1$ copies, in $Q'$, split from one vertex, coll
 
 \begin{case}$m=1$\end{case}
 Now, we assume $m=1$. If $v_{\infty}$ does not exist, then everything is same as Case 1.
-So, we assume $v_{\infty}$ exists. Then we use the assumption that $G$ is $(\frac{1}{k-1}+\epsilon)$-tough. For any subset $D_0\subset D$, the neighbor set $N_Q(D_0)$ has at least $(\frac{1}{k-1}+\epsilon)|D_0|$ vertices, (that are $\lfloor\frac{|D_0|}{k-1}\rfloor+1$ vertices).
+So, we assmue $v_{\infty}$ exists. Then we use the assumption that $G$ is $(\frac{1}{k-1}+\epsilon)$-tough. For any subset $D_0\subset D$, the neighbor set $N_Q(D_0)$ has at least $(\frac{1}{k-1}+\epsilon)|D_0|$ vertices, (that are $\lfloor\frac{|D_0|}{k-1}\rfloor+1$ vertices).
 Now, split each vertex $v\in Q$ into $k-1$ copies $v_1,\ldots,v_{k-1}$, each of them share the same neighbors with $v$ in $D$ (if it has). And the set of all such split vertices is denoted as $Q'$. Then each $D_0\subset D$ has at least $(k-1)(\frac{1}{k-1}+\epsilon)|D_0|\ge|D_0|+1$ neighbors in $Q'$, i.e. $|N_{Q'}(D_0)|\ge|D_0|+1$. Now, denote one of the $k-1$ split copies of $v_{\infty}$ as $v^*_{\infty}$.
 
 Then $|N_{Q'-\{v^*_{\infty}\}}(D_0)|\ge|D_0|$ for every subset $D_0$ in $D$. Thus, by Hall's Theorem, there is a matching, namely $M'$, between $V(D)$ and $V(Q'-\{v^*_{\infty}\})$, covering every vertex in $V(D)$. 
@@ -359,11 +351,17 @@ Now, we connect all the vertices in $\{w_i;i=\infty,1,\ldots,m\}$, by a circle o
 \item if there are only two vertices in $\{w_i\}$, then the circle is just a pair of parallel edges.
 \end{enumerate}
 
-This completes the construction of $\Psi$. Obviously, $\Psi$ is connected
-multigraph, with all vertex degree even. Thus, $\Psi$ is Eulerian.
+Then we finish the construction of $\Psi$. Obviously, $\Psi$ is connected multigraph, with all vertex degree even. Thus, $\Psi$ is Eulerian.
+
+
+
+
+
 
 
 \subsection{The Construction of $T$}
+
+
 Now, with the help of $\Psi$, we are going to find a spanning subgraph $T$ of $2*G$.
 
 First, the vertex set of $T$, is set to be the vertex set of $G$.
