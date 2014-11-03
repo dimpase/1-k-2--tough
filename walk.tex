@@ -100,9 +100,8 @@ To prove Theorem~\ref{thm2}, we first prove
 For any $2K_2$-free graph $G$ the set $V(G)$ 
 can be partitioned into three disjoint parts $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
 $Q_0$, $Q_\infty$, and $D$ the following holds: $Q_0$ is dominating in $G$ and Hamiltonian, 
-and
-$Q_{\infty}$ admits a spanning path (also called Hamiltonian path). 
-% and $D$ is a coclique. NO!
+$Q_{\infty}$ admits a spanning path (also called Hamiltonian path), 
+and $D$ is a coclique.
 \end{theorem}
 
 The terminology just used is standard; we include the following for the sake of
@@ -152,7 +151,8 @@ A graph $G=(V,E)$ is $2K_2$-free if and only if for every $A\subset V$, at most 
 In a $2K_2$-free graph $G=:G_0$, there exists a sequence of cliques
 $Q_i\subseteq G_{i-1}$ of size at least $2$, cocliques $D_i\subseteq G_{i-1}$
 with $V(Q_i)\cap V(D_i)=\emptyset$,  
-and connected subgraphs $G_{i}:=(G_{i-1}-Q_{i})-D_{i}$, for
+and connected subgraphs $G_{i}:=(G_{i-1}-Q_{i})-D_{i}$, with
+no edges between $D_i$ and $G_i$,  for
 $i=1,\ldots,m+s$, where
 $|Q_i|\ge3$ for $1\le i\le m$ and $|Q_i|=2$ for $i=m+1,\ldots,m+s$.
 Moreover, $|Q_i|\ge|Q_{i+1}|$ for any $i$, $Q_i$ is a maximum
@@ -160,17 +160,21 @@ Moreover, $|Q_i|\ge|Q_{i+1}|$ for any $i$, $Q_i$ is a maximum
 clique in $G_{i-1}$ for $1\leq i\leq m$ (respectively, for $i>m$).
 \end{lemma}
 \begin{proof}
-We construct the claimed sequences of $Q_i$, $D_i$
-and $G_i$ directly, as follows. As any induced subgraph of $2K_2$-free
-graph is also $2K_2$-free, $G_i-Q_{i+1}$ is also a $2K_2$-free graph.
-If $\omega(G_i)\ge3$ then by Lemma \ref{lm2}, there exists a
+We construct the claimed sequences of $Q_i$, $D_i$, 
+and $G_i$ directly by induction, as follows. 
+We may assume that $G_i$ is $2K_2$-free.
+If $\omega(G_i)\ge3$ then by Lemma \ref{lm2}, it contains a 
 maximum dominating clique $Q_{i+1}$.
-Otherwise $G_i$ is triangle-free, and any edge $Q_{i+1}$ is weakly-dominating
-there.
+Otherwise it is triangle-free, and any edge $Q_{i+1}$ is weakly-dominating
+in $G_i$.
+As any induced subgraph of a $2K_2$-free
+graph is also $2K_2$-free, $G_i-Q_{i+1}$ is also a $2K_2$-free graph.
 By Lemma \ref{lm3}, $G_i-Q_{i+1}$ is made of two parts, one is a coclique
 (possibly empty) $D_{i+1}$, and the other is a connected
 component (either empty or with a least two vertices) $G_{i+1}$, which is also
-$2K_2$-free.
+$2K_2$-free (again, as an induced subgraph of a $2K_2$-free graph).
+Thus from $G_i$ we have constructed $Q_{i+1}$, $D_{i+1}$, and $G_{i+1}$
+with the  claimed properties.
 \end{proof}
 
 
@@ -186,6 +190,14 @@ Denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$
 \end{definition}
 Note that obviously $V(G)=V(Q)\cup V(D)$, and we allow any of these sets 
 in (\ref{Vq0})-(\ref{Vd}) to be empty.
+
+\begin{lemma}\label{lmDcoclique}
+$D$ is a coclique in $G$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lm5}, there are no edges betwwen $D_i$ and $G_i$. By constructuon, 
+$D_j$, for $j>i$, lies in $G_i$.
+\end{proof}
 
 \subsection{Spanning path in $Q_{\infty}$.}
 Now, let us look at the behavior of all the cliques of size 2.
@@ -239,7 +251,7 @@ Note that if $|E'_2|=0$, the section $$v_{3,1}v_{2,|E_1'|+1}v_{3,2}\cdots v_{2,|
 \end{enumerate}\end{proof}
 
 \subsection{The proof of Theorem \ref{thm1}}
-By Lemma \ref{lm6} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
+By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
 The proof is divided into two parts. In the first part, we construct an auxiliary graph, a cycle, namely $\Gamma$. In the second part, with the help of $\Gamma$, we find a subgraph $H$ of $Q_0$,  which is the Hamiltonian cycle we want.
 \subsubsection{Three trivial cases}
 \begin{enumerate}
