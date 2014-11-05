@@ -299,11 +299,6 @@ Obviously, all the green edges and yellow edges together here make a Hamiltonian
 For an integer $p$, let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
 Thus a $k$-walk is a subgraph of $(2k)*G$. 
 
-The proof of Theorem \ref{thm2} is also divided into two parts. In the first
-part, we construct an auxiliary graph $\Psi$, which is an Eulerian multigraph.
-In the second part, with the help of $\Psi$, we find a subgraph $T$ of $2*G$,
-which is an Eulerian multigraph with all vertices of even degree at
-most $2k$. This $T$ is the $k$-walk we want.
 
 The $(\frac{1}{k-1}+\epsilon)$-toughness condition with $\epsilon>0$ 
 is only used for the dominating cliques sequence defined in Lemma \ref{lm5} 
@@ -319,120 +314,136 @@ sequence defined in Lemma \ref{lm5}, i.e. $m\ge2$, or if $G$ is {\em split},
 i.e. $m=1$, $s=0$.  
 \end{theorem}
 
-\subsection{The Construction of $\Psi$} 
-
-\subsubsection{Preparation}
-Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. If it has only 2 vertices, this is a trivial case. So, we always consider there are at least 3 vertices. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defined in Lemma \ref{lm6}. Note it is possible that $s=0$ and $Q_{\infty}$ does not exist in the whole discussion. And if $Q_{\infty}$ does not exist, we can safely skip all the discussion about it in the proof.
-
-First, if $|Q_1|=2$, then $G$ is triangle-free, by Theorem \ref{thm4}, $G$ has a Hamiltonian path, thus $G$ has a $k$-walk for $k\ge2$. So, we always assume $|Q_1|\ge3$ in our proof.
-
-\subsubsection{Finding The Collapsed Matching $M$}
-By Theorem \ref{thm4}, there is a spanning path in $Q_{\infty}$, we denote its two endpoint as $v_a$ and $v_b$. $Q_0$ is the induced subgraph of $G$ on all the vertices of all the cliques with size at least 3, as defined in Lemma \ref{lm6}. Now, let us consider the neighbor set of $v_a$ and $v_b$ in $V(Q_0)$. First, neither $N_{Q_0}(v_a)$ nor $N_{Q_0}(v_b)$ is empty, since $Q_{\infty}$ is dominated by all the cliques of size at least 3. If there is only one vertex in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, denote this vertex as $v_{\infty}$. If there are at least two vertices in $N_{Q_0}(v_a)\cup N_{Q_0}(v_b)$, then we can choose two distinct vertices $v'_a,v'_b\in V(Q_0)$ such that $v_av'_a,v_bv'_b\in E(G)$. Note that if $v_{\infty}$ exist, then there must be only one clique with size at least 3 in the sequence $\{Q_i\}$ we are talking about, i.e. $m=1$.
-Recall that $D$ stands for the independent set described in Lemma \ref{lm6}. 
-
-\begin{case}$m\ge2$\end{case}
-If $m\ge2$, then $v_{\infty}$ does not exist. Then we only need the $2K_2$-free graph $G$ to be $\frac{1}{k-1}$-tough, rather than $(\frac{1}{k-1}+\epsilon)$-tough.
-
-For any subset $D_0\subset D$, the neighbor set $N_{G}(D_0)=N_Q(D_0)$ has at least $\frac{|D_0|}{k-1}$ vertices, (that are $\lceil\frac{|D_0|}{k-1}\rceil$ vertices). Otherwise, if $|N_Q(D_0)|<\frac{|D_0|}{k-1}$, after deleting $N_Q(D_0)$, there are at least $|D_0|$ components (isolated vertices), which contradicts with the definition of $\frac{1}{k-1}$-tough. 
-Now, split each vertex $v\in Q$ into $k-1$ copies $v_1,\ldots,v_{k-1}$, each of them share the same neighbors with $v$ in $D$ (if it has). And the set of all such split vertices is denoted as $Q'$.  Then each $D_0\subset D$ has at least $|D_0|$ neighbors in $Q'$.
-Thus, by Hall' Theorem, there is a matching, namely $M'$, between $V(D)$ and $V(Q')$ covering every vertex in $V(D)$. 
-After that, let each group of $k-1$ copies, in $Q'$, split from one vertex, collapse to the original vertex in $Q$. We call the set of these edges in $E(G)$, corresponding to the edges in the matching $M'$, {\bf the collapsed matching $M$}. Then each vertex $v\in Q$ is incident to at most $k-1$ edges in the collapsed matching $M$. 
-
-
-\begin{case}$m=1$\end{case}
-Now, we assume $m=1$. If $v_{\infty}$ does not exist, then everything is same as Case 1.
-So, we assume $v_{\infty}$ exists. Then we use the assumption that $G$ is $(\frac{1}{k-1}+\epsilon)$-tough. For any subset $D_0\subset D$, the neighbor set $N_Q(D_0)$ has at least $(\frac{1}{k-1}+\epsilon)|D_0|$ vertices, (that are $\lfloor\frac{|D_0|}{k-1}\rfloor+1$ vertices).
-Now, split each vertex $v\in Q$ into $k-1$ copies $v_1,\ldots,v_{k-1}$, each of them share the same neighbors with $v$ in $D$ (if it has). And the set of all such split vertices is denoted as $Q'$. Then each $D_0\subset D$ has at least $(k-1)(\frac{1}{k-1}+\epsilon)|D_0|\ge|D_0|+1$ neighbors in $Q'$, i.e. $|N_{Q'}(D_0)|\ge|D_0|+1$. Now, denote one of the $k-1$ split copies of $v_{\infty}$ as $v^*_{\infty}$.
-
-Then $|N_{Q'-\{v^*_{\infty}\}}(D_0)|\ge|D_0|$ for every subset $D_0$ in $D$. Thus, by Hall's Theorem, there is a matching, namely $M'$, between $V(D)$ and $V(Q'-\{v^*_{\infty}\})$, covering every vertex in $V(D)$. 
-After that, let each group of $k-1$ copies, in $Q'$, split from one vertex collapse to the original vertex in $Q$. We call the set of these edges in $E(G)$, corresponding to the edges in the matching $M'$, the {\bf collapsed matching $M$}. Then each vertex $v\in Q$ may be incident to at most $k-1$ edges from the collapsed matching $M$.
-Additionally, when $v_{\infty}$ exist, it is incident to at most $k-2$ edges in the collapsed matching $M$.
 
 
 
+The following lemma is the key technique in the proof of Theorem \ref{thm2}.
+
+\begin{lemma}\label{addtec}
+For any graph $G$, if it allows a decomposition: $V(G)=V(Q)\cup V(D)$ such that:
+
+\begin{enumerate} 
+\item if the induced subgraphs $Q$ is Hamiltonian and $D$ is a coclique, and if $G$ is $\frac{1}{k-1}$-tough, then $G$ admits a $k$-walk.
+\item if the induced subgraphs $Q$ admits a 2-walk, where only one vertex $v_{\infty}$ is visited twice in the walk and all other vertices are visited only once, $D$ is a coclique, and if $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, then $G$ admits a $k$-walk.
+
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For part (1), choose any subset $D_0\subset D$, by the $\frac{1}{k-1}$-tough condition, $D_0$ has at least $\lceil\frac{|D_0|}{k-1}\rceil$ neighbors in $Q$. Then by Hall Theorem, there is a subset of edges $E'\subset E(G)$ such that each edge $e\in E'$ has one vertex in $D$ while another vertex in $Q$. Additionally, each vertex in $D$ is incident to exactly one edge in $E'$, while each vertex in $Q$ is incident to at most $k-1$ edges in $E'$.
+Then these edges in $E'$ and the edges in the Hamilton cycle $H$ of $Q$ form a 2-walk of $G$.
+
+For part (2), choose any subset $D_0\subset D$, by the $\frac{1}{k-1}$-tough condition, $D_0$ has at least $\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil$ neighbors in $Q$. Now split each vertex in $Q$ into $k-1$ copies, the set of all these split vertices is denoted as $Q^k$ then $D_0$ has at least $(k-1)\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil\ge|D_0|+1$ vertices, arbitrarily choose one copy of $v_{\infty}$, namely $v^*$, then $D_0$ has at least $|D_0|$ vertices in $Q^k-\{v^*\}$. Then there is a matching from $D$ to $Q^k-\{v^*\}$. Now collapse these copies back to $Q$, then each vertex in $D$ is incident to exactly one edges from the matching. Each vertex in $Q$ takes over at most $k-1$ edges from the matching, while $v_{\infty}$ takes at most $k-2$ edges from the matching. Then all these edges from the matching and the edges from the 2-walk in $Q$ form the k-walk of $G$.
+\end{proof}
+
+
+\subsection{Triangle-free case, i.e. $m=0$}
+Now, we first look at the triangle-free case.
+
+\begin{theorem}\label{trifree}
+If $G$ is triangle-free, i.e. $\omega(G)=2$, then $(\frac{1}{k-1}+\epsilon)$-tough implies a $k$-walk.
+\end{theorem}
 
 
 
 
+\begin{proof}
+As the definition before, $G$ has a weakly-dominating sequence $\{Q_1,\ldots,Q_s\}$, where $|Q_i|=2$.
+
+{\bf Case 1.} If $s=1$, then obviously, $Q_1$ is dominating, since after deleting $Q_1$, there is only a set $D$ of isolated vertices.
+By "triangle-free", each vertex $v\in D$ is adjacent to exactly one vertex in $Q_1$. By $(\frac{1}{k-1}+\epsilon)$-tough, each vertex in $Q_1$ is adjacent to at most $k-2$ vertices in $D$. Then we can draw the $k$-walk easily.
+
+{\bf Case 2.} If $s=2$, then $V(G)=V(Q)\cup V(D)$, where $Q$ admits a path $u_1u_2u_3u_4$, while $D$ is a coclique.
 
 
-\subsubsection{The construction of $\Psi$}
-Now, let us construct the auxiliary graph $\Psi$.
+If $u_1$ is adjacent to $u_4$, then $Q$ is hamiltonian, then by Lemma \ref{addtec}, there is a k-walk.
 
-First, the vertex set of $\Psi$, $V(\Psi)=\{w_{\infty},w_1,\ldots,w_m\}\cup D'$, each $w_i$, for 
-$i=\infty,1,\ldots,m$ corresponds to $Q_{\infty}$ or $Q_i$, for $i=1,\ldots,m$. (Note that if $Q_{\infty}$ does not exist, $w_{\infty}$ does not appear either.) And each vertex $v'_j\in D'$ corresponds to a vertex $v_j\in D$. For each edge $e$ in the collapsed matching $M$, we draw a pair of parallel edges $e'$ and $e''$ on $\Psi$, i.e. if $e=v_iv_j\in E(G)$, with $v_i\in V(D)$ and $v_j\in V(Q_t)$, then we have $e'=v'_iw_t,~e''=v'_iw_t\in E(\Psi)$. We call them {\bf blue edges} in $\Psi$. Note that the degrees of vertices in $\Psi$ count parallel edges with multiplicity.
+Now we assume $u_1$ is not adjacent to $u_4$.
+By triangle-free, $u_1$ is not adjacent to $u_3$, and $u_2$ is not adjacent to $u_4$. Thus $Q$ is the path with no other edges.
 
+If each vertex $v\in D$ is adjacent to exactly one vertex in $Q$, then by $(\frac{1}{k-1}+\epsilon)$-tough, $u_1$ (or $u_4$) is adjacent to at most $k-2$ vertices in $D$, while $u_2$ (or $u_3$) is adjacent to at most $k-3$ vertices in $D$. Then we can find the $k$-walk easily.
 
-Now, we connect all the vertices in $\{w_i;i=\infty,1,\ldots,m\}$, by a circle of {\bf red edges}. For convenience, let the red edges be $$w_1w_2,~w_2w_3,\ldots,w_{m-1}w_m,~w_mw_{\infty},~w_{\infty}w_1.$$
+Now we assume there are some vertices in $D$ who are adjacent to at least two vertices in $Q$.
+By triangle-free, they are not allowed to be adjacent to two successive vertices in $Q$.
 
- Note there are two trivial cases:
 \begin{enumerate}
-\item if there is only one $\{w_i\}$, namely $w_1$, then there is no red edge.
-\item if there are only two vertices in $\{w_i\}$, then the circle is just a pair of parallel edges.
+\item assume $v_0\in D$ is adjacent to $u_1$ and $u_4$, then denote $Q'=Q\cup\{v_0\}$ and $D'=D-\{v_0\}$. Then $V(G)=V(Q')\cup V(D')$ while $Q'$ is hamiltonian and $D'$ is a coclique. Then by $(\frac{1}{k-1}+\epsilon)$-tough, we can find the $k$-walk easily.
+\item assume $v_0\in D$ is adjacent to $u_1$ and $u_3$, ($u_2$ and $u_4$ case is similar), then denote $Q'=Q\cup\{v_0\}$ and $D'=D-\{v_0\}$. Then $V(G)=V(Q')\cup V(D')$ while $D'$ is a coclique. Now look at $Q'$, $Q'$ is a cycle $u_1u_2u_3v_0$ and a suspended edge $u_3u_4$, so $Q'$ is a 2-walk, where $u_1$, $u_2$, $u_4$, $v_0$ are visited once and $u_3$ is visited twice. Now we consider $u_3$ as the role of $v_{\infty}$ in Lemma \ref{addtec}, then we can find the $k$-walk with the assumption $(\frac{1}{k-1}+\epsilon)$-tough.
 \end{enumerate}
 
-This completes the construction of $\Psi$. Obviously, $\Psi$ is connected
-multigraph, with all vertex degree even. Thus, $\Psi$ is Eulerian.
+{\bf Case 3.} If $s\ge3$, then $V(G)=V(Q)\cup V(D)$, and we require the sequence $\{Q_1,\ldots,Q_s\}$ has the maximum length possible. We know that $Q$ admits a path namely $u_1u_2\cdots u_{2s}$.
 
-
-\subsection{The Construction of $T$}
-Now, with the help of $\Psi$, we are going to find a spanning subgraph $T$ of $2*G$.
-
-First, the vertex set of $T$, is set to be the vertex set of $G$.
-
-\subsubsection{
-Finding first-class edges in $T$}
-The set of {\bf first-class edges} in $T$ is just doubling all the edges in the collapsed matching $M$. So, there is a one to one corresponding between the first-class edges and the blue edges.
-
-
-
-\subsubsection{
-Finding second-class edges in $T$}
-If $Q_{\infty}$ and $w_{\infty}$ exist, we first look for the {\bf second-class edges} corresponding to the two red edges incident to $w_{\infty}$ (if $Q_{\infty}$ and $w_{\infty}$ do not exist, we directly go to the process of finding second-class edges between cliques of size at least 3).
-
-
-Recall that the name of the two endpoint of the spanning path in $Q_{\infty}$ are $v_a$ and $v_b$, as the discussion before.
-
-If in $\Psi$, $w_{\infty}$ is adjacent to two distinct vertices $w_1$ and $w_m$, then we can find a vertex $v'_a\in V(Q_1)$ and a vertex $v'_b\in V(Q_m)$ such that $v_av_a',v_bv_b'\in E(G)$, since $Q_{\infty}$ is dominated by both $Q_1$ and $Q_m$. We call $v_av_a'$ and $v_bv_b'$ {\bf second-class edges}.
-
-If in $\Psi$, $w_{\infty}$ is adjacent to only one vertex $w_1$, and if there are two distinct vertices $v_a'$ and $v_b'$ in $V(Q_1)$ such that $v_av_a',v_bv_b'\in E(G)$, then we choose $v_av_a'$ and $v_bv_b'$ to be the {\bf second-class edges} we want. If there is only one vertex in $Q_1$ which is adjacent to $v_a$ and $v_b$ in $G$, recall that we have already named it as $v_{\infty}$, and there are at most $k-2$ edges in the collapsed matching $M$ connect to it. Then we select $v_av_{\infty}$ and $v_bv_{\infty}$ into $T$ as {\bf second-class edges}. Note this is the {\bf only case} where we allow two second-class edges connecting to one vertex in $T$.
-
-
-
-
-
-After two second-class edges incident to $Q_{\infty}$ are found, we go on to look for the second-class edges between the cliques of size at least 3.
-For any red edge $w_iw_{i+1}$, we want to realize it into $T$ as a {\bf second-class edge}. Let us look at $Q_{i+1}$ first. We know that $w_{i+1}$ is incident to two red edges, so, there is only one vertex in $Q_{i+1}$, say $v_{i+1,1}$, is connected to another second-class edge. And $|Q_{i+1}|\ge3$, so there are at least two vertices in $Q_{i+1}$, say $v_{i+1,2}$ and $v_{i+1,3}$, are not incident to any second-class edge at this moment. Both of them are dominated by $Q_i$. Then we claim that $v_{i+1,2}$ and $v_{i+1,3}$ have at least two neighbors in $Q_i$. Otherwise, assuming $v_{i+1,2}$ and $v_{i+1,3}$ have only one neighbor in $Q_i$, we know $|Q_i|\ge3$, so there are at least two vertices, say $v_{i,1}$ and $v_{i,2}$, who are adjacent to neither $v_{i+1,2}$ nor $v_{i+1,3}$. Then $v_{i+1,2}v_{i+1,3}$ and $v_{i,1}v_{i,2}$ form a $2K_2$. Contradiction. Now, we can denote $v_{i+1,2}v_1,~v_{i+1,3}v_2\in E(G)$, where $v_1,v_2\in Q_i$. What is more, in $v_1$ and $v_2$, there is at most one of them, say $v_1$ is incident to another second-class edge, since there are only two second-class edges connected on $Q_i$. Then we select $v_{i+1,3}v_2$ into $T$ as a {\bf second-class edge}.
-
-
-
-
-
-
-
-
-
-
-
-\subsubsection{
-Finding third-class edges in $T$}
-
-The final step in the construction is to find some so-called {\bf third-class edges} in $T$. After adding all the first- and second-class edges, let us look at each $Q_i$, where $i=1,\ldots,m$.
-
-First, assuming $v_{\infty}$ exists, there is only $Q_1$ for us to work on. In $Q_1$, we just connect all its vertices by a circle of {\bf third-class edges}. Then every vertex has even degree and at most $2k$, since each vertex is incident to 2 third-class edges. And $v_{\infty}$ is incident to two second-class edges and at most $k-2$ pairs of first-class edges, while other vertices may be incident to at most $k-1$ pairs of first-class edges.
-
-Now, we assume $v_{\infty}$ does not exist. Then, in $Q_i$, there are two vertices, say $v_s$ and $v_e$, who are incident to second-class edges. We draw a spanning path with one endpoint $v_s$ and another endpoint $v_e$. All the edges in this path are called {\bf third-class edges}.
-Now each vertex has even degree which is at most $2k$. Because for each endpoint, it has one third-class edge, one second-class edge, and at most $k-1$ pairs of first class edges. And for each inner vertex, it is incident to two third-class edges and at most $k-1$ pairs of first-class edges.
-
-
-
-After drawing all these first-, second- and third-class edges on $T$, we observe that:
+If both of $u_1$ and $u_{2s}$ have neighbors in $D$:
 \begin{enumerate}
-\item $T$ is connected multigraph.
-\item $T$ is a subgraph of $2*G$.
-\item each vertex in $T$ has even degree of at most $2k$, where the degree of parallel edges is counted with multiplicity.
+\item if $v_0\in D$ is adjancent to both $u_1$ and $u_{2s}$, then $Q'=Q\cup\{v_0\}$ is hamiltonian and $D'=D-\{v_0\}$ is a coclique. Then we can find the $k$-walk by Lemma \ref{addtec}.
+\item if there are $v_1\neq v_2$ in $D$, where $v_1u_1,~v_2u_{2s}\in E(G)$, then we can find a longer sequence namely $Q'_1=v_1u_1$, $Q'_2=u_2u_3$,\ldots, $Q'_{s+1}=u_{2s}v_2$ in $G$. Contradition with the assumption.
 \end{enumerate}
-We conclude that $T$ is Eulerian, and a $k$-walk in $G$.\qed
+
+Now, we only consider the situation that at most one in $u_1$ and $u_{2s}$ has neighbors in $D$. Assume that $u_{2s}$ has {\bf no} neighbor in $D$.
+
+Consider the $2K_2$-free condition with $u_1u_2$ and $u_{2s-1}u_{2s}$.
+\begin{enumerate}
+\item if $u_1u_{2s}\in E(G)$, then $Q$ is hamiltonian, then we can easily find the k-walk in $G$
+\item if $u_1u_{2s-1}\in E(G)$, then $Q$ is 2-walk, with $u_{2s-1}$ playing the role of "$v_{\infty}$".
+\item if $u_2u_{2s}\in E(G)$, then $Q$ is a 2-walk, with $u_2$ playing the role of "$v_{\infty}$".
+\item if $u_2u_{2s-1}\in E(G)$, then denote $Q'=Q-\{u_{2s}\}$, $D'=D\cup \{u_{2s}\}$. Recall the assumption that $u_{2s}$ has no neighbor in $D$, so $D'$ is a coclique, and $Q'$ is the 2-walk, with $u_2$ playing the role of $v_{\infty}$. Then we can find the $k$-walk we want.
+\end{enumerate}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{When $m\ge1$} 
+
+
+
+We have already solved the case where $G$ is triangle-free in Theorem \ref{trifree}. So, we always assume $|Q_1|\ge3$ in the following proof.
+
+By Lemma \ref{addtec}, we only need to proof the induced subgraph $Q$ on the vertex set $V(Q)=V(Q_0)\cup V(Q_{\infty})$ is Hamiltonian when $m\ge2$, (admits 2-walk, with only one vertex $Q_{\infty}$ visited at most twice, and all other vertices visited exactly once, when $m=1$.)
+
+Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defined in Lemma \ref{lm6}. 
+
+\subsubsection{When $s=0$}
+When $s=0$, we have $Q=Q_0$, since $Q_{\infty}$ does not exist. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian, and by Lemma \ref{addtec}, $G$ admits a $k$-walk, under the assmuption $G$ is $\frac{1}{k-1}$-tough.
+ 
+
+\subsubsection{When $m\ge2$, $s\ge1$}
+Denote a spanning path in $Q_{\infty}$ as $u_1\cdots u_{2s}$. Because each vertex in $Q_{\infty}$ is dominated by each clique $Q_i$, for $1\le i\le m$, we can find $v_{1,1}\in Q_1$ and $v_{m,1}\in Q_m$ such that $u_1v_{1,1},~u_{2s}v_{m,1}\in E(G)$. Now, let us find a spanning path in $Q_m$, starting with $v_{m,1}$. Obviously, such a path exists since $Q_m$ is a clique. Denote such a path as $v_{m,1}\cdots v_{m,|Q_m|}$. 
+
+We know that $Q_m$ is dominated by $Q_{m-1}$, then there is a vertex, namely $v_{m-1,1}$ adjacnet to $v_{m,|Q_m|}$, again, we can find a spanning path in $Q_{m-1}$, namely $v_{m-1,1}\cdots v_{m-1,|Q_{m-1}|}$. 
+
+Repeat such process, in $Q_2$, we find a vertex $v_{2,1}$ adjacent to $v_{3,|Q_3|}$. Because $|Q_2|\ge3$, then there are at least two other vertices, besides $v_{2,1}$ in $Q_2$, namely $v_{2,a}$ and $v_{2,b}$. In $Q_1$, there are at least two vertices, besides $v_{1,1}$, namely $v_{1,c}$ and $v_{1,d}$. By $2K_2$-free condition, we can assume that $v_{2,a}v_{1,c}\in E(G)$. Then we pick up a spanning $v_{2,1}\cdots v_{2,a}$ in $Q_2$, and a spanning path $v_{1,1}\cdots v_{1,c}$ in $Q_1$. Then all these paths are connected together into a Hamilton cycle in $Q$.
+
+
+\subsubsection{$m=1$, $s\ge1$}
+
+Again, denote the spanning path in $Q_{\infty}$ as $u_1\cdots u_{2s}$.
+If $u_1$ and $u_{2s}$ have two different neighbors in $Q_1$, say $u_1v_1,~u_{2s}v_2\in E(G)$, where $v_1,~v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. Then connect the spanning path in $Q_{\infty}$ and the spanning path in $Q_1$ together, we get the Hamilton cycle in $G$.
+
+If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, then we can find a Hamilton cycle in $Q_1$ and the two endpoints of the spanning path in $Q_{\infty}$ is connected to $v_{\infty}$ and come into a 2-walk, with $v_{\infty}$ visited twice and all other vertices visited once. Then by Lemma \ref{addtec}, we deduce the $k$-walk from the assumption that $G$ is $(\frac{1}{k-1}+\epsilon)$-tough.
+
+
+
+
+
+
+
+\qed
 
 
 
