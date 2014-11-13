@@ -51,7 +51,7 @@ In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that every
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
 visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
 
-In this paper, we prove this conjecture is ``almost'' true, under the
+In this paper, we prove that this conjecture is ``almost'' true, under the
 assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
 copy of $2K_2$, i.e. the disjoint union of two edges.  Here by ``almost'' we
 mean that we need to replace $\frac{1}{k-1}$-tough by
@@ -179,7 +179,8 @@ with the  claimed properties.
 
 
 \begin{definition}\label{lm6}
-The vertex set of a $2K_2$-free graph $G$ can be divided into three disjoint parts:
+The vertex set of a $2K_2$-free graph $G$ can be divided into three disjoint, 
+possibly empty, parts:
 \begin{enumerate}
 \item $V(Q_0)=\cup_{i=1,\ldots,m}V(Q_i).$\label{Vq0}
 \item $V(Q_{\infty})=\cup_{i=m+1,\ldots,m+s}V(Q_i).$\label{Vqinfty}
@@ -188,67 +189,76 @@ The vertex set of a $2K_2$-free graph $G$ can be divided into three disjoint par
 Here, $Q_0$ is the induced subgraph of $G$ on $V(Q_0)$, $Q_{\infty}$ is the induced subgraph of $G$ on $V(Q_{\infty})$ and $D$ is the induced subgraph of $G$ on $V(D)$. 
 Denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$ on $V(Q)$. 
 \end{definition}
-Note that obviously $V(G)=V(Q)\cup V(D)$, and we allow any of these sets 
-in (\ref{Vq0})-(\ref{Vd}) to be empty.
+Note that obviously $V(G)=V(Q)\cup V(D)$.
 
 \begin{lemma}\label{lmDcoclique}
 $D$ is a coclique in $G$.
 \end{lemma}
 \begin{proof}
-By Lemma~\ref{lm5}, there are no edges betwwen $D_i$ and $G_i$. By constructuon, 
+By Lemma~\ref{lm5}, there are no edges between $D_i$ and $G_i$. By constructuon, 
 $D_j$, for $j>i$, lies in $G_i$.
 \end{proof}
 
 \subsection{Spanning path in $Q_{\infty}$.}
-Now, let us look at the behavior of all the cliques of size 2.
+Now we look at the behavior of the cliques of size $2$ in the sequence $\{Q_i\}$.
 \begin{theorem}\label{thm4}
-For a $2K_2$-free graph $G$, $Q_{\infty}$, cf. Definition~\ref{lm6}, is the induced subgraph on all the vertices of all the 2-cliques in a maximum (weakly) dominating sequence. 
-Then $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
+The subgraph $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
 \end{theorem}
 
 
 \begin{proof}
-Denote $Q_{m+i}=v_{i,1}v_{i,2}$ for $i=1,\ldots,s$. By definition, $\omega(Q_{\infty})=2$.
-\begin{enumerate}
-\item If $Q_{\infty}$ is a bipartite, denote the two independent part as $B_1=\{v_{i,1};i=1,\ldots,s\}$ and $B_2=\{v_{i,2};i=1,\ldots,s\}$. 
+Denote $Q_{m+i}=v_{i,1}v_{i,2}$ for $i=1,\ldots,s$.
+Let $Q_{\infty}$ be bipartite, with the parts $\{v_{i,1}\mid i=1,\ldots,s\}$ and $\{v_{i,2}\mid i=1,\ldots,s\}$. 
 
 
-Denote $Q^t_{\infty}$ as an induced subgraph of $Q_{\infty}$ containing $t$ of the edges $\{Q_{m+i}:i=1,\ldots,s\}$, i.e. let $V(Q^t_{\infty})=\{v_{i,j}:i=1,\ldots,t;~j=1,2\}$
-Now let us make an induction on the size $t$. We shall prove in each of the $Q^t_{\infty}$, $(t=1,\ldots,s)$, there is a spanning path $v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,1}v'_{t,2}$ and each edge $v'_{p,1}v'_{p,2}$ is some edge $Q_{m+q}=v_{q,1}v_{q,2}$.
+Denote by $Q^t_{\infty}$ the induced subgraph of $Q_{\infty}$ containing the first $t$ of the edges $\{Q_{m+i}\mid i=1,\ldots,s\}$, i.e. let $V(Q^t_{\infty})=\{v_{i,j}\mid i=1,\ldots,t, \ j=1,2\}$
+We proceed by induction on $t$. We shall prove that in $Q^t_{\infty}$, $(t=1,\ldots,s)$, there is a spanning path $v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,1}v'_{t,2}$ and each edge $v'_{p,1}v'_{p,2}$ is 
+of the form $Q_{m+q}=v_{q,1}v_{q,2}$.
 
 
-If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $Q^t_{\infty}$, whose vertex set $V(Q^t_{\infty})=\cup_{i=1,\ldots,t}V(Q_{m+i})$, admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, with each $v'_{p,1}v'_{p,2}=v_{q,1}v_{q,2}$ for some $q$. Then let us look at a larger induced subgraph $Q^{t+1}_{\infty}$, with $V(Q^{t+1}_{\infty})=V(Q^t_{\infty})\cup\{v_{t+1,1},v_{t+1,2}\}$.
+If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $Q^t_{\infty}$ admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, with each $v'_{p,1}v'_{p,2}=v_{q,1}v_{q,2}$ for some $q$, and look at $Q^{t+1}_{\infty}$.
 
-If $v'_{t,2}v_{t+1,1}\in E(G)$, we get the spanning path in $Q^{t+1}_{\infty}$, 
-namely\\ $v'_{1,1} v'_{1,2}\cdots v'_{t,2} v_{t+1,1} v_{t+1,2}$.
+For the case $v'_{t,2}v_{t+1,1}\in E(G)$ 
+(resp. $v'_{1,1}v_{t+1,2}\in E(G)$)
+we get a spanning path 
+$v'_{1,1} v'_{1,2}\cdots v'_{t,2} v_{t+1,1} v_{t+1,2}$
+(resp. $v_{t+1,1} v_{t+2,2} v'_{1,1} v'_{1,2} v'_{2,1}\cdots v'_{t,2}$)
+in $Q^{t+1}_{\infty}$.
 
-If $v'_{1,1}v_{t+1,2}\in E(G)$, we get the spanning path in $Q^{t+1}_{\infty}$, 
-namely\\ $v_{t+1,1} v_{t+2,2} v'_{1,1} v'_{1,2} v'_{2,1}\cdots v'_{t,2}$.
+If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weak dominance
+we get $v'_{t,1}v_{t+1,2}\in E(G)$ and $v'_{1,2}v_{t+1,1}\in E(G)$. Now, we
+denote $q$ the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That
+means $v'_{q-1,1}v_{t+1,2}\not\in E(G)$. Again, by weak dominance,
+we get $v'_{q-1,2}v_{t+1,1}\in E(G)$. Thus we get a spanning path in
+$Q^{t+1}_{\infty}$, namely $$v'_{1,1}\cdots
+v'_{q-1,2}v_{t+1,1}v_{t+1,2}v'_{q,1}\cdots v'_{t,2}.$$
 
-If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weakly-dominating property we get $v'_{t,1}v_{t+1,2}\in E(G)$ and $v'_{1,2}v_{t+1,1}\in E(G)$. Now, we denote $q$ as the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That means $v'_{q-1,1}v_{t+1,2}\not\in E(G)$. Again, by the weakly-dominating property, we get $v'_{q-1,2}v_{t+1,1}\in E(G)$. Then, we get a spanning path in $Q^{t+1}_{\infty}$, namely $$v'_{1,1}\cdots v'_{q-1,2}v_{t+1,1}v_{t+1,2}v'_{q,1}\cdots v'_{t,2}.$$
+Thus, by induction, $Q_{\infty}$ has a spanning path.%, with all the edges $Q_{m+i},i=1,\ldots,s$ in the path.
 
-Thus, by mathematical induction, we know that $Q_{\infty}$ has a spanning path, with all the edges $Q_{m+i},i=1,\ldots,s$ are in the path.
+\medskip
 
-\item If $Q_{\infty}$ is not a bipartite, by Lemma \ref{lm1}, $Q_{\infty}$ can be obtained from a five-circle by vertex multiplication. We denote $V(Q_{\infty})=V_1\cup V_2\cup V_3\cup V_4\cup V_5$, and $E(Q_{\infty})=E_1\cup E_2\cup E_3\cup E_4\cup E_5$, where each $V_i$ is an independent set, and  for any two vertices $v_1\in V_i$ and $v_2\in V_{i+1}$ (we consider $V_6=V_1$), we have an edge $e\in E_i$, such that $e=v_1v_2$. We denote $E'=\{v_{i,1}v_{i,2};i=1,\ldots,s\}$, and $E'_i=E_i\cap E'$. Obviously, $|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $i=1,2,3,4,5$, otherwise, $Q_{\infty}$ is a bipartite. Thus for any $i$, $|E'_i|$ and $|E'_{i+1}|$ cannot be both 0. Without loss of generality, we can assume $|E'_1|,|E'_3|,|E'_5|>0$ and $|E'_2|,|E'_4|\ge0$.
-
- So, the vertices in the five subset $V_i$ can be denoted as following:
-
-$$V_1=\{v_{1,j};j=1,\ldots,|E'_1|+|E'_5|\},$$
-$$V_2=\{v_{2,j};j=1,\ldots,|E'_1|+|E'_2|\},$$
-$$V_3=\{v_{3,j};j=1,\ldots,|E'_2|+|E'_3|\},$$
-$$V_4=\{v_{4,j};j=1,\ldots,|E'_3|+|E'_4|\},$$
-$$V_5=\{v_{5,j};j=1,\ldots,|E'_4|+|E'_5|\},$$
-note that $|E'_2|$ and $|E'_4|$ are possibly 0.
-
+It remains to consider a non-bipartite $Q_{\infty}$. By Lemma \ref{lm1},
+$Q_{\infty}$ can be obtained from a 5-circle by ``vertex multiplication''. We
+denote $V(Q_{\infty})=V_0\cup \dots \cup V_4$, and
+$E(Q_{\infty})=E_0\cup \dots \cup E_4$, where each $V_i$ is an
+independent set, and  for any $a\in V_i$ and $b\in V_{i+1}$ we have $ab\in E_i$. 
+Here and below we always take the indices of $v_i$ and $E_i$ modulo $5$.
+We denote
+$E'=\{v_{i,1}v_{i,2}\mid 1\leq i\leq s\}$, and $E'_i=E_i\cap E'$ (recall that $v_{i,1}v_{i,2}$
+comprise $V(Q_{m+i})$). Obviously,
+$|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $0\leq i\leq 4$, otherwise
+$Q_{\infty}$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
+Without loss of generality, we can assume $|E'_0||E'_2||E'_4|>0$.
+Note that $E'_1$ and $E'_3$ can be empty.
+The vertices in $V_i$ can be denoted as follows:
+$$V_i=\{w_{i,j}\mid j=1,\ldots,|E'_{i-1}|+|E'_i|\},\qquad 0\leq i\leq 4.$$
 Now, we get the spanning path:
-
-$$v_{1,1}v_{2,1}v_{1,2}v_{2,2}\cdots v_{1,|E'_1|}v_{2,|E'_1|}v_{3,1}$$
-$$v_{2,|E'_1|+1}v_{3,2}\cdots v_{2,|E'_1|+|E'_2|}v_{3,|E'_2|+1}v_{4,1}v_{3,|E'_2|+2}v_{4,2}\cdots v_{3,|E'_3|+|E'_2|}$$
-$$v_{4,|E'_3|}v_{5,1}v_{4,|E'_3|+1}v_{5,2}v_{4,|E'_3|+2}\cdots v_{4,|E'_3|+|E'_4|}$$
-$$v_{5,|E'_4|+1}v_{1,|E'_1|+1}v_{5,|E'_4|+2}v_{1,|E'_1|+2}\cdots v_{5,|E'_4|+|E'_5|}v_{1,|E'_1|+|E'_5|}.$$
-
-Note that if $|E'_2|=0$, the section $$v_{3,1}v_{2,|E_1'|+1}v_{3,2}\cdots v_{2,|E'_1|+|E'_2|}v_{3,|E'_2|+1}v_{4,1}$$ in the path is shortened to $v_{3,1}v_{4,1}$. And if $|E'_4|=0$ then the section $$v_{5,1}v_{4,|E'_3|+1}v_{5,2}v_{4,|E'_3|+2}\cdots v_{4,|E'_3|+|E'_4|}v_{5,|E'_4|+1}v_{1,|E'_1|+1}$$ in the path is shortened to $v_{5,1}v_{1,|E'_1|+1}$.
-\end{enumerate}\end{proof}
+$$w_{0,1}w_{1,1}w_{0,2}w_{1,2}\cdots w_{0,|E'_1|}w_{1,|E'_1|}w_{2,1}$$
+$$w_{1,|E'_1|+1}w_{2,2}\cdots w_{1,|E'_1|+|E'_2|}w_{2,|E'_2|+1}w_{3,1}w_{2,|E'_2|+2}w_{3,2}\cdots w_{2,|E'_3|+|E'_2|}$$
+$$w_{3,|E'_3|}w_{4,1}w_{3,|E'_3|+1}w_{4,2}w_{3,|E'_3|+2}\cdots w_{3,|E'_3|+|E'_4|}$$
+$$w_{4,|E'_4|+1}w_{0,|E'_1|+1}w_{4,|E'_4|+2}w_{0,|E'_1|+2}\cdots w_{4,|E'_4|+|E'_5|}w_{0,|E'_1|+|E'_5|}.$$
+Note that if $|E'_1|=0$, the section $$w_{2,1}w_{1,|E_1'|+1}w_{2,2}\cdots w_{1,|E'_1|+|E'_2|}w_{2,|E'_2|+1}w_{3,1}$$ in the path is shortened to $w_{2,1}w_{3,1}$. And if $|E'_3|=0$ then the section $$w_{4,1}w_{3,|E'_3|+1}w_{4,2}w_{3,|E'_3|+2}\cdots w_{3,|E'_3|+|E'_4|}w_{4,|E'_4|+1}w_{0,|E'_1|+1}$$ in the path is shortened to $w_{4,1}w_{0,|E'_1|+1}$.
+\end{proof}
 
 \subsection{The proof of Theorem \ref{thm1}}
 By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
