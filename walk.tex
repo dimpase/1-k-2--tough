@@ -242,22 +242,32 @@ $Q_{\infty}$ can be obtained from a 5-circle by ``vertex multiplication''. We
 denote $V(Q_{\infty})=V_0\cup \dots \cup V_4$, and
 $E(Q_{\infty})=E_0\cup \dots \cup E_4$, where each $V_i$ is an
 independent set, and  for any $a\in V_i$ and $b\in V_{i+1}$ we have $ab\in E_i$. 
-Here and below we always take the indices of $v_i$ and $E_i$ modulo $5$.
+Here and below we always take the indices of $v_i$, $E_i$, etc. modulo $5$.
 We denote
-$E'=\{v_{i,1}v_{i,2}\mid 1\leq i\leq s\}$, and $E'_i=E_i\cap E'$ (recall that $v_{i,1}v_{i,2}$
-comprise $V(Q_{m+i})$). Obviously,
+$E'=\{v_{j,1}v_{j,2}\mid 1\leq j\leq s\}$, and $E'_i=E_i\cap E'$ (recall that $v_{j,1}v_{j,2}$
+comprise $V(Q_{m+j})$). Obviously,
 $|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $0\leq i\leq 4$, otherwise
 $Q_{\infty}$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
 Without loss of generality, we can assume $|E'_0||E'_2||E'_4|>0$.
 Note that $E'_1$ and $E'_3$ can be empty.
-The vertices in $V_i$ can be denoted as follows:
-$$V_i=\{w_{i,j}\mid j=1,\ldots,|E'_{i-1}|+|E'_i|\},\qquad 0\leq i\leq 4.$$
-Now, we get the spanning path:
-$$w_{0,1}w_{1,1}w_{0,2}w_{1,2}\cdots w_{0,|E'_0|}w_{1,|E'_0|}w_{2,1}$$
-$$w_{1,|E'_0|+1}w_{2,2}\cdots w_{1,|E'_0|+|E'_1|}w_{2,|E'_1|+1}w_{3,1}w_{2,|E'_1|+2}w_{3,2}\cdots w_{2,|E'_2|+|E'_1|}$$
-$$w_{3,|E'_2|}w_{4,1}w_{3,|E'_2|+1}w_{4,2}w_{3,|E'_2|+2}\cdots w_{3,|E'_2|+|E'_3|}$$
-$$w_{4,|E'_3|+1}w_{0,|E'_0|+1}w_{4,|E'_3|+2}w_{0,|E'_0|+2}\cdots w_{4,|E'_3|+|E'_4|}w_{0,|E'_0|+|E'_4|}.$$
-Note that if $|E'_1|=0$, the section $$w_{2,1}w_{1,|E'_0|+1}w_{2,2}\cdots w_{1,|E'_0|+|E'_1|}w_{2,|E'_1|+1}w_{3,1}$$ in the path is shortened to $w_{2,1}w_{3,1}$. And if $|E'_3|=0$ then the section $$w_{4,1}w_{3,|E'_2|+1}w_{4,2}w_{3,|E'_2|+2}\cdots w_{3,|E'_2|+|E'_3|}w_{4,|E'_3|+1}w_{0,|E'_0|+1}$$ in the path is shortened to $w_{4,1}w_{0,|E'_0|+1}$.
+
+$V_i$ is partitioned into
+$V_i^-:= V_i\cap V(E'_{i-1})$ and 
+$V_i^+:= V_i\cap V(E'_{i})$. For each $\Sigma:=E'_i\neq\emptyset$ there is
+a path $\Pi_i$ connecting its vertices in $V_i$ and in $V_{i+1}$, 
+as follows: $u_1 w_1 u_2\dots u_{|\Sigma|}w_{|\Sigma|}$, with 
+$u_k\in V_i^+$ and $w_k\in V_{i+1}^-$.%\footnote{If we wish we can choose $u_k w_k$ to be
+%a $Q_{m+j}$.} 
+Note that there is an edge joining the last vertex of $\Pi_i$ and
+the first vertex of $\Pi_{i+2}$. Thus it makes sense to talk about the path
+$\Pi_i\Pi_{i+2}$, which joins $V_i^+$, $V_{i+1}^-$, $V_{i+2}^+$ and
+$V_{i+3}^-$.
+
+In the case of both $E'_1$ and $E'_3$ nonempty, we observe that 
+$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltionian path we need.
+If $E'_3=\emptyset$  we omit $\Pi_3$; if in addition $E'_1=\emptyset$ 
+we omit $\Pi_1$, too. Finally, in the case  $E'_1=\emptyset$ and 
+$E'_3\neq\emptyset$ we can take $\Pi_3\Pi_0\Pi_2\Pi_4$.
 \end{proof}
 
 \subsection{The proof of Theorem \ref{thm1}}
