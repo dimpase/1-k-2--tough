@@ -270,49 +270,51 @@ we omit $\Pi_1$, too. Finally, in the case  $E'_1=\emptyset$ and
 $E'_3\neq\emptyset$ we can take $\Pi_3\Pi_0\Pi_2\Pi_4$.
 \end{proof}
 
-\subsection{The proof of Theorem \ref{thm1}}
+\subsection{Proof of Theorem \ref{thm1}}
 By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
-The proof is divided into two parts. In the first part, we construct an auxiliary graph, a cycle, namely $\Gamma$. In the second part, with the help of $\Gamma$, we find a subgraph $H$ of $Q_0$,  which is the Hamiltonian cycle we want.
-\subsubsection{Three trivial cases}
-\begin{enumerate}
-\item If $G$ is triangle-free, then $Q_0$ does not exist at all, then there is nothing to prove.
-\item If there is only one clique, as defined in Lemma \ref{lm5}, with size at least 3, i.e. $Q_0=Q_1$, then obviously $Q_0$ is Hamiltonian, since it is just a clique.
-\item If there are only two cliques, as defined in Lemma \ref{lm5}, with size at least 3, i.e. $V(Q_0)=V(Q_1)\cup V(Q_2)$, then choose an edge $v_1v_2$ from $Q_2$. We claim that $v_1$ and $v_2$ are adjacent to at least $|Q_1|-1$ vertices in $Q_1$. Otherwise, if there are two vertices $v_3$ and $v_4$ in $Q_1$ are adjacent neither $v_1$ nor $v_2$, then $v_1v_2$ and $v_3v_4$ form a $2K_2$.
+Let $\{Q_i\}$ and $m$ be as defined in Lemma \ref{lm5}.
+\begin{lemma}\label{lem:twoQ}
+Let $Q_i$ and $Q_j$ so that $i<j$ and $|Q_i|\geq 3$.
+Then for any $a_j b_j\in E(Q_j)$  there is $a_i b_i\in E(Q_i)$ satisfying
+$a_i a_j, b_i b_j\in E$.
+\end{lemma}
+\begin{proof}
+Let $ab\in E(Q_j)$. As $Q_i$ dominates $Q_j$, in $Q_i$ there is a vertex adjacent to 
+$a$ and a vertex adjacent to $b$.
+We claim that on the other hand $a$ and $b$ are adjacent to at least $|Q_i|-1$ vertices in $Q_i$. 
+Indeed, if there were $c\neq d\in V(Q_i)$ adjacent neither to $a$ nor to $b$, 
+then $ab$ and $cd$ would form a $2K_2$.
+As $|Q_i|-1\ge 2$, we can choose $cd\in E(Q_i)$ such that $ac, bd\in E$.
+\end{proof}
+ 
+If $m=0$, then $Q_0$ does not exist, and there is nothing to prove.\\
+If $m=1$, i.e. $Q_0=Q_1$, then obviously $Q_0$ is Hamiltonian, since it is just a clique.\\
+If $m=2$, i.e. $V(Q_0)=V(Q_1)\cup V(Q_2)$, then by Lemma~\ref{lem:twoQ} 
+for a $ab\in E(Q_2)$ 
+we can find $cd\in E(Q_1)$ so that $ac,~bd\in E(G)$. 
+There exists a Hamiltonian path in  $Q_1$ (respectively in $Q_2$) 
+with endpoints $c$, $d$ (respectively $a$, $b$).
+These two paths and $ac$ and $bd$ form a Hamiltonian cycle.
 
-Since $|Q_1|-1\ge2$, then we can choose two distinct vertices in $Q_1$, namely $v_5$ and $v_6$ such that $v_1v_5,~v_2v_6\in E(G)$. And we have a path in  $Q_1$, with $v_5$ and $v_6$ as endpoints and visiting each vertex in $Q_1$ exactly once, and also a path in $Q_2$, with $v_1$ and $v_2$ as endpoints and visiting each vertex in $Q_2$ exactly once.
+It remains to treat the case $m\geq 3$.
+Applying Lemma~\ref{lem:twoQ} to $Q_{i-1}$ and $Q_i$ for each $2\leq i\leq m$, 
+we construct $a_{i-1}a_i, b_{i-1}b_i\in E$ joining $Q_{i-1}$ and $Q_i$.
+Select a half of them, namely $a_{m}a_{m-1}$, $b_{m-1}b_{m-2}$, $a_{m-2}a_{m-3}$, \dots,
+$a_2a_1$ in the case $m$ even (respectively, $b_2b_1$ for $m$ odd).
 
-Then these two paths and $v_1v_5$ and $v_2v_6$ form the Hamiltonian cycle we want.
-\end{enumerate}
+Next, construct an edge between $Q_m$ and $Q_1$, avoiding vertices of the edges just
+selected, i.e. $a_m\in V(Q_m)$ and $x\in V(Q_1)$. 
+This can be done by applying Lemma~\ref{lem:twoQ} to $Q_m$, $Q_1$, 
+and $a,b\in V(Q_m)-\{a_m\}$ to obtain $a'b'\in E(Q_1)$ so that $aa',bb'\in E$, 
+noticing that either $aa'$ or $bb'$ will be as needed. Say, for $m$ even 
+it is $aa'$
+that satisfies $a'\neq a_1$, (respectively, $a'\neq b_1$ for $m$ odd)  and we 
+abuse notation by denoting $b_m:=a$ and $b_1:=a'$ (respectively for $m$ odd 
+we denote $a_1:=a'$).
 
-\subsubsection{The construction of $\Gamma$}
-
-Now, we assume there are at least three cliques, as defined in Lemma \ref{lm5}, of size at least 3, i.e. $m\ge3$.
-
-First, the vertex set of $\Gamma$, $V(\Gamma)=\{u_1,\ldots,u_m\}$, each $u_i$ corresponds to $Q_i$. 
-Then we connect all these $u_i$ ($i=1,\ldots,m$) with a cycle, and we call this cycle $\Gamma$.
-
-
-
-
-\subsubsection{The construction of $H$}
-Now, with the help of $\Gamma$, we are going to find a Hamiltonian cycle in $Q_0$. 
-The construction of $H$ is divided into two steps. In the first step, we find some {\bf green edges} in $Q_0$ corresponding to the edges in $\Gamma$. In the second step, we draw a path with {\bf yellow edges} in each $Q_i$, $i=1,\ldots,m$. Then the green edges and the yellow paths will make the Hamiltonian cycle in $Q_0$.
-
-For the first step:
-
-For any edge $u_iu_j$ $(1\le i<j\le m)$, we want to realize it into $H$ as a {\bf green edge}. Let us look at $Q_j$ first. We know that $u_j$ is incident to two edges in $\Gamma$, so there is only one vertex in $Q_j$, say $v_{j,1}$, is incident to another green edge. And $|Q_j|\ge3$, so there are at least two vertices $v_{j,2}$ and $v_{j,3}$ other than $v_{j,1}$ in $Q_j$. Both of $v_{j,2}$ and $v_{j,3}$ are dominated by $Q_i$. Then we claim that $v_{j,2}$ and $v_{j,3}$ have at least two neighbors in $Q_i$. Otherwise, if $v_{j,2}$ and $v_{j,3}$ have only one neighbor in $Q_i$, by $|Q_i|\ge3$, we know there are at least two vertices, say $v_{i,1}$ and $v_{i,2}$, who are adjacent to neither $v_{j,2}$ nor $v_{j,3}$. Then $v_{j,2}v_{j,3}$ and $v_{i,1}v_{i,2}$ form a $2K_2$.
-
-Now we can assume $v_{j,2}v_1,~v_{j,3}v_2\in E(G)$, where $v_1,~v_2\in Q_i$. What is more, in $v_1$ and $v_2$, there is at most one of them, say $v_1$, is incident to another green edge, since there are only two edges incident to $u_i$ in $\Gamma$. Then we select $v_{j,3}v_2$ into $H$ as a {\bf green edge}.
-
-From this process, we guarantee that each vertex in $Q_0$ is incident to at most one green edge in $H$.
-
-For the second step:
-
-Here we want to find a path, in each $Q_i$, $i=1,\dots,m$, of {\bf yellow edges}, after adding all the green edges.
-
-For any $Q_i$, there are two distinct vertices incident to green edges, denoted as $v_{i,a}$ and $v_{i,b}$. Because $Q_i$ is a clique, so we can find a path in $Q_i$ with endpoints $v_{i,a}$ and $v_{i,b}$ and visiting each vertex in $Q_i$ exactly once. All the edges in this path are called {\bf yellow edges}.
-
-Obviously, all the green edges and yellow edges together here make a Hamiltonian cycle in $Q_0$.  \qed
+Finally, we construct Hamiltonian paths in each $Q_i$ joining the pairs of vertices
+$a_i,b_i\in V(Q_i)$ just constructed, obtaining the required Hamiltonian cycle, 
+and completing the proof of Theorem \ref{thm1}.
 
 \section{The Proof of Theorem \ref{thm2}}
 
