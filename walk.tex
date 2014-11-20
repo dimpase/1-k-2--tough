@@ -51,7 +51,7 @@ cf. \cite{MR2221006}. Our graph-theoretic notation is mostly from \cite{bomu08}.
 In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that every
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
 visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
-\textcolor{red}{For a survey of results on walks in graphs till 2005 cf. \cite{kouider2005connected}.}
+{For a survey of results on walks in graphs till 2005 cf. \cite{kouider2005connected}.}
 
 In this paper, we prove that this conjecture is ``almost'' true, under the
 assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
@@ -325,21 +325,21 @@ and completing the proof of Theorem \ref{thm1}.
 \section{The Proof of Theorem \ref{thm2}}
 
 For an integer $p$, let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
-Thus a $k$-walk is a subgraph of $(2k)*G$. 
+Thus a $k$-walk is a spanning subgraph $W$ of $(2k)*G$, with each vertex of even degree at 
+most $2k$ (the evenness says that $W$ is Eulerian). 
 
 
 The $(\frac{1}{k-1}+\epsilon)$-toughness condition with $\epsilon>0$ 
-is only used for the dominating cliques sequence defined in Lemma \ref{lm5} 
-satisfying $m=1$ and $s\geq 1$. Namely, we prove the following
+is only used for the dominating cliques sequence $\{Q_i\}$ 
+and parameters $m$ and $s$, as defined in Lemma \ref{lm5},
+in the case $m=1$ and $s\geq 1$. Namely, we prove the following
 slightly stronger
 \begin{theorem}\label{opt}
-For any $2K_2$-free graph $G$, if $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, 
+Let $G$ be a connected $2K_2$-free graph.
+If $G$ is $\left(\frac{1}{k-1}+\epsilon\right)$-tough, for an
 $\epsilon>0$, then $G$ admits a $k$-walk. 
-
-Moreover, a $\frac{1}{k-1}$-tough $G$ admits a $k$-walk if $G$ either has at
-least two dominating cliques with size at least 3 in the dominating cliques
-sequence defined in Lemma \ref{lm5}, i.e. $m\ge2$, or if $G$ is {\em split},
-i.e. $m=1$, $s=0$.  
+Moreover, a $\frac{1}{k-1}$-tough $G$ admits a $k$-walk if either
+$m\ge2$, or if $G$ is {\em split}, i.e. $m=1$, $s=0$.  
 \end{theorem}
 
 
@@ -348,20 +348,37 @@ i.e. $m=1$, $s=0$.
 The following lemma is the key technique in the proof of Theorem \ref{thm2}.
 
 \begin{lemma}\label{addtec}
-For any graph $G$, if it allows a decomposition: $V(G)=V(Q)\cup V(D)$ such that:
-
+Let $V(G)$ have a partition $V(G)=V(Q)\cup V(D)$, 
+so that the induced subgraph $D$ is a coclique.
 \begin{enumerate} 
-\item if the induced subgraphs $Q$ is Hamiltonian and $D$ is a coclique, and if $G$ is $\frac{1}{k-1}$-tough, then $G$ admits a $k$-walk.
-\item if the induced subgraphs $Q$ admits a 2-walk, where only one vertex $v_{\infty}$ is visited twice in the walk and all other vertices are visited only once, $D$ is a coclique, and if $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, then $G$ admits a $k$-walk.
-
+\item If the induced subgraph $Q$ is Hamiltonian 
+and $G$ is $\frac{1}{k-1}$-tough, 
+then $G$ admits a $k$-walk.\label{itone}
+\item If the induced subgraphs $Q$ admits a 2-walk, 
+where only one vertex $v_{\infty}$ is visited twice in the walk 
+and all other vertices are visited once, and $G$ is $(\frac{1}{k-1}+\epsilon)$-tough, then $G$ admits a $k$-walk.\label{ittwo}
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-For part (1), choose any subset $D_0\subset D$, by the $\frac{1}{k-1}$-tough condition, $D_0$ has at least $\lceil\frac{|D_0|}{k-1}\rceil$ neighbors in $Q$. Then by Hall Theorem, there is a subset of edges $E'\subset E(G)$ such that each edge $e\in E'$ has one vertex in $D$ while another vertex in $Q$. Additionally, each vertex in $D$ is incident to exactly one edge in $E'$, while each vertex in $Q$ is incident to at most $k-1$ edges in $E'$.
-Then these (\textcolor{red}{doubled}) edges in $E'$ and the edges in the Hamilton cycle $H$ of $Q$ form a $k$-walk of $G$.
+Let $D_0\subset D$.
+For part (\ref{itone}), 
+by $\frac{1}{k-1}$-toughness, 
+$D_0$ has at least $\left\lceil\frac{|D_0|}{k-1}\right\rceil$ neighbors in $Q$. By Hall's Theorem, 
+there is $E'\subset E(G)$ such that each $e\in E'$ has one vertex in $D$ and the other in $Q$,
+and each vertex in $D$ is incident to exactly one edge in $E'$, while each vertex in $Q$ is incident to at most $k-1$ edges in $E'$.
+Then these ({doubled}) edges in $E'$ and the edges in the Hamiltonian cycle $H$ of $Q$ form a $k$-walk in $G$.
 
-For part (2), choose any subset $D_0\subset D$, by the $(\frac{1}{k-1}+\epsilon)$-tough condition, $D_0$ has at least $\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil$ neighbors in $Q$. Now split each vertex in $Q$ into $k-1$ copies, the set of all these split vertices is denoted as $Q^{k-1}$ then $D_0$ has at least $(k-1)\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil\ge|D_0|+1$ vertices, arbitrarily choose one copy of $v_{\infty}$, namely $v^*$, then $D_0$ has at least $|D_0|$ vertices in $Q^{k-1}-\{v^*\}$. Then there is a matching from $D$ to $Q^{k-1}-\{v^*\}$. Now collapse these copies back to $Q$, then each vertex in $D$ is incident to exactly one edges from the matching. Each vertex in $Q$ takes over at most $k-1$ edges from the matching, while $v_{\infty}$ takes at most $k-2$ edges from the matching. Then all these (\textcolor{red}{doubled}) edges from the matching and the edges from the 2-walk in $Q$ form the k-walk of $G$.
+For part (\ref{ittwo}), by $\left(\frac{1}{k-1}+\epsilon\right)$-toughness, 
+$D_0$ has at least $\left\lceil(\frac{1}{k-1}+\epsilon)|D_0|\right\rceil$ neighbors in $Q$. 
+Split each vertex in $Q$ into $k-1$ copies and denote the set of all the split vertices by $Q^{k-1}$. 
+Then $D_0$ has at least $(k-1)\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil\ge|D_0|+1$ neighbours in $Q^{k-1}$. 
+Pick one copy of $v_{\infty}$, namely $v^*\in Q^{k-1}$. Then $D_0$ has at least $|D_0|$ neighbours 
+in $Q^{k-1}-\{v^*\}$. Thus by Hall's Theorem there is a matching from $D$ to $Q^{k-1}-\{v^*\}$. 
+Now collapse these copies back to $Q$. Each vertex in $D$ is incident to exactly one edge from the resulting matching $E'$. 
+Each vertex in $Q-\{v_{\infty}\}$ takes at most $k-1$ edges from $E'$,
+while $v_{\infty}$ takes at most $k-2$ edges from $E'$. 
+Then $2*E'$ and the edges from the 2-walk in $Q$ form a $k$-walk in $G$.
 \end{proof}
 
 
