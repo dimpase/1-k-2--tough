@@ -1,6 +1,7 @@
 \documentclass{amsart}
 \usepackage{amsthm}
 \usepackage{enumerate}
+\usepackage{xcolor}
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}
@@ -50,6 +51,7 @@ cf. \cite{MR2221006}. Our graph-theoretic notation is mostly from \cite{bomu08}.
 In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that every
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
 visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
+\textcolor{red}{For a survey of results on walks in graphs till 2005 cf. \cite{kouider2005connected}.}
 
 In this paper, we prove that this conjecture is ``almost'' true, under the
 assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
@@ -270,6 +272,10 @@ we omit $\Pi_1$, too. Finally, in the case  $E'_1=\emptyset$ and
 $E'_3\neq\emptyset$ we can take $\Pi_3\Pi_0\Pi_2\Pi_4$.
 \end{proof}
 
+\begin{remarks}
+\textcolor{red}{From the proof, we see, if $|E'_1||E'_3|>0$, then the two endpoints of the path, $\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$, are adjacent in $G$, i.e. $Q_{\infty}$ is Hamiltonian.}
+\end{remarks}
+
 \subsection{Proof of Theorem \ref{thm1}}
 By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
 Let $\{Q_i\}$ and $m$ be as defined in Lemma \ref{lm5}.
@@ -353,9 +359,9 @@ For any graph $G$, if it allows a decomposition: $V(G)=V(Q)\cup V(D)$ such that:
 
 \begin{proof}
 For part (1), choose any subset $D_0\subset D$, by the $\frac{1}{k-1}$-tough condition, $D_0$ has at least $\lceil\frac{|D_0|}{k-1}\rceil$ neighbors in $Q$. Then by Hall Theorem, there is a subset of edges $E'\subset E(G)$ such that each edge $e\in E'$ has one vertex in $D$ while another vertex in $Q$. Additionally, each vertex in $D$ is incident to exactly one edge in $E'$, while each vertex in $Q$ is incident to at most $k-1$ edges in $E'$.
-Then these edges in $E'$ and the edges in the Hamilton cycle $H$ of $Q$ form a $k$-walk of $G$.
+Then these (\textcolor{red}{doubled}) edges in $E'$ and the edges in the Hamilton cycle $H$ of $Q$ form a $k$-walk of $G$.
 
-For part (2), choose any subset $D_0\subset D$, by the $(\frac{1}{k-1}+\epsilon)$-tough condition, $D_0$ has at least $\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil$ neighbors in $Q$. Now split each vertex in $Q$ into $k-1$ copies, the set of all these split vertices is denoted as $Q^{k-1}$ then $D_0$ has at least $(k-1)\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil\ge|D_0|+1$ vertices, arbitrarily choose one copy of $v_{\infty}$, namely $v^*$, then $D_0$ has at least $|D_0|$ vertices in $Q^{k-1}-\{v^*\}$. Then there is a matching from $D$ to $Q^{k-1}-\{v^*\}$. Now collapse these copies back to $Q$, then each vertex in $D$ is incident to exactly one edges from the matching. Each vertex in $Q$ takes over at most $k-1$ edges from the matching, while $v_{\infty}$ takes at most $k-2$ edges from the matching. Then all these edges from the matching and the edges from the 2-walk in $Q$ form the k-walk of $G$.
+For part (2), choose any subset $D_0\subset D$, by the $(\frac{1}{k-1}+\epsilon)$-tough condition, $D_0$ has at least $\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil$ neighbors in $Q$. Now split each vertex in $Q$ into $k-1$ copies, the set of all these split vertices is denoted as $Q^{k-1}$ then $D_0$ has at least $(k-1)\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil\ge|D_0|+1$ vertices, arbitrarily choose one copy of $v_{\infty}$, namely $v^*$, then $D_0$ has at least $|D_0|$ vertices in $Q^{k-1}-\{v^*\}$. Then there is a matching from $D$ to $Q^{k-1}-\{v^*\}$. Now collapse these copies back to $Q$, then each vertex in $D$ is incident to exactly one edges from the matching. Each vertex in $Q$ takes over at most $k-1$ edges from the matching, while $v_{\infty}$ takes at most $k-2$ edges from the matching. Then all these (\textcolor{red}{doubled}) edges from the matching and the edges from the 2-walk in $Q$ form the k-walk of $G$.
 \end{proof}
 
 
