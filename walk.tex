@@ -278,6 +278,8 @@ $E'_3\neq\emptyset$ we can take $\Pi_3\Pi_0\Pi_2\Pi_4$.
 
 \subsection{Proof of Theorem \ref{thm1}}
 By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
+Below we prove this, and a bit more, needed later for the proof of the main result.
+
 Let $\{Q_i\}$ and $m$ be as defined in Lemma \ref{lm5}.
 \begin{lemma}\label{lem:twoQ}
 Let $Q_i$ and $Q_j$ so that $i<j$ and $|Q_i|\geq 3$.
@@ -293,16 +295,28 @@ then $ab$ and $cd$ would form a $2K_2$.
 As $|Q_i|-1\ge 2$, we can choose $cd\in E(Q_i)$ such that $ac, bd\in E$.
 \end{proof}
  
+Theorem \ref{thm1} is immediate from the first part of the following.
+\begin{lemma}\label{lem:Q0H}
+The graph $Q_0$ is Hamiltonian. 
+For any $v\in V(Q_1)$ and $w\in V(Q_m)$ there exists a Hamiltonian
+path in $Q_0$ with endpoints $v$ and $w$.
+\end{lemma} 
+\begin{proof}
 If $m=0$, then $Q_0$ does not exist, and there is nothing to prove.\\
-If $m=1$, i.e. $Q_0=Q_1$, then obviously $Q_0$ is Hamiltonian, since it is just a clique.\\
+If $m=1$, i.e. $Q_0=Q_1$, then obviously $Q_0$ is Hamiltonian, since it is just a clique, and
+has a Hamiltonian path joining any two vertices.\\
 If $m=2$, i.e. $V(Q_0)=V(Q_1)\cup V(Q_2)$, then by Lemma~\ref{lem:twoQ} 
-for a $ab\in E(Q_2)$ 
+for a $ab\in E(Q_2)$
 we can find $cd\in E(Q_1)$ so that $ac,~bd\in E(G)$. 
+Note that we can assume $w\neq a$, $w\neq b$, as $|V(Q_s)|\geq 3$.
 There exists a Hamiltonian path in  $Q_1$ (respectively in $Q_2$) 
 with endpoints $c$, $d$ (respectively $a$, $b$).
 These two paths and $ac$ and $bd$ form a Hamiltonian cycle.
-
-It remains to treat the case $m\geq 3$.
+Without loss in generality, $c\neq v$. Hence we can construct a
+Hamiltonian path in $Q_0$ by concatenating a $Q_1$-Hamiltonian
+path $cv$, the  edge $av$, and a $Q_2$-Hamiltonian path $wa$.
+ 
+It remains to deal with $m\geq 3$.
 Applying Lemma~\ref{lem:twoQ} to $Q_{i-1}$ and $Q_i$ for each $2\leq i\leq m$, 
 we construct $a_{i-1}a_i, b_{i-1}b_i\in E$ joining $Q_{i-1}$ and $Q_i$.
 Select a half of them, namely $a_{m}a_{m-1}$, $b_{m-1}b_{m-2}$, $a_{m-2}a_{m-3}$, \dots,
@@ -319,8 +333,16 @@ abuse notation by denoting $b_m:=a$ and $b_1:=a'$ (respectively for $m$ odd
 we denote $a_1:=a'$).
 
 Finally, we construct Hamiltonian paths in each $Q_i$ joining the pairs of vertices
-$a_i,b_i\in V(Q_i)$ just constructed, obtaining the required Hamiltonian cycle, 
-and completing the proof of Theorem \ref{thm1}.
+$a_i,b_i\in V(Q_i)$ just constructed, obtaining the required Hamiltonian cycle.
+
+To prove the second part of the lemma for $m\geq 3$, observe that we can choose
+$w\neq a_m$, $w\neq b_m$. Without loss in generatity we can assume that $v\neq a_1=:a$ 
+for $m$ even (resp. $v\neq b_1=:a$ for $m$ odd), 
+and proceed to construct the Hamiltonian path
+which first goes from $w$ to $a_m$ in $Q_m$, then goes the same way as the Hamiltonian
+path we just constucted to $a$, and then joins $a$ and $v$ in $Q_1$ by a Hamiltonian path 
+in the latter.
+\end{proof}
 
 \section{The Proof of Theorem \ref{thm2}}
 
@@ -432,62 +454,35 @@ Consider the $2K_2$-free condition with $u_1u_2$ and $u_{2s-1}u_{2s}$.
 \item if $u_1u_{2s-1}\in E(G)$, then $Q$ is 2-walk, with $u_{2s-1}$ playing the role of "$v_{\infty}$".
 \item if $u_2u_{2s}\in E(G)$, then $Q$ is a 2-walk, with $u_2$ playing the role of "$v_{\infty}$".
 \item if $u_2u_{2s-1}\in E(G)$, then denote $Q'=Q-\{u_{2s}\}$, $D'=D\cup \{u_{2s}\}$. Recall the assumption that $u_{2s}$ has no neighbor in $D$, so $D'$ is a coclique, and $Q'$ is the 2-walk, with $u_2$ playing the role of $v_{\infty}$. Then we can find the $k$-walk we want.
+\qedhere 
 \end{enumerate}
-
 \end{proof}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\subsection{When $m\ge1$} 
-
-
-
+\subsection{The case $m\ge1$} 
 We have already solved the case where $G$ is triangle-free in Theorem \ref{trifree}. So, we always assume $|Q_1|\ge3$ in the following proof.
 
-By Lemma \ref{addtec}, we only need to proof the induced subgraph $Q$ on the vertex set $V(Q)=V(Q_0)\cup V(Q_{\infty})$ is Hamiltonian when $m\ge2$, (admits 2-walk, with only one vertex $Q_{\infty}$ visited at most twice, and all other vertices visited exactly once, when $m=1$.)
+By Lemma \ref{addtec}, we only need to prove that the induced subgraph $Q$ on the vertex set $V(Q)=V(Q_0)\cup V(Q_{\infty})$ is Hamiltonian when $m\ge2$, 
+respectively, admits a 2-walk, with only one vertex $Q_{\infty}$ visited at most twice, and all other vertices visited exactly once, when $m=1$.)
 
 Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defined in Lemma \ref{lm6}. 
 
 \subsubsection{When $s=0$}
-When $s=0$, we have $Q=Q_0$, since $Q_{\infty}$ does not exist. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian, and by Lemma \ref{addtec}, $G$ admits a $k$-walk, under the assmuption $G$ is $\frac{1}{k-1}$-tough.
+We have $Q=Q_0$, since $Q_{\infty}$ does not exist. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
  
+Let $s\geq 1$.
+Denote a spanning path in $Q_{\infty}$ by $u_1\cdots u_{2s}$. 
 
-\subsubsection{When $m\ge2$, $s\ge1$}
-Denote a spanning path in $Q_{\infty}$ as $u_1\cdots u_{2s}$. Because each vertex in $Q_{\infty}$ is dominated by each clique $Q_i$, for $1\le i\le m$, we can find $v_{1,1}\in Q_1$ and $v_{m,1}\in Q_m$ such that $u_1v_{1,1},~u_{2s}v_{m,1}\in E(G)$. Now, let us find a spanning path in $Q_m$, starting with $v_{m,1}$. Obviously, such a path exists since $Q_m$ is a clique. Denote such a path as $v_{m,1}\cdots v_{m,|Q_m|}$. 
+\subsubsection{When $m\ge2$}
+As each vertex in $Q_{\infty}$ is dominated by each clique $Q_i$, for $1\le i\le m$, we
+can find $v\in Q_1$ and $w\in Q_m$ such that
+$u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path in $Q_0$
+ $v\cdots w$. Joining it to $u_1\cdots u_{2s}$, we obtain a Hamiltonian cycle in $Q$.
+ 
+\subsubsection{$m=1$}
+If $u_1$ and $u_{2s}$ have two different neighbors in $Q_1$, say $u_1v_1,~u_{2s}v_2\in E(G)$, where $v_1,~v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. Then connect the spanning path in $Q_{\infty}$ and the spanning path in $Q_1$ together, we get a Hamiltonian cycle in $Q$.
 
-We know that $Q_m$ is dominated by $Q_{m-1}$, then there is a vertex, namely $v_{m-1,1}$ adjacnet to $v_{m,|Q_m|}$, again, we can find a spanning path in $Q_{m-1}$, namely $v_{m-1,1}\cdots v_{m-1,|Q_{m-1}|}$. 
-
-Repeat such process, in $Q_2$, we find a vertex $v_{2,1}$ adjacent to $v_{3,|Q_3|}$. Because $|Q_2|\ge3$, then there are at least two other vertices, besides $v_{2,1}$ in $Q_2$, namely $v_{2,a}$ and $v_{2,b}$. In $Q_1$, there are at least two vertices, besides $v_{1,1}$, namely $v_{1,c}$ and $v_{1,d}$. By $2K_2$-free condition, we can assume that $v_{2,a}v_{1,c}\in E(G)$. Then we pick up a spanning $v_{2,1}\cdots v_{2,a}$ in $Q_2$, and a spanning path $v_{1,1}\cdots v_{1,c}$ in $Q_1$. Then all these paths are connected together into a Hamilton cycle in $Q$.
-
-
-\subsubsection{$m=1$, $s\ge1$}
-
-Again, denote the spanning path in $Q_{\infty}$ as $u_1\cdots u_{2s}$.
-If $u_1$ and $u_{2s}$ have two different neighbors in $Q_1$, say $u_1v_1,~u_{2s}v_2\in E(G)$, where $v_1,~v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. Then connect the spanning path in $Q_{\infty}$ and the spanning path in $Q_1$ together, we get the Hamilton cycle in $G$.
-
-If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, then we can find a Hamilton cycle in $Q_1$ and the two endpoints of the spanning path in $Q_{\infty}$ is connected to $v_{\infty}$ and come into a 2-walk, with $v_{\infty}$ visited twice and all other vertices visited once. Then by Lemma \ref{addtec}, we deduce the $k$-walk from the assumption that $G$ is $(\frac{1}{k-1}+\epsilon)$-tough.
-
-
-
-
-
-
-
+If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, then we can find a Hamilton cycle in $Q_1$ and the two endpoints of the spanning path in $Q_{\infty}$ is connected to $v_{\infty}$ and come into a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
+%Then by Lemma \ref{addtec}, we deduce the $k$-walk from the assumption that $G$ is $(\frac{1}{k-1}+\epsilon)$-tough.
 \qed
 
 
@@ -504,36 +499,6 @@ Every $3/2$-tough $2K_2$-free graph on at least three vertices has a 2-trail, i.
 Every 2-tough $2K_2$-free graph on at least three vertices is Hamiltonian.
 \end{conjecture}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \bibliography{reftough}
-
 \bibliographystyle{plain}
-
-
-
-
-
-
 \end{document}
