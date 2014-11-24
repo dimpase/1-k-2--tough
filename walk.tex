@@ -272,6 +272,7 @@ by $c$. As $c\in V_0$ and $b\in V_1$, they are adjacent.
 Thus we have a 2-walk in $F$, where only $b$ is visited
 twice.
 \end{proof}
+
 \begin{lemma}\label{lm2}{\cite[Theorem 3]{chung1990maximum}}
 If $G$ is $2K_2$-free with $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$. \qed
 \end{lemma}
@@ -298,8 +299,6 @@ and $G_i$ directly by induction, as follows.
 We may assume that $G_i$ is $2K_2$-free.
 If $\omega(G_i)\ge3$ then by Lemma \ref{lm2}, it contains a 
 maximum dominating clique $Q_{i+1}$.
-Otherwise it is triangle-free, and any edge $Q_{i+1}$ is weakly-dominating
-in $G_i$.
 As any induced subgraph of a $2K_2$-free
 graph is also $2K_2$-free, $G_i-Q_{i+1}$ is also a $2K_2$-free graph.
 By Lemma \ref{lm3}, $G_i-Q_{i+1}$ is made of two parts, one is a coclique
@@ -308,6 +307,14 @@ component (either empty or with a least two vertices) $G_{i+1}$, which is also
 $2K_2$-free (again, as an induced subgraph of a $2K_2$-free graph).
 Thus from $G_i$ we have constructed $Q_{i+1}$, $D_{i+1}$, and $G_{i+1}$
 with the  claimed properties.
+
+We repeat this step until $\omega(G_i)=2$ (or $G_i=\emptyset$).
+Thus $i=m$ at the end of this loop.
+Applying Theorem~\ref{thm4} to $G_m$, we obtain
+a connected subgraph $F$.% and a coclique $\Delta$.
+
+Select a maximum matching $Q_{m+1},\dots, Q_{m+s}$ in $F$
+and use it to complete the sequences of $D_i$ and $G_i$. 
 \end{proof}
 
 
@@ -332,13 +339,7 @@ By Lemma~\ref{lm5}, there are no edges between $D_i$ and $G_i$. By constructuon,
 $D_j$, for $j>i$, lies in $G_i$.
 \end{proof}
 
-\subsection{Spanning path in $Q_{\infty}$.}
-Now we look at the behavior of the cliques of size $2$ in the sequence $\{Q_i\}$. Note that
-we might need to modify its tail, starting from $i=m+1$.
-
 \subsection{Proof of Theorem \ref{thm1}}
-Let $G_m$ be as constructed in Lemma~\ref{lm5}. Applying Theorem~\ref{thm4} to it, 
-we obtain $Q_\infty:=F$ and $D:=D_i\cup\Delta$. 
 By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
 Below we prove this, and a bit more, needed later for the proof of the main result.
 
