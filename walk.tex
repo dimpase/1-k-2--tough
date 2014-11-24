@@ -104,8 +104,8 @@ Indeed, the construction relies on finding maximum cliques in
 $2K_2$-free graphs, and this is known to be NP-hard. 
 To prove Theorem~\ref{thm2}, we first prove
 \begin{theorem}\label{thm1}
-For any $2K_2$-free graph $G$ the set $V(G)$ 
-can be partitioned into three disjoint parts $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
+Let $G$ be a connected $2K_2$-free graph. Then $V(G)$ 
+can be partitioned into $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
 $Q_0$, $Q_\infty$, and $D$ the following holds: $Q_0$ is dominating in $G$ and Hamiltonian, 
 $Q_{\infty}$ admits a spanning 2-walk with at most one vertex visited more than once, 
 and $D$ is a coclique.
@@ -122,7 +122,7 @@ induced subgraph containing no edge. For $A=\{v_1,\ldots,v_m\}\subseteq V$, a
 subgraph $P$ in $G$ with $V(P)=A$ and
 $E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$ is called a {\em path}.  For any
 $v\in V$, let $v^\perp:=v^{\perp_G}$ denote the union of $\{v\}$ and the set of
-neighbors of $v$ in $G$.  More generally, for $A\subset V$, let
+neighbours of $v$ in $G$.  More generally, for $A\subset V$, let
 $A^\perp:=A^{\perp_G}$ denote the set of vertices {\em dominated} by $A$, i.e.
 $A^\perp=\bigcup\limits_{y\in A}v^\perp$, and $A$ is said to be {\em
 dominating} if $A^\perp=V$.  It should also lead to no confusion when we talk
@@ -152,7 +152,7 @@ Assume that $G$ is $2K_2$-free, $\omega(G)=2$, then $G$ is in one of the followi
 \end{lemma}
 
 \begin{theorem}\label{thm4}
-Let $H$ be a connected $2K_2$-free graph with $\omega(F)=2$. 
+Let $H$ be a connected $2K_2$-free graph with $\omega(H)=2$. 
 Then $H$ admits a decomposition into a connected induced subgraph $F$ and a coclique $\Delta$, with $F$ admitting a 2-walk
 with at most one vertex visited more than once.
 %The subgraph $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
@@ -162,44 +162,45 @@ with at most one vertex visited more than once.
 \begin{proof}
 Let $S:=\{S_i\mid 1\leq i\leq  \sigma\}$ be a maximum size matching in $H$.
 Denote by $F$ the subgraph spanned by $S$, and
-$S_{i}=v_{i,1}v_{i,2}$. As $S$ is maximum, the complement $\Delta$ of $F$ in $H$
-is a coclique.
+$S_{i}=v_{i}w_{i}$, with $v_i, w_i\in V(H)$, $1\leq i\leq \sigma$. 
+As $S$ is maximum, the complement $\Delta$ of $F$ in $H$ is a coclique.
 
-Let $F$ be bipartite, with the parts $\{v_{i,1}\mid i=1,\ldots,\sigma\}$ and $\{v_{i,2}\mid i=1,\ldots,\sigma\}$. 
-Denote by $F^t$ the induced subgraph of $F$ containing the first $t$ of the edges $F_i$, i.e. let $V(F^t)=\{v_{i,j}\mid i=1,\ldots,t, \ j=1,2\}$
-We proceed by induction on $t$. We shall prove that in $F^t$ there is a spanning path $v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,1}v'_{t,2}$ and each edge $v'_{p,1}v'_{p,2}$ is 
+Let $F$ be bipartite, with the parts $\{v_{i}\mid 1\leq i\leq\sigma\}$ and 
+$\{w_{i}\mid i=1\leq i\leq\sigma\}$. 
+Denote by $F^t$ the induced subgraph of $F$ containing the first $t$ of the edges $S_i$.
+We shall prove by induction on $t$ that in $F^t$ there is a spanning path $v'_{1}w'_{1}v'_{2}\cdots v'_{t}w'_{t}$ and each $v'_{p}w'_{p}$ is 
 in $S$.
 
-If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $F^t$ admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, 
-with each $v'_{p,1}v'_{p,2}\in S$, and look at $F^{t+1}$.
+If $t=1$ then $v_{1}w_{1}$ is the path we want. Now, we assume that $F^t$ admits a spanning path, namely $v'_{1}w'_{1}\cdots v'_{t}w'_{t}$, 
+with each $v'_{p}w'_{p}\in S$, and consider $F^{t+1}$.
 
-For the case $v'_{t,2}v_{t+1,1}\in E(G)$ 
-(resp. $v'_{1,1}v_{t+1,2}\in E(G)$)
+For the case $v'_{t}w_{t+1}\in E(G)$ 
+(resp. $v'_{1}w_{t+1}\in E(G)$)
 we get a spanning path 
-$v'_{1,1} v'_{1,2}\cdots v'_{t,2} v_{t+1,1} v_{t+1,2}$
-(resp. $v_{t+1,1} v_{t+2,2} v'_{1,1} v'_{1,2} v'_{2,1}\cdots v'_{t,2}$)
+$v'_{1} w'_{1}\cdots w'_{t} v_{t+1} w_{t+1}$
+(resp. $v_{t+1} w_{t+2} v'_{1} w'_{1} v'_{2}\cdots w'_{t}$)
 in $F^{t+1}$.
 
-If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weak dominance
-we get $v'_{t,1}v_{t+1,2}\in E(G)$ and $v'_{1,2}v_{t+1,1}\in E(G)$. Now, we
-denote by $q$ the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That
-means $v'_{q-1,1}v_{t+1,2}\not\in E(G)$. Again, by weak dominance,
-we get $v'_{q-1,2}v_{t+1,1}\in E(G)$. Thus we get a spanning path in
-$F^{t+1}$, namely $$v'_{1,1}\cdots
-v'_{q-1,2}v_{t+1,1}v_{t+1,2}v'_{q,1}\cdots v'_{t,2}.$$
+If $w'_{t}v_{t+1},v'_{1}w_{t+1}\not\in E(G)$, from the weak dominance
+we get $v'_{t}w_{t+1}\in E(G)$ and $w'_{1}v_{t+1}\in E(G)$. Now, let
+$q$ be the smallest subscript such that $v'_{q}w_{t+1}\in E(G)$. That
+means $v'_{q-1}w_{t+1}\not\in E(G)$. Again, by weak dominance,
+we get $w'_{q-1}v_{t+1}\in E(G)$. Thus we get a spanning path in
+$F^{t+1}$, namely $$v'_{1}\cdots
+w'_{q-1}v_{t+1}w_{t+1}v'_{q}\cdots w'_{t}.$$
 
-Thus, by induction, $F$ has a spanning path, staring at $u_1\in V(F)$ and
-ending at $u_{2\sigma}\in V(F)$. %, with all the edges in $S$ in the path.
+By induction, $F$ has a spanning path from $u_1\in V(F)$ to
+$u_{2\sigma}\in V(F)$. %, with all the edges in $S$ in the path.
 
-If $\sigma=1$ then $F$ admits a 1-walk.
-and we are done (in the bipartite case).
+If $\sigma=1$ then $F$ admits a 1-walk,
+and we are done.
 
 Now we can assume $\sigma\geq 2$.
 If $u_1u_{2\sigma}\in E(F)$ then $F$ is
 Hamiltonian, and we are done. 
-if we have both $u_1$ and $u_{2\sigma}$ adjacent to non-intersecting edges in $E(H)-E(F)$, 
+If we have both $u_1$ and $u_{2\sigma}$ adjacent to non-intersecting edges in $E(H)-E(F)$, 
 then we have a contradiction, as $S$ is not maximum.
-if we have both $u_1$ and $u_{2\sigma}$ adjacent to  $u\in V(H)-V(F)$, 
+If we have both $u_1$ and $u_{2\sigma}$ adjacent to  $u\in V(H)-V(F)$, 
 then we add $u$ to $F$ and remove it from $\Delta$, obtaining
 a Hamiltonian $F$.
 Thus we can assume that $u_1$ is not adjacent to  $V(H)-V(F)$, 
@@ -211,9 +212,9 @@ If there are no edges in $E(H)-E(F)$ adjacent to $u_4$,
 we add $u_1$ and $u_4$ to $\Delta$ and remove them from $F$. 
 The resulting $F$ is an edge, and thus has a 1-walk.\\
 It remains, without loss in generality,
-to consider the case where there exist $u_5$ so that only $u_4$ is adjacent to 
-$u_4u_5\in E(H)-E(F)$, and $u_1$ is not
-adjacent to $u_4$. As $u_1u_2$ wealky dominates $u_4u_5$, we have that $u_2$ must be 
+to consider the case where there exists $u_5\in V(H)-V(F)$ so that
+$u_4u_5\in E(H)-E(F)$, while $u_1$ is not
+adjacent to $u_4$. As $u_1u_2$ weakly dominates $u_4u_5$, we have that $u_2$ must be 
 adjacent to $u_5$. 
 We set $F$ to be the subgraph induced by
 $u_2,\dots,u_5$, remove $u_5$ from $\Delta$, and add $u_1$ to $\Delta$; then $F$ is Hamiltonian, and we are done.
@@ -256,15 +257,16 @@ $\Pi_i\Pi_{i+2}$, which joins $V_i^+$, $V_{i+1}^-$, $V_{i+2}^+$ and
 $V_{i+3}^-$.
 
 In the case of both $E'_1$ and $E'_3$ nonempty, we observe that 
-$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltionian cycle, as the end of
+$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltonian cycle, as the end of
 $\Pi_3$ is adjacent to the beginning of $\Pi_0$. 
 If $E'_3=\emptyset$  
-we use instead the path 
-$\Pi_4\Pi_1\overline{\Pi}_2\Pi_0$, where $\overline{\Pi}_2$
-denotes $\Pi_2$ taken backwards, to obtain a Hamiltonian
-cycle.
+we instead use the path 
+$\Pi_4\Pi_1\overline{\Pi}_2\overline{\Pi}_0$, where $\overline{\Pi}_\alpha$
+denotes $\Pi_\alpha$ taken backwards, to obtain a Hamiltonian
+cycle, using the fact that the beginnings of $\Pi_0$ and $\Pi_4$ are
+adjacent.
 
-if $E'_1\cup E'_3=\emptyset$ 
+If $E'_1\cup E'_3=\emptyset$ 
 we can take the Hamiltonian path $\Pi_0\Pi_2\Pi_4$, 
 which begins and ends at $V_0$. Denote the first
 edge of this path by $ab$ and the last vertex of it 
@@ -335,7 +337,7 @@ Note that obviously $V(G)=V(Q)\cup V(D)$.
 $D$ is a coclique in $G$.
 \end{lemma}
 \begin{proof}
-By Lemma~\ref{lm5}, there are no edges between $D_i$ and $G_i$. By constructuon, 
+By Lemma~\ref{lm5}, there are no edges between $D_i$ and $G_i$. By construction, 
 $D_j$, for $j>i$, lies in $G_i$.
 \end{proof}
 
@@ -360,12 +362,12 @@ As $|Q_i|-1\ge 2$, we can choose $cd\in E(Q_i)$ such that $ac, bd\in E$.
  
 Theorem \ref{thm1} is immediate from the first part of the following.
 \begin{lemma}\label{lem:Q0H}
-The graph $Q_0$ is Hamiltonian. 
+The subgraph $Q_0$ is Hamiltonian. 
 For any $v\in V(Q_1)$ and $w\in V(Q_m)$ there exists a Hamiltonian
 path in $Q_0$ with endpoints $v$ and $w$.
 \end{lemma} 
 \begin{proof}
-If $m=0$, then $Q_0$ does not exist, and there is nothing to prove.\\
+If $m=0$, then $Q_0=\emptyset$ and there is nothing to prove.
 If $m=1$, i.e. $Q_0=Q_1$, then obviously $Q_0$ is Hamiltonian, since it is just a clique, and
 has a Hamiltonian path joining any two vertices.\\
 If $m=2$, i.e. $V(Q_0)=V(Q_1)\cup V(Q_2)$, then by Lemma~\ref{lem:twoQ} 
@@ -399,11 +401,11 @@ Finally, we construct Hamiltonian paths in each $Q_i$ joining the pairs of verti
 $a_i,b_i\in V(Q_i)$ just constructed, obtaining the required Hamiltonian cycle.
 
 To prove the second part of the lemma for $m\geq 3$, observe that we can choose
-$w\neq a_m$, $w\neq b_m$. Without loss in generatity we can assume that $v\neq a_1=:a$ 
+$w\neq a_m$, $w\neq b_m$. Without loss in generality we can assume that $v\neq a_1=:a$ 
 for $m$ even (resp. $v\neq b_1=:a$ for $m$ odd), 
 and proceed to construct the Hamiltonian path
 which first goes from $w$ to $a_m$ in $Q_m$, then goes the same way as the Hamiltonian
-path we just constucted to $a$, and then joins $a$ and $v$ in $Q_1$ by a Hamiltonian path 
+path we just constructed to $a$, and then joins $a$ and $v$ in $Q_1$ by a Hamiltonian path 
 in the latter.
 \end{proof}
 
@@ -446,13 +448,13 @@ and all other vertices are visited once, and $G$ is $(\frac{1}{k-1}+\epsilon)$-t
 Let $D_0\subset D$.
 For part (\ref{itone}), 
 by $\frac{1}{k-1}$-toughness, 
-$D_0$ has at least $\left\lceil\frac{|D_0|}{k-1}\right\rceil$ neighbors in $Q$. By Hall's Theorem, 
+$D_0$ has at least $\left\lceil\frac{|D_0|}{k-1}\right\rceil$ neighbours in $Q$. By Hall's Theorem, 
 there is $E'\subset E(G)$ such that each $e\in E'$ has one vertex in $D$ and the other in $Q$,
 and each vertex in $D$ is incident to exactly one edge in $E'$, while each vertex in $Q$ is incident to at most $k-1$ edges in $E'$.
 Then these ({doubled}) edges in $E'$ and the edges in the Hamiltonian cycle $H$ of $Q$ form a $k$-walk in $G$.
 
 For part (\ref{ittwo}), by $\left(\frac{1}{k-1}+\epsilon\right)$-toughness, 
-$D_0$ has at least $\left\lceil(\frac{1}{k-1}+\epsilon)|D_0|\right\rceil$ neighbors in $Q$. 
+$D_0$ has at least $\left\lceil(\frac{1}{k-1}+\epsilon)|D_0|\right\rceil$ neighbours in $Q$. 
 Split each vertex in $Q$ into $k-1$ copies and denote the set of all the split vertices by $Q^{k-1}$. 
 Then $D_0$ has at least $(k-1)\lceil(\frac{1}{k-1}+\epsilon)|D_0|\rceil\ge|D_0|+1$ neighbours in $Q^{k-1}$. 
 Pick one copy of $v_{\infty}$, namely $v^*\in Q^{k-1}$. Then $D_0$ has at least $|D_0|$ neighbours 
@@ -470,41 +472,40 @@ it admits a $k$-walk.
 
 \subsection{The case $m\ge1$} 
 Now we can assume $|Q_1|\ge3$.
-By Lemma \ref{addtec}, we only need to prove that the induced subgraph $Q$ on the vertex set $V(Q)=V(Q_0)\cup V(Q_{\infty})$ is Hamiltonian when $m\ge2$, 
-respectively, admits a 2-walk, with only one vertex $Q_{\infty}$ visited at most twice, and all other vertices visited exactly once, when $m=1$.)
+By Lemma \ref{addtec}, we only need to prove that the induced subgraph $Q$ on the vertex set $V(Q)=V(Q_0)\cup V(Q_{\infty})$ is Hamiltonian for $m\ge2$ 
+(respectively, admits a 2-walk, with only one vertex $Q_{\infty}$ visited at most twice, and all other vertices visited exactly once for $m=1$.)
 
-Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. The sequence of cliques defined in Lemma \ref{lm5} is $\{Q_1,\ldots,Q_m,\ldots,Q_{m+s}\}$, where $|Q_i|\ge3$, for $1\le i\le m$ and $|Q_i|=2$ for $m+1\le i\le m+s$. Additionally, $Q_i$ dominates $Q_j$ for $i\le m$ and $i<j$; $Q_i$ weakly dominates $Q_j$ for $m<i<j$. And $Q_{\infty}$ is the induced subgraph of $G$ on all the vertices of $Q_i$, $i>m$, as defined in Lemma \ref{lm6}. 
+Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. The sequence of cliques $\{Q_i\}$, $m$ and $s$ are as defined in Lemma \ref{lm5}.
 
-\subsubsection{When $s=0$}
-We have $Q=Q_0$, since $Q_{\infty}$ does not exist. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
- 
-Let $s\geq 1$. Corollary~\ref{cor:2w} provides 
+If $s=0$ we have $Q=Q_0$, since $Q_{\infty}=\emptyset$. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
+Now let $s\geq 1$. Corollary~\ref{cor:2w} provides 
 a spanning path in $Q_{\infty}$, say $u_1\cdots u_{2s}$. 
 
-\subsubsection{When $m\ge2$}
-As each vertex in $Q_{\infty}$ is dominated by each clique $Q_i$, for $1\le i\le m$, we
+If $m\ge2$ then, 
+as each vertex in $Q_{\infty}$ is dominated by $Q_i$, for $1\le i\le m$, we
 can find $v\in Q_1$ and $w\in Q_m$ such that
-$u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path in $Q_0$
- $v\cdots w$. Joining it to $u_1\cdots u_{2s}$, we obtain a Hamiltonian cycle in $Q$.
+$u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path  $v\cdots w$ in $Q_0$.
+Joining it to $u_1\cdots u_{2s}$, we obtain a Hamiltonian cycle in $Q$.
  
-\subsubsection{$m=1$}
-If $u_1$ and $u_{2s}$ have two different neighbors in $Q_1$, say $u_1v_1,~u_{2s}v_2\in E(G)$, where $v_1,~v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. Then connect the spanning path in $Q_{\infty}$ and the spanning path in $Q_1$ together, we get a Hamiltonian cycle in $Q$.
+It remains to consider {$m=1$}.
+If $u_1$ and $u_{2s}$ have two different neighbours in $Q_1$, say $u_1v_1, u_{2s}v_2\in E(G)$, where 
+$v_1, v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. 
+Connecting the spanning path in $Q_{\infty}$ with the spanning path in $Q_1$, we get a Hamiltonian cycle in $Q$.
 
-If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, then we can find a Hamilton cycle in $Q_1$ and the two endpoints of the spanning path in $Q_{\infty}$ is connected to $v_{\infty}$ and come into a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
+If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, 
+then we can find a Hamiltonian cycle in $Q_1$ such that the two endpoints of the spanning path 
+in $Q_{\infty}$ are connected to $v_{\infty}$. This gives a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
 \qed
 
 
-
-At last we pose two conjectures to finish this paper:
-
-
+Finally, let us state two conjectures.
 \begin{conjecture}
-Every $3/2$-tough $2K_2$-free graph on at least three vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
+Each $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
 \end{conjecture}
 
 
 \begin{conjecture}
-Every 2-tough $2K_2$-free graph on at least three vertices is Hamiltonian.
+Every 2-tough $2K_2$-free graph with at least vertices is Hamiltonian.
 \end{conjecture}
 
 \bibliography{reftough}
