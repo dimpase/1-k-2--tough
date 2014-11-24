@@ -6,7 +6,8 @@
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{problem}{Problem}
-\newtheorem{remarks}{Remarks}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
 \newtheorem{conjecture}{Conjecture}
 \newtheorem{lemma}{Lemma}
 \newtheorem{step}{Step}
@@ -102,9 +103,14 @@ To prove Theorem~\ref{thm2}, we first prove
 For any $2K_2$-free graph $G$ the set $V(G)$ 
 can be partitioned into three disjoint parts $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
 $Q_0$, $Q_\infty$, and $D$ the following holds: $Q_0$ is dominating in $G$ and Hamiltonian, 
-$Q_{\infty}$ admits a spanning path (also called Hamiltonian path), 
+$Q_{\infty}$ admits a spanning 2-walk with at most one vertex visited more than once, 
 and $D$ is a coclique.
 \end{theorem}
+
+The following is immediate, by removing an appropriate edge in the 2-walk.
+\begin{corollary}\label{cor:2w}
+$Q_{\infty}$ admits a spanning path (a.k.a. Hamiltonian path). \qed
+\end{corollary}
 
 The terminology just used is standard; we include the following for the sake of
 clarity.  A {\em clique} means a complete subgraph, a {\em coclique} means a
@@ -202,54 +208,97 @@ $D_j$, for $j>i$, lies in $G_i$.
 \end{proof}
 
 \subsection{Spanning path in $Q_{\infty}$.}
-Now we look at the behavior of the cliques of size $2$ in the sequence $\{Q_i\}$.
+Now we look at the behavior of the cliques of size $2$ in the sequence $\{Q_i\}$. Note that
+we might need to modify its tail, starting from $i=m+1$.
 \begin{theorem}\label{thm4}
-The subgraph $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
+Let $H$ be a connected $2K_2$-free graph with $\omega(F)=2$. 
+Then $H$ admits a decomposition into a connected induced subgraph $F$ and a coclique $\Delta$, with $F$ admitting a 2-walk
+with at most one vertex visited more than once.
+%The subgraph $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
 \end{theorem}
 
 
 \begin{proof}
-Denote $Q_{m+i}=v_{i,1}v_{i,2}$ for $i=1,\ldots,s$.
-Let $Q_{\infty}$ be bipartite, with the parts $\{v_{i,1}\mid i=1,\ldots,s\}$ and $\{v_{i,2}\mid i=1,\ldots,s\}$. 
+Let $S:=\{S_i\mid 1\leq i\leq  \sigma\}$ be a maximum size matching in $H$.
+Denote by $F$ the subgraph spanned by $S$, and
+$S_{i}=v_{i,1}v_{i,2}$. As $S$ is maximum, the complement $\Delta$ of $F$ in $H$
+is a coclique.
 
+Let $F$ be bipartite, with the parts $\{v_{i,1}\mid i=1,\ldots,\sigma\}$ and $\{v_{i,2}\mid i=1,\ldots,\sigma\}$. 
+Denote by $F^t$ the induced subgraph of $F$ containing the first $t$ of the edges $F_i$, i.e. let $V(F^t)=\{v_{i,j}\mid i=1,\ldots,t, \ j=1,2\}$
+We proceed by induction on $t$. We shall prove that in $F^t$ there is a spanning path $v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,1}v'_{t,2}$ and each edge $v'_{p,1}v'_{p,2}$ is 
+in $S$.
 
-Denote by $Q^t_{\infty}$ the induced subgraph of $Q_{\infty}$ containing the first $t$ of the edges $\{Q_{m+i}\mid i=1,\ldots,s\}$, i.e. let $V(Q^t_{\infty})=\{v_{i,j}\mid i=1,\ldots,t, \ j=1,2\}$
-We proceed by induction on $t$. We shall prove that in $Q^t_{\infty}$, $(t=1,\ldots,s)$, there is a spanning path $v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,1}v'_{t,2}$ and each edge $v'_{p,1}v'_{p,2}$ is 
-of the form $Q_{m+q}=v_{q,1}v_{q,2}$.
-
-
-If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $Q^t_{\infty}$ admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, with each $v'_{p,1}v'_{p,2}=v_{q,1}v_{q,2}$ for some $q$, and look at $Q^{t+1}_{\infty}$.
+If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $F^t$ admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, 
+with each $v'_{p,1}v'_{p,2}\in S$, and look at $F^{t+1}$.
 
 For the case $v'_{t,2}v_{t+1,1}\in E(G)$ 
 (resp. $v'_{1,1}v_{t+1,2}\in E(G)$)
 we get a spanning path 
 $v'_{1,1} v'_{1,2}\cdots v'_{t,2} v_{t+1,1} v_{t+1,2}$
 (resp. $v_{t+1,1} v_{t+2,2} v'_{1,1} v'_{1,2} v'_{2,1}\cdots v'_{t,2}$)
-in $Q^{t+1}_{\infty}$.
+in $F^{t+1}$.
 
 If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weak dominance
 we get $v'_{t,1}v_{t+1,2}\in E(G)$ and $v'_{1,2}v_{t+1,1}\in E(G)$. Now, we
-denote $q$ the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That
+denote by $q$ the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That
 means $v'_{q-1,1}v_{t+1,2}\not\in E(G)$. Again, by weak dominance,
 we get $v'_{q-1,2}v_{t+1,1}\in E(G)$. Thus we get a spanning path in
-$Q^{t+1}_{\infty}$, namely $$v'_{1,1}\cdots
+$F^{t+1}$, namely $$v'_{1,1}\cdots
 v'_{q-1,2}v_{t+1,1}v_{t+1,2}v'_{q,1}\cdots v'_{t,2}.$$
 
-Thus, by induction, $Q_{\infty}$ has a spanning path.%, with all the edges $Q_{m+i},i=1,\ldots,s$ in the path.
+Thus, by induction, $F$ has a spanning path, staring at $u_1\in V(F)$ and
+ending at $u_{2\sigma}\in V(F)$r. %, with all the edges in $S$ in the path.
+
+If $\sigma=1$ then $F$ admits a 1-walk.
+and we are done (in the bipartite case).
+
+Now we can assume $\sigma\geq 2$.
+If $u_1u_{2\sigma}\in E(F)$ then $F$ is
+Hamiltonian, and we are done. 
+if we have both $u_1$ and $u_{2\sigma}$ adjacent to non-intersecting edges in $E(H)-E(F)$, 
+then we have a contradiction, as $S$ is not maximum.
+if we have both $u_1$ and $u_{2\sigma}$ adjacent to  $u\in V(H)-V(F)$, 
+then we add $u$ to $F$ and remove it from $\Delta$, obtaining
+a Hamiltonian $F$.
+Thus we can assume that $u_1$ is not adjacent to  $V(H)-V(F)$, 
+while $u_{2\sigma}$ may be adjacent to  $V(H)-V(F)$. 
+
+
+Now we complete the case $\sigma=2$. 
+If there are no edges in $E(H)-E(F)$ adjacent to $u_4$, 
+we add $u_1$ and $u_4$ to $\Delta$ and remove them from $F$. 
+The resulting $F$ is an edge, and thus has a 1-walk.\\
+It remains, without loss in generality
+to consider the case where there exist $u_5$ so that only $u_4$ is adjacent to 
+$u_4u_5\in E(H)-E(F)$, and $u_1$ is not
+adjacent to $u_4$. As $u_1u_2$ wealky dominates $u_4u_5$, we have $u_2$ must be 
+adjacent to $u_5$. 
+We set $F$ to be the subgraph induced by
+$u_2,\dots,u_5$, remove $u_5$ from $\Delta$, and add $u_1$ to $\Delta$; then $F$ is Hamiltonian, and we are done.
+
+To finish off the bipartite case it remains to consider $\sigma\geq 3$.
+As $u_1u_2$ weakly dominates $u_{2\sigma-1}u_{2\sigma}$, then $u_2u_{2\sigma-1}\in E(F)$, 
+otherwise $F$ is
+non-bipartite (for adjacent $u_2$ and $u_{2\sigma}$ or $u_1$ and $u_{2\sigma-1}$).
+As $u_1$ is not adjacent to   $V(H)-V(F)$, we add it to $\Delta$ and remove from $F$,
+obtaining $F$ with a 2-walk where only $u_{2\sigma-1}$ is visited twice. 
+
 
 \medskip
 
-It remains to consider a non-bipartite $Q_{\infty}$. By Lemma \ref{lm1},
-$Q_{\infty}$ can be obtained from a 5-circle by ``vertex multiplication''. We
-denote $V(Q_{\infty})=V_0\cup \dots \cup V_4$, and
-$E(Q_{\infty})=E_0\cup \dots \cup E_4$, where each $V_i$ is an
+It remains to consider a non-bipartite $F$. By Lemma \ref{lm1},
+$F$ can be obtained from a 5-circle by ``vertex multiplication''. We
+denote $V(F)=V_0\cup \dots \cup V_4$, and
+$E(F)=E_0\cup \dots \cup E_4$, where each $V_i$ is an
 independent set, and  for any $a\in V_i$ and $b\in V_{i+1}$ we have $ab\in E_i$. 
 Here and below we always take the indices of $v_i$, $E_i$, etc. modulo $5$.
 We denote
-$E'=\{v_{j,1}v_{j,2}\mid 1\leq j\leq s\}$, and $E'_i=E_i\cap E'$ (recall that $v_{j,1}v_{j,2}$
-comprise $V(Q_{m+j})$). Obviously,
+$E'=\{v_{j,1}v_{j,2}\mid 1\leq j\leq \sigma\}$, and $E'_i=E_i\cap E'$ (recall that $v_{j,1}v_{j,2}$
+comprise $S_{j})$). 
+Obviously,
 $|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $0\leq i\leq 4$, otherwise
-$Q_{\infty}$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
+$F$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
 Without loss of generality, we can assume $|E'_0||E'_2||E'_4|>0$.
 Note that $E'_1$ and $E'_3$ can be empty.
 
@@ -266,17 +315,26 @@ $\Pi_i\Pi_{i+2}$, which joins $V_i^+$, $V_{i+1}^-$, $V_{i+2}^+$ and
 $V_{i+3}^-$.
 
 In the case of both $E'_1$ and $E'_3$ nonempty, we observe that 
-$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltionian path we need.
-If $E'_3=\emptyset$  we omit $\Pi_3$; if in addition $E'_1=\emptyset$ 
-we omit $\Pi_1$, too. Finally, in the case  $E'_1=\emptyset$ and 
-$E'_3\neq\emptyset$ we can take $\Pi_3\Pi_0\Pi_2\Pi_4$.
+$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltionian cycle, as the end of
+$\Pi_3$ is adjacent to the beginning of $\Pi_0$. 
+If $E'_3=\emptyset$  
+we use instead the path 
+$\Pi_4\Pi_1\overline{\Pi_2}\Pi_0$, where $\overline{\Pi_2}$
+denotes $\Pi_2$ taken backwards, to obtain a Hamiltonian
+cycle.
+
+if $E'_1\cup E'_3=\emptyset$ 
+we can take the Hamiltonian path $\Pi_0\Pi_2\Pi_4$, 
+which begins and ends at $V_0$. Denote the first
+edge of this path by $ab$ and the last vertex of it 
+by $c$. As $c\in V_0$ and $b\in V_1$, they are adjacent.
+Thus we have a 2-walk in $F$, where only $b$ is visited
+twice.
 \end{proof}
 
-\begin{remarks}
-\textcolor{red}{From the proof, we see, if $|E'_1||E'_3|>0$, then the two endpoints of the path, $\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$, are adjacent in $G$, i.e. $Q_{\infty}$ is Hamiltonian.}
-\end{remarks}
-
 \subsection{Proof of Theorem \ref{thm1}}
+Let $G_m$ be as constructed in Lemma~\ref{lm5}. Applying Theorem~\ref{thm4} to it, 
+we obtain $Q_\infty:=F$ and $D:=D_i\cup\Delta$. 
 By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
 Below we prove this, and a bit more, needed later for the proof of the main result.
 
@@ -404,63 +462,12 @@ Then $2*E'$ and the edges from the 2-walk in $Q$ form a $k$-walk in $G$.
 \end{proof}
 
 
-\subsection{Triangle-free case, i.e. $m=0$}
-Now, we first look at the triangle-free case.
-
-\begin{theorem}\label{trifree}
-If $G$ is triangle-free, i.e. $\omega(G)=2$, then $(\frac{1}{k-1}+\epsilon)$-tough implies a $k$-walk.
-\end{theorem}
-
-
-
-
-\begin{proof}
-As the definition before, $G$ has a weakly-dominating sequence $\{Q_1,\ldots,Q_s\}$, where $|Q_i|=2$.
-
-{\bf Case 1.} If $s=1$, then obviously, $Q_1$ is dominating, since after deleting $Q_1$, there is only a set $D$ of isolated vertices.
-By "triangle-free", each vertex $v\in D$ is adjacent to exactly one vertex in $Q_1$. By $(\frac{1}{k-1}+\epsilon)$-tough, each vertex in $Q_1$ is adjacent to at most $k-2$ vertices in $D$. Then we can draw the $k$-walk easily.
-
-{\bf Case 2.} If $s=2$, then $V(G)=V(Q)\cup V(D)$, where $Q$ admits a path $u_1u_2u_3u_4$, while $D$ is a coclique.
-
-
-If $u_1$ is adjacent to $u_4$, then $Q$ is hamiltonian, then by Lemma \ref{addtec}, there is a k-walk.
-
-Now we assume $u_1$ is not adjacent to $u_4$.
-By triangle-free, $u_1$ is not adjacent to $u_3$, and $u_2$ is not adjacent to $u_4$. Thus $Q$ is the path with no other edges.
-
-If each vertex $v\in D$ is adjacent to exactly one vertex in $Q$, then by $(\frac{1}{k-1}+\epsilon)$-tough, $u_1$ (or $u_4$) is adjacent to at most $k-2$ vertices in $D$, while $u_2$ (or $u_3$) is adjacent to at most $k-3$ vertices in $D$. Then we can find the $k$-walk easily.
-
-Now we assume there are some vertices in $D$ who are adjacent to at least two vertices in $Q$.
-By triangle-free, they are not allowed to be adjacent to two successive vertices in $Q$.
-
-\begin{enumerate}
-\item assume $v_0\in D$ is adjacent to $u_1$ and $u_4$, then denote $Q'=Q\cup\{v_0\}$ and $D'=D-\{v_0\}$. Then $V(G)=V(Q')\cup V(D')$ while $Q'$ is hamiltonian and $D'$ is a coclique. Then by $(\frac{1}{k-1}+\epsilon)$-tough, we can find the $k$-walk easily.
-\item assume $v_0\in D$ is adjacent to $u_1$ and $u_3$, ($u_2$ and $u_4$ case is similar), then denote $Q'=Q\cup\{v_0\}$ and $D'=D-\{v_0\}$. Then $V(G)=V(Q')\cup V(D')$ while $D'$ is a coclique. Now look at $Q'$, $Q'$ is a cycle $u_1u_2u_3v_0$ and a suspended edge $u_3u_4$, so $Q'$ is a 2-walk, where $u_1$, $u_2$, $u_4$, $v_0$ are visited once and $u_3$ is visited twice. Now we consider $u_3$ as the role of $v_{\infty}$ in Lemma \ref{addtec}, then we can find the $k$-walk with the assumption $(\frac{1}{k-1}+\epsilon)$-tough.
-\end{enumerate}
-
-{\bf Case 3.} If $s\ge3$, then $V(G)=V(Q)\cup V(D)$, and we require the sequence $\{Q_1,\ldots,Q_s\}$ has the maximum length possible. We know that $Q$ admits a path namely $u_1u_2\cdots u_{2s}$.
-
-If both of $u_1$ and $u_{2s}$ have neighbors in $D$:
-\begin{enumerate}
-\item if $v_0\in D$ is adjancent to both $u_1$ and $u_{2s}$, then $Q'=Q\cup\{v_0\}$ is hamiltonian and $D'=D-\{v_0\}$ is a coclique. Then we can find the $k$-walk by Lemma \ref{addtec}.
-\item if there are $v_1\neq v_2$ in $D$, where $v_1u_1,~v_2u_{2s}\in E(G)$, then we can find a longer sequence namely $Q'_1=v_1u_1$, $Q'_2=u_2u_3$,\ldots, $Q'_{s+1}=u_{2s}v_2$ in $G$. Contradition with the assumption.
-\end{enumerate}
-
-Now, we only consider the situation that at most one in $u_1$ and $u_{2s}$ has neighbors in $D$. Assume that $u_{2s}$ has {\bf no} neighbor in $D$.
-
-Consider the $2K_2$-free condition with $u_1u_2$ and $u_{2s-1}u_{2s}$.
-\begin{enumerate}
-\item if $u_1u_{2s}\in E(G)$, then $Q$ is hamiltonian, then we can easily find the k-walk in $G$
-\item if $u_1u_{2s-1}\in E(G)$, then $Q$ is 2-walk, with $u_{2s-1}$ playing the role of "$v_{\infty}$".
-\item if $u_2u_{2s}\in E(G)$, then $Q$ is a 2-walk, with $u_2$ playing the role of "$v_{\infty}$".
-\item if $u_2u_{2s-1}\in E(G)$, then denote $Q'=Q-\{u_{2s}\}$, $D'=D\cup \{u_{2s}\}$. Recall the assumption that $u_{2s}$ has no neighbor in $D$, so $D'$ is a coclique, and $Q'$ is the 2-walk, with $u_2$ playing the role of $v_{\infty}$. Then we can find the $k$-walk we want.
-\qedhere 
-\end{enumerate}
-\end{proof}
+It follows from Lemma~\ref{addtec} and Theorem~\ref{thm4} that
+if a $(\frac{1}{k-1}+\epsilon)$-tough $G$ is triangle-free, i.e. $\omega(G)=2$, then 
+it admits a $k$-walk.
 
 \subsection{The case $m\ge1$} 
-We have already solved the case where $G$ is triangle-free in Theorem \ref{trifree}. So, we always assume $|Q_1|\ge3$ in the following proof.
-
+Now we can assume $|Q_1|\ge3$.
 By Lemma \ref{addtec}, we only need to prove that the induced subgraph $Q$ on the vertex set $V(Q)=V(Q_0)\cup V(Q_{\infty})$ is Hamiltonian when $m\ge2$, 
 respectively, admits a 2-walk, with only one vertex $Q_{\infty}$ visited at most twice, and all other vertices visited exactly once, when $m=1$.)
 
