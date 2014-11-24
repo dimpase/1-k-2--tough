@@ -36,11 +36,12 @@ decomposition of $2K_2$-free graphs which might be of independent interest.
 \section{Introduction}
 
 Let  $\ncc(G)$ denote the number of connected components of a graph $G$ with vertex set $V:=V(G)$ and edge set $E:=E(G)$. For $S\subset V$, let $G-S$ denote the subgraph of $G$ induced on $V-S$.
-\begin{definition}
+%\begin{definition}
 $G$ is called $\beta$-{\em tough},
 for a real $\beta>0$, if $\ncc(G-S)>1$ implies $|S|\ge \beta\cdot \ncc(G-S)$ 
 for each $S\subset V$.
-\end{definition}
+%\end{definition}
+
 That is, a $\beta$-tough 
 $G$ cannot be split into $p$ (with $p>1$) components by removing less than
 $p\beta$ vertices.  
@@ -49,9 +50,12 @@ was introduced in 1973 by V. Chv\'{a}tal
 while studying   Hamiltonicity of graphs. For a survey of results on graph toughness till 2006
 cf. \cite{MR2221006}. Our graph-theoretic notation is mostly from \cite{bomu08}.
 
-In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that every
-$\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk, i.e. a sequence of edges
-visiting each vertex at least once and at most $k$-times, for any integer $k\ge2$. 
+Let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
+A $k$-{\em walk} is a spanning subgraph $W$ of $(2k)*G$, with each vertex of even degree at 
+most $2k$.% (the evenness says that $W$ is Eulerian). 
+In particular a graph has a 1-walk if and only if it is $K_2$ (i.e. one edge) or Hamiltonian.
+In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that for any integer $k\ge2$ a
+$\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk.
 {For a survey of results on walks in graphs till 2005 cf. \cite{kouider2005connected}.}
 
 In this paper, we prove that this conjecture is ``almost'' true, under the
@@ -147,6 +151,127 @@ Assume that $G$ is $2K_2$-free, $\omega(G)=2$, then $G$ is in one of the followi
 \end{enumerate}
 \end{lemma}
 
+\begin{theorem}\label{thm4}
+Let $H$ be a connected $2K_2$-free graph with $\omega(F)=2$. 
+Then $H$ admits a decomposition into a connected induced subgraph $F$ and a coclique $\Delta$, with $F$ admitting a 2-walk
+with at most one vertex visited more than once.
+%The subgraph $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
+\end{theorem}
+
+
+\begin{proof}
+Let $S:=\{S_i\mid 1\leq i\leq  \sigma\}$ be a maximum size matching in $H$.
+Denote by $F$ the subgraph spanned by $S$, and
+$S_{i}=v_{i,1}v_{i,2}$. As $S$ is maximum, the complement $\Delta$ of $F$ in $H$
+is a coclique.
+
+Let $F$ be bipartite, with the parts $\{v_{i,1}\mid i=1,\ldots,\sigma\}$ and $\{v_{i,2}\mid i=1,\ldots,\sigma\}$. 
+Denote by $F^t$ the induced subgraph of $F$ containing the first $t$ of the edges $F_i$, i.e. let $V(F^t)=\{v_{i,j}\mid i=1,\ldots,t, \ j=1,2\}$
+We proceed by induction on $t$. We shall prove that in $F^t$ there is a spanning path $v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,1}v'_{t,2}$ and each edge $v'_{p,1}v'_{p,2}$ is 
+in $S$.
+
+If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $F^t$ admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, 
+with each $v'_{p,1}v'_{p,2}\in S$, and look at $F^{t+1}$.
+
+For the case $v'_{t,2}v_{t+1,1}\in E(G)$ 
+(resp. $v'_{1,1}v_{t+1,2}\in E(G)$)
+we get a spanning path 
+$v'_{1,1} v'_{1,2}\cdots v'_{t,2} v_{t+1,1} v_{t+1,2}$
+(resp. $v_{t+1,1} v_{t+2,2} v'_{1,1} v'_{1,2} v'_{2,1}\cdots v'_{t,2}$)
+in $F^{t+1}$.
+
+If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weak dominance
+we get $v'_{t,1}v_{t+1,2}\in E(G)$ and $v'_{1,2}v_{t+1,1}\in E(G)$. Now, we
+denote by $q$ the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That
+means $v'_{q-1,1}v_{t+1,2}\not\in E(G)$. Again, by weak dominance,
+we get $v'_{q-1,2}v_{t+1,1}\in E(G)$. Thus we get a spanning path in
+$F^{t+1}$, namely $$v'_{1,1}\cdots
+v'_{q-1,2}v_{t+1,1}v_{t+1,2}v'_{q,1}\cdots v'_{t,2}.$$
+
+Thus, by induction, $F$ has a spanning path, staring at $u_1\in V(F)$ and
+ending at $u_{2\sigma}\in V(F)$. %, with all the edges in $S$ in the path.
+
+If $\sigma=1$ then $F$ admits a 1-walk.
+and we are done (in the bipartite case).
+
+Now we can assume $\sigma\geq 2$.
+If $u_1u_{2\sigma}\in E(F)$ then $F$ is
+Hamiltonian, and we are done. 
+if we have both $u_1$ and $u_{2\sigma}$ adjacent to non-intersecting edges in $E(H)-E(F)$, 
+then we have a contradiction, as $S$ is not maximum.
+if we have both $u_1$ and $u_{2\sigma}$ adjacent to  $u\in V(H)-V(F)$, 
+then we add $u$ to $F$ and remove it from $\Delta$, obtaining
+a Hamiltonian $F$.
+Thus we can assume that $u_1$ is not adjacent to  $V(H)-V(F)$, 
+while $u_{2\sigma}$ may be adjacent to  $V(H)-V(F)$. 
+
+
+Now we complete the case $\sigma=2$. 
+If there are no edges in $E(H)-E(F)$ adjacent to $u_4$, 
+we add $u_1$ and $u_4$ to $\Delta$ and remove them from $F$. 
+The resulting $F$ is an edge, and thus has a 1-walk.\\
+It remains, without loss in generality,
+to consider the case where there exist $u_5$ so that only $u_4$ is adjacent to 
+$u_4u_5\in E(H)-E(F)$, and $u_1$ is not
+adjacent to $u_4$. As $u_1u_2$ wealky dominates $u_4u_5$, we have that $u_2$ must be 
+adjacent to $u_5$. 
+We set $F$ to be the subgraph induced by
+$u_2,\dots,u_5$, remove $u_5$ from $\Delta$, and add $u_1$ to $\Delta$; then $F$ is Hamiltonian, and we are done.
+
+To finish off the bipartite case it remains to consider $\sigma\geq 3$.
+As $u_1u_2$ weakly dominates $u_{2\sigma-1}u_{2\sigma}$, then $u_2u_{2\sigma-1}\in E(F)$, 
+otherwise $F$ is
+non-bipartite (for adjacent $u_2$ and $u_{2\sigma}$ or $u_1$ and $u_{2\sigma-1}$).
+As $u_1$ is not adjacent to   $V(H)-V(F)$, we add it to $\Delta$ and remove from $F$,
+obtaining $F$ with a 2-walk where only $u_{2\sigma-1}$ is visited twice. 
+
+
+\medskip
+
+It remains to consider a non-bipartite $F$. By Lemma \ref{lm1},
+$F$ can be obtained from a 5-circle by ``vertex multiplication''. We
+denote $V(F)=V_0\cup \dots \cup V_4$, and
+$E(F)=E_0\cup \dots \cup E_4$, where each $V_i$ is an
+independent set, and  for any $a\in V_i$ and $b\in V_{i+1}$ we have $ab\in E_i$. 
+Here and below we always take the indices of $v_i$, $E_i$, etc. modulo $5$.
+We denote
+$E'=\{v_{j,1}v_{j,2}\mid 1\leq j\leq \sigma\}$, and $E'_i=E_i\cap E'$ (recall that $v_{j,1}v_{j,2}$
+comprise $S_{j})$). 
+Obviously,
+$|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $0\leq i\leq 4$, otherwise
+$F$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
+Without loss of generality, we can assume $|E'_0||E'_2||E'_4|>0$.
+Note that $E'_1$ and $E'_3$ can be empty.
+
+$V_i$ is partitioned into
+$V_i^-:= V_i\cap V(E'_{i-1})$ and 
+$V_i^+:= V_i\cap V(E'_{i})$. For each $\Sigma:=E'_i\neq\emptyset$ there is
+a path $\Pi_i$ connecting its vertices in $V_i$ and in $V_{i+1}$, 
+as follows: $u_1 w_1 u_2\dots u_{|\Sigma|}w_{|\Sigma|}$, with 
+$u_k\in V_i^+$ and $w_k\in V_{i+1}^-$.%\footnote{If we wish we can choose $u_k w_k$ to be
+%a $Q_{m+j}$.} 
+Note that there is an edge joining the last vertex of $\Pi_i$ and
+the first vertex of $\Pi_{i+2}$. Thus it makes sense to talk about the path
+$\Pi_i\Pi_{i+2}$, which joins $V_i^+$, $V_{i+1}^-$, $V_{i+2}^+$ and
+$V_{i+3}^-$.
+
+In the case of both $E'_1$ and $E'_3$ nonempty, we observe that 
+$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltionian cycle, as the end of
+$\Pi_3$ is adjacent to the beginning of $\Pi_0$. 
+If $E'_3=\emptyset$  
+we use instead the path 
+$\Pi_4\Pi_1\overline{\Pi}_2\Pi_0$, where $\overline{\Pi}_2$
+denotes $\Pi_2$ taken backwards, to obtain a Hamiltonian
+cycle.
+
+if $E'_1\cup E'_3=\emptyset$ 
+we can take the Hamiltonian path $\Pi_0\Pi_2\Pi_4$, 
+which begins and ends at $V_0$. Denote the first
+edge of this path by $ab$ and the last vertex of it 
+by $c$. As $c\in V_0$ and $b\in V_1$, they are adjacent.
+Thus we have a 2-walk in $F$, where only $b$ is visited
+twice.
+\end{proof}
 \begin{lemma}\label{lm2}{\cite[Theorem 3]{chung1990maximum}}
 If $G$ is $2K_2$-free with $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$. \qed
 \end{lemma}
@@ -210,127 +335,6 @@ $D_j$, for $j>i$, lies in $G_i$.
 \subsection{Spanning path in $Q_{\infty}$.}
 Now we look at the behavior of the cliques of size $2$ in the sequence $\{Q_i\}$. Note that
 we might need to modify its tail, starting from $i=m+1$.
-\begin{theorem}\label{thm4}
-Let $H$ be a connected $2K_2$-free graph with $\omega(F)=2$. 
-Then $H$ admits a decomposition into a connected induced subgraph $F$ and a coclique $\Delta$, with $F$ admitting a 2-walk
-with at most one vertex visited more than once.
-%The subgraph $Q_{\infty}$ admits a spanning path, i.e. a path visiting each vertex in $Q_{\infty}$ exactly once.
-\end{theorem}
-
-
-\begin{proof}
-Let $S:=\{S_i\mid 1\leq i\leq  \sigma\}$ be a maximum size matching in $H$.
-Denote by $F$ the subgraph spanned by $S$, and
-$S_{i}=v_{i,1}v_{i,2}$. As $S$ is maximum, the complement $\Delta$ of $F$ in $H$
-is a coclique.
-
-Let $F$ be bipartite, with the parts $\{v_{i,1}\mid i=1,\ldots,\sigma\}$ and $\{v_{i,2}\mid i=1,\ldots,\sigma\}$. 
-Denote by $F^t$ the induced subgraph of $F$ containing the first $t$ of the edges $F_i$, i.e. let $V(F^t)=\{v_{i,j}\mid i=1,\ldots,t, \ j=1,2\}$
-We proceed by induction on $t$. We shall prove that in $F^t$ there is a spanning path $v'_{1,1}v'_{1,2}v'_{2,1}\cdots v'_{t,1}v'_{t,2}$ and each edge $v'_{p,1}v'_{p,2}$ is 
-in $S$.
-
-If $t=1$, then $v_{1,1}v_{1,2}$ is the path we want. Now, we assume that $F^t$ admits a spanning path, namely $v'_{1,1}v'_{1,2}\cdots v'_{t,1}v'_{t,2}$, 
-with each $v'_{p,1}v'_{p,2}\in S$, and look at $F^{t+1}$.
-
-For the case $v'_{t,2}v_{t+1,1}\in E(G)$ 
-(resp. $v'_{1,1}v_{t+1,2}\in E(G)$)
-we get a spanning path 
-$v'_{1,1} v'_{1,2}\cdots v'_{t,2} v_{t+1,1} v_{t+1,2}$
-(resp. $v_{t+1,1} v_{t+2,2} v'_{1,1} v'_{1,2} v'_{2,1}\cdots v'_{t,2}$)
-in $F^{t+1}$.
-
-If $v'_{t,2}v_{t+1,1},v'_{1,1}v_{t+1,2}\not\in E(G)$, from the weak dominance
-we get $v'_{t,1}v_{t+1,2}\in E(G)$ and $v'_{1,2}v_{t+1,1}\in E(G)$. Now, we
-denote by $q$ the smallest subscript for $v'_{q,1}v_{t+1,2}\in E(G)$. That
-means $v'_{q-1,1}v_{t+1,2}\not\in E(G)$. Again, by weak dominance,
-we get $v'_{q-1,2}v_{t+1,1}\in E(G)$. Thus we get a spanning path in
-$F^{t+1}$, namely $$v'_{1,1}\cdots
-v'_{q-1,2}v_{t+1,1}v_{t+1,2}v'_{q,1}\cdots v'_{t,2}.$$
-
-Thus, by induction, $F$ has a spanning path, staring at $u_1\in V(F)$ and
-ending at $u_{2\sigma}\in V(F)$r. %, with all the edges in $S$ in the path.
-
-If $\sigma=1$ then $F$ admits a 1-walk.
-and we are done (in the bipartite case).
-
-Now we can assume $\sigma\geq 2$.
-If $u_1u_{2\sigma}\in E(F)$ then $F$ is
-Hamiltonian, and we are done. 
-if we have both $u_1$ and $u_{2\sigma}$ adjacent to non-intersecting edges in $E(H)-E(F)$, 
-then we have a contradiction, as $S$ is not maximum.
-if we have both $u_1$ and $u_{2\sigma}$ adjacent to  $u\in V(H)-V(F)$, 
-then we add $u$ to $F$ and remove it from $\Delta$, obtaining
-a Hamiltonian $F$.
-Thus we can assume that $u_1$ is not adjacent to  $V(H)-V(F)$, 
-while $u_{2\sigma}$ may be adjacent to  $V(H)-V(F)$. 
-
-
-Now we complete the case $\sigma=2$. 
-If there are no edges in $E(H)-E(F)$ adjacent to $u_4$, 
-we add $u_1$ and $u_4$ to $\Delta$ and remove them from $F$. 
-The resulting $F$ is an edge, and thus has a 1-walk.\\
-It remains, without loss in generality
-to consider the case where there exist $u_5$ so that only $u_4$ is adjacent to 
-$u_4u_5\in E(H)-E(F)$, and $u_1$ is not
-adjacent to $u_4$. As $u_1u_2$ wealky dominates $u_4u_5$, we have $u_2$ must be 
-adjacent to $u_5$. 
-We set $F$ to be the subgraph induced by
-$u_2,\dots,u_5$, remove $u_5$ from $\Delta$, and add $u_1$ to $\Delta$; then $F$ is Hamiltonian, and we are done.
-
-To finish off the bipartite case it remains to consider $\sigma\geq 3$.
-As $u_1u_2$ weakly dominates $u_{2\sigma-1}u_{2\sigma}$, then $u_2u_{2\sigma-1}\in E(F)$, 
-otherwise $F$ is
-non-bipartite (for adjacent $u_2$ and $u_{2\sigma}$ or $u_1$ and $u_{2\sigma-1}$).
-As $u_1$ is not adjacent to   $V(H)-V(F)$, we add it to $\Delta$ and remove from $F$,
-obtaining $F$ with a 2-walk where only $u_{2\sigma-1}$ is visited twice. 
-
-
-\medskip
-
-It remains to consider a non-bipartite $F$. By Lemma \ref{lm1},
-$F$ can be obtained from a 5-circle by ``vertex multiplication''. We
-denote $V(F)=V_0\cup \dots \cup V_4$, and
-$E(F)=E_0\cup \dots \cup E_4$, where each $V_i$ is an
-independent set, and  for any $a\in V_i$ and $b\in V_{i+1}$ we have $ab\in E_i$. 
-Here and below we always take the indices of $v_i$, $E_i$, etc. modulo $5$.
-We denote
-$E'=\{v_{j,1}v_{j,2}\mid 1\leq j\leq \sigma\}$, and $E'_i=E_i\cap E'$ (recall that $v_{j,1}v_{j,2}$
-comprise $S_{j})$). 
-Obviously,
-$|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $0\leq i\leq 4$, otherwise
-$F$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
-Without loss of generality, we can assume $|E'_0||E'_2||E'_4|>0$.
-Note that $E'_1$ and $E'_3$ can be empty.
-
-$V_i$ is partitioned into
-$V_i^-:= V_i\cap V(E'_{i-1})$ and 
-$V_i^+:= V_i\cap V(E'_{i})$. For each $\Sigma:=E'_i\neq\emptyset$ there is
-a path $\Pi_i$ connecting its vertices in $V_i$ and in $V_{i+1}$, 
-as follows: $u_1 w_1 u_2\dots u_{|\Sigma|}w_{|\Sigma|}$, with 
-$u_k\in V_i^+$ and $w_k\in V_{i+1}^-$.%\footnote{If we wish we can choose $u_k w_k$ to be
-%a $Q_{m+j}$.} 
-Note that there is an edge joining the last vertex of $\Pi_i$ and
-the first vertex of $\Pi_{i+2}$. Thus it makes sense to talk about the path
-$\Pi_i\Pi_{i+2}$, which joins $V_i^+$, $V_{i+1}^-$, $V_{i+2}^+$ and
-$V_{i+3}^-$.
-
-In the case of both $E'_1$ and $E'_3$ nonempty, we observe that 
-$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltionian cycle, as the end of
-$\Pi_3$ is adjacent to the beginning of $\Pi_0$. 
-If $E'_3=\emptyset$  
-we use instead the path 
-$\Pi_4\Pi_1\overline{\Pi_2}\Pi_0$, where $\overline{\Pi_2}$
-denotes $\Pi_2$ taken backwards, to obtain a Hamiltonian
-cycle.
-
-if $E'_1\cup E'_3=\emptyset$ 
-we can take the Hamiltonian path $\Pi_0\Pi_2\Pi_4$, 
-which begins and ends at $V_0$. Denote the first
-edge of this path by $ab$ and the last vertex of it 
-by $c$. As $c\in V_0$ and $b\in V_1$, they are adjacent.
-Thus we have a 2-walk in $F$, where only $b$ is visited
-twice.
-\end{proof}
 
 \subsection{Proof of Theorem \ref{thm1}}
 Let $G_m$ be as constructed in Lemma~\ref{lm5}. Applying Theorem~\ref{thm4} to it, 
@@ -404,9 +408,6 @@ in the latter.
 
 \section{The Proof of Theorem \ref{thm2}}
 
-For an integer $p$, let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
-Thus a $k$-walk is a spanning subgraph $W$ of $(2k)*G$, with each vertex of even degree at 
-most $2k$ (the evenness says that $W$ is Eulerian). 
 
 
 The $(\frac{1}{k-1}+\epsilon)$-toughness condition with $\epsilon>0$ 
@@ -476,8 +477,8 @@ Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsi
 \subsubsection{When $s=0$}
 We have $Q=Q_0$, since $Q_{\infty}$ does not exist. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
  
-Let $s\geq 1$.
-Denote a spanning path in $Q_{\infty}$ by $u_1\cdots u_{2s}$. 
+Let $s\geq 1$. Corollary~\ref{cor:2w} provides 
+a spanning path in $Q_{\infty}$, say $u_1\cdots u_{2s}$. 
 
 \subsubsection{When $m\ge2$}
 As each vertex in $Q_{\infty}$ is dominated by each clique $Q_i$, for $1\le i\le m$, we
@@ -489,7 +490,6 @@ $u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path in 
 If $u_1$ and $u_{2s}$ have two different neighbors in $Q_1$, say $u_1v_1,~u_{2s}v_2\in E(G)$, where $v_1,~v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. Then connect the spanning path in $Q_{\infty}$ and the spanning path in $Q_1$ together, we get a Hamiltonian cycle in $Q$.
 
 If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, then we can find a Hamilton cycle in $Q_1$ and the two endpoints of the spanning path in $Q_{\infty}$ is connected to $v_{\infty}$ and come into a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
-%Then by Lemma \ref{addtec}, we deduce the $k$-walk from the assumption that $G$ is $(\frac{1}{k-1}+\epsilon)$-tough.
 \qed
 
 
