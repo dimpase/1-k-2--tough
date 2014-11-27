@@ -103,18 +103,15 @@ able to make any good algorithmic conclusions about the problem at hand.
 Indeed, the construction relies on finding maximum cliques in
 $2K_2$-free graphs, and this is known to be NP-hard. 
 To prove Theorem~\ref{thm2}, we first prove
-\begin{theorem}\label{thm1}
-Let $G$ be a connected $2K_2$-free graph. Then $V(G)$ 
-can be partitioned into $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
-$Q_0$, $Q_\infty$, and $D$ the following holds: $Q_0$ is dominating in $G$ and Hamiltonian, 
-$Q_{\infty}$ admits a spanning 2-walk with at most one vertex visited more than once, 
-and $D$ is a coclique.
+
+\begin{theorem}\label{addgen1}
+For any $2K_2$-free graph $G$, its vertex set $V(G)$ can be partitioned in two two parts, $V(F)$ and $V(D)$, where the induced subgraph $F$ admits a 2-walk having at most one vertex visited twice by the walk, and all other vertices visited exactly once by the walk, and induced subgraph $D$ is a coclique.
+
 \end{theorem}
 
-The following is immediate, by removing an appropriate edge in the 2-walk.
-\begin{corollary}\label{cor:2w}
-$Q_{\infty}$ admits a spanning path (a.k.a. Hamiltonian path). \qed
-\end{corollary}
+
+
+
 
 The terminology just used is standard; we include the following for the sake of
 clarity.  A {\em clique} means a complete subgraph, a {\em coclique} means a
@@ -130,27 +127,45 @@ about  dominating induced subgraphs $H$ of $G$, in the sense of $V(H)$ being
 dominating, respectively a subset of vertices (e.g. set of vertices of a
 subgraph) being dominated by $H$, etc.
 
-\section{Properties of $2K_2$-free Graphs and Proof of Theorem \ref{thm1}}
+\section{Properties of $2K_2$-free Graphs and Proof of Theorem \ref{addgen1}}
 An induced subgraph $H$ of $G$ with $B=V(H)$ (resp. $B\subset V$) is said to be {\em weakly-dominating}
 an induced subgraph $F$ (we allow $F=G$ here) 
 if for any $v_1v_2\in E(F)$, we have $v_1\in B^\perp$ or $v_2\in B^\perp$.
 Further, let $\omega(G)$ denote the maximum size of cliques in $G$. 
 
-\subsection{Properties of $2K_2$-free Graphs}
-The following properties of $2K_2$-free graphs are very useful in the proof of Theorem \ref{thm1} and Theorem \ref{thm2}.
+
+The following properties of $2K_2$-free graphs are very useful in the proof of Theorem \ref{thm2}.
 
 \begin{lemma}\label{trivial}
 $G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
 \end{lemma}
 
 \begin{lemma}\label{lm1}{\cite[Theorem 2]{chung1990maximum}, \cite[Lemma 2]{broersma2014toughness}}
-Assume that $G$ is $2K_2$-free, $\omega(G)=2$, then $G$ is in one of the following cases.
+Assume that $G$ is $2K_2$-free, with no isolated vertex, and $\omega(G)=2$, then $G$ is in one of the following cases.
 \begin{enumerate}
 \item $G$ is a bipartite.
 \item $G$ can be obtained from a five-circle by vertex multiplication. \qed
 \end{enumerate}
 \end{lemma}
 
+Now, let us look at Theorem \ref{addgen1}.
+In fact, we can prove a more detailed decomposition:
+
+
+
+\begin{theorem}\label{thm1}
+Let $G$ be a connected $2K_2$-free graph. Then $V(G)$ 
+can be partitioned into $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
+$Q_0$, $Q_\infty$, and $D$ the following holds: 
+\begin{enumerate}[(\ref{thm1}.1)]
+\item $Q_0$ is dominating in $G$ and Hamiltonian, 
+\item $D$ is a coclique,
+\item $Q_{\infty}$ admits a spanning 2-walk with at most one vertex visited more than once, 
+\item $Q_{\infty}$ admits a spanning path (a.k.a. Hamiltonian path).
+\end{enumerate}
+\end{theorem}
+
+First, we look at a special case of Theorem \ref{addgen1}, under the assumption $\omega(G)=2$, from which we can deduce the statement (\ref{thm1}.4) in Theorem \ref{thm1}. That is:
 \begin{theorem}\label{thm4}
 Let $H$ be a connected $2K_2$-free graph with $\omega(H)=2$. 
 Then $H$ admits a decomposition into a connected induced subgraph $F$ and a coclique $\Delta$, with $F$ admitting a 2-walk
@@ -236,8 +251,8 @@ $E(F)=E_0\cup \dots \cup E_4$, where each $V_i$ is an
 independent set, and  for any $a\in V_i$ and $b\in V_{i+1}$ we have $ab\in E_i$. 
 Here and below we always take the indices of $v_i$, $E_i$, etc. modulo $5$.
 We denote
-$E'=\{v_{j,1}v_{j,2}\mid 1\leq j\leq \sigma\}$, and $E'_i=E_i\cap E'$ (recall that $v_{j,1}v_{j,2}$
-comprise $S_{j})$). 
+$S=\{v_{j,1}v_{j,2}\mid 1\leq j\leq \sigma\}$ as a maximun matching in $F$, and $E'_i=E_i\cap S$ (recall that $v_{j,1}v_{j,2}$
+comprise $S_{j}$ as the bipartite case as well). 
 Obviously,
 $|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $0\leq i\leq 4$, otherwise
 $F$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
@@ -409,6 +424,32 @@ path we just constructed to $a$, and then joins $a$ and $v$ in $Q_1$ by a Hamilt
 in the latter.
 \end{proof}
 
+\subsection{The Proof of Theorem \ref{addgen1}}
+By Theorem \ref{thm4}, we only need to consider the case where $\omega(G)\ge3$.
+
+
+Recall the sequence of cliques $\{Q_i\}$, $m$ and $s$ are as defined in Lemma \ref{lm5}.
+
+If $s=0$ we have $Q=Q_0$, since $Q_{\infty}=\emptyset$. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
+Now let $s\geq 1$. The statement (\ref{thm1}.1) in Theorem \ref{thm1} provides 
+a spanning path in $Q_{\infty}$, say $u_1\cdots u_{2s}$. 
+
+If $m\ge2$ then, 
+as each vertex in $Q_{\infty}$ is dominated by $Q_i$, for $1\le i\le m$, we
+can find $v\in Q_1$ and $w\in Q_m$ such that
+$u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path  $v\cdots w$ in $Q_0$.
+Joining it to $u_1\cdots u_{2s}$, we obtain a Hamiltonian cycle in $Q$.
+ 
+It remains to consider {$m=1$}.
+If $u_1$ and $u_{2s}$ have two different neighbours in $Q_1$, say $u_1v_1, u_{2s}v_2\in E(G)$, where 
+$v_1, v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. 
+Connecting the spanning path in $Q_{\infty}$ with the spanning path in $Q_1$, we get a Hamiltonian cycle in $Q$.
+
+If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, 
+then we can find a Hamiltonian cycle in $Q_1$ such that the two endpoints of the spanning path 
+in $Q_{\infty}$ are connected to $v_{\infty}$. This gives a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
+\qed
+
 \section{The Proof of Theorem \ref{thm2}}
 
 
@@ -466,36 +507,7 @@ Then $2*E'$ and the edges from the 2-walk in $Q$ form a $k$-walk in $G$.
 \end{proof}
 
 
-It follows from Lemma~\ref{addtec} and Theorem~\ref{thm4} that
-if a $(\frac{1}{k-1}+\epsilon)$-tough $G$ is triangle-free, i.e. $\omega(G)=2$, then 
-it admits a $k$-walk.
-
-\subsection{The case $m\ge1$} 
-Now we can assume $|Q_1|\ge3$.
-By Lemma \ref{addtec}, we only need to prove that the induced subgraph $Q$ on the vertex set $V(Q)=V(Q_0)\cup V(Q_{\infty})$ is Hamiltonian for $m\ge2$ 
-(respectively, admits a 2-walk, with only one vertex $Q_{\infty}$ visited at most twice, and all other vertices visited exactly once for $m=1$.)
-
-Let $G$ be a $(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph, for some $\epsilon>0$. The sequence of cliques $\{Q_i\}$, $m$ and $s$ are as defined in Lemma \ref{lm5}.
-
-If $s=0$ we have $Q=Q_0$, since $Q_{\infty}=\emptyset$. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
-Now let $s\geq 1$. Corollary~\ref{cor:2w} provides 
-a spanning path in $Q_{\infty}$, say $u_1\cdots u_{2s}$. 
-
-If $m\ge2$ then, 
-as each vertex in $Q_{\infty}$ is dominated by $Q_i$, for $1\le i\le m$, we
-can find $v\in Q_1$ and $w\in Q_m$ such that
-$u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path  $v\cdots w$ in $Q_0$.
-Joining it to $u_1\cdots u_{2s}$, we obtain a Hamiltonian cycle in $Q$.
- 
-It remains to consider {$m=1$}.
-If $u_1$ and $u_{2s}$ have two different neighbours in $Q_1$, say $u_1v_1, u_{2s}v_2\in E(G)$, where 
-$v_1, v_2\in Q_1$, then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. 
-Connecting the spanning path in $Q_{\infty}$ with the spanning path in $Q_1$, we get a Hamiltonian cycle in $Q$.
-
-If $u_1$ and $u_2$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, 
-then we can find a Hamiltonian cycle in $Q_1$ such that the two endpoints of the spanning path 
-in $Q_{\infty}$ are connected to $v_{\infty}$. This gives a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
-\qed
+Now, combine Lemma \ref{addtec} and Theorem \ref{addgen1}, we get Theorem \ref{thm2}.
 
 
 Finally, let us state two conjectures.
