@@ -421,6 +421,7 @@ in the latter.
 It remains to consider the case $\omega(G)\ge3$.
 Recall the sequence of cliques $\{Q_i\}$, $m$ and $s$ as defined in Lemma \ref{lm5}.
 
+
 If $s=0$ we have $Q=Q_0$, since $Q_{\infty}=\emptyset$. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
 Now let $s\geq 1$. 
 Theorem \ref{thm1} (\ref{thm1}.\ref{i54}) provides 
@@ -431,7 +432,11 @@ as each vertex in $Q_{\infty}$ is dominated by $Q_i$, for $1\le i\le m$, we
 can find $v\in Q_1$ and $w\in Q_m$ such that
 $u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path  $v\cdots w$ in $Q_0$.
 Joining it to $\Pi$, we obtain a Hamiltonian cycle in $Q$.
- 
+
+We have just proved the following.
+\begin{lemma}\label{lem:HamQ}
+If $s=0$ or $m\geq 2$ then $Q$ is Hamiltonian. \qed
+\end{lemma}
 It remains to consider {$m=1$}.
 If $u_1$ and $u_{2s}$ have two different neighbours $v_1$ and $v_2$ in $Q_1$
 then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. 
@@ -498,7 +503,8 @@ Then $2*E'$ and the edges from the 2-walk in $Q$ form a $k$-walk in $G$.
 \end{proof}
 
 
-Combining Lemma \ref{addtec} and Theorem \ref{addgen1}, we get Theorem \ref{thm2}.
+Combining Lemmas \ref{addtec} and \ref{lem:HamQ}, and Theorem \ref{addgen1},
+we obtain Theorems \ref{opt} and \ref{thm2}.
 
 
 Finally, let us state two conjectures.
@@ -510,6 +516,9 @@ Each $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. 
 \begin{conjecture}
 Every 2-tough $2K_2$-free graph with at least 3 vertices is Hamiltonian.
 \end{conjecture}
+
+\subsection*{Acknowledgements.}
+Research supported by Singapore MOE Tier 2 Grant \\ MOE2011-T2-1-090 (ARC 19/11).
 
 \bibliography{reftough}
 \bibliographystyle{plain}
