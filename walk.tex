@@ -26,8 +26,8 @@
 \title{On $k$-walks in $2K_2$-free graphs}
 \begin{abstract}
 We show that for any $\epsilon>0$ every $(\frac{1}{k-1}+\epsilon)$-tough
-$2K_2$-free graph admits a $k$-walk, making a step towards proving a
-long-standing conjecture from \cite{jackson1990k}. The proof uses a
+$2K_2$-free graph admits a $k$-walk, proving, for this class of graphs, a
+long-standing conjecture due to Jackson and Wormald (1990). The proof uses a
 decomposition of a $2K_2$-free graph into a coclique and an ``almost Hamiltonian''
 induced subgraph, which might be of independent interest.
 \end{abstract}
@@ -35,25 +35,16 @@ induced subgraph, which might be of independent interest.
 \maketitle
 
 \section{Introduction}
-
-Let  $\ncc(G)$ denote the number of connected components of a graph $G$ with vertex set $V:=V(G)$ and edge set $E:=E(G)$. For $S\subset V$, let $G-S$ denote the subgraph of $G$ induced on $V-S$.
-%\begin{definition}
-$G$ is called $\beta$-{\em tough},
-for a real $\beta>0$, if $\ncc(G-S)>1$ implies $|S|\ge \beta\cdot \ncc(G-S)$ 
-for each $S\subset V$.
-%\end{definition}
-
-That is, a $\beta$-tough 
-$G$ cannot be split into $p$ (with $p>1$) components by removing less than
-$p\beta$ vertices.  
+A graph $G$ is called $\beta$-{\em tough}, for a real $\beta>0$, if for any $p\geq 2$ it
+cannot be split into $p$ components by removing less than $p\beta$ vertices.  
 This concept, a measure of graph connectivity and ``resilience'' under vertex subsets removal,
 was introduced in 1973 by V. Chv\'{a}tal 
 while studying   Hamiltonicity of graphs. For a survey of results on graph toughness till 2006
-cf. \cite{MR2221006}. Our graph-theoretic notation is mostly from \cite{bomu08}.
+cf. \cite{MR2221006}.
 
 Let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
-A $k$-{\em walk} is a spanning subgraph $W$ of $(2k)*G$, with each vertex of even degree at 
-most $2k$. % (the evenness says that $W$ is Eulerian). 
+A $k$-{\em walk} is a spanning subgraph $W$ of $(2k)*G$, such that each vertex of $W$ 
+has even degree at most $2k$. % (the evenness says that $W$ is Eulerian). 
 In particular a graph has a 1-walk if and only if it is $K_2$ (i.e. one edge) or Hamiltonian.
 In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that for any integer $k\ge2$ a
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk.
@@ -61,17 +52,17 @@ $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk.
 
 In this paper, we prove that this conjecture is ``almost'' true, under the
 assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
-copy of $2K_2$, i.e. the disjoint union of two edges.  Here by ``almost'' we
-mean that we need to replace $\frac{1}{k-1}$-tough by
-$(\frac{1}{k-1}+\epsilon)$-tough, with $\epsilon>0$ arbitrarily small.  In fact
+copy of the disjoint union of two edges.  Here by ``almost'' we
+mean that we need to replace $\frac{1}{k-1}$ by
+$\frac{1}{k-1}+\epsilon$, with $\epsilon>0$ arbitrarily small.  In fact
 $\epsilon$ can be set to 0 for most $2K_2$-free graphs, and the outcome of
 Theorem~\ref{thm2} will remain true, cf. Theorem~\ref{opt} below for details.
 \begin{theorem}\label{thm2} 
 For any $\epsilon>0$, and integer $k\ge2$, every
-$(\frac{1}{k-1}+\epsilon)$-tough $2K_2$-free graph admits a $k$-walk.
+$\left(\frac{1}{k-1}+\epsilon\right)$-tough $2K_2$-free graph admits a $k$-walk.
 \end{theorem}
 
-If we let the toughness value $\frac{1}{k-1}+\epsilon$ to increase to 
+If we let the toughness value $\frac{1}{k-1}+\epsilon$ increase to 
 $\frac{1}{k-2}$ then
 one does not need $2K_2$-freeness. Indeed, the following holds.
 \begin{theorem}\cite{jackson1990k}\label{cthm1}
@@ -100,8 +91,8 @@ Our Theorem~\ref{thm2} was inspired by this result.
 However, our approach is technically quite different. 
 As the construction relies on finding maximum cliques in
 $2K_2$-free graphs, and this is known to be NP-hard, 
-unlike \cite{broersma2014toughness}, we cannot 
-make unconditional algorithmic conclusions about the problem at hand.
+unlike \cite{broersma2014toughness}, it does not yield an 
+unconditional algorithmic solution of the problem at hand.
 By looking at the procedures involved in the proof of Theorem~\ref{thm2}, 
 one can derive
 \begin{corollary}\label{alg}
@@ -117,11 +108,19 @@ induced subgraph $F$ admits a 2-walk having at most one vertex visited twice by
 the walk, and the induced subgraph $D$ is a coclique.
 \end{theorem}
 
-The terminology just used is standard; we include the following for the sake of
-clarity.  A {\em clique} means a complete subgraph, a {\em coclique} means a
-induced subgraph containing no edge. For $A=\{v_1,\ldots,v_m\}\subseteq V$, a
-subgraph $P$ in $G$ with $V(P)=A$ and
-$E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$ is called a {\em path}.  For any
+The terminology we use is  mostly from \cite{bomu08}; we include the following for the sake of
+clarity.  
+%Let  $\ncc(G)$ denote the number of connected components of a graph $G$ with
+%vertex set $V:=V(G)$ and edge set $E:=E(G)$. For $S\subset V$, let $G-S$ denote
+%the subgraph of $G$ induced on $V-S$. A graph
+%$G$ is called $\beta$-{\em tough}, for a real $\beta>0$, if $\ncc(G-S)>1$
+%implies $|S|\ge \beta\cdot \ncc(G-S)$ for each $S\subset V$.
+A {\em clique} means a complete subgraph, a {\em coclique} means a
+induced subgraph containing no edge. 
+%For $A=\{v_1,\ldots,v_m\}\subseteq V$, a
+%subgraph $P$ in $G$ with $V(P)=A$ and
+%$E(P)=\{v_1v_2,v_2v_3,\ldots,v_{m-1}v_m\}$ is called a {\em path}.  
+For any
 $v\in V$, let $v^\perp:=v^{\perp_G}$ denote the union of $\{v\}$ and the set of
 neighbours of $v$ in $G$.  More generally, for $A\subset V$, let
 $A^\perp:=A^{\perp_G}$ denote the set of vertices {\em dominated} by $A$, i.e.
@@ -136,9 +135,9 @@ An induced subgraph $H$ of $G$ with $B=V(H)$ (resp. $B\subset V$) is said to be 
 an induced subgraph $F$ (we allow $F=G$ here) 
 if for any $v_1v_2\in E(F)$, we have $v_1\in B^\perp$ or $v_2\in B^\perp$.
 Further, let $\omega(G)$ denote the maximum size of cliques in $G$.
-A {\em blow-up} in $G$ is the procedure of replacing $v\in V(G)$ 
+A {\em blow-up} of $G$ is the result of replacing $v\in V(G)$ 
 by a number of vertices $u_1,\dots,u_r$ so that $u_i^\perp-\{u_i\}=v^\perp-\{v\}$
-for all $i$.
+for all $1\leq i\leq r$.
 
 
 The following properties of $2K_2$-free graphs are very useful for the proof of Theorem \ref{addgen1}.
@@ -149,8 +148,8 @@ $G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
 \begin{lemma}\label{lm1}{\cite[Theorem 2]{chung1990maximum}, \cite[Lemma 2]{broersma2014toughness}}
 Let $G$ be a connected $2K_2$-free graph with $\omega(G)=2$. Then one of the following holds. 
 \begin{enumerate}
-\item $G$ is a bipartite.
-\item $G$ can be obtained from the 5-gon by repeated blow-ups. \qed
+\item $G$ is bipartite.
+\item $G$ can be obtained from the 5-cycle by repeated blow-ups. \qed
 \end{enumerate}
 \end{lemma}
 
@@ -512,7 +511,7 @@ we obtain Theorems \ref{opt} and \ref{thm2}.
 
 Finally, let us state two conjectures.
 \begin{conjecture}
-Each $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
+Every $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
 \end{conjecture}
 
 
