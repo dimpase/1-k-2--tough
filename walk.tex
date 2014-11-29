@@ -97,13 +97,19 @@ every 4-tough graph has a 2-walk.
 Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin proved that 
 every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
 Our Theorem~\ref{thm2} was inspired by this result.  
-However, our
-approach is technically quite different, and, unlike \cite{broersma2014toughness}, we do not seem to be
-able to make any good algorithmic conclusions about the problem at hand.
-Indeed, the construction relies on finding maximum cliques in
-$2K_2$-free graphs, and this is known to be NP-hard. 
-To prove Theorem~\ref{thm2}, we first prove
+However, our approach is technically quite different. 
+As the construction relies on finding maximum cliques in
+$2K_2$-free graphs, and this is known to be NP-hard, 
+unlike \cite{broersma2014toughness}, we cannot 
+make unconditional algorithmic conclusions about the problem at hand.
+By looking at the procedures involved in the proof of Theorem~\ref{thm2}, 
+one can derive
+\begin{corollary}\label{alg}
+Under the conditions of Theorem~\ref{thm2}, a $k$-walk in $G$ can be found in
+time polynomial in $|V(G)|$ and singly exponential in $\omega(G)$. \qed
+\end{corollary}
 
+To prove Theorem~\ref{thm2}, we first prove
 \begin{theorem}\label{addgen1} 
 The  vertex set $V(G)$ of any $2K_2$-free graph $G$
 can be partitioned into two parts, $V(F)$ and $V(D)$, where the
@@ -125,11 +131,14 @@ about  dominating induced subgraphs $H$ of $G$, in the sense of $V(H)$ being
 dominating, respectively a subset of vertices (e.g. set of vertices of a
 subgraph) being dominated by $H$, etc.
 
-\section{Properties of $2K_2$-free Graphs and Proof of Theorem \ref{addgen1}}
+\section{Properties of $2K_2$-free graphs and proof of Theorem \ref{addgen1}}
 An induced subgraph $H$ of $G$ with $B=V(H)$ (resp. $B\subset V$) is said to be {\em weakly-dominating}
 an induced subgraph $F$ (we allow $F=G$ here) 
 if for any $v_1v_2\in E(F)$, we have $v_1\in B^\perp$ or $v_2\in B^\perp$.
-Further, let $\omega(G)$ denote the maximum size of cliques in $G$. 
+Further, let $\omega(G)$ denote the maximum size of cliques in $G$.
+A {\em blow-up} in $G$ is the procedure of replacing $v\in V(G)$ 
+by a number of vertices $u_1,\dots,u_r$ so that $u_i^\perp-\{u_i\}=v^\perp-\{v\}$
+for all $i$.
 
 
 The following properties of $2K_2$-free graphs are very useful for the proof of Theorem \ref{addgen1}.
@@ -141,7 +150,7 @@ $G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
 Let $G$ be a connected $2K_2$-free graph with $\omega(G)=2$. Then one of the following holds. 
 \begin{enumerate}
 \item $G$ is a bipartite.
-\item $G$ can be obtained from a five-circle by vertex multiplication. \qed
+\item $G$ can be obtained from the 5-gon by repeated blow-ups. \qed
 \end{enumerate}
 \end{lemma}
 
@@ -341,17 +350,11 @@ Denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$
 \end{definition}
 Note that obviously $V(G)=V(Q)\cup V(D)$.
 
-\begin{lemma}\label{lmDcoclique}
-$D$ is a coclique in $G$.
-\end{lemma}
-\begin{proof}
-By Lemma~\ref{lm5}, there are no edges between $D_i$ and $G_i$. By construction, 
-$D_j$, for $j>i$, lies in $G_i$.
-\end{proof}
-
 \subsection{Proof of Theorem \ref{thm1}}
-Note that Theorem \ref{thm4} applied to $Q_\infty$ implies (\ref{thm1}.\ref{i53}) and  (\ref{thm1}.\ref{i54}). 
-By Lemma \ref{lmDcoclique} and Theorem \ref{thm4}, we only need to prove that $Q_0$ is Hamiltonian.
+Note that Theorem \ref{thm4} applied to $Q_\infty$ implies (\ref{thm1}.\ref{i53}) and  (\ref{thm1}.\ref{i54}).
+By Lemma~\ref{lm5}, there are no edges between $D_i$ and $G_i$. By construction, 
+$D_j$, for $j>i$, lies in $G_i$. Thus $D$ is a coclique.
+It remains to prove that $Q_0$ is Hamiltonian.
 
 Let $\{Q_i\}$ and $m$ be as defined in Lemma \ref{lm5}.
 \begin{lemma}\label{lem:twoQ}
@@ -446,7 +449,7 @@ then a Hamiltonian cycle in $Q_1$
 connected to $\Pi$ by $v_{\infty}$ gives a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
 \qed
 
-\section{The Proof of Theorem \ref{thm2}}
+\section{Proof of Theorem \ref{thm2}}
 
 
 
@@ -521,5 +524,6 @@ Every 2-tough $2K_2$-free graph with at least 3 vertices is Hamiltonian.
 Research supported by Singapore MOE Tier 2 Grant \\ MOE2011-T2-1-090 (ARC 19/11).
 
 \bibliography{reftough}
-\bibliographystyle{plain}
+\bibliographystyle{abbrv}
+%\bibliographystyle{plain}
 \end{document}
