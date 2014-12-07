@@ -152,7 +152,7 @@ Let $G$ be a connected $2K_2$-free graph with $\omega(G)=2$. Then one of the fol
 First we look at the case of  $\omega(G)=2$ in Theorem \ref{addgen1}.
 \begin{theorem}\label{thm4}
 Let $H$ be a connected $2K_2$-free graph with $\omega(H)=2$. 
-Then $H$ admits a decomposition into a connected induced subgraph $F$ and a coclique $\Delta$, with $F$ admitting 
+Then $V(H)$ admits a decomposition into two parts $V(F)$ and $V(\Delta)$. The induced subgraph $\Delta$ is a coclique, and the induced subgraph $F$ admitting 
 a spanning path, i.e. a path visiting each vertex exactly once, and 
 a 2-walk with at most one vertex visited more than once.
 \end{theorem}
@@ -287,9 +287,30 @@ $Q_0$, $Q_\infty$, and $D$ the following holds:
 \end{theorem}
 
 To prove the latter, we will use the following.
-\begin{lemma}\label{lm2}{\cite[Theorem 3]{chung1990maximum}}
-If $G$ is $2K_2$-free with $\omega(G)\ge3$, then $G$ has a dominating clique of size $\omega(G)$. \qed
-\end{lemma}
+\begin{theorem}\label{lm2}
+If $G$ is $2K_2$-free with $\omega(G)\ge3$, then $G$ has a maximal (but not necessarily maximum) dominating clique $K$ of size at least 3, i.e. $|K|\ge3$. \qed
+\end{theorem}
+
+\begin{proof}
+First, find a clique of size at least 3, i.e. a triangle say $x_1x_2x_3$. Then enlarge it to a maximal clique in $G$, by absorbing vertices adjacent to all vertices in the old clique. Denote such a maximal clique by $K=\{x_1,x_2,\ldots,x_p\}$, and $t=|V(G)-K^{\perp}|$. If $t=0$, then $K$ is dominating in $G$, so we may assume $t>0$. Let $Z=V(G)-K^{\perp}$. Because $p\ge3$, we have $Z$ is a coclique. For each $i=1,2,\ldots,p$, let $Y_i=\{y\in K^{\perp}|~yx_j\in E(G)~\text{if and only if}~j=i\}$. Since $p\ge3$, each $Y_i$ is a coclique.
+
+Choose an arbitrary vertex $z_0\in Z$ and let $y_0\in K^{\perp}-K$ be any neighbor of $z_0$. Since $G$ is $2K_2$-free and $p$ is maximal, there is a unique integer $i\le p$ so that $y_0x_j\in E(G)$ if and only if $i\neq j$. Therefore $K'=(K-\{x_i\})\cup\{y_0\}$ is a clique of size $p$. Furthermore, any vertex dominated by $K$ is dominated by $K'$ except possibly those vertices in the set $Y'_i=\{y\in Y_i|~y_0y\not\in E(G)\}$.
+
+Now, let us look at this set.
+\begin{enumerate}
+\item if $Y'_i=\emptyset$, then $(K')^{\perp}$ is strictly larger than $K^{\perp}$. We can apply to $K'$ all the things we have done on $K$ and rename $K'$ by $K$, until impossible.
+\item if $Y'_i\neq\emptyset$, let $y_1\in Y'_i$. Then the edges $z_0y_0$ and $x_iy_1$ force $z_0y_1\in E(G)$. Choose distinct $j,k\in\{1,2,\ldots,p\}-\{i\}$. Then the edges $z_0y_1$ and $x_jx_k$ are independent edges. Contradiction.
+\end{enumerate}
+The contradiction shows that in the final step, $Z=V(G)-K^{\perp}=\emptyset$.
+\end{proof}
+
+\begin{remark}
+In fact, Theorem \ref{lm2} is quite similar to \cite[Theorem 3]{chung1990maximum}, and our proof is almost the same as it, we include this proof only for sake of self-containing.
+\qed
+\end{remark}
+
+
+
 
 \begin{lemma}\label{lm3}{\cite[Observation 1]{broersma2014toughness}}
 A graph $G=(V,E)$ is $2K_2$-free if and only if for every $A\subset V$, at most one component of the graph $G-A$ contains edges. \qed
@@ -303,7 +324,7 @@ and connected subgraphs $G_{i}:=(G_{i-1}-Q_{i})-D_{i}$, with
 no edges between $D_i$ and $G_i$,  for
 $i=1,\ldots,m+s$, where
 $|Q_i|\ge3$ for $1\le i\le m$ and $|Q_i|=2$ for $i=m+1,\ldots,m+s$.
-Moreover, $|Q_i|\ge|Q_{i+1}|$ for any $i$, $Q_i$ is a maximum
+Moreover, $Q_i$ is a maximal
 (respectively, weakly-) dominating
 clique in $G_{i-1}$ for $1\leq i\leq m$ (respectively, for $i>m$).
 \end{lemma}
@@ -311,8 +332,8 @@ clique in $G_{i-1}$ for $1\leq i\leq m$ (respectively, for $i>m$).
 We construct the claimed sequences of $Q_i$, $D_i$, 
 and $G_i$ directly by induction, as follows. 
 We may assume that $G_i$ is $2K_2$-free.
-If $\omega(G_i)\ge3$ then by Lemma \ref{lm2}, it contains a 
-maximum dominating clique $Q_{i+1}$.
+If $\omega(G_i)\ge3$ then by Theorem \ref{lm2}, it contains a 
+maximal dominating clique $Q_{i+1}$.
 As any induced subgraph of a $2K_2$-free
 graph is also $2K_2$-free, $G_i-Q_{i+1}$ is also a $2K_2$-free graph.
 By Lemma \ref{lm3}, $G_i-Q_{i+1}$ is made of two parts, one is a coclique
@@ -379,7 +400,7 @@ has a Hamiltonian path joining any two vertices.\\
 If $m=2$, i.e. $V(Q_0)=V(Q_1)\cup V(Q_2)$, then by Lemma~\ref{lem:twoQ} 
 for a $ab\in E(Q_2)$
 we can find $cd\in E(Q_1)$ so that $ac,~bd\in E(G)$. 
-Note that we can assume $w\neq a$, $w\neq b$, as $|V(Q_s)|\geq 3$.
+Note that we can assume $w\neq a$, $w\neq b$, as $|V(Q_2)|\geq 3$.
 There exists a Hamiltonian path in  $Q_1$ (respectively in $Q_2$) 
 with endpoints $c$, $d$ (respectively $a$, $b$).
 These two paths and $ac$ and $bd$ form a Hamiltonian cycle.
