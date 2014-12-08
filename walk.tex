@@ -60,7 +60,9 @@ $\epsilon$ can be set to 0 for most $2K_2$-free graphs, and the outcome of
 Theorem~\ref{thm2} will remain true, cf. Theorem~\ref{opt} below for details.
 \begin{theorem}\label{thm2} 
 For any $\epsilon>0$, and integer $k\ge2$, every
-$\left(\frac{1}{k-1}+\epsilon\right)$-tough $2K_2$-free graph admits a $k$-walk.
+$\left(\frac{1}{k-1}+\epsilon\right)$-tough $2K_2$-free graph $G$
+admits a $k$-walk.
+Moreover, the latter can be found in time polynomial in $|V(G)|$.
 \end{theorem}
 
 If we let the toughness value $\frac{1}{k-1}+\epsilon$ increase to 
@@ -86,12 +88,6 @@ Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin 
 every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
 Our Theorem~\ref{thm2} was inspired by this result.  
 However, our approach is technically quite different. 
-By analysing the procedures involved in the proof of Theorem~\ref{thm2}, 
-we derive
-\begin{corollary}\label{alg}
-Under the conditions of Theorem~\ref{thm2}, a $k$-walk in $G$ can be found in
-time polynomial in $|V(G)|$. \qed
-\end{corollary}
 
 To prove Theorem~\ref{thm2}, we first prove
 \begin{theorem}\label{addgen1} 
@@ -262,7 +258,7 @@ Thus we have a 2-walk in $F$, where only $b$ is visited
 twice.
 
 Finally, we note that the only nontrivial algorithm we need is the one to find a maximum matching, and this is 
-well-known to be possible in polynomial time using Edmonds' algorithm, cf. e.g. \cite[Sect. 16.5]{bomu08}.
+well-known to be doable in polynomial time using Edmonds' algorithm, cf. e.g. \cite[Sect. 16.5]{bomu08}.
 \end{proof}
 
 To complete the proof of Theorem \ref{addgen1} in the general case
@@ -530,8 +526,16 @@ Then $2*E'$ and the edges from the 2-walk in $Q$ form a $k$-walk in $G$.
 
 
 Combining Lemmas \ref{addtec} and \ref{lem:HamQ}, and Theorem \ref{addgen1},
-we obtain Theorems \ref{opt} and \ref{thm2}.
+we obtain Theorem \ref{opt}.
 
+Note that the only nontrivial algorithmic part of the proof of Theorem
+\ref{opt}  not already covered is the construction of a maximum matching in
+certain blowup (of size polynomially bounded by $|V(G)|$) of a bipartite
+subgraph of $G$, and this is well-known to be doable in time polynomial in
+$|V(G)|$, cf. e.g. \cite[Sect. 16]{bomu08}.  This completes the proof of
+Theorem \ref{thm2}.
+
+\medskip
 
 Finally, let us state two conjectures.
 \begin{conjecture}
