@@ -79,7 +79,7 @@ a famous conjecture of V.~Chv\'{a}tal \cite{chvatal1973tough} claims
 that there exists a constant $\beta$ such that every
 $\beta$-tough graph is Hamiltonian.  
 Towards this, 
-Ellingham and Zha \cite{ellingham2000toughness} proved that
+M.~Ellingham and X.~Zha \cite{ellingham2000toughness} proved that
 every 4-tough graph has a 2-walk.
 
 Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin proved that 
@@ -144,7 +144,7 @@ First we look at the case of  $\omega(G)=2$ in Theorem \ref{addgen1}.
 Let $H$ be a connected $2K_2$-free graph with $\omega(H)=2$. 
 Then $V(H)$ admits a decomposition into two parts $V(F)$ and $V(\Delta)$, so that the induced subgraph $\Delta$ is a coclique, and the induced subgraph $F$ admits
 a spanning path, i.e. a path visiting each vertex exactly once, and 
-a 2-walk with at most one vertex visited more than once.
+a 2-walk with at most one vertex visited more than once. Both the path and the 2-walk can be found in time polynomial in $|V(G)|$.
 \end{theorem}
 
 
@@ -260,6 +260,9 @@ edge of this path by $ab$ and the last vertex of it
 by $c$. As $c\in V_0$ and $b\in V_1$, they are adjacent.
 Thus we have a 2-walk in $F$, where only $b$ is visited
 twice.
+
+Finally, we note that the only nontrivial algorithm we need is the one to find a maximum matching, and this is 
+well-known to be possible in polynomial time using Edmonds' algorithm, cf. e.g. \cite[Sect. 16.5]{bomu08}.
 \end{proof}
 
 To complete the proof of Theorem \ref{addgen1} in the general case
@@ -468,12 +471,11 @@ Connecting the latter to $\Pi$, we get a Hamiltonian cycle in $Q$. \\
 If $u_1$ and $u_{2s}$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, 
 then a Hamiltonian cycle in $Q_1$
 connected to $\Pi$ by $v_{\infty}$ gives a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
+
+Finally, we note all the constructions we needed can be done in time polynomial in $|V(G)|$.
 \qed
 
 \section{Proof of Theorem \ref{thm2}}
-
-
-
 The $(\frac{1}{k-1}+\epsilon)$-toughness condition with $\epsilon>0$ 
 is only used for the dominating cliques sequence $\{Q_i\}$ 
 and parameters $m$ and $s$, as defined in Lemma \ref{lm5},
