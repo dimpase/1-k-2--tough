@@ -25,15 +25,11 @@
 
 \title{On $k$-walks in $2K_2$-free graphs}
 \begin{abstract}
-We show that for any $\epsilon>0$ every $(\frac{1}{k-1}+\epsilon)$-tough
+We show that every $\frac{1}{k-1}$-tough
 $2K_2$-free graph admits a $k$-walk, and it can be found in polynomial time. 
 For this class of graphs, this proves a
-long-standing conjecture due to Jackson and Wormald (1990). The proof uses a
-decomposition of a $2K_2$-free graph into a coclique and an ``almost Hamiltonian''
-induced subgraph, which might be of independent interest.
-
-(ADDENDUM): Possibly using Veldman's results from \cite{veldman83}, this can be improved so that
-one can always take $\epsilon=0$.
+long-standing conjecture due to Jackson and Wormald (1990). The proof is based on a result by Veldman \cite{veldman83}.
+Additionally, we also get some similar results of some other graphs.
 \end{abstract}
 
 \maketitle
@@ -54,21 +50,17 @@ In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that for any i
 $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk.
 {For a survey of results on walks in graphs till 2005 cf. \cite{kouider2005connected}.}
 
-In this paper, we prove that this conjecture is ``almost'' true, under the
+In this paper, we prove that this conjecture is true, under the
 assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
-copy of the disjoint union of two edges.  Here by ``almost'' we
-mean that we need to replace $\frac{1}{k-1}$ by
-$\frac{1}{k-1}+\epsilon$, with $\epsilon>0$ arbitrarily small.  In fact
-$\epsilon$ can be set to 0 for most $2K_2$-free graphs, and the outcome of
-Theorem~\ref{thm2} will remain true, cf. Theorem~\ref{opt} below for details.
+copy of the disjoint union of two edges. 
 \begin{theorem}\label{thm2} 
-For any $\epsilon>0$, and integer $k\ge2$, every
-$\left(\frac{1}{k-1}+\epsilon\right)$-tough $2K_2$-free graph $G$
+For any integer $k\ge2$, every
+$\frac{1}{k-1}$-tough $2K_2$-free graph $G$
 admits a $k$-walk.
 Moreover, the latter can be found in time polynomial in $|V(G)|$.
 \end{theorem}
 
-If we let the toughness value $\frac{1}{k-1}+\epsilon$ increase to 
+If we let the toughness value $\frac{1}{k-1}$ increase to 
 $\frac{1}{k-2}$ then
 one does not need $2K_2$-freeness. Indeed, it is shown in 
 \cite{jackson1990k} that
@@ -94,11 +86,7 @@ However, our approach is technically quite different.
 
 To prove Theorem~\ref{thm2}, we first prove
 \begin{theorem}\label{addgen1} 
-The  vertex set $V(G)$ of any $2K_2$-free graph $G$
-can be partitioned into two parts, $V(F)$ and $V(D)$, where the
-induced subgraph $F$ admits a 2-walk having at most one vertex visited twice by
-the walk, and the induced subgraph $D$ is a coclique. Moreover, this
-partition and the 2-walk in $F$ can be found in time polynomial in $|V(G)|$.
+For any $2K_2$-free graph $G$, if $G$ is not a tree, then $G$ admits an edge-dominating cycle. And this edge-dominating cycle can be found in polynomial time in $|V(G)|$.
 \end{theorem}
 
 The terminology we use is  mostly from \cite{bomu08}; we include the following for the sake of
@@ -110,383 +98,56 @@ $v\in V$, let $v^\perp:=v^{\perp_G}$ denote the union of $\{v\}$ and the set of
 neighbours of $v$ in $G$.  More generally, for $A\subset V$, let
 $A^\perp:=A^{\perp_G}$ denote the set of vertices {\em dominated} by $A$, i.e.
 $A^\perp=\bigcup\limits_{y\in A}v^\perp$, and $A$ is said to be {\em
-dominating} if $A^\perp=V$.  It should also lead to no confusion when we talk
+dominating} if $A^\perp=V$.
+Moreover, if $A^{\perp}=V$ and the induced subgraph $V-A$ is a coclique, then we say $A$ is {\em edge-dominating}. 
+ 
+It should also lead to no confusion when we talk
 about  dominating induced subgraphs $H$ of $G$, in the sense of $V(H)$ being
 dominating, respectively a subset of vertices (e.g. set of vertices of a
 subgraph) being dominated by $H$, etc.
 
-\section{Properties of $2K_2$-free graphs and proof of Theorem \ref{addgen1}}
-An induced subgraph $H$ of $G$ with $B=V(H)$ (resp. $B\subset V$) is said to be {\em weakly-dominating}
-an induced subgraph $F$ (we allow $F=G$ here) 
-if for any $v_1v_2\in E(F)$, we have $v_1\in B^\perp$ or $v_2\in B^\perp$.
-Further, let $\omega(G)$ denote the maximum size of cliques in $G$.
-A {\em blow-up} of $G$ is the result of replacing $v\in V(G)$ 
-by a number of vertices $u_1,\dots,u_r$ so that $u_i^\perp-\{u_i\}=v^\perp-\{v\}$
-for all $1\leq i\leq r$.
+\section{Proof of Theorem \ref{addgen1}}
 
 
-The following properties of $2K_2$-free graphs are very useful for the proof of Theorem \ref{addgen1}.
-\begin{lemma}\label{trivial}
-$G$ is $2K_2$-free if and only if each edge in $G$ is weakly-dominating. \qed
-\end{lemma}
 
-\begin{lemma}\label{lm1}{\cite[Theorem 2]{chung1990maximum}, \cite[Lemma 2]{broersma2014toughness}}
-Let $G$ be a connected $2K_2$-free graph with $\omega(G)=2$. Then one of the following holds. 
+Because $G$ is not a tree, then it has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
+If $C$ is edge-dominating, then every thing is done. Now assume $C$ is not edge-dominating. Then, there must be some edge $v_1v_2$ (assume there are $t$ such edges), with neither $v_1$ nor $v_2$ is on $C$. 
+Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two neighbors on $C$. Otherwise, if there is at most one vertex on $C$ adjacent to $v_1$ or $v_2$, then a $2K_2$ will appear.
+
+Now, assume $x_1v_1\in E(G)$, 
 \begin{enumerate}
-\item $G$ is bipartite.
-\item $G$ can be obtained from the 5-cycle by repeated blow-ups. \qed
-\end{enumerate}
-\end{lemma}
-
-First we look at the case of  $\omega(G)=2$ in Theorem \ref{addgen1}.
-\begin{theorem}\label{thm4}
-Let $H$ be a connected $2K_2$-free graph with $\omega(H)=2$. 
-Then $V(H)$ admits a decomposition into two parts $V(F)$ and $V(\Delta)$, so that the induced subgraph $\Delta$ is a coclique, and the induced subgraph $F$ admits
-a spanning path, i.e. a path visiting each vertex exactly once, and 
-a 2-walk with at most one vertex visited more than once. Both the path and the 2-walk can be found in time polynomial in $|V(G)|$.
-\end{theorem}
-
-
-\begin{proof}
-Let $S:=\{S_i\mid 1\leq i\leq  \sigma\}$ be a maximum size matching in $H$.
-Denote by $F$ the subgraph spanned by $S$, and
-$S_{i}=v_{i}w_{i}$, with $v_i, w_i\in V(H)$, $1\leq i\leq \sigma$. 
-As $S$ is maximum, the complement $\Delta$ of $F$ in $H$ is a coclique.
-
-Let $F$ be bipartite, with the parts $\{v_{i}\mid 1\leq i\leq\sigma\}$ and 
-$\{w_{i}\mid i=1\leq i\leq\sigma\}$. 
-Denote by $F^t$ the induced subgraph of $F$ containing the first $t$ of the edges $S_i$.
-We shall prove by induction on $t$ that in $F^t$ there is a spanning path $v'_{1}w'_{1}v'_{2}\cdots v'_{t}w'_{t}$ and each $v'_{p}w'_{p}$ is 
-in $S$.
-
-If $t=1$ then $v_{1}w_{1}$ is the path we want. Now, we assume that $F^t$ admits a spanning path, namely $v'_{1}w'_{1}\cdots v'_{t}w'_{t}$, 
-with each $v'_{p}w'_{p}\in S$, and consider $F^{t+1}$.
-
-For the case $v'_{t}w_{t+1}\in E(G)$ 
-(resp. $v'_{1}w_{t+1}\in E(G)$)
-we get a spanning path 
-$v'_{1} w'_{1}\cdots w'_{t} v_{t+1} w_{t+1}$
-(resp. $v_{t+1} w_{t+2} v'_{1} w'_{1} v'_{2}\cdots w'_{t}$)
-in $F^{t+1}$.
-
-If $w'_{t}v_{t+1},v'_{1}w_{t+1}\not\in E(G)$, from the weak dominance
-we get $v'_{t}w_{t+1}\in E(G)$ and $w'_{1}v_{t+1}\in E(G)$. Now, let
-$q$ be the smallest subscript such that $v'_{q}w_{t+1}\in E(G)$. That
-means $v'_{q-1}w_{t+1}\not\in E(G)$. Again, by weak dominance,
-we get $w'_{q-1}v_{t+1}\in E(G)$. Thus we get a spanning path in
-$F^{t+1}$, namely $$v'_{1}\cdots
-w'_{q-1}v_{t+1}w_{t+1}v'_{q}\cdots w'_{t}.$$
-
-By induction, $F$ has a spanning path from $u_1\in V(F)$ to
-$u_{2\sigma}\in V(F)$. %, with all the edges in $S$ in the path.
-
-If $\sigma=1$ then $F$ admits a 1-walk,
-and we are done.
-
-Now we can assume $\sigma\geq 2$.
-If $u_1u_{2\sigma}\in E(F)$ then $F$ is
-Hamiltonian, and we are done. 
-If we have both $u_1$ and $u_{2\sigma}$ adjacent to non-intersecting edges in $E(H)-E(F)$, 
-then we have a contradiction, as $S$ is not maximum.
-If we have both $u_1$ and $u_{2\sigma}$ adjacent to  $u\in V(H)-V(F)$, 
-then we add $u$ to $F$ and remove it from $\Delta$, obtaining
-a Hamiltonian $F$.
-Thus we can assume that $u_1$ is not adjacent to  $V(H)-V(F)$, 
-while $u_{2\sigma}$ may be adjacent to  $V(H)-V(F)$. 
-
-
-Now we complete the case $\sigma=2$. 
-If there are no edges in $E(H)-E(F)$ adjacent to $u_4$, 
-we add $u_1$ and $u_4$ to $\Delta$ and remove them from $F$. 
-The resulting $F$ is an edge, and thus has a 1-walk.\\
-It remains, without loss in generality,
-to consider the case where there exists $u_5\in V(H)-V(F)$ so that
-$u_4u_5\in E(H)-E(F)$, while $u_1$ is not
-adjacent to $u_4$. As $u_1u_2$ weakly dominates $u_4u_5$, we have that $u_2$ must be 
-adjacent to $u_5$. 
-We set $F$ to be the subgraph induced by
-$u_2,\dots,u_5$, remove $u_5$ from $\Delta$, and add $u_1$ to $\Delta$; then $F$ is Hamiltonian, and we are done.
-
-To finish off the bipartite case it remains to consider $\sigma\geq 3$.
-As $u_1u_2$ weakly dominates $u_{2\sigma-1}u_{2\sigma}$, then $u_2u_{2\sigma-1}\in E(F)$, 
-otherwise $F$ is
-non-bipartite (for adjacent $u_2$ and $u_{2\sigma}$ or $u_1$ and $u_{2\sigma-1}$).
-As $u_1$ is not adjacent to   $V(H)-V(F)$, we add it to $\Delta$ and remove from $F$,
-obtaining $F$ with a 2-walk where only $u_{2\sigma-1}$ is visited twice. 
-
-
-\medskip
-
-It remains to consider a non-bipartite $F$. By Lemma \ref{lm1},
-$F$ can be obtained from a 5-circle by ``vertex multiplication''. We
-denote $V(F)=V_0\cup \dots \cup V_4$, and
-$E(F)=E_0\cup \dots \cup E_4$, where each $V_i$ is an
-independent set, and  for any $a\in V_i$ and $b\in V_{i+1}$ we have $ab\in E_i$. 
-Here and below we always take the indices of $V_i$, $E_i$, etc. modulo $5$.
-Let $S=\{v_{j,1}v_{j,2}\mid 1\leq j\leq \sigma\}$ be a maximum matching in $F$, and $E'_i:=E_i\cap S$.
-Obviously,
-$|V_i|=|E'_{i-1}|+|E'_i|$. Note $|V_i|>0$ for $0\leq i\leq 4$, otherwise
-$F$ is bipartite. Thus $|E'_i|+|E'_{i-1}|>0$ for any $0\leq i\leq 4$. 
-Without loss of generality, we can assume $|E'_0||E'_2||E'_4|>0$.
-Note that $E'_1$ and $E'_3$ can be empty.
-
-$V_i$ is partitioned into
-$V_i^-:= V_i\cap V(E'_{i-1})$ and 
-$V_i^+:= V_i\cap V(E'_{i})$. For each $\Sigma:=E'_i\neq\emptyset$ there is
-a path $\Pi_i$ connecting its vertices in $V_i$ and in $V_{i+1}$, 
-as follows: $u_1 w_1 u_2\dots u_{|\Sigma|}w_{|\Sigma|}$, with 
-$u_k\in V_i^+$ and $w_k\in V_{i+1}^-$.%\footnote{If we wish we can choose $u_k w_k$ to be
-%a $Q_{m+j}$.} 
-Note that there is an edge joining the last vertex of $\Pi_i$ and
-the first vertex of $\Pi_{i+2}$. Thus it makes sense to talk about the path
-$\Pi_i\Pi_{i+2}$, which joins $V_i^+$, $V_{i+1}^-$, $V_{i+2}^+$ and
-$V_{i+3}^-$.
-
-In the case of both $E'_1$ and $E'_3$ nonempty, we observe that 
-$\Pi_0\Pi_2\Pi_4\Pi_1\Pi_3$ is a Hamiltonian cycle, as the end of
-$\Pi_3$ is adjacent to the beginning of $\Pi_0$. 
-If $E'_3=\emptyset$  
-we instead use the path 
-$\Pi_4\Pi_1\overline{\Pi}_2\overline{\Pi}_0$, where $\overline{\Pi}_\alpha$
-denotes $\Pi_\alpha$ taken backwards, to obtain a Hamiltonian
-cycle, using the fact that the beginnings of $\Pi_0$ and $\Pi_4$ are
-adjacent.
-
-If $E'_1\cup E'_3=\emptyset$ 
-we can take the Hamiltonian path $\Pi_0\Pi_2\Pi_4$, 
-which begins and ends at $V_0$. Denote the first
-edge of this path by $ab$ and the last vertex of it 
-by $c$. As $c\in V_0$ and $b\in V_1$, they are adjacent.
-Thus we have a 2-walk in $F$, where only $b$ is visited
-twice.
-
-Finally, we note that the only nontrivial algorithm we need is the one to find a maximum matching, and this is 
-well-known to be doable in polynomial time using Edmonds' algorithm, cf. e.g. \cite[Sect. 16.5]{bomu08}.
-\end{proof}
-
-To complete the proof of Theorem \ref{addgen1} in the general case
-we will use the following decomposition of $V(G)$.
-\begin{theorem}\label{thm1}
-Let $G$ be a connected $2K_2$-free graph. Then $V(G)$ 
-can be partitioned into $V(Q_0)$, $V(Q_{\infty})$ and $V(D)$ (some of these parts possibly empty), so that for the corresponding induced subgraphs
-$Q_0$, $Q_\infty$, and $D$ the following holds: 
-\begin{enumerate}[(\ref{thm1}.1)]
-\item $Q_0$ is dominating in $G$ and Hamiltonian, \label{i51}
-\item $D$ is a coclique,\label{i52}
-\item $Q_{\infty}$ admits a spanning 2-walk with at most one vertex visited more than once, \label{i53}
-\item $Q_{\infty}$ admits a spanning path (a.k.a. Hamiltonian path).\label{i54}
-\end{enumerate}
-\end{theorem}
-
-To prove the latter, by giving an (efficient) algorithm, we use the following theorem, which is an
-efficient version of \cite[Theorem 3]{chung1990maximum}.
-\begin{theorem}\label{lm2}
-If $G$ is $2K_2$-free with $\omega(G)\ge3$, then a maximal (but not necessarily maximum) dominating clique $K$ in $G$ of size at least 3
-can be computed in polynomial time.
-\end{theorem}
-
-\begin{proof}
-First, find a clique of size 3,  and enlarge it to a maximal clique $K=\{x_1,x_2,\ldots,x_p\}$ in $G$, by 
-the greedy procedure.
-Let $Z:=Z(K):=V(G)-K^{\perp}$. 
-If $Z=\emptyset$, then $K$ is dominating, and we are done. So we may assume $Z\neq\emptyset$.
-Now we describe an iteration that either produces a clique of size bigger than $p$, or
-a clique $K'$ of size $p$ with $|Z(K')|<|Z(K)|$.
-
-As $p\ge2$, we have that $Z$ is a coclique. 
-For each $1\leq i\leq p$, let 
-$Y_i=K^\perp - \cup_{x\in K-\{x_i\}} x^\perp$.
-Note that $Y_i\cap Y_j=\emptyset$ for $i\neq j$. 
-Since $p\ge3$, each $Y_i$ is a coclique, due to $2K_2$-freeness.
- 
-Choose an arbitrary $z_0\in Z$ and let $y_0\in K^{\perp}-K$ be a neighbour of
-$z_0$. Since $G$ is $2K_2$-free and $p$ is maximal, $y_0\in Y_i$ for
-some $i$.  Therefore
-$K'=(K-\{x_i\})\cup\{y_0\}$ is a clique of size $p$. 
-If $K'$ is not maximal we obtain a clique stricly larger than $K$.
-
-Any vertex dominated by $K$ is dominated by $K'$, except these in
-$Y':= Y_i-y_0^\perp$. If $Y'=\emptyset$ then $|Z(K')|<|Z(K)|$, 
-as $K'$ dominates all the vertices that are dominated by $K$, 
-as well as $z_0$.
-
-Otherwise, let $y_1\in Y'$. Then the edges $z_0y_0$ and $x_iy_1$ force $z_0y_1\in E(G)$, by $2K_2$-freeness. 
-As $p\geq 3$, there exist $x_j, x_k\in K\cap K'$, and 
-$z_0y_1$ and $x_jx_k$ form $2K_2$,  contradiction, completing the description of the iteration.
-
-We need to repeat the iteration no more than $n$ times to get a dominating clique, and each iteration 
-obviously runs in polynomial time.
-\end{proof}
-
-
-\begin{lemma}\label{lm3}{\cite[Observation 1]{broersma2014toughness}}
-A graph $G=(V,E)$ is $2K_2$-free if and only if for every $A\subset V$, at most one component of the graph $G-A$ contains edges. \qed
-\end{lemma}
-
-\begin{lemma}\label{lm5}
-In a $2K_2$-free graph $G=:G_0$, there exists a sequence of cliques
-$Q_i\subseteq G_{i-1}$ of size at least $2$, cocliques $D_i\subseteq G_{i-1}$
-with $V(Q_i)\cap V(D_i)=\emptyset$,  
-and connected subgraphs $G_{i}:=(G_{i-1}-Q_{i})-D_{i}$, with
-no edges between $D_i$ and $G_i$,  for
-$i=1,\ldots,m+s$, where
-$|Q_i|\ge3$ for $1\le i\le m$ and $|Q_i|=2$ for $i=m+1,\ldots,m+s$.
-Moreover, $Q_i$ is a maximal
-(respectively, weakly-) dominating
-clique in $G_{i-1}$ for $1\leq i\leq m$ (respectively, for $i>m$).
-\end{lemma}
-\begin{proof}
-We construct the claimed sequences of $Q_i$, $D_i$, 
-and $G_i$ directly by induction, as follows. 
-We may assume that $G_i$ is $2K_2$-free.
-If $\omega(G_i)\ge3$ then by Theorem \ref{lm2}, it contains a 
-maximal dominating clique $Q_{i+1}$.
-As any induced subgraph of a $2K_2$-free
-graph is also $2K_2$-free, $G_i-Q_{i+1}$ is also a $2K_2$-free graph.
-By Lemma \ref{lm3}, $G_i-Q_{i+1}$ is made of two parts, one is a coclique
-(possibly empty) $D_{i+1}$, and the other is a connected
-component (either empty or with a least two vertices) $G_{i+1}$, which is also
-$2K_2$-free (again, as an induced subgraph of a $2K_2$-free graph).
-Thus from $G_i$ we have constructed $Q_{i+1}$, $D_{i+1}$, and $G_{i+1}$
-with the  claimed properties.
-
-We repeat this step until $\omega(G_i)=2$ (or $G_i=\emptyset$).
-Thus $i=m$ at the end of this loop.
-Applying Theorem~\ref{thm4} to $G_m$, we obtain
-a connected subgraph $F$.% and a coclique $\Delta$.
-
-Select a maximum matching $Q_{m+1},\dots, Q_{m+s}$ in $F$
-and use it to complete the sequences of $D_i$ and $G_i$. 
-\end{proof}
-
-
-\begin{definition}\label{lm6}
-The vertex set of a $2K_2$-free graph $G$ can be divided into three disjoint, 
-possibly empty, parts:
+\item if $x_2v_1\in E(G)$, then $C'=x_1v_1x_2x_3\cdots x_kx_1$ is a longer cycle,
+\item if $x_2v_2\in E(G)$, then $x_1v_1v_2x_2x_3\cdots x_kx_1$ is a longer cycle, 
+\item if $x_2v_1,x_2v_2\not\in E(G)$, then apply the $2K_2$-free property to $v_1v_2$ and $x_2x_3$, we get either $x_3v_1\in E(G)$ or $x_3v_2\in E(G)$.
 \begin{enumerate}
-\item $V(Q_0)=\cup_{i=1,\ldots,m}V(Q_i).$\label{Vq0}
-\item $V(Q_{\infty})=\cup_{i=m+1,\ldots,m+s}V(Q_i).$\label{Vqinfty}
-\item $V(D)=\cup_{i=1,\ldots,m+s}V(D_i)$\label{Vd}
+\item if $x_3v_2\in E(G)$, then $C'=x_1v_1v_2x_3\cdots x_kx_1$ is a longer cycle,
+\item if $x_3x_2\not\in E(G)$, then $x_3v_1\in E(G)$.
+\begin{enumerate}
+\item if $x_2$ is adjacent to no vertex outside $C$, then we use $C'=x_1v_1x_3\cdots x_kx_1$ to instead $C$. We know that $C$ and $C'$ have the same length, but $C'$ dominates all the edges who are dominated by $C$, and $C'$ also dominates $v_1v_2$, who is not dominated by $C$. So $t$ becomes smaller.
+\item if $x_2$ is adjacent to some vertices outside $C$, say $z$, for example.
+
+Recall that $x_2$ is adjacent to neither $v_1$ nor $v_2$, then $z$ must be adjacent to either $v_1$ or $v_2$. If $zv_1\in E(G)$, then $C'=x_1v_1zx_2x_3\cdots x_kx_1$ is a longer cycle.
+If $zv_2\in E(G)$, then $C'=x_1v_1v_2zx_2x_3\cdots x_kx_1$ is a longer cycle.
 \end{enumerate}
-Here, $Q_0$ is the induced subgraph of $G$ on $V(Q_0)$, $Q_{\infty}$ is the induced subgraph of $G$ on $V(Q_{\infty})$ and $D$ is the induced subgraph of $G$ on $V(D)$. 
-Denote $V(Q)=V(Q_0)\cup V(Q_{\infty})$, where $Q$ is the induced subgraph of $G$ on $V(Q)$. 
-\end{definition}
-Note that obviously $V(G)=V(Q)\cup V(D)$.
 
-\subsection{Proof of Theorem \ref{thm1}}
-Note that Theorem \ref{thm4} applied to $Q_\infty$ implies (\ref{thm1}.\ref{i53}) and  (\ref{thm1}.\ref{i54}).
-By Lemma~\ref{lm5}, there are no edges between $D_i$ and $G_i$. By construction, 
-$D_j$, for $j>i$, lies in $G_i$. Thus $D$ is a coclique.
-It remains to prove that $Q_0$ is Hamiltonian.
+\end{enumerate}
+\end{enumerate}
 
-Let $\{Q_i\}$ and $m$ be as defined in Lemma \ref{lm5}.
-\begin{lemma}\label{lem:twoQ}
-Let $Q_i$ and $Q_j$ so that $i<j$ and $|Q_i|\geq 3$.
-Then for any $a_j b_j\in E(Q_j)$  there is $a_i b_i\in E(Q_i)$ satisfying
-$a_i a_j, b_i b_j\in E$.
-\end{lemma}
-\begin{proof}
-Let $ab\in E(Q_j)$. As $Q_i$ dominates $Q_j$, in $Q_i$ there is a vertex adjacent to 
-$a$ and a vertex adjacent to $b$.
-We claim that on the other hand $a$ and $b$ are adjacent to at least $|Q_i|-1$ vertices in $Q_i$. 
-Indeed, if there were $c\neq d\in V(Q_i)$ adjacent neither to $a$ nor to $b$, 
-then $ab$ and $cd$ would form a $2K_2$.
-As $|Q_i|-1\ge 2$, we can choose $cd\in E(Q_i)$ such that $ac, bd\in E$.
-\end{proof}
- 
-The rest of Theorem \ref{thm1} is immediate from the first part of the following.
-\begin{lemma}\label{lem:Q0H}
-The subgraph $Q_0$ is Hamiltonian. 
-For any $v\in V(Q_1)$ and $w\in V(Q_m)$ there exists a Hamiltonian
-path in $Q_0$ with endpoints $v$ and $w$.
-\end{lemma} 
-\begin{proof}
-If $m=0$, then $Q_0=\emptyset$ and there is nothing to prove.
-If $m=1$, i.e. $Q_0=Q_1$, then obviously $Q_0$ is Hamiltonian, since it is just a clique, and
-has a Hamiltonian path joining any two vertices.\\
-If $m=2$, i.e. $V(Q_0)=V(Q_1)\cup V(Q_2)$, then by Lemma~\ref{lem:twoQ} 
-for a $ab\in E(Q_2)$
-we can find $cd\in E(Q_1)$ so that $ac,~bd\in E(G)$. 
-Note that we can assume $w\neq a$, $w\neq b$, as $|V(Q_2)|\geq 3$.
-There exists a Hamiltonian path in  $Q_1$ (respectively in $Q_2$) 
-with endpoints $c$, $d$ (respectively $a$, $b$).
-These two paths and $ac$ and $bd$ form a Hamiltonian cycle.
-Without loss in generality, $c\neq v$. Hence we can construct a
-Hamiltonian path in $Q_0$ by concatenating a $Q_1$-Hamiltonian
-path $cv$, the  edge $av$, and a $Q_2$-Hamiltonian path $wa$.
- 
-It remains to deal with $m\geq 3$.
-Applying Lemma~\ref{lem:twoQ} to $Q_{i-1}$ and $Q_i$ for each $2\leq i\leq m$, 
-we construct $a_{i-1}a_i, b_{i-1}b_i\in E$ joining $Q_{i-1}$ and $Q_i$.
-Select a half of them, namely $a_{m}a_{m-1}$, $b_{m-1}b_{m-2}$, $a_{m-2}a_{m-3}$, \dots,
-$a_2a_1$ in the case $m$ even (respectively, $b_2b_1$ for $m$ odd).
+Repeat the process above. We know the length of a cycle in $G$ is limited, then the process will stop in finite steps. Finally, there will be no edge independent with the cycle from the last step. That is the edge-dominating cycle we want.
 
-Next, construct an edge between $Q_m$ and $Q_1$, avoiding vertices of the edges just
-selected, i.e. $a_m\in V(Q_m)$ and $x\in V(Q_1)$. 
-This can be done by applying Lemma~\ref{lem:twoQ} to $Q_m$, $Q_1$, 
-and $a,b\in V(Q_m)-\{a_m\}$ to obtain $a'b'\in E(Q_1)$ so that $aa',bb'\in E$, 
-noticing that either $aa'$ or $bb'$ will be as needed. Say, for $m$ even 
-it is $aa'$
-that satisfies $a'\neq a_1$, (respectively, $a'\neq b_1$ for $m$ odd)  and we 
-abuse notation by denoting $b_m:=a$ and $b_1:=a'$ (respectively for $m$ odd 
-we denote $a_1:=a'$).
-
-Finally, we construct Hamiltonian paths in each $Q_i$ joining the pairs of vertices
-$a_i,b_i\in V(Q_i)$ just constructed, obtaining the required Hamiltonian cycle.
-
-To prove the second part of the lemma for $m\geq 3$, observe that we can choose
-$w\neq a_m$, $w\neq b_m$. Without loss in generality we can assume that $v\neq a_1=:a$ 
-for $m$ even (resp. $v\neq b_1=:a$ for $m$ odd), 
-and proceed to construct the Hamiltonian path
-which first goes from $w$ to $a_m$ in $Q_m$, then goes the same way as the Hamiltonian
-path we just constructed to $a$, and then joins $a$ and $v$ in $Q_1$ by a Hamiltonian path 
-in the latter.
-\end{proof}
-
-\subsection{Proof of Theorem \ref{addgen1}}
-It remains to consider the case $\omega(G)\ge3$.
-Recall the sequence of cliques $\{Q_i\}$, $m$ and $s$ as defined in Lemma \ref{lm5}.
-
-
-If $s=0$ we have $Q=Q_0$, since $Q_{\infty}=\emptyset$. Then by Theorem \ref{thm1}, $Q$ is Hamiltonian.
-Now let $s\geq 1$. 
-Theorem \ref{thm1} (\ref{thm1}.\ref{i54}) provides 
-a spanning path in $Q_{\infty}$, say $\Pi:=u_1\cdots u_{2s}$. 
-
-If $m\ge2$ then, 
-as each vertex in $Q_{\infty}$ is dominated by $Q_i$, for $1\le i\le m$, we
-can find $v\in Q_1$ and $w\in Q_m$ such that
-$u_1v,~u_{2s}w\in E(G)$. By Lemma~\ref{lem:Q0H}, there is a Hamiltonian path  $v\cdots w$ in $Q_0$.
-Joining it to $\Pi$, we obtain a Hamiltonian cycle in $Q$.
-
-We have just proved the following.
-\begin{lemma}\label{lem:HamQ}
-If $s=0$ or $m\geq 2$ then $Q$ is Hamiltonian. \qed
-\end{lemma}
-It remains to consider {$m=1$}.
-If $u_1$ and $u_{2s}$ have two different neighbours $v_1$ and $v_2$ in $Q_1$
-then we can pick up a spanning path in $Q_1$ with $v_1$ and $v_2$ as two endpoints. 
-Connecting the latter to $\Pi$, we get a Hamiltonian cycle in $Q$. \\
-If $u_1$ and $u_{2s}$ are adjacent to only one vertex, say $v_{\infty}$ in $Q_1$, 
-then a Hamiltonian cycle in $Q_1$
-connected to $\Pi$ by $v_{\infty}$ gives a 2-walk in $Q$, with $v_{\infty}$ visited twice and all other vertices visited once. 
-
-Finally, we note all the constructions we needed can be done in time polynomial in $|V(G)|$.
 \qed
 
-\section{Proof of Theorem \ref{thm2}}
-The $(\frac{1}{k-1}+\epsilon)$-toughness condition with $\epsilon>0$ 
-is only used for the dominating cliques sequence $\{Q_i\}$ 
-and parameters $m$ and $s$, as defined in Lemma \ref{lm5},
-in the case $m=1$ and $s\geq 1$. Namely, we prove the following
-slightly stronger
-\begin{theorem}\label{opt}
-Let $G$ be a connected $2K_2$-free graph.
-If $G$ is $\left(\frac{1}{k-1}+\epsilon\right)$-tough, for an
-$\epsilon>0$, then $G$ admits a $k$-walk. 
-Moreover, a $\frac{1}{k-1}$-tough $G$ admits a $k$-walk if either
-$m\ge2$, or if $G$ is {\em split}, i.e. $m=1$, $s=0$.  
+Theoretically, Theorem \ref{addgen1} can be considered as a corollary of the following result in \cite{veldman83}. However, Veldman used contraposition in his proof. Our proof is constructive, and thus provides a clear algorithm to find the edge-dominating cycle.
+
+\begin{theorem}\label{veldman2}{\cite[Theorem 2]{veldman83}}
+Let $G$ be a graph other than a tree, if for every pair of vertex-disjoint edges $e$ and $f$ of $G$.
+$$d(e)+d(f)\ge|V(G)|-2,$$
+then $G$ admits an edge-dominating cycle.
 \end{theorem}
+
+Here $d(e)$ stands for the number of edges incident with $e$.
+\section{Proof of Theorem \ref{thm2}}
+
 
 
 
@@ -528,19 +189,14 @@ Then $2*E'$ and the edges from the 2-walk in $Q$ form a $k$-walk in $G$.
 \end{proof}
 
 
-Combining Lemmas \ref{addtec} and \ref{lem:HamQ}, and Theorem \ref{addgen1},
-we obtain Theorem \ref{opt}.
+Combining Lemmas \ref{addtec}  and Theorem \ref{addgen1},
+we obtain Theorem \ref{thm2}.
 
-Note that the only nontrivial algorithmic part of the proof of Theorem
-\ref{opt}  not already covered is the construction of a maximum matching in
-certain blowup (of size polynomially bounded by $|V(G)|$) of a bipartite
-subgraph of $G$, and this is well-known to be doable in time polynomial in
-$|V(G)|$, cf. e.g. \cite[Sect. 16]{bomu08}.  This completes the proof of
-Theorem \ref{thm2}.
+
 
 \medskip
 
-Finally, let us state two conjectures.
+Now, let us state two conjectures to close this section.
 \begin{conjecture}
 Every $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
 \end{conjecture}
@@ -549,6 +205,63 @@ Every $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e.
 \begin{conjecture}
 Every 2-tough $2K_2$-free graph with at least 3 vertices is Hamiltonian.
 \end{conjecture}
+
+\section{On 2-walks in some other graphs}
+As a generalization of $2K_2$-free graphs, let us look at $3K_2$-free graphs, which are the graphs without three vertex-disjoint edges as a reduced subgraph.
+
+In \cite{veldman83}, Veldman proved that:
+\begin{lemma}\label{gen3k2de}{\cite[Corollary 3.2]{veldman83}}
+Let $G$ be a 2-connected graph. If the degree sum of every three vertex-disjoint edges of $G$ is at least $|V(G)|-1$, then $G$ admits an edge-dominating cycle.
+\end{lemma}
+
+Combine Lemma \ref{gen3k2de} and Lemma \ref{addtec}, we get:
+
+\begin{theorem}\label{2w3k2f}
+If a $3K_2$-free graph $G$ is 1-tough, then $G$ admits a 2-walk.
+\end{theorem}
+
+\begin{proof}
+Clearly, if $G$ is 1-tough, then $G$ is 2-connected. So, by Lemma \ref{gen3k2de}, $G$ has an edge-dominating cycle. Thus, by Lemma \ref{addtec}, $G$ admits a 2-walk.
+\end{proof}
+
+Also in \cite{veldman83}, Veldman proved:
+
+\begin{lemma}\label{lemdelta}{\cite[Theorem C]{veldman83}}
+Let $G$ be a 2-connected graph, if the minimal degree $\delta\ge\frac{|V(G)|+2}{3}$, then every longest cycle of $G$ is edge-dominating.
+\end{lemma}
+
+\begin{lemma}\label{2conxiaoe}{\cite[Corollary 3.3.1]{veldman83}}
+If $G$ is a 2-connected graph with $$|E(G)|\ge(\frac{(|V(G)|-4)(|V(G)|-5)}{2}+11),$$ then $G$ admits an edge-dominating cycle.
+\end{lemma}
+
+Obviously, combine Lemma \ref{addtec} with the two lemmas above, we get:
+
+\begin{theorem}\label{mdeg2w}
+For any 1-tough graph $G$, if the minimal degree $\delta\ge\frac{|V(G)|+2}{3}$, then $G$ admits a 2-walk.
+\end{theorem}
+
+
+\begin{theorem}
+For any 1-tough graph $G$, if $$|E(G)|\ge(\frac{(|V(G)|-4)(|V(G)|-5)}{2}+11),$$ then $G$ admits a 2-walk.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection*{Acknowledgements.}
 The authors thank Nick Gravin
