@@ -3,8 +3,9 @@
 \usepackage{enumerate}
 \usepackage{xcolor}
 \usepackage{tikz}
- \usetikzlibrary{calc} 
+   \usetikzlibrary{calc} 
 \usepackage{float}
+\usepackage{wrapfig}
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}
@@ -74,8 +75,8 @@ every $\frac{1}{k-2}$-tough graph has a $k$-walk.
 Clearly, if $G$ is
 Hamiltonian, then $G$ is 1-tough.  More generally,
 If $G$ has a $k$-walk, then $G$ is $\frac{1}{k}$-tough \cite{jackson1990k}.
-However, the converse is not true already for $k=1$; there even exist $2$-tough graphs which are
-not Hamiltonian, cf. \cite{bauer2000not}.
+However, the converse is not true already for $k=1$ (there even exist $2$-tough graphs which are
+not Hamiltonian, cf. \cite{bauer2000not}).
 
 This more or less summarises the situation with $t$-tough graphs, $t\leq 1$.
 On the $t>1$ side 
@@ -84,37 +85,20 @@ that there exists a constant $\beta$ such that every
 $\beta$-tough graph is Hamiltonian.  
 Towards this, 
 M.~Ellingham and X.~Zha \cite{ellingham2000toughness} proved that
-every 4-tough graph has a 2-walk.
+every 4-tough graph has a 2-walk (cf. Theorem~\ref{thm1} below).
 
 Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin proved that 
 every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
 Our Theorem~\ref{thm2} was inspired by this result.  
 However, our approach is technically quite different. 
 
+\newpage
 
-A $k$-tree $T$ of a graph $G$ is a spanning tree in $G$ with the maximum degree $d_T(v)\le k$.
-
-In \cite{jackson1990k}, Jackson and Wormald proved that:
-\begin{proposition}[Jackson, Wormald 1990]
-~
-\begin{enumerate}
-\item If $G$ contains a $k$-tree, then $G$ has a $k$-walk.
-\item If $G$ has a $k$-walk, then $G$ contains a $(k+1)$-tree.
-\end{enumerate}
-\end{proposition}
-That means:$$\text{1-walk (Hamilton cycle)}\Rightarrow\text{2-tree (Hamilton path)}\Rightarrow\text{2-walk}\Rightarrow\text{3-tree}\cdots.$$
-
-%At the same time, Jackson and Wormald also posed a conjecture on the existence of $k$-walks with respect to the toughness of a graph.
-%\begin{conjecture}[Jackson, Wormald 1990]
-%Every $1/(k-1)$-tough graph has a $k$-walk, for any integer $k\ge2$.
-%\end{conjecture}
-The {\em prism} over a graph $G$ is the Cartesian product $G\times K_2$ of $G$ with the complete graph $K_2$. Obviously, if $G$ is Hamiltonian, then $G\times K_2$ is also Hamiltonian, but the converse does not hold in general. Having a Hamiltonian prism is a good measure how close a graph to being Hamiltonian. In \cite{kaiser2007hamilton}, it is shown that having Hamilton prisms is a midway between having 2-trees and containing 2-walks, i.e.
-$$\text{1-walk}\Rightarrow\text{2-tree}\Rightarrow\text{Hamilton prism}\Rightarrow\text{2-walk}\cdots.$$
-
-Generally speaking, none of the above implications is an equivalence. The following picture is a counterexample of a $2K_2$-free graph who has a 2-walk, but no Hamilton prism.
-\begin{center}
-\setlength{\unitlength}{1mm}
-\begin{picture}(60,50)
+The {\em prism} over a graph $G$ is the Cartesian product 
+\begin{wrapfigure}[6]{r}{.3\textwidth}
+\centering
+\setlength{\unitlength}{.5mm}
+\begin{picture}(50,40)%(60,50)
 \put(10,10){\circle*{1.5}}
 \put(20,10){\circle*{1.5}}
 \put(40,10){\circle*{1.5}}
@@ -126,36 +110,37 @@ Generally speaking, none of the above implications is an equivalence. The follow
 \put(30,20){\line(1,-1){10}}
 \put(30,20){\line(0,1){10}}
 \end{picture}
-\end{center}
+\label{fignoprism}
+\end{wrapfigure}
+$G\square K_2$ of $G$ with the complete graph $K_2$. 
+$G$ is called 
+{\em prism-Hamiltonian} if $G\square K_2$ is Hamiltonian. 
+If $G$ is Hamiltonian, then $G\square K_2$ is also Hamiltonian, but the converse does not hold in general, 
+cf. \cite{kaiser2007hamilton}. 
+As well, this property is stronger than having a $2$-walk: cf. figure on the right, where
+we have a 
+$2K_2$-free graph with  a $2$-walk, but without Hamiltonian prism.
 
-What is more, we also prove that, for $2K_2$-free graphs, being $(1+\epsilon)$-tough is sufficient to be prism-Hamiltonian.
+Our next result is as follows.
 \begin{theorem}\label{thm1}
 Every $(1+\epsilon)$-tough $2K_2$-free graph $G$ is prism-Hamiltonian, for any $\epsilon>0$.
 \end{theorem}
 
-
-
 To prove Theorem~\ref{thm2} and Theorem \ref{thm1}, we first prove
-
-
-
-
 \begin{theorem}\label{addgen1} 
-~
+Let $G$ be a $2K_2$-free graph. Then
 \begin{enumerate}
-\item For any $2K_2$-free graph $G$, if $G$ is not a tree, then $G$ admits an edge-dominating cycle (who is also a longest cycle in $G$). And this edge-dominating cycle can be found in polynomial time in $|V(G)|$.
-\item For any $2K_2$-free graph $G$, if $G$ is not a tree, and $G$ contains a triangle, then $G$ contains an edge-dominating cycle $C$, with three successive vertices on the cycle $C$ forming a triangle in $G$. 
+\item $G$ admits an edge-dominating cycle (or an edge, or a vertex) $C$; 
+\item if $G$ contains a triangle, then $G$ admits 
+an edge-dominating cycle $C$, with three successive vertices on $C$ forming a triangle in $G$. 
 \end{enumerate}
+Moreover, $C$ can be found in time polynomial in $|V(G)|$.
 \end{theorem}
 
-
-
-
-
-
-
-
-
+In fact, in 1983 Veldman \cite{veldman83} has proved the existence of
+edge-dominating cycles for $2K_2$-free graphs. However, his proof is based on
+contraposition, so neither tells how to find $C$ in (1), nor
+allows to restrict $C$ as in (2).
 
 The terminology we use is  mostly from \cite{bomu08}; we include the following for the sake of
 clarity.  
@@ -174,12 +159,12 @@ about  dominating induced subgraphs $H$ of $G$, in the sense of $V(H)$ being
 dominating, respectively a subset of vertices (e.g. set of vertices of a
 subgraph) being dominated by $H$, etc.
 
-In fact, in 1983 Veldman \cite{veldman83} has already proven the existence of edge-dominating cycles for $2K_2$-free graphs. However, his proof is based on contraposition, so neither tells how to find the edge-dominating cycle nor provides any additional property of the cycle.
-\begin{proposition}\label{veldman2}{\cite[Theorem 2]{veldman83}}
-Let $G$ be a graph other than a tree, if for every pair of remote edges $e$ and $f$ of $G$.
-$$d(e)+d(f)\ge|V(G)|-2,$$
-then $G$ admits an edge-dominating cycle.
-\end{proposition}
+
+%\begin{proposition}\label{veldman2}{\cite[Theorem 2]{veldman83}}
+%Let $G$ be a graph other than a tree, if for every pair of remote edges $e$ and $f$ of $G$.
+%$$$d(e)+d(f)\ge|V(G)|-2,$$
+%then $G$ admits an edge-dominating cycle.
+%\end{proposition}
 
 
 
@@ -190,9 +175,12 @@ then $G$ admits an edge-dominating cycle.
 \section{Proof of Theorem \ref{addgen1}}
 
 \subsection{The proof of the first part of Theorem \ref{addgen1}}
-
-Because $G$ is not a tree, then it has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
-If $C$ is edge-dominating, then every thing is done. Now assume $C$ is not edge-dominating. Then, there must be some edge $v_1v_2$ (assume there are $t$ such edges), with neither $v_1$ nor $v_2$ is on $C$. 
+If $G$ is a tree, then, as it is $2K_2$-free, it must either have an edge-dominating
+vertex, or an edge-dominating edge.
+Otherwise, $G$ has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
+If $C$ is edge-dominating, then we are done. 
+%%%% - to continue editing here:
+Now assume $C$ is not edge-dominating. Then, there must be some edge $v_1v_2$ (assume there are $t$ such edges), with neither $v_1$ nor $v_2$ is on $C$. 
 Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two neighbors on $C$. Otherwise, if there is at most one vertex on $C$ adjacent to $v_1$ or $v_2$, then a $2K_2$ will appear.
 
 Now, assume $x_1v_1\in E(G)$, 
