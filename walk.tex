@@ -30,11 +30,11 @@
 \title{Edge-dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
 \begin{abstract}
 We show that every $\frac{1}{k-1}$-tough
-$2K_2$-free graph admits a $k$-walk, and it can be found in polynomial time. 
+$2K_2$-free graph admits a $k$-walk, and it can be found in polynomial time.
 For this class of graphs, this proves a
 long-standing conjecture due to Jackson and Wormald (1990).
-Furthermore, we prove that every $(1+\epsilon)$-tough $2K_2$-free graph is prism-Hamiltonian.
-And, we also get some similar results of some other graphs.
+Furthermore, we prove that every $(1+\epsilon)$-tough $2K_2$-free graph is prism-Hamiltonian,
+along with few other similar results.
 \end{abstract}
 
 \maketitle
@@ -47,10 +47,51 @@ was introduced in 1973 by V. Chv\'{a}tal
 while studying   Hamiltonicity of graphs. For a survey of results on graph toughness till 2006
 cf. \cite{MR2221006}.
 
-Let $p*G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
-A $k$-{\em walk} is a spanning subgraph $W$ of $(2k)*G$, such that each vertex of $W$ 
+Let $p\times G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
+A $k$-{\em walk} is a spanning subgraph $W$ of $2k\times G$, such that each vertex of $W$ 
 has even degree at most $2k$. % (the evenness says that $W$ is Eulerian). 
-In particular a graph has a 1-walk if and only if it is $K_2$ (i.e. one edge) or Hamiltonian.
+In particular a graph has a $1$-walk if and only if it is $K_2$ (i.e. one edge) or Hamiltonian.
+In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that for any integer $k\ge2$ a
+$\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk.
+{For a survey of results on walks in graphs till 2005 cf. \cite{kouider2005connected}.}
+
+In this paper, we prove that Jackson and Wormald's Conjecture is true, under the
+assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
+copy of the disjoint union of two edges. 
+
+\begin{theorem}\label{thm2} 
+For any integer $k\ge2$, every $\frac{1}{k-1}$-tough $2K_2$-free graph $G$
+admits a $k$-walk.
+Moreover, the latter can be found in time polynomial in $|V(G)|$.
+\end{theorem}
+
+If for $k\geq 2$ we let the toughness value $\frac{1}{k-1}$ increase to
+$\frac{1}{k-2}$ then
+one does not need $2K_2$-freeness. Indeed, it is shown in
+\cite{jackson1990k} that
+every $\frac{1}{k-2}$-tough graph has a $k$-walk.
+
+Clearly, if $G$ is
+Hamiltonian, then $G$ is 1-tough.  More generally,
+If $G$ has a $k$-walk, then $G$ is $\frac{1}{k}$-tough \cite{jackson1990k}.
+However, the converse is not true already for $k=1$; there even exist $2$-tough graphs which are
+not Hamiltonian, cf. \cite{bauer2000not}.
+
+This more or less summarises the situation with $t$-tough graphs, $t\leq 1$.
+On the $t>1$ side 
+a famous conjecture of V.~Chv\'{a}tal \cite{chvatal1973tough} claims
+that there exists a constant $\beta$ such that every
+$\beta$-tough graph is Hamiltonian.  
+Towards this, 
+M.~Ellingham and X.~Zha \cite{ellingham2000toughness} proved that
+every 4-tough graph has a 2-walk.
+
+Recently, in \cite{broersma2014toughness}, H.~Broersma, V.~Patel and A.~Pyatkin proved that 
+every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
+Our Theorem~\ref{thm2} was inspired by this result.  
+However, our approach is technically quite different. 
+
+
 A $k$-tree $T$ of a graph $G$ is a spanning tree in $G$ with the maximum degree $d_T(v)\le k$.
 
 In \cite{jackson1990k}, Jackson and Wormald proved that:
@@ -63,10 +104,10 @@ In \cite{jackson1990k}, Jackson and Wormald proved that:
 \end{proposition}
 That means:$$\text{1-walk (Hamilton cycle)}\Rightarrow\text{2-tree (Hamilton path)}\Rightarrow\text{2-walk}\Rightarrow\text{3-tree}\cdots.$$
 
-At the same time, Jackson and Wormald also posed a conjecture on the existence of $k$-walks with respect to the toughness of a graph.
-\begin{conjecture}[Jackson, Wormald 1990]
-Every $1/(k-1)$-tough graph has a $k$-walk, for any integer $k\ge2$.
-\end{conjecture}
+%At the same time, Jackson and Wormald also posed a conjecture on the existence of $k$-walks with respect to the toughness of a graph.
+%\begin{conjecture}[Jackson, Wormald 1990]
+%Every $1/(k-1)$-tough graph has a $k$-walk, for any integer $k\ge2$.
+%\end{conjecture}
 The {\em prism} over a graph $G$ is the Cartesian product $G\times K_2$ of $G$ with the complete graph $K_2$. Obviously, if $G$ is Hamiltonian, then $G\times K_2$ is also Hamiltonian, but the converse does not hold in general. Having a Hamiltonian prism is a good measure how close a graph to being Hamiltonian. In \cite{kaiser2007hamilton}, it is shown that having Hamilton prisms is a midway between having 2-trees and containing 2-walks, i.e.
 $$\text{1-walk}\Rightarrow\text{2-tree}\Rightarrow\text{Hamilton prism}\Rightarrow\text{2-walk}\cdots.$$
 
@@ -87,18 +128,7 @@ Generally speaking, none of the above implications is an equivalence. The follow
 \end{picture}
 \end{center}
 
-In this paper, we prove that Jackson and Wormald's Conjecture is true, under the
-assumption that $G$ is  $2K_2$-free, that is $G$ does not contain an induced
-copy of the disjoint union of two edges. 
-
 What is more, we also prove that, for $2K_2$-free graphs, being $(1+\epsilon)$-tough is sufficient to be prism-Hamiltonian.
-\begin{theorem}\label{thm2} 
-For any integer $k\ge2$, every
-$\frac{1}{k-1}$-tough $2K_2$-free graph $G$
-admits a $k$-walk.
-Moreover, the latter can be found in time polynomial in $|V(G)|$.
-\end{theorem}
-
 \begin{theorem}\label{thm1}
 Every $(1+\epsilon)$-tough $2K_2$-free graph $G$ is prism-Hamiltonian, for any $\epsilon>0$.
 \end{theorem}
