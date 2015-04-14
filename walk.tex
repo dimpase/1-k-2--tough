@@ -28,7 +28,8 @@
 \address{Department of Computer Science, The University of Oxford, UK}
 \email{dimpase@cs.ox.ac.uk}
 
-\title{Edge-dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
+\title[Dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs]
+{Edge-dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
 \begin{abstract}
 We show that every $\frac{1}{k-1}$-tough
 $2K_2$-free graph admits a $k$-walk, and it can be found in polynomial time.
@@ -124,6 +125,7 @@ $2K_2$-free graph with  a $2$-walk, but without Hamiltonian prism.
 Our next result is as follows.
 \begin{theorem}\label{thm1}
 Every $(1+\epsilon)$-tough $2K_2$-free graph $G$ is prism-Hamiltonian, for any $\epsilon>0$.
+Moreover, a Hamiltonian cycle in the prism over $G$ can be found in time polynomial in $|V(G)|$.
 \end{theorem}
 
 To prove Theorem~\ref{thm2} and Theorem \ref{thm1}, we first prove
@@ -139,7 +141,7 @@ Moreover, $C$ can be found in time polynomial in $|V(G)|$.
 
 In fact, in 1983 Veldman \cite{veldman83} has proved the existence of
 edge-dominating cycles for $2K_2$-free graphs. However, his proof is based on
-contraposition, so neither tells how to find $C$ in (1), nor
+contraposition, so it neither tells how to find $C$ in (1), nor
 allows to restrict $C$ as in (2).
 
 The terminology we use is  mostly from \cite{bomu08}; we include the following for the sake of
@@ -160,16 +162,6 @@ dominating, respectively a subset of vertices (e.g. set of vertices of a
 subgraph) being dominated by $H$, etc.
 
 
-%\begin{proposition}\label{veldman2}{\cite[Theorem 2]{veldman83}}
-%Let $G$ be a graph other than a tree, if for every pair of remote edges $e$ and $f$ of $G$.
-%$$$d(e)+d(f)\ge|V(G)|-2,$$
-%then $G$ admits an edge-dominating cycle.
-%\end{proposition}
-
-
-
-
-
 
 
 \section{Proof of Theorem \ref{addgen1}}
@@ -179,54 +171,57 @@ If $G$ is a tree, then, as it is $2K_2$-free, it must either have an edge-domina
 vertex, or an edge-dominating edge.
 Otherwise, $G$ has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
 If $C$ is edge-dominating, then we are done. 
-%%%% - to continue editing here:
-Now assume $C$ is not edge-dominating. Then, there must be some edge $v_1v_2$ (assume there are $t$ such edges), with neither $v_1$ nor $v_2$ is on $C$. 
-Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two neighbors on $C$. Otherwise, if there is at most one vertex on $C$ adjacent to $v_1$ or $v_2$, then a $2K_2$ will appear.
-
-Now, assume $x_1v_1\in E(G)$, 
+Otherwise
+there must be an edge $v_1v_2$ (assume there are $t>0$ such edges), 
+with neither $v_1$ nor $v_2$ is on $C$. 
+Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two distinct neighbours on $C$. 
+Let $x_1v_1\in E(G)$ without loss of generality; 
 \begin{enumerate}
-\item if $x_2v_1\in E(G)$, then $C'=x_1v_1x_2x_3\cdots x_kx_1$ is a longer cycle,
-\item if $x_2v_2\in E(G)$, then $x_1v_1v_2x_2x_3\cdots x_kx_1$ is a longer cycle, 
-\item if $x_2v_1,x_2v_2\not\in E(G)$, then apply the $2K_2$-free property to $v_1v_2$ and $x_2x_3$, we get either $x_3v_1\in E(G)$ or $x_3v_2\in E(G)$.
+\item if $x_2v_1\in E(G)$, then $C'=x_1v_1x_2x_3\cdots x_kx_1$ is a longer cycle;
+\item if $x_2v_2\in E(G)$, then $x_1v_1v_2x_2x_3\cdots x_kx_1$ is a longer cycle; 
+\item if $x_2v_1,x_2v_2\not\in E(G)$, then applying $2K_2$-freeness to $v_1v_2$ and $x_2x_3$, 
+we get either $x_3v_1\in E(G)$ or $x_3v_2\in E(G)$.
 \begin{enumerate}
-\item if $x_3v_2\in E(G)$, then $C'=x_1v_1v_2x_3\cdots x_kx_1$ is a longer cycle,
+\item If $x_3v_2\in E(G)$, then $C'=x_1v_1v_2x_3\cdots x_kx_1$ is a longer cycle;
 \item if $x_3v_2\not\in E(G)$, then $x_3v_1\in E(G)$.
 \begin{enumerate}
-\item if $x_2$ is adjacent to no vertex outside $C$, then we use $C'=x_1v_1x_3\cdots x_kx_1$ to instead $C$. We know that $C$ and $C'$ have the same length, but $C'$ dominates all the edges who are dominated by $C$, and $C'$ also dominates $v_1v_2$, who is not dominated by $C$. So $t$ becomes smaller.
-\item if $x_2$ is adjacent to some vertices outside $C$, say $z$, for example.
-
-Recall that $x_2$ is adjacent to neither $v_1$ nor $v_2$, then $z$ must be adjacent to either $v_1$ or $v_2$. If $zv_1\in E(G)$, then $C'=x_1v_1zx_2x_3\cdots x_kx_1$ is a longer cycle.
-If $zv_2\in E(G)$, then $C'=x_1v_1v_2zx_2x_3\cdots x_kx_1$ is a longer cycle.
-\end{enumerate}
-
+\item if $x_2$ is adjacent to no vertex outside $C$, then we use $C'=x_1v_1x_3\cdots x_kx_1$ to instead $C$. We know that $C$ and $C'$ have the same length, but $C'$ dominates all the edges who are dominated by $C$, and $C'$ also dominates $v_1v_2$, who is not dominated by $C$. So replacing $C$ by $C'$
+decreases $t$.
+\item Otherwise $x_2$ is adjacent to a vertex outside $C$, say $z$.
+As $x_2$ is not adjacent to $v_1$ or $v_2$, we have $z$ adjacent to either $v_1$ or $v_2$. If $zv_1\in E(G)$, then $C'=x_1v_1zx_2x_3\cdots x_kx_1$ is a longer cycle.
+Otherwise $C'=x_1v_1v_2zx_2x_3\cdots x_kx_1$ is a longer cycle.
 \end{enumerate}
 \end{enumerate}
-
-Repeat the process above. We know the length of a cycle in $G$ is limited, then the process will stop in finite steps. Finally, there will be no edge independent with the cycle from the last step. That is the edge-dominating cycle we want.
-
+\end{enumerate}
+Repeat the process above. At each iterarion either $|V(C)|$ increases, or $t$ decreseas.
+Thus the process will stop, with $t=0$, in at most $|E(G)|^2$ steps. 
 \qed
 
 \subsection{The proof of the second part of Theorem  \ref{addgen1}}
-The proof of the second part is almost the same with the first, only needing a little modification.
+The algorithmic procedure for the second part is almost the same, needing only a minor
+modification described below.
 
-Suppose a $2K_2$-free graph $G$ is not a tree, and contains a triangle, namely $w_1w_2w_3$.
-If $w_1w_2w_3$ is edge-dominating, then there is nothing to prove. Otherwise, there is an edge, namely $u_1u_2\in E(G)$, with neither $u_1$ nor $u_2$  on $w_1w_2w_3$. Then, by the $2K_2$-freeness, we can connect $w_1w_2w_3$ and $u_1u_2$ together, to get a 5-cycle, with $w_1$, $w_2$ and $w_3$ successive (the order is possibly changed). 
+Let $G$  contain a triangle $w_1w_2w_3$.
+If $w_1w_2w_3$ is edge-dominating, then there is nothing to prove. Otherwise, there is an edge, namely $u_1u_2\in E(G)$, with neither $u_1$ nor $u_2$  on $w_1w_2w_3$. Then, by the $2K_2$-freeness, we can connect $w_1w_2w_3$ and $u_1u_2$ together, to get a 5-cycle $C$, 
+with $w_1$, $w_2$ and $w_3$ successive (the order is possibly changed). 
 
-If such a 5-cycle is edge-dominating, then we have finished the proof. Otherwise, we are going to prove the following statement. 
+If $C$ is edge-dominating, then we are done. Otherwise, we proceed by induction on
+$k:=|V(C)|$. 
+Suppose $G$ contains a cycle $C$ of length $|V(C)|=k\ge5$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$. If $C$ is not edge-dominating. 
+We claim that then we can find a cycle $C'$ such that $C'$ dominates more edges than $C$ (perhaps all), 
+and $X'$, $X$ and $X''$ are also successive on $C'$.
 
-Suppose $G$ contains a cycle $C$ of length $|V(C)|=k$, for $k\ge5$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$. If $C$ is not edge-dominating, then we can find a cycle $C'$ such that either $C'$ is edge-dominating or $C'$ dominates more edges than $C$. What is more, $X'$, $X$ and $X''$ are also successive on $C'$.
-
-Assume that $e=v_1v_2$ is an edge of $G$ such that neither $v_1$ nor $v_2$ is on $C$. By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$, then at least one of $\{X',X''\}$. Suppose $v_1X'\in E(G)$, then we label the vertices in $C$ in the following way.
-
-$X'$ is labeled by $x_1$. The neighbor of $x_1$ (on $C$), who is not $X$, is labeled by $x_2$. Other vertices on $C$ is labeled successively. Then, certainly, $X''$ is labeled by $x_{k-1}$ and $X$ is labeled by $x_k$. See the following picture (Figure \ref{labelcycle}).
+Let $v_1v_2\in E(G)G$ such that neither $v_1$ nor $v_2$ is on $C$. By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$, and thus to at least one of $\{X',X''\}$. Suppose,
+without loss of generality, that $v_1X'\in E(G)$; label the vertices in $C$ in the following way:
+$X'$ is labeled by $x_1$. The neighbour of $x_1$ on $C$ distinct from $X$ is labeled by $x_2$. 
+The other vertices on $C$ are labeled successively, see Figure \ref{labelcycle}.
 
 \begin{figure}[h]
 \begin{center}
-\caption{The cycle $C$ of length $k$}\label{labelcycle}
 \begin{tikzpicture}
 
 
-\filldraw[black](0,0)node[left]{$X'$ also $x_1$} circle(2pt);
+\filldraw[black](0,0)node[left]{$X'=x_1$} circle(2pt);
 \filldraw[black](1.8,0)node[above right]{ $x_2$} circle(2pt);
 \filldraw[black](3.5,-0.5)node[above]{ $x_3$} circle(2pt);
 \draw[very thick](0,0)--(1.8,0);
@@ -234,10 +229,10 @@ $X'$ is labeled by $x_1$. The neighbor of $x_1$ (on $C$), who is not $X$, is lab
 \draw[very thick](3.5,-0.5)--(4,-1);
 \draw[dashed](4,-1)--(4.5,-1.5);
 
-\filldraw[black](-1.2,-1)node[left]{$X$ also $x_k$} circle(2pt);
+\filldraw[black](-1.2,-1)node[left]{$X=x_k$} circle(2pt);
 \draw[very thick](0,0)--(-1.2,-1);
 
-\filldraw[black](-1.2,-2)node[left]{$X''$ also $x_{k-1}$} circle(2pt);
+\filldraw[black](-1.2,-2)node[left]{$X''=x_{k-1}$} circle(2pt);
 \draw[very thick](-1.2,-2)--(-1.2,-1);
 \draw[very thick](-1.2,-2)--(-1,-2.2);
 \draw[dashed](-1,-2.2)--(-0.6,-2.6);
@@ -252,95 +247,66 @@ $X'$ is labeled by $x_1$. The neighbor of $x_1$ (on $C$), who is not $X$, is lab
 
 \end{tikzpicture}
 \end{center}
+\caption{The cycle $C$ of length $k$}\label{labelcycle}
 \end{figure}
 
-Note that the operation (in the proof of the first part of Theorem \ref{addgen1}) of enlarging the cycle $C$ to $C'$ has nothing to do with the edges $x_{k-1}x_k$ and $x_kx_1$ when $k\ge5$. Thus the three vertices $X''$, $X$ and $X'$ are always successive on the cycle in our process. Then they are on the edge-dominating cycle we found finally.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\qed
+Note that for $k\geq 5$ the operation 
+in the proof of the first part of Theorem \ref{addgen1}) 
+of replacing  $C$ by $C'$ (enlarging $|V(C)|$ or reducing $t$) 
+does not touch the edges $x_{k-1}x_k$ and $x_kx_1$. Thus the triangle-forming 
+vertices $X''$, $X$ and $X'$ are always successive on $C$ in our process. 
+Then they are on the edge-dominating cycle we obtain there.  \qed
 
 
 \section{Proof of Theorem \ref{thm2}}
 
 
-
-
-
-The following lemma is the key technique in the proof of Theorem \ref{thm2}.
+Combining Theorem \ref{addgen1} and the following
+Lemma \ref{addtec}, we obtain Theorem \ref{thm2}.
 
 \begin{lemma}\label{addtec}
-If $G$ has an edge-dominating cycle and if $G$ is $\frac{1}{k-1}$-tough, then $G$ admits a $k$-walk.
+Let $k\geq 2$.
+If $G$ has an edge-dominating cycle $C$ (or an edge, or a vertex) 
+and if $G$ is $\frac{1}{k-1}$-tough then $G$ admits a $k$-walk.
 \end{lemma}
-
-\begin{proof}
-Denote the edge-dominating cycle as $C$, thus the induced subgraph $D=G-C$ is a coclique. For any subset $D_0\subset D$, by $\frac{1}{k-1}$-toughness, $D_0$ has at least $\lceil\frac{|D_0|}{k-1}\rceil$ neighbors in $C$. By Hall' Theorem, there is $E'\subset E(G)$ such that each $e\in E'$ has one vertex in $D$ and the other in $C$. And each vertex in $D$ is incident to exactly one edge in $E'$, while each vertex in $C$ is incident to at most $k-1$ edges in $E'$. Then these (doubled) edges in $E'$ and the edges in the edge-dominating cycle $C$ form a $k$-walk in $G$.
+\begin{proof} 
+The induced subgraph $D=G-C$ is a coclique. For any
+$D_0\subset D$, by $\frac{1}{k-1}$-toughness, $D_0$ has at least
+$\lceil\frac{|D_0|}{k-1}\rceil$ neighbours in $C$. By Hall' Theorem, there is
+$E'\subset E(G)$ such that each $e\in E'$ has one vertex in $D$ and the other
+in $C$. As well, each vertex in $D$ is incident to exactly one edge in $E'$, while
+each vertex in $C$ is incident to at most $k-1$ edges in $E'$. Then the
+(doubled) edges in $E'$ and the edges in the edge-dominating cycle 
+(respectively, the doubled edge) $C$ form a $k$-walk in $G$.  
 \end{proof}
 
-Now, let us come back to the proof of Theorem \ref{thm2}.
-
-If $G$ is a tree, and $G$ is $\frac{1}{k-1}$-tough, then obviously, for each $v\in V(G)$, the degree $d(v)\le k-1$. So, we can double each edge in $G$ to get the $k$-walk (in fact a $(k-1)$-walk).
-If $G$ is not a tree, then
-combining Lemmas \ref{addtec}  and Theorem \ref{addgen1},
-we obtain Theorem \ref{thm2}.
-\qed
-
-
-\medskip
-
-Now, let us state two conjectures to close this section.
-\begin{conjecture}
-Every $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
-\end{conjecture}
+%\medskip
+%
+%Now, let us state a related conjecture, to close this section.
+%\begin{conjecture}
+%Every $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
+%\end{conjecture}
 
 
-\begin{conjecture}
-Every 2-tough $2K_2$-free graph with at least 3 vertices is Hamiltonian.
-\end{conjecture}
-
-
-
-
-
-
-
-
-
-\section{The proof of Theorem \ref{thm1}}
-
+\section{Proof of Theorem \ref{thm1}}
 The following lemma is the key technique in the proof of Theorem \ref{thm1}.
 \begin{lemma}\label{keylem}
-Suppose $G$ is $(1+\epsilon)$-tough, for some $\epsilon>0$.
+Let $G$ be $(1+\epsilon)$-tough, for some $\epsilon>0$.
 \begin{enumerate}
-\item If $G$ contains an edge-dominating cycle $C$ with even number of vertices, then the prism of $G$ is Hamiltonian.
-\item If $G$ contains an edge-dominating cycle $C=v_1v_2\cdots v_{2p+1}v_1$ of odd length, and there are three vertices $v_1$, $v_{2q}$ and $v_{2q+1}$, for some $0\le q\le p$, inducing a triangle in $G$, then the prism over $G$ is Hamiltonian.
+\item If $G$ contains an edge-dominating cycle $C$ with even number of vertices, then the prism over $G$ is Hamiltonian.
+\item If $G$ contains an edge-dominating cycle $C=v_1v_2\cdots v_{2p+1}v_1$ of odd length, and there are three vertices $v_1$, $v_{2q}$ and $v_{2q+1}$, for some $1\le q\le p$, inducing a triangle in $G$, then the prism over $G$ is Hamiltonian.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-For the first part (see the following picture), denote the (even size) edge-dominating path in $G$ by $C=v_1v_2\cdots v_{2p}v_1$. The set of vertices outside the path $D=V(G)-V(C)$ is an independent set. By Hall's Theorem and 1-toughness, there is a matching $M$, from $D$ to $C$. That means for any vertex $u_j$ in $D$, there is a vertex $v_{i_j}$ on $C$ adjacent to $u_j$ in $M$.
+For the first part (see Figure~\ref{fig:evenprism}), 
+denote $C=v_1v_2\cdots v_{2p}v_1$. The set 
+$D=V(G)-V(C)$ of vertices outside $C$
+is an independent set. By Hall's Theorem and 1-toughness, there is a matching $M$, from $D$ to $C$. That means for any vertex $u_j$ in $D$, there is a vertex $v_{i_j}$ on $C$ adjacent to $u_j$ in $M$.
 
 Obviously, we have a Hamilton cycle in $\bar{C}$, the prism over $C$, namely $$v_1v'_1v'_2v_2\cdots v_{2p-1}v'_{2p-1}v'_{2p}v_{2p}v_1.$$ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju'_jv'_{i_j}$ (or $v'_{i_j}u'_ju_jv_{i_j}$) to get a Hamilton cycle in $\bar{G}$.
 
 \begin{figure}[h]
-\caption{$G$ has an edge-dominating cycle of even length}
 \begin{center}
 \begin{tikzpicture}[scale=2]
 \draw(-2,0)node[below left]{$v_{2p}$}--(-1,0);\draw(-0.5,0)--(0.5,0);\draw(1,0)--(2,0);
@@ -371,18 +337,22 @@ Obviously, we have a Hamilton cycle in $\bar{C}$, the prism over $C$, namely $$v
 \draw(-2,0.6)..controls(0,0.9)..(2,0.6);
 \node at(0.2,-0.5){$G$};\node at (-0.4,0.9){$G'$};
 \end{tikzpicture}
-
 \end{center}
+\caption{$G$ has an edge-dominating cycle of even length\label{fig:evenprism}}
 \end{figure}
 
 
-For the second part, denote the (odd length) edge-dominating cycle in $G$ by $C=v_1v_2\cdot v_{2p+1}v_1$ (see Figure \ref{fig2}). The set of vertices outside the cycle $D=V(G)-V(C)$ is an independent set. By Hall's Theorem, and $(1+\epsilon)$-tough, there is a matching $M$ from $D$ to $C-\{v_1\}$. That means for any vertex $u_j$ in $D$, there is a vertex $v_{i_j}$ on $C-\{v_1\}$ adjacnet to $u_j$ in $M$.
+For the second part, denote $C=v_1v_2\cdot v_{2p+1}v_1$ (see Figure \ref{fig2}). 
+The set $D=V(G)-V(C)$ of vertices outside $C$
+is an independent set. By Hall's Theorem, and $(1+\epsilon)$-toughness, 
+there is a matching $M$ from $D$ to $C-\{v_1\}$.  That means for any vertex $u_j$ in $D$, 
+there is a vertex $v_{i_j}$ in $C-\{v_1\}$ adjacent to $u_j$ in $M$.
 
 Clearly, we have a Hamilton cycle in $\bar{C}$, namely $$v_1v_2v'_2v'_3v_3\cdots v_{2q-1}v_{2q}v'_{2q}v'_1v'_{2q+1}v_{2q+1}\cdots v_{2p+1}v_1.$$
 Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju'_jv'_{i_j}$ (or $v'_{i_j}u'_ju_jv_{i_j}$) to get a Hamilton cycle in $\bar{G}$.
+\end{proof}
 
 \begin{figure}[h]
-\caption{$G$ has an edge-dominating cycle of odd length}\label{fig2}
 \begin{center}
 \begin{tikzpicture}[scale=2.2]
 \draw(-2,0)node[below left]{$v_{2p+1}$}--(-1.4,0);\draw(1,0)--(2,0);
@@ -420,44 +390,28 @@ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju
 \draw[very thick](-1,0.6)..controls(0.3,0.97)..(2,0.6);
 \draw[very thick](-0.5,0.6)--(-0.5,0);
 \draw[very thick](-1,0.6)--(-1,0);
-
 \end{tikzpicture}
-
 \end{center}
+\caption{$G$ has an edge-dominating cycle of odd length}\label{fig2}
 \end{figure}
 
-
-\end{proof}
-
-The following lemma comes from \cite{broersma2014toughness}.
-\begin{lemma}\cite[Theorem 4]{broersma2014toughness}\label{lembroet4}
-A triangle-free, $2K_2$-free graph $G$ is Hamiltonian if and only if $G$ is 1-tough.
-\end{lemma}
-
-Now, suppose $G$ is a triangle-free $2K_2$-free graph, then Lemma \ref{lembroet4} has already proved that $G$ is Hamiltonian, so certainly is prism-Hamiltonian.
-
-If $2K_2$-free graph $G$ is a tree, we can easily check that $G$ contains at most two vertices whose degree are at least two. So, if a $2K_2$-free tree is 1-tough, it can only be a single edge. There is nothing to prove.
-
-
-If $2K_2$-free graph $G$ is not a tree and not triangle-free then by the second part of Theorem \ref{addgen1} and Lemma \ref{keylem}, we have finished the proof.
+Now, suppose $G$ is a triangle-free $2K_2$-free graph. By \cite[Theorem 4]{broersma2014toughness},
+if $|V(G)|\geq 3$ then 
+$G$ is Hamiltonian, and so prism-Hamiltonian.
+If $|V(G)|=2$, i.e. $G$ a single edge, and ovbiously prism-Hamilton.
+Finally, if $2K_2$-free graph $G$ is not triangle-free then we are done by 
+the second part of Theorem \ref{addgen1} and Lemma \ref{keylem}.
 \qed
 
-
-
-
-
-
-
-
-
-
-
+\iffalse
 \section{On 2-walks in some other graphs}
-As a generalization of $2K_2$-free graphs, let us look at $3K_2$-free graphs, which are the graphs without three vertex-disjoint edges as a induced subgraph.
-
+Lemma \ref{addtec} can be used to prove existence of 2-walks in other classes of graphs.
+\subsection{$3K_2$-free graphs.}
+%%% to continue here
 In \cite{veldman83}, Veldman proved that:
 \begin{lemma}\label{gen3k2de}{\cite[Corollary 3.2]{veldman83}}
-Let $G$ be a 2-connected graph. If the degree sum of every three vertex-disjoint edges of $G$ is at least $|V(G)|-1$, then $G$ admits an edge-dominating cycle.
+Let $G$ be a 2-connected graph. If the degree sum of every $3K_2$-subgraph 
+of $G$ is at least $|V(G)|-1$, then $G$ admits an edge-dominating cycle.
 \end{lemma}
 
 Combine Lemma \ref{gen3k2de} and Lemma \ref{addtec}, we get:
@@ -518,7 +472,7 @@ Any 1-tough triangle-free graph $G$ with  $|G|\le6\delta-6$ admits a 2-walk.
 Any 1-tough triangle-free graph with  $\alpha(G)\le2\kappa(G)-1$ admits a 2-walk.
 \end{theorem}
 
-
+\fi
 
 \subsection*{Acknowledgements.}
 The authors thank Nick Gravin
