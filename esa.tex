@@ -1,0 +1,428 @@
+\documentclass[runningheads,a4paper]{llncs}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{tikz}
+   \usetikzlibrary{calc} 
+\usepackage{float}
+\usepackage{wrapfig}
+
+\newcommand{\ncc}{c}
+
+\begin{document}
+
+\mainmatter
+
+\title{Edge-dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
+\titlerunning{Dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
+
+\author{Gao Mou\inst{1} \and Dmitrii V. Pasechnik\inst{2}}
+\institute{School of Physical and Mathematical Sciences, Nanyang Technological University, Singapore,\\
+\email{gaom0002@e.ntu.edu.sg} \and
+Department of Computer Science, The University of Oxford, UK,\\ 
+\email{dimpase@cs.ox.ac.uk}}
+
+\maketitle
+
+\begin{abstract}
+We show that an edge-dominating cycle in a $2K_2$-free graph can be found
+in polynomial time; this implies that every $\frac{1}{k-1}$-tough
+$2K_2$-free graph admits a $k$-walk, and it can be found in polynomial time.
+For this class of graphs, this proves a
+long-standing conjecture due to Jackson and Wormald (1990).
+Furthermore, we prove that every $(1+\epsilon)$-tough $2K_2$-free graph is prism-Hamiltonian,
+along with few other similar results.
+\end{abstract}
+
+
+\section{Introduction}
+A graph $G$ is called $\beta$-{\em tough}, for a real $\beta>0$, if for any $p\geq 2$ it
+cannot be split into $p$ components by removing less than $p\beta$ vertices.  
+This concept, a measure of graph connectivity and ``resilience'' under vertex subsets removal,
+was introduced in 1973 by V. Chv\'{a}tal 
+while studying   Hamiltonicity of graphs. For a survey of results on graph toughness till 2006
+cf. \cite{MR2221006}. In general, toughness of a graph is NP-hard to compute 
+\cite{MR1074858}. However, recently, H.~Broersma, V.~Patel and A.~Pyatkin proved
+\cite{broersma2014toughness} that toughness of a $2K_2$-free graph, i.e. a graph that
+does not contain an induced copy of the disjoint union of two edges,
+can be found in polynomial time.
+
+
+Let $p\times G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
+A $k$-{\em walk} is a spanning subgraph $W$ of $2k\times G$, such that each vertex of $W$ 
+has even degree at most $2k$. % (the evenness says that $W$ is Eulerian). 
+In particular a graph has a $1$-walk if and only if it is $K_2$ (i.e. one edge) or Hamiltonian.
+{For a survey of results on walks in graphs till 2005 cf. \cite{kouider2005connected}.}
+In 1990 B.~Jackson and N.~Wormald conjectured \cite{jackson1990k} that for any integer $k\ge2$ a
+$\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk.
+
+In this paper, we prove that Jackson and Wormald's Conjecture is true under the
+assumption that $G$ is  $2K_2$-free.
+
+\begin{theorem}\label{thm2} 
+For any integer $k\ge2$, every $\frac{1}{k-1}$-tough $2K_2$-free graph $G$
+admits a $k$-walk.
+Moreover, the latter can be found in time polynomial in $|V(G)|$.
+\end{theorem}
+
+If for $k\geq 2$ we let the toughness value $\frac{1}{k-1}$ increase to
+$\frac{1}{k-2}$ then
+one does not need $2K_2$-freeness. Indeed, it is shown in
+\cite{jackson1990k} that
+every $\frac{1}{k-2}$-tough graph has a $k$-walk.
+
+Clearly, if $G$ is
+Hamiltonian, then $G$ is 1-tough.  More generally,
+If $G$ has a $k$-walk, then $G$ is $\frac{1}{k}$-tough \cite{jackson1990k}.
+However, the converse is not true already for $k=1$ (there even exist $2$-tough graphs which are
+not Hamiltonian, cf. \cite{bauer2000not}).
+
+This more or less summarises the situation with $t$-tough graphs, $t\leq 1$.
+On the $t>1$ side 
+a famous conjecture of V.~Chv\'{a}tal \cite{chvatal1973tough} claims
+that there exists a constant $\beta$ such that every
+$\beta$-tough graph is Hamiltonian.  
+Towards this, 
+M.~Ellingham and X.~Zha \cite{ellingham2000toughness} proved that
+every 4-tough graph has a 2-walk (cf. Theorem~\ref{thm1} below).
+
+It was recently shown \cite{broersma2014toughness} that 
+every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
+Our Theorem~\ref{thm2} was inspired by this result.  
+However, our approach is technically quite different. 
+
+The {\em prism} over a graph $G$ is the Cartesian product 
+\begin{wrapfigure}[6]{r}{.3\textwidth}
+\centering
+\setlength{\unitlength}{.5mm}
+\begin{picture}(50,40)%(60,50)
+\put(10,10){\circle*{1.5}}
+\put(20,10){\circle*{1.5}}
+\put(40,10){\circle*{1.5}}
+\put(50,10){\circle*{1.5}}
+\put(30,20){\circle*{1.5}}
+\put(30,30){\circle*{1.5}}
+\put(10,10){\line(1,0){40}}
+\put(20,10){\line(1,1){10}}
+\put(30,20){\line(1,-1){10}}
+\put(30,20){\line(0,1){10}}
+\end{picture}
+\label{fignoprism}
+\end{wrapfigure}
+$G\square K_2$ of $G$ with the complete graph $K_2$. 
+$G$ is called 
+{\em prism-Hamiltonian} if $G\square K_2$ is Hamiltonian. 
+If $G$ is Hamiltonian, then $G\square K_2$ is also Hamiltonian, but the converse does not hold in general, 
+cf. \cite{kaiser2007hamilton}. 
+As well, this property is stronger than having a $2$-walk: cf. figure on the right, where
+we have a 
+$2K_2$-free graph with  a $2$-walk, but without Hamiltonian prism.
+
+Our next result is as follows.
+\begin{theorem}\label{thm1}
+Every $(1+\epsilon)$-tough $2K_2$-free graph $G$ is prism-Hamiltonian, for any $\epsilon>0$.
+Moreover, a Hamiltonian cycle in the prism over $G$ can be found in time polynomial in $|V(G)|$.
+\end{theorem}
+
+It is worth mentioning that the toughness constant in Theorem~\ref{thm1} is much better
+than $\frac{3}{2}$, the lower bound on toughness of a $2K_2$-free graph needed
+for its Hamiltonicity, see \cite[Sect.~4]{broersma2014toughness}.
+
+To prove Theorem~\ref{thm2} and Theorem \ref{thm1}, we first prove
+\begin{theorem}\label{addgen1} 
+Let $G$ be a $2K_2$-free graph. Then
+\begin{enumerate}
+\item $G$ admits an edge-dominating cycle (or an edge, or a vertex) $C$; 
+\item if $G$ contains a triangle, then $G$ admits 
+an edge-dominating cycle $C$, with three successive vertices on $C$ forming a triangle in $G$. 
+\end{enumerate}
+Moreover, $C$ can be found in time polynomial in $|V(G)|$.
+\end{theorem}
+
+In fact, in 1983 Veldman \cite{veldman83} has proved the existence of
+edge-dominating cycles for $2K_2$-free graphs. However, his proof is based on
+contraposition, so it neither tells how to find $C$ in (1), nor
+allows to restrict $C$ as in (2).
+
+In the remainder of the paper we provide the proofs, and then discuss related 
+open questions.
+
+
+\section{Proof of Theorem \ref{addgen1}}
+
+\subsection{The proof of the first part of Theorem \ref{addgen1}}
+If $G$ is a tree, then, as it is $2K_2$-free, it must either have an edge-dominating
+vertex, or an edge-dominating edge.
+Otherwise, $G$ has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
+If $C$ is edge-dominating, then we are done. 
+Otherwise
+there must be an edge $v_1v_2$ (assume there are $t>0$ such edges), 
+with neither $v_1$ nor $v_2$ is on $C$. 
+Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two distinct neighbours on $C$. 
+Let $x_1v_1\in E(G)$ without loss of generality; 
+\begin{enumerate}
+\item if $x_2v_1\in E(G)$, then $C'=x_1v_1x_2x_3\cdots x_kx_1$ is a longer cycle;
+\item if $x_2v_2\in E(G)$, then $x_1v_1v_2x_2x_3\cdots x_kx_1$ is a longer cycle; 
+\item if $x_2v_1,x_2v_2\not\in E(G)$, then applying $2K_2$-freeness to $v_1v_2$ and $x_2x_3$, 
+we get either $x_3v_1\in E(G)$ or $x_3v_2\in E(G)$.
+\begin{enumerate}
+\item If $x_3v_2\in E(G)$, then $C'=x_1v_1v_2x_3\cdots x_kx_1$ is a longer cycle;
+\item if $x_3v_2\not\in E(G)$, then $x_3v_1\in E(G)$.
+\begin{enumerate}
+\item if $x_2$ is adjacent to no vertex outside $C$, then use $C'=x_1v_1x_3\cdots x_kx_1$ instead of $C$. 
+We know that $C$ and $C'$ have the same length, but $C'$ dominates all the edges who are dominated by $C$, and $C'$ also dominates $v_1v_2$, who is not dominated by $C$. So replacing $C$ by $C'$
+decreases $t$.
+\item Otherwise $x_2$ is adjacent to a vertex outside $C$, say $z$.
+As $x_2$ is not adjacent to $v_1$ or $v_2$, we have $z$ adjacent to either $v_1$ or $v_2$. If $zv_1\in E(G)$, then $C'=x_1v_1zx_2x_3\cdots x_kx_1$ is a longer cycle.
+Otherwise $C'=x_1v_1v_2zx_2x_3\cdots x_kx_1$ is a longer cycle.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+Repeat the process above. At each iterarion either $|V(C)|$ increases, or $t$ decreseas.
+Thus the process will stop, with $t=0$, in at most $|E(G)|^2$ steps. 
+\qed
+
+\subsection{The proof of the second part of Theorem  \ref{addgen1}}
+The algorithmic procedure for the second part is almost the same, needing only a minor
+modification described below.
+
+Let $G$  contain a triangle $w_1w_2w_3$.
+If $w_1w_2w_3$ is edge-dominating, then there is nothing to prove. Otherwise, there is an edge, namely $u_1u_2\in E(G)$, with neither $u_1$ nor $u_2$  on $w_1w_2w_3$. Then, by the $2K_2$-freeness, we can connect $w_1w_2w_3$ and $u_1u_2$ together, to get a 5-cycle $C$, 
+with $w_1$, $w_2$ and $w_3$ successive (the order is possibly changed). 
+
+If $C$ is edge-dominating, then we are done. Otherwise, we proceed by induction on
+$k:=|V(C)|$. 
+Suppose $G$ contains a cycle $C$ of length $|V(C)|=k\ge5$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$. If $C$ is not edge-dominating. 
+We claim that then we can find a cycle $C'$ such that $C'$ dominates more edges than $C$ (perhaps all), 
+and $X'$, $X$ and $X''$ are also successive on $C'$.
+
+Let $v_1v_2\in E(G)G$ such that neither $v_1$ nor $v_2$ is on $C$. By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$, and thus to at least one of $\{X',X''\}$. Suppose,
+without loss of generality, that $v_1X'\in E(G)$; label the vertices in $C$ in the following way:
+$X'$ is labeled by $x_1$. The neighbour of $x_1$ on $C$ distinct from $X$ is labeled by $x_2$. 
+The other vertices on $C$ are labeled successively, see Figure \ref{labelcycle}.
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}
+
+
+\filldraw[black](0,0)node[left]{$X'=x_1$} circle(2pt);
+\filldraw[black](1.8,0)node[above right]{ $x_2$} circle(2pt);
+\filldraw[black](3.5,-0.5)node[above]{ $x_3$} circle(2pt);
+\draw[very thick](0,0)--(1.8,0);
+\draw[very thick](3.5,-0.5)--(1.8,0);
+\draw[very thick](3.5,-0.5)--(4,-1);
+\draw[dashed](4,-1)--(4.5,-1.5);
+
+\filldraw[black](-1.2,-1)node[left]{$X=x_k$} circle(2pt);
+\draw[very thick](0,0)--(-1.2,-1);
+
+\filldraw[black](-1.2,-2)node[left]{$X''=x_{k-1}$} circle(2pt);
+\draw[very thick](-1.2,-2)--(-1.2,-1);
+\draw[very thick](-1.2,-2)--(-1,-2.2);
+\draw[dashed](-1,-2.2)--(-0.6,-2.6);
+
+\filldraw[black](0,1)node[below right]{ $v_1$} circle(2pt);
+\draw[very thick](0,1)--(1.5,1);
+\filldraw[black](1.5,1)node[below right]{ $v_2$} circle(2pt);
+\draw[very thick](0,1)--(0,0);
+\draw[thin](0,0)--(-1.2,-2);
+
+
+
+\end{tikzpicture}
+\end{center}
+\caption{The cycle $C$ of length $k$}\label{labelcycle}
+\end{figure}
+
+Note that for $k\geq 5$ the operation 
+in the proof of the first part of Theorem \ref{addgen1}) 
+of replacing  $C$ by $C'$ (enlarging $|V(C)|$ or reducing $t$) 
+does not touch the edges $x_{k-1}x_k$ and $x_kx_1$. Thus the triangle-forming 
+vertices $X''$, $X$ and $X'$ are always successive on $C$ in our process. 
+Then they are on the edge-dominating cycle we obtain there.  \qed
+
+
+\section{Proof of Theorem \ref{thm2}}
+
+
+Combining Theorem \ref{addgen1} and the following
+Lemma \ref{addtec}, we obtain Theorem \ref{thm2}.
+
+\begin{lemma}\label{addtec}
+Let $k\geq 2$.
+If $G$ has an edge-dominating cycle $C$ (or an edge, or a vertex) 
+and if $G$ is $\frac{1}{k-1}$-tough then $G$ admits a $k$-walk.
+\end{lemma}
+\begin{proof} 
+The induced subgraph $D=G-C$ is a coclique. For any
+$D_0\subset D$, by $\frac{1}{k-1}$-toughness, $D_0$ has at least
+$\lceil\frac{|D_0|}{k-1}\rceil$ neighbours in $C$. By Hall' Theorem, there is
+$E'\subset E(G)$ such that each $e\in E'$ has one vertex in $D$ and the other
+in $C$. As well, each vertex in $D$ is incident to exactly one edge in $E'$, while
+each vertex in $C$ is incident to at most $k-1$ edges in $E'$. Then the
+(doubled) edges in $E'$ and the edges in the edge-dominating cycle 
+(respectively, the doubled edge) $C$ form a $k$-walk in $G$.  
+\end{proof}
+
+%\medskip
+%
+%Now, let us state a related conjecture, to close this section.
+%\begin{conjecture}
+%Every $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
+%\end{conjecture}
+
+
+\section{Proof of Theorem \ref{thm1}}
+The following lemma is the key technique in the proof of Theorem \ref{thm1}.
+\begin{lemma}\label{keylem}
+Let $G$ be $(1+\epsilon)$-tough, for some $\epsilon>0$.
+\begin{enumerate}
+\item If $G$ contains an edge-dominating cycle $C$ with even number of vertices, then the prism over $G$ is Hamiltonian.
+\item If $G$ contains an edge-dominating cycle $C=v_1v_2\cdots v_{2p+1}v_1$ of odd length, and there are three vertices $v_1$, $v_{2q}$ and $v_{2q+1}$, for some $1\le q\le p$, inducing a triangle in $G$, then the prism over $G$ is Hamiltonian.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For the first part (see Figure~\ref{fig:evenprism}), 
+denote $C=v_1v_2\cdots v_{2p}v_1$. The set 
+$D=V(G)-V(C)$ of vertices outside $C$
+is an independent set. By Hall's Theorem and 1-toughness, there is a matching $M$, from $D$ to $C$. That means for any vertex $u_j$ in $D$, there is a vertex $v_{i_j}$ on $C$ adjacent to $u_j$ in $M$.
+
+Obviously, we have a Hamilton cycle in $\bar{C}$, the prism over $C$, namely $$v_1v'_1v'_2v_2\cdots v_{2p-1}v'_{2p-1}v'_{2p}v_{2p}v_1.$$ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju'_jv'_{i_j}$ (or $v'_{i_j}u'_ju_jv_{i_j}$) to get a Hamilton cycle in $\bar{G}$.
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=2]
+\draw(-2,0)node[below left]{$v_{2p}$}--(-1,0);\draw(-0.5,0)--(0.5,0);\draw(1,0)--(2,0);
+\draw(-2,0.6)node[below left]{$v'_{2p}$}--(-1,0.6);\draw(-0.5,0.6)--(0.5,0.6);\draw(1,0.6)--(2,0.6);
+\filldraw[black](0,0)node[below left]{$v_{i_j}$} circle(1pt);
+\filldraw[black](0,0.6)node[below left]{$v'_{i_j}$} circle(1pt);
+\filldraw[black](-2,0.6) circle(1pt);
+\filldraw[black](2,0.6)node[below left]{$v'_1$} circle(1pt);
+\filldraw[black](-1.5,0.6)node[below right]{$v'_{2p-1}$} circle(1pt);
+\filldraw[black](1.55,0.6)node[below left]{$v'_2$} circle(1pt);
+\filldraw[black](2,0)node[below left]{$v_1$} circle(1pt);
+\filldraw[black](-2,0) circle(1pt);
+\filldraw[black](1.55,0)node[below left]{$v_2$} circle(1pt);
+\filldraw[black](-1.5,0)node[below right]{$v_{2p-1}$} circle(1pt);
+\draw[dashed](-1,0)--(-0.5,0);
+\draw[dashed](1,0)--(0.5,0);
+\draw[dashed](-1,0.6)--(-0.5,0.6);
+\draw[dashed](1,0.6)--(0.5,0.6);
+\filldraw[black](1.1,0)node[below left]{$v_3$} circle(1pt);
+\filldraw[black](1.1,0.6)node[below left]{$v'_3$} circle(1pt);
+\filldraw[black](0.2,0.4)node[below right]{$u_j$} circle(1pt);
+\filldraw[black](0.2,1)node[below right]{$u'_j$} circle(1pt);
+\draw[very thick](2,0)--(2,0.6)--(1.55,0.6)--(1.55,0)--(1.1,0)--(1.1,0.6);
+\draw[very thick](0,0)--(0.2,0.4)--(0.2,1)--(0,0.6);
+\draw[dashed, very thick](0,0)--(0,0.6);
+\draw[very thick](-1.5,0)--(-1.5,0.6)--(-2,0.6)--(-2,0);
+\draw[very thick](-2,0)..controls(0,-0.5)..(2,0);
+\draw(-2,0.6)..controls(0,0.9)..(2,0.6);
+\node at(0.2,-0.5){$G$};\node at (-0.4,0.9){$G'$};
+\end{tikzpicture}
+\end{center}
+\caption{$G$ has an edge-dominating cycle of even length\label{fig:evenprism}}
+\end{figure}
+
+
+For the second part, denote $C=v_1v_2\cdot v_{2p+1}v_1$ (see Figure \ref{fig2}). 
+The set $D=V(G)-V(C)$ of vertices outside $C$
+is an independent set. By Hall's Theorem, and $(1+\epsilon)$-toughness, 
+there is a matching $M$ from $D$ to $C-\{v_1\}$.  That means for any vertex $u_j$ in $D$, 
+there is a vertex $v_{i_j}$ in $C-\{v_1\}$ adjacent to $u_j$ in $M$.
+
+Clearly, we have a Hamilton cycle in $\bar{C}$, namely $$v_1v_2v'_2v'_3v_3\cdots v_{2q-1}v_{2q}v'_{2q}v'_1v'_{2q+1}v_{2q+1}\cdots v_{2p+1}v_1.$$
+Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju'_jv'_{i_j}$ (or $v'_{i_j}u'_ju_jv_{i_j}$) to get a Hamilton cycle in $\bar{G}$.
+\end{proof}
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=2.2]
+\draw(-2,0)node[below left]{$v_{2p+1}$}--(-1.4,0);\draw(1,0)--(2,0);
+\draw(-2,0.6)node[below left]{$v'_{2p+1}$}--(-1.4,0.6);\draw(1,0.6)--(2,0.6);
+\filldraw[black](0.4,0)node[below left]{$v_{i_j}$} circle(1pt);
+\filldraw[black](0.4,0.6)node[below right]{$v'_{i_j}$} circle(1pt);
+\filldraw[black](-2,0.6) circle(1pt);
+\filldraw[black](2,0.6)node[below left]{$v'_1$} circle(1pt);
+\filldraw[black](-1.5,0.6)node[below right]{$v'_{2p}$} circle(1pt);
+\filldraw[black](1.55,0.6)node[below left]{$v'_2$} circle(1pt);
+\filldraw[black](2,0)node[below left]{$v_1$} circle(1pt);
+\filldraw[black](-2,0) circle(1pt);
+\filldraw[black](1.55,0)node[below left]{$v_2$} circle(1pt);
+\filldraw[black](-1.5,0)node[below right]{$v_{2p}$} circle(1pt);
+\draw[dashed](-1.4,0)--(-1.1,0);\draw(-1.1,0)--(-0.4,0);\filldraw[black](-1,0)node[below right]{$v_{2q+1}$} circle(1pt);
+\draw[dashed](1,0)--(0.5,0);
+\draw[dashed](-1.4,0.6)--(-1.1,0.6);\draw(-1.1,0.6)--(-0.4,0.6);\filldraw[black](-1,0.6)node[below right]{$v'_{2q+1}$} circle(1pt);
+\draw[dashed](1,0.6)--(0.5,0.6);
+\filldraw[black](1.1,0)node[below left]{$v_3$} circle(1pt);
+\filldraw[black](1.1,0.6)node[below left]{$v'_3$} circle(1pt);
+\filldraw[black](0.2,0.4)node[below left]{$u_j$} circle(1pt);
+\filldraw[black](0.2,1)node[above left]{$u'_j$} circle(1pt);
+\draw[very thick](2,0)--(1.55,0)--(1.55,0.6)--(1.1,0.6)--(1.1,0);
+\draw[very thick](0.4,0)--(0.2,0.4)--(0.2,1)--(0.4,0.6);
+\draw[dashed, very thick](0.4,0)--(0.4,0.6);
+\draw[very thick](-1.5,0)--(-1.5,0.6)--(-2,0.6)--(-2,0);
+\draw[very thick](-2,0)..controls(0,-0.5)..(2,0);
+
+\node at(0.2,-0.5){$G$};\node at (-0.4,0.9){$G'$};
+\draw[dashed](-0.4,0)--(0.2,0);\draw(0.2,0)--(0.5,0);
+\draw[dashed](-0.4,0.6)--(0.2,0.6);\draw(0.2,0.6)--(0.5,0.6);
+\filldraw[black](-0.5,0)node[below right]{$v_{2q}$} circle(1pt);
+\filldraw[black](-0.5,0.6)node[below right]{$v'_{2q}$} circle(1pt);
+\draw[very thick](-0.5,0.6)..controls(0.7,0.85)..(2,0.6);
+\draw[very thick](-1,0.6)..controls(0.3,0.97)..(2,0.6);
+\draw[very thick](-0.5,0.6)--(-0.5,0);
+\draw[very thick](-1,0.6)--(-1,0);
+\end{tikzpicture}
+\end{center}
+\caption{$G$ has an edge-dominating cycle of odd length}\label{fig2}
+\end{figure}
+
+Now, suppose $G$ is a triangle-free $2K_2$-free graph. By \cite[Theorem 4]{broersma2014toughness},
+if $|V(G)|\geq 3$ then 
+$G$ is Hamiltonian, and so prism-Hamiltonian.
+If $|V(G)|=2$, i.e. $G$ a single edge, and ovbiously prism-Hamilton.
+Finally, if $2K_2$-free graph $G$ is not triangle-free then we are done by 
+Theorem \ref{addgen1} (2) and Lemma \ref{keylem}.
+\qed
+
+\section{Concluding remarks}
+
+Lemma \ref{addtec} can be used to prove existence of 2-walks in wider than 
+$2K_2$-free classes of graphs.
+For instance, it is immediate from \cite[Corollary 3.2]{veldman83} that each 2-connected
+$3K_2$-free graph admits  an edge-dominating cycle. From the latter and Lemma \ref{addtec},
+it is easy to obtain the following.
+\begin{theorem}\label{2w3k2f}
+Let $G$ be a 1-tough $3K_2$-free graph. Then $G$ admits a 2-walk. \qed
+\end{theorem}
+
+It would be interesting to find whether Theorem~\ref{2w3k2f} and similar results
+of this type can be made
+effective. Towards this end, we would like to propose the following
+\begin{conjecture}
+Let $\ell\geq 2$ be a fixed constant. 
+Then for the $\ell-1$-connected $\ell K_2$-free
+graphs there is a polynomial time algorithm finding an edge-dominating cycle.
+\end{conjecture}
+
+Of independent interest would be making more general results from \cite{veldman83}, 
+in particular Theorem~3, see below, algorithmic. 
+\begin{theorem}
+{\rm \cite[Theorem~3]{veldman83}.} Let $G$ be an $\ell-1$-connected graph such that
+for every induced $\ell K_2$-subgraph $H$ of $G$ one has the
+sum of degrees of vertices in $H$ at least $\frac{(\ell-1)(|V(G)-\ell +1)}{2}$.
+Then $G$ has  an edge-dominating cycle. \qed
+\end{theorem}
+
+\subsection*{Acknowledgements.}
+The authors thank Nick Gravin
+for helpful comments on a draft of this text.
+Research supported by Singapore MOE Tier 2 Grant MOE2011-T2-1-090 (ARC 19/11). 
+
+\bibliography{reftough}
+\bibliographystyle{splncs03}
+%\bibliographystyle{plain}
+\end{document}
