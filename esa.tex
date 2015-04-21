@@ -39,14 +39,27 @@ along with few other similar results.
 A graph $G$ is called $\beta$-{\em tough}, for a real $\beta>0$, if for any $p\geq 2$ it
 cannot be split into $p$ components by removing less than $p\beta$ vertices.  
 This concept, a measure of graph connectivity and ``resilience'' under vertex subsets removal,
-was introduced in 1973 by V. Chv\'{a}tal 
+was introduced in 1973 by Chv\'{a}tal \cite{chvatal1973tough},
 while studying   Hamiltonicity of graphs. For a survey of results on graph toughness till 2006
-cf. \cite{MR2221006}. In general, toughness of a graph is NP-hard to compute 
-\cite{MR1074858}. However, recently, H.~Broersma, V.~Patel and A.~Pyatkin proved
+see \cite{MR2221006}. 
+
+In general, toughness of a graph is NP-hard to compute 
+\cite{MR1074858}. Considerable work went into investigating the problem for
+various classes of graphs. In particular, recently, Broersma, Patel and Pyatkin proved
 \cite{broersma2014toughness} that toughness of a $2K_2$-free graph, i.e. a graph that
 does not contain an induced copy of the disjoint union of two edges,
-can be found in polynomial time.
+can be found in polynomial time. 
 
+$2K_2$-free graphs are an interesting 
+class from algorithmic complexity point of view; most classical algorithmic problems for them are
+hard, with a notable exception of the maximum weighted independent set problem 
+\cite{balasyu1989}, \cite[Graphclass: $2K_2$-free]{isgci}. In particular 
+Hamiltonian cycle problem is NP-complete already for a subclass of $2K_2$-free graphs, 
+the {\em split} graphs---graphs for which the set of vertices can be partitioned into
+a clique and an independent set \cite[Exercise 6.2]{Golum}.
+Due to the latter,  for $2K_2$-free graphs it makes sense to study computational complexity 
+of concepts which are generalisations of the Hamiltonian cycle 
+problem, such as $k$-walk.
 
 Let $p\times G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
 A $k$-{\em walk} is a spanning subgraph $W$ of $2k\times G$, such that each vertex of $W$ 
@@ -91,6 +104,9 @@ every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
 Our Theorem~\ref{thm2} was inspired by this result.  
 However, our approach is technically quite different. 
 
+\medskip 
+
+Our next result concerns a structure that is half-way between 1- and 2-walks. 
 The {\em prism} over a graph $G$ is the Cartesian product 
 \begin{wrapfigure}[6]{r}{.3\textwidth}
 \centering
@@ -118,7 +134,6 @@ As well, this property is stronger than having a $2$-walk: cf. figure on the rig
 we have a 
 $2K_2$-free graph with  a $2$-walk, but without Hamiltonian prism.
 
-Our next result is as follows.
 \begin{theorem}\label{thm1}
 Every $(1+\epsilon)$-tough $2K_2$-free graph $G$ is prism-Hamiltonian, for any $\epsilon>0$.
 Moreover, a Hamiltonian cycle in the prism over $G$ can be found in time polynomial in $|V(G)|$.
