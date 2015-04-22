@@ -30,7 +30,8 @@ in polynomial time; this implies that every $\frac{1}{k-1}$-tough
 $2K_2$-free graph admits a $k$-walk, and it can be found in polynomial time.
 For this class of graphs, this proves a
 long-standing conjecture due to Jackson and Wormald (1990).
-Furthermore, we prove that every $(1+\epsilon)$-tough $2K_2$-free graph is prism-Hamiltonian,
+Furthermore, we prove that for any $\epsilon>0$ every $(1+\epsilon)$-tough $2K_2$-free graph is prism-Hamiltonian
+and give an effective construction of a Hamiltonian cycle in the corresponding prism,
 along with few other similar results.
 \end{abstract}
 
@@ -144,7 +145,7 @@ than $\frac{3}{2}$, the lower bound on toughness of a $2K_2$-free graph needed
 for its Hamiltonicity, see \cite[Sect.~4]{broersma2014toughness}.
 
 To prove Theorem~\ref{thm2} and Theorem \ref{thm1}, we first prove
-a result on edge-dominating ssubgraphs (a subgraph $S$ of $G$ is called {\em edge-dominating}
+a result on edge-dominating subgraphs (a subgraph $S$ of $G$ is called {\em edge-dominating}
 if each edge of $G$contains at least one vertex from $V(S)$).
 \begin{theorem}\label{addgen1} 
 Let $G$ be a $2K_2$-free graph. Then
@@ -196,7 +197,7 @@ Otherwise $C'=x_1v_1v_2zx_2x_3\cdots x_kx_1$ is a longer cycle.
 \end{enumerate}
 \end{enumerate}
 \end{enumerate}
-Repeat the process above. At each iterarion either $|V(C)|$ increases, or $t$ decreseas.
+Repeat the process above. At each iteration either $|V(C)|$ increases, or $t$ decreases.
 Thus the process will stop, with $t=0$, in at most $|E(G)|^2$ steps. 
 \qed
 
@@ -350,7 +351,6 @@ Obviously, we have a Hamiltonian cycle in $\bar{C}$, the prism over $C$, namely 
 
 For the second part, denote $C=v_1v_2\cdot v_{2p+1}v_1$ (see Figure \ref{fig2}). 
 The set $D=V(G)-V(C)$ of vertices outside $C$
-
 is an independent set. By Hall's Theorem, and $(1+\epsilon)$-toughness, 
 there is a matching $M$ between $D$ and $C-\{v_1\}$.  This means that for any vertex $u_j$ in $D$, 
 there is a vertex $v_{i_j}$ in $C-\{v_1\}$ adjacent to $u_j$ in $M$.
@@ -405,7 +405,7 @@ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju
 Now, suppose $G$ is a triangle-free $2K_2$-free graph. By \cite[Theorem 4]{broersma2014toughness},
 if $|V(G)|\geq 3$ then 
 $G$ is Hamiltonian, and so prism-Hamiltonian.
-If $|V(G)|=2$, i.e. $G$ is a single edge, and ovbiously prism-Hamiltonian.
+If $|V(G)|=2$, i.e. $G$ is a single edge, and obviously prism-Hamiltonian.
 Finally, if $G$ is not triangle-free then we are done by 
 Theorem \ref{addgen1} (2) and Lemma \ref{keylem}.
 \qed
