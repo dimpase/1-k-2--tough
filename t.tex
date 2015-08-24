@@ -60,9 +60,9 @@ Another main result of this thesis is to prove that every $(1+\epsilon)$-tough $
 Finally, we list several results on the existence of 2-walk under the assumption of 1-tough for some other graphs. And also pose some conjectures for further research.
 \end{abstract}
 
-\chapter{Preparation}\label{cpre}
+\chapter{Preliminary}\label{cpre}
 \pagenumbering{arabic}
-\section{Introduction}
+
 In this thesis, we make a summary on the recent progression in the area of hamiltonicity and $k$-walks of some special kinds of graphs under some toughness conditions. Additionally, we introduce  Jackson-Wormald Conjecture and prove that it is true for $2K_2$-free graphs.
 
 In Chapter \ref{cpre}, we introduce some elementary notions and definitions in graph theory. In Chapter \ref{c2ht}, we talk about the concept of toughness and its many applications in graph theory. In Chapter \ref{ch3edcah}, we discuss a generalization of Hamilton cycles, edge-dominating cycles. And we also have a look at an important application of edge-dominating cycles on the research of line graphs. Next, in Chapter \ref{ch4kw}, we introduce some other generalizations of Hamilton cycles, $k$-walks and Hamilton prisms, and then we show the first main result of this thesis: for the graphs containing edge-dominating cycles, a conjecture by Jackson and Wormald is true. In Chapter \ref{chap2k2fg}, we prove another main result that for any $\frac{1}{k-1}$-tough $2K_2$-free graph $G$, there is a $k$-walk, and it can be found in time polynomial to the number of vertices $|V(G)|$. What is more, we also prove that every $(1+\epsilon)$-tough $2K_2$-free graphs is prism-Hamiltonian.
@@ -73,7 +73,7 @@ The field of graph theory is considered to begin from a paper \cite{euler1741sol
 
 
 Most definitions and terminologies in this thesis follow \cite{harris2008combinatorics}, \cite{bomu08} and \cite{diestel2000graph}, so we strongly recommend readers look at these three books for more details.
-
+\subsection{Graphs}
 A {\em graph} is a pair $G=(V,E)$ of sets satisfying $E\subset[V]^2$, so the elements of $E$ are 2-element subset of $V$. All the graphs talked in this thesis are finite graphs, i.e. for any graph $G=(V,E)$, we assume both $|V|$ and $|E|$ are finite. A graph with vertex set $V$ is said to be a graph on $V$. The vertex set of a graph is denoted as $V(G)$, its edge set as $E(G)$.
 For two graphs $G=(V,E)$ and $G'=(V',E')$, if $V'\subset V$ and $E'\subset E$, then we say $G'$ is a subgraph of $G$, written as $G'\subset G$. 
 If $G'\subset G$ and $G'$ contains all the edges $xy\in E$ with $x,y\in V'$, then $G'$ is called an {\em induced subgraph} of $G$. What is more, if $U\subset V$ is any subset of vertices, then $G|_U$ stands for the graph on $U$ whose edges are precisely the edges of $G$ with both ends in $U$. And we say $G'\subset G$ is a spanning subgraph of $G$ if $V'=V$.
@@ -100,7 +100,7 @@ $S$ is called {\em edge-dominating}, if the induced subgraph on $V(G)-S$ has no 
 $S$ is called {\em weakly-dominating}, if any edge $e\in E(G)$ has at least one endpoint adjacent to some vertices in $S$.
 
 
-\section{Paths, trails and walks}
+\subsection{Paths, trails and walks}
 
 A {\em walk} (of length $k$) in a graph $G$ is a non-empty alternating sequence $v_0e_0v_1e_1\ldots e_{k-1}v_k$ of vertices and edges in $G$ such that $e_i=v_iv_{i+1}$ for all $i<k$. If $v_0=v_k$, the walk is said to be {\em closed}. A {\em path} is a walk with all vertices distinct. 
 \begin{proposition}
@@ -133,9 +133,9 @@ For a connected graph $G$, it is an Eulerian graph if and only if evry vertex in
 
 
 
-\section{Bipartites and matchings}
+\subsection{Bipartites and matchings}
 
-Let $r\ge2$ be an integer. A graph $G=(V,E)$ is called $r$-partite if $V$ admits a partition into $r$ classes such that every edge has its ends in different classes, i.e. vertices in the same partition class must not be adjacent. Additionally,``2-partite" is usually called {\em bipartite} for convenient.
+Let $r\ge2$ be an integer. A graph $G=(V,E)$ is called $r$-partite if $V$ admits a partition into $r$ classes such that every edge has its ends in different classes, i.e. vertices in the same partition class must not be adjacent. Additionally,``2-partite" is usually called {\em bipartite} for convenience.
 \begin{proposition}\label{bipoefpro3}
 A graph is bipartite if and only if it contains no odd cycle.
 \end{proposition}
@@ -179,7 +179,7 @@ Let $p\ge1$ be an integer. If $|N(S)|\ge\frac{|S|}{p}$ for all subset $S\subset 
 
 
 
-\section{$k$-factors}
+\subsection{$k$-factors}
 
 
 For any graph $G$, if all the vertices of $G$ have the same degree $k$, then $G$ is {\em $k$-regular}, or simply {\em regular}. Especially, a 3-regular graph is called {\em cubic}.
@@ -323,7 +323,7 @@ In this chapter, we first make a concise review on the development and history o
 
 \section{Hamilton graphs}
 
-The story of Hamilton graphs can be traced back to 1850's. In 1859, the English game company Jaques and Son bought the right to manufacture and sell a game, named "The Icosian Game", from the prominent mathematician Sir William Rowan Hamilton. And the problem of finding a Hamilton cycle came up here. From that time, this topic is one of the central and fundamental problems in graph theory. We strongly recommend readers to consult \cite{gould1991updating} and \cite{bauer2006toughness} for a detailed history of this topic.
+The story of Hamilton graphs can be traced back to 1850's. In 1859, the English game company Jaques and Son bought the right to manufacture and sell a game, named "The Icosian Game", from the prominent mathematician Sir William Rowan Hamilton. And the problem of finding a Hamilton cycle came up here. From that time, this topic is one of the central and fundamental problems in graph theory. We strongly recommend readers to consult \cite{gould1991updating} and \cite{MR2221006} for a detailed history of this topic.
 
 If a path $P$ spans all the vertices of $G$, i.e. $V(P)=V(G)$, then $P$ is said to be a {\em Hamilton path} of $G$. Any graph contains a Hamilton path is called {\em traceable}. If a cycle $C$ spans the vertices of a graph $G$, such a cycle is called {\em Hamilton cycle}, and a graph containing a Hamilton cycle is called a Hamilton graph.
 
@@ -349,7 +349,7 @@ Let $\alpha(G)$ denote the {\em independence number}, the maximal size of indepe
 Every graph $G$ with $|V(G)|\ge3$ and $\kappa(G)\ge\alpha(G)$ is Hamiltonian.
 \end{theorem}
 In the same paper, they also proved:
-\begin{theorem}[Chv{\'a}tal and Erd{\"o}s 1972]
+\begin{theorem}[Chv{\'a}tal and Erd{\"o}s 1972]\label{thmce15}
 Every graph $G$ with $|V(G)|\ge3$ and $\kappa(G)\ge\alpha(G)-1$ admits a Hamilton path.
 \end{theorem}
 
@@ -375,7 +375,7 @@ In 1973, Chv{\'a}tal \cite{chvatal1973tough} introduced the concept of toughness
 \begin{conjecture}[Chv{\'a}tal]\label{cj1chath}
 There is a finite constant $t$ such that every $t$-tough graph is Hamiltonian.
 \end{conjecture}
-And we strongly recommend readers to consult an excellent survey \cite{bauer2006toughness} on this topic for more detailed information.
+And we strongly recommend readers to consult an excellent survey \cite{MR2221006} on this topic for more detailed information.
 
 \begin{definition}[Chv{\'a}tal 1973]\label{c1}
 Let $G$ be a graph and $t$ a real number such that the implication $k(G-S)>1\Rightarrow |S|\ge t\cdot k(G-S)$ holds for each set $S$ of points of $G$. Then $G$ will be said to be $t$-tough. Here $k(G-S)$ denotes the number of components in the graph $G-S$.
@@ -505,7 +505,7 @@ Every 2-tough graph on at least 3 vertices contains a 2-factor.
 
 
 \subsubsection{Two lemmas}
-Recall the definitions and notions in Theorem \ref{tut1952cri1}, that $$\delta_{G,k}=k|A|+\sum_{x\in B}d_{G-A}(x)-k|B|-h_G(A,B),$$ where $A$ and $B$ are two disjoint subsets of $V(G)$.
+Recall the definitions and notions in Theorem \ref{tut1952cri1}, that $$\delta_{G,k}(A,B)=k|A|+\sum_{x\in B}d_{G-A}(x)-k|B|-h_G(A,B),$$ where $A$ and $B$ are two disjoint subsets of $V(G)$.
 The following two lemmas are the key points in the proof of Theorem \ref{kttokf19851}.
 \begin{lemma}[Enomoto 1986]\label{lmbineno86}
 For any disjoint subsets $A$ and $B$ in $V(G)$, if
@@ -568,7 +568,7 @@ Every $3/2$-tough 5-chordal graph has a 2-factor.
 
 \section{Hamiltonicity of some special graphs under some toughness conditions}
 In this section, let's look at some concrete examples on how toughness conditions are applied in finding Hamilton cycles in some special graphs.
-\subsection{Split graphs}
+\subsection{Split graphs}\label{sec241spg}
 
 
 The first kind of graphs we want to introduce in this section are split graphs, because the class of split graphs is a subclass of $2K_2$-free graphs, which we shall define in Chapter \ref{chap2k2fg}. Additionally, some tools developed in the research of split graphs will be quite helpful in the research of $2K_2$-free graphs.
@@ -608,8 +608,8 @@ Let $M_1$ and $M_2$ be two matroids on the same support set $X$. There exists a 
 Let $G$ be a split graph with the parts $A$ and $B$ where $A$ is the independent set and $B$ is the clique. If $G$ is $3/2$-tough, then $G$ contains a subgraph $G''$ comprised of disjoint paths such that each vertex of $A$ is an internal vertex of a path of $G''$.
 \end{lemma}
 
-\subsubsection{The proof of Theorem \ref{split} (Kaiser, Kral and Stacho 2007)}
-Denote $A$ as the part of $G$ corresponding to the independent set, by Lemma \ref{s2}, $G$ contains a subgraph $G''$ made of disjoint paths such that each vertex of $A$ is an internal vertex of a path in  $G''$. Because all the end vertices of these paths are contained in the part corresponding to the clique of $G$, they can be connected together. Thus, $G$ is Hamiltonian.
+\subsubsection{The outline of the proof of Theorem \ref{split} (Kaiser, Kral and Stacho 2007)}
+Denote $A$ to be the part of $G$ corresponding to the independent set, by Lemma \ref{s2}, $G$ contains a subgraph $G''$ made of disjoint paths such that each vertex of $A$ is an internal vertex of a path in  $G''$. Because all the end vertices of these paths are contained in the part corresponding to the clique of $G$, they can be connected together. Thus, $G$ is Hamiltonian.
 
 
 \qed
@@ -697,7 +697,7 @@ A graph is an interval graph if and only if it is an interesction graph of subpa
 
 For interval graphs, there is a remarkable result on the existence of Hamilton cycles, see \cite{keil1985finding}.
 
-\begin{theorem}[Keil 1985]
+\begin{theorem}[Keil 1985]\label{thmintg1th85}
 An interval graph $G$ is Hamiltonian if and only if $G$ is 1-tough.
 \end{theorem}
 
@@ -803,11 +803,90 @@ First, let us recall Theorem \ref{thm4cpgih1}, which asserts that every 4-connec
 If a planar graph $G$ has toughness $t(G)>3/2$, then $G$ is Hamiltonian.
 \end{theorem}
 
-On the other hand, in 1999, Owens \cite{owens1999nonhamiltonian} constructed a series of examples to show that for any $\delta>0$, there exists a graph $G$, with toughness $t(G)>3/2-\delta$, and $G$ is not Hamiltonian.
+On the other hand, in 1999, Owens \cite{owens1999nonhamiltonian} constructed a series of examples to show that for any $\delta>0$, there exists a planar graph $G$, with toughness $t(G)>3/2-\delta$, and $G$ is not Hamiltonian.
 
 \begin{theorem}[Owens 1999]\label{cethmow32tnh}
 For any integer $k\ge1$, there is a non-hamilton planar graph $G$ with toughness $t(G)=\frac{18k+8}{12k+6}$.
 \end{theorem}
+
+
+
+\section{Algorithms and their complexity}
+In this section, we provide a concise introduction on the complexity of finding Hamilton cycle in graphs. We recommend the readers to consult \cite{cormen2001introduction} for an excellent textbook on algorithms and complexity.
+
+
+\subsection{P, NP and NP-complete}
+Here we informally describe three classes of problems: P, NP and NPC, and we suggest readers to find a more detailed and formal discussion in \cite{cormen2001introduction}.
+
+In most of the time, researchers are interested in the algorithms who are {\em polynomial-time algorithms}: on inputs of size $n$, their worst-case running time is $O(n^k)$ for some constant $k$. However, we know that there are some problems who cannot be solved in polynomial time, for example,  Turing's ``Halting Problem''. We know that it cannot be solved on any computer, regardless how much time we use.
+
+The class P consists of these problems which are solvable in polynomial time. The class NP consists of these problems who are ``verifiable'' in polynomial time. More specifically, if we have a ``certificate'' of a solution, then we could verify that certificate is correct in time polynomial to the size of the input of the problem.
+\begin{proposition}\label{hynppo1}
+Determining whether a graph has a Hamilton cycle is in the class NP.
+\end{proposition}
+
+Undoubtedly, any problem is the class P is also in NP, because if a problem is in P, then it can be solved in polynomial time without any certificate, i.e. $P\subset NP$. It is an open question whether P is a proper subset of NP.
+
+A problem is in the class NP-complete (denoted by NPC for short), if it is in NP and as ``hard'' as any problem in NP. That means if any NP-complete problem can be solved in polynomial time, then every problem in NP has a polynomial time algorithm.
+
+Many interesting problems are {\em optimization problems}, in which each legal solution has a value, and we want to find a feasible solution with the best value. However, NP-completeness applies not to optimization problems, but to {\em decisivion problems}, where the answer is ``yes'' or ``no''.
+
+Technically, we prove a decision problem to be NP-complete if:
+\begin{enumerate}
+\item it is NP, and
+\item every problem in NPC is reducible to it in polynomial time.
+\end{enumerate}
+As we have seen, in Proposition \ref{hynppo1}, determining whether a graph is Hamiltonian is an NP problem. In fact it is also a NP-complete problem.
+
+
+
+\subsection{The complexity of finding Hamilton cycles in some kinds of graphs}
+
+Now, let us look at several examples on the complexity of finding Hamilton cycles in some kinds of graphs.
+
+Recall in Theorem \ref{thmintg1th85}, that an interval graph $G$ is Hamiltonian if and only if it is 1-tough. What is more, Keil also proved that once a Hamilton cycle exists in an interval graph, it can be found in polynomial time.
+\begin{proposition}[Keil 1985] 
+If an interval graph $G$ contains a Hamilton cycle, then the cycle can be found in time polynomial to $|V(G)|$.
+\end{proposition}
+
+For planar graph, it is proved in \cite{gouyou1982hamiltonian} that:
+\begin{proposition}[D. Gouyou-Beauchamps 1982]
+The problem of determining whether a 4-connected planar graph $G$ is Hamiltonian can be solved in time depending on $|E(G)|^3$.
+\end{proposition}
+
+
+However, when the connectivity becomes lower, the complexity will be higher, for planar graphs. In fact, the following result is found very early in \cite{garey1976planar}.
+\begin{proposition}[Garey, Johnson and Tarjan 1976]
+It is an NP-complete problem to determine whether a 3-connected cubic planar graph is Hamiltonian.
+\end{proposition}
+
+There are also many other examples, in which finding Hamilton cycles is an NP-complete problem. In \cite{krishnamoorthy1975np}, it is proved that:
+\begin{proposition}[Krishnamoorthy 1975]\label{popfhcbnpc75}
+Finding Hamilton cycles in bipartites is an NP-complete problem.
+\end{proposition}
+
+What is more, even assuming the bipartites to be planar, the complexity remains NP-complete \cite{nash1969hamiltonian}.
+\begin{proposition}[Nash-Willians 1969]
+Finding Hamilton cycles in planar bipartites is an NP-complete problem.
+\end{proposition}
+
+Recall Theorem \ref{spn} and Theorem \ref{split} in Section \ref{sec241spg}, we are quite familiar with the Hamiltonicity of split graphs under toughness conditions. However, to determine whether a split graph is Hamiltonian without toughness conditions is a hard problem. The following statement is in fact an exercise in \cite{golumbicalgorithmic}.
+
+\begin{proposition}
+To determine whether a split graph is Hamiltonian is an NP-complete problem.
+\end{proposition}
+\begin{proof}
+Obviously, this problem is in NP. So, we only need to find an NPC problem who can be reduced to this problem.
+
+Here we use the fact, Proposition \ref{popfhcbnpc75}, that determining whether a bipartite is Hamiltonian is an NP-complete problem.
+
+Now, we assume there is a polynomial algorithm $\mathcal{A}$, which can determine whether a split graph $H$ is Hamiltonian.
+Then for any bipartite $G$, with two parts $M$ and $N$, if $|M|\neq|N|$, then $G$ is certianly not Hamiltonian. 
+If $|M|=|N|$, then we add all possible edges between vertices in $N$ to get a clique $\bar{N}$. Then we get a split graph $\bar{G}$, with an independent set $M$ and a clique $\bar{N}$.
+
+Clearly, if $\bar{G}$ is not Hamiltonian, then $G$ is not Hamiltonian either. If the algorithm $\mathcal{A}$ can provide us a Hamilton cycle $\bar{C}$ in $\bar{G}$, then, obviously,  $\bar{C}$ does not use any edge with both endpoints in $\bar{N}$. Therefore $\bar{C}$ induced a Hamilton cycle $C$ in $G$. Then we finish the proof.
+\end{proof}
+
 
 
 
@@ -836,7 +915,7 @@ The first result in this topic should be the following one by Dirac:
 Let $G$ be a 2-connected graph on $n$ vertices, then $c(G)\ge\min\{n,2\delta\}$.
 \end{theorem}
 
-In a graph $G$, for any $k\le\alpha(G)$, we denote $\sigma_k(G)$ as the minimum degree sum taken over all independent sets of $k$ vertices of $G$.
+In a graph $G$, for any $k\le\alpha(G)$, we denote $\sigma_k(G)$ to be the minimum degree sum taken over all independent sets of $k$ vertices of $G$.
 Then the theorem above can be generalized \cite{linial1976lower} into:
 \begin{theorem}[Linial 1976]
 Let $G$ be a 2-connected graph on $n$ vertices. Then $c(G)\ge\min\{n,\sigma_2\}$.
@@ -930,7 +1009,7 @@ Then we have finished the proof.
 From this result, we can easily deduce that
 
 \begin{corollary}\label{cor2k2edgd}
-Suppose $G$ is a $2K_2$-free graph (a graph without any pair of vertex-disjoint edges), and if $G$ is not a tree, then $G$ admits an edge-dominating cycle.
+Suppose $G$ is a $2K_2$-free graph (a graph without any pair of remote edges), and if $G$ is not a tree, then $G$ admits an edge-dominating cycle.
 \end{corollary}
 
 \begin{corollary}\label{co32c3kfed}
@@ -1171,7 +1250,7 @@ then $G$ contains a $D_{\lambda}$ cycle.
 \end{theorem}
 
 \begin{theorem}[Veldman 1983]\label{thm5inveldlamc83}
-Suppose a graph $G$ is 2-connected and the degree-sum of any three pairwise remote connected subgraphs with $\lambda\ge2$ vertices is at least $|V(G)-3\lambda+5$. Then $G$ contains a $D_{\lambda}$-cycle.
+Suppose a graph $G$ is 2-connected and the degree-sum of any three pairwise remote connected subgraphs with $\lambda\ge2$ vertices is at least $|V(G)|-3\lambda+5$. Then $G$ contains a $D_{\lambda}$-cycle.
 
 \end{theorem}
 
@@ -1399,7 +1478,7 @@ For any $j$-connected graph $G$. Denote $k=\lceil\alpha(G)/j\rceil$, then $G$ ad
 Similar to the proof of Theorem \ref{mindekwa1}, we consider $G[K_k]$ again. Obviously, $G[K_k]$ is $kj$-connected. Thus $\kappa(G[K_k])\ge\alpha(G[K_k])$. By Theorem \ref{kageaptohathe}, $G[K_k]$ is Hamiltonian. Obviously, the Hamilton cycle in $G[K_k]$ induces a $k$ walk in $G$.
 \end{proof}
 
-
+Clearly, Theorem \ref{thmce15} can be considered as a corollary of this result.
 
 
 
@@ -1809,7 +1888,7 @@ Denote the edge-dominating cycle as $C$, thus the induced subgraph $D=G-C$ is a 
 
 
 \section{From edge-dominating cycles to Hamilton prisms}
-As we have seen, edge-dominating cycles are have a powerful implication in finding $k$-walks. Since the concept of Hamilton prisms is an analogy of the concept of $k$-walks, so we can expect that edge-dominating cycles have similar applications on finding Hamilton prisms. Indeed, we obtain the following result.
+As we have seen, edge-dominating cycles have a powerful implication in finding $k$-walks. Since the concept of Hamilton prisms is an analogy of the concept of $k$-walks, so we can expect that edge-dominating cycles have similar applications on finding Hamilton prisms. Indeed, we obtain the following result.
 \begin{theorem}[Gao, Pasechnik 2015]\label{edhctohprthlm}
 Suppose $G$ is $(1+\epsilon)$-tough, for some $\epsilon>0$.
 \begin{enumerate}
@@ -2098,7 +2177,7 @@ In the last section, we have seen an example on the existence of 2-walks in some
 
 In \cite{dvovrak2010toughness}, Dvo{\v r}{\'a}k, Kr{\'a}l and Teska proved the following theorem on the existence of 2-walks for $k_4$-minor-free graphs.
 \begin{theorem}[Dvo{\v r}{\'a}k, Kr{\'a}l and Teska 2010]\label{thmk4mfg2w}
-If $K_4$-minor-free graph $G$ is more than $7/4$-tough, then $G$ admits a 2-walk.
+If $K_4$-minor-free graph $G$ is more than $4/7$-tough, then $G$ admits a 2-walk.
 \end{theorem}
 
 Obviously, if $G$ does not has $K_4$ as a minor, then $G$ has neither $K_5$ nor $K_{3,3}$ as a minor. So, by Theorem \ref{plgfodmthmku}, $G$ is a planar graph.
@@ -2107,7 +2186,7 @@ Since the proof of Theorem \ref{thmk4mfg2w} is very tricky, so we do not include
 
 Additionally, Dvo{\v r}{\'a}k, Kr{\'a}l and Teska also pointed out that Theorem \ref{thmk4mfg2w} is best possible, by constrcuting an example, in the following sense:
 \begin{theorem}[Dvo{\v r}{\'a}k, Kr{\'a}l and Teska 2010]\label{cedkt10thm2}
-There exists a $4/7$-tough $K_4$-minor-free graph admits no 2-walk.
+There exists a $4/7$-tough $K_4$-minor-free graph who admits no 2-walk.
 \end{theorem}
 
 In fact, their example is also chordal. And in the following section, we shall investigate the conditions for chordal planar graphs to have 2-walks.
@@ -2817,7 +2896,7 @@ $X'$ is labeled by $x_1$. The neighbor of $x_1$ (on $C$), who is not $X$, is lab
 \end{center}
 \end{figure}
 
-Note that the operation (in the proof of the first part of Theorem \ref{addgen1}) of enlarging the cycle $C$ to $C'$ has nothing to do with the edges $x_{k-1}x_k$ and $x_kx_1$ when $k\ge5$. Thus the three vertices $X''$, $X$ and $X'$ are always successive on the cycle in our process. Then we can finally find the edge-dominating cycle contains three vertices of a triangle successively.
+Note that the operation (in the proof of the first part of Theorem \ref{cothm2kwin2kpol}) of enlarging the cycle $C$ to $C'$ has nothing to do with the edges $x_{k-1}x_k$ and $x_kx_1$ when $k\ge5$. Thus the three vertices $X''$, $X$ and $X'$ are always successive on the cycle in our process. Then we can finally find the edge-dominating cycle contains three vertices of a triangle successively.
 
 
 By Theorem \ref{edhctohprthlm}, we have finished our proof.
@@ -2956,7 +3035,7 @@ Finally, we list several conjectures, which are possibly true, on the existence 
 
 
 
-\bibliography{reftough}
+\bibliography{treftough}
 
 \bibliographystyle{plain}
 
