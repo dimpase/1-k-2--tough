@@ -146,7 +146,7 @@ for its Hamiltonicity, see \cite[Sect.~4]{broersma2014toughness}.
 
 To prove Theorem~\ref{thm2} and Theorem \ref{thm1}, we first prove
 a result on edge-dominating subgraphs (a subgraph $S$ of $G$ is called {\em edge-dominating}
-if each edge of $G$contains at least one vertex from $V(S)$).
+if each edge of $G$ contains at least one vertex from $V(S)$).
 \begin{theorem}\label{addgen1} 
 Let $G$ be a $2K_2$-free graph. Then
 \begin{enumerate}
@@ -171,11 +171,21 @@ open questions.
 \subsection{The proof of the first part of Theorem \ref{addgen1}}
 If $G$ is a tree, then, as it is $2K_2$-free, it must either have an edge-dominating
 vertex, or an edge-dominating edge.
+Indeed, in this case, if any two edges intersect, then, as $G$ has no cycles, 
+they all must intersect in a vertex, which will be dominating. Now, assume that there are
+two non-intersecting edges, say $xy$ and $uv$. As they cannot form a $2K_2$, they are on
+a 3-path, $xyuv$, without loss of generality. Now we claim that $yu$ is a dominating edge.
+Indeed, suppose to the contrary that an edge $ab$ does not intersect $yu$. Then, as they
+cannot form $2K_2$, $abyu$ is a 3-path, without loss of generality. As $G$ is a tree, $by$
+is the only edge connecting vertices of $ab$ and $yu$. Thus either
+$ab$ and $uw$ form a $2K_2$, or $b$ lies in a cycle; in both cases this is a contradiction, 
+proving that $yu$ is a dominating edge.
+
 Otherwise, $G$ has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
 If $C$ is edge-dominating, then we are done. 
 Otherwise
 there must be an edge $v_1v_2$ (assume there are $t>0$ such edges), 
-with neither $v_1$ nor $v_2$ being on $C$. 
+with neither $v_1$ nor $v_2$ on $C$. 
 Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two distinct neighbours on $C$. 
 Let $x_1v_1\in E(G)$ without loss of generality; 
 \begin{enumerate}
@@ -205,21 +215,37 @@ Thus the process will stop, with $t=0$, in at most $|E(G)|^2$ steps.
 The algorithmic procedure for the second part is almost the same, requiring only a minor
 modification described below.
 
-Let $G$  contain a triangle $w_1w_2w_3$.
-If $w_1w_2w_3$ is edge-dominating, then there is nothing to prove. Otherwise, there is an edge, namely $u_1u_2\in E(G)$, with neither $u_1$ nor $u_2$  on $w_1w_2w_3$. Then, by the $2K_2$-freeness, we can connect $w_1w_2w_3$ and $u_1u_2$ together, to get a 5-cycle $C$, 
-with $w_{\pi(1)}$, $w_{\pi(2)}$ and $w_{\pi(3)}$ successive on $C$ for some
-permutation $\pi$ of $\{1,2,3\}$. 
+Let $G$  contain a triangle $w_1w_2w_3$.  If $w_1w_2w_3$ is edge-dominating,
+then there is nothing to prove. Otherwise, there is $u_1u_2\in
+E(G)$, with neither $u_1$ nor $u_2$  on $w_1w_2w_3$.  Then, by the
+$2K_2$-freeness, we either can connect $w_1w_2w_3$ and $u_1u_2$ together, to get a
+5-cycle $C$, with $w_{\pi(1)}$, $w_{\pi(2)}$ and $w_{\pi(3)}$ successive on $C$
+for some permutation $\pi$ of $\{1,2,3\}$, or else (without loss in generality)
+$u_1$ is adjacent to $w_1$, $w_2$, and $w_3$. In the latter case set $C=u_1w_1w_2w_3$.
 
 If $C$ is edge-dominating, then we are done. Otherwise, we proceed by induction on
 $k:=|V(C)|$. 
-Suppose $k\ge5$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$. 
+Suppose $k\ge 4$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$. 
 We claim that then we can find a cycle $C'$ such that $C'$ dominates more edges than $C$ (perhaps all), 
 and $X'$, $X$ and $X''$ are also successive on $C'$.
+Let $v_1v_2\in E(G)$ such that neither $v_1$ nor $v_2$ is on $C$.
 
-Let $v_1v_2\in E(G)$ such that neither $v_1$ nor $v_2$ is on $C$. By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$, and thus to at least one of $\{X',X''\}$. Suppose,
+Now we dispense with the case $k=4$. Note that by construction the subgraph
+induced on $C$ is complete.  Let $e=XX'$ and $f=X''X'''$ be an pair of
+non-intersecting edges of this subgraph.  By $2K_2$-freeness, $v_1v_2$ is
+joined by edges to $e$ and $f$.  Without loss of generality, either $v_1$ is
+joined to both of them (say, $v_1X', v_1X'''\in E(G)$), or $v_1$ is joined to
+$e$ and $v_2$ is joined to $f$ (say, $v_1X', v_2X''\in E(G)$).  In the latter
+case, we can set $C'$ to be the 5-cycle $v_1X'XX''v_2$.  In the former case, we
+can set $C'$ to be the 5-cycle $v_1X'XX''X'''$.  In both cases, we have three successive
+vertices $X'XX''$ forming a triangle, as required.
+
+From now on we can assume $k\geq 5$.
+By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$. 
+and thus to at least one of $\{X',X''\}$.  Suppose,
 without loss of generality, that $v_1X'\in E(G)$; label the vertices in $C$ in the following way:
-$X'$ is labeled by $x_1$. The neighbour of $x_1$ on $C$ distinct from $X$ is labeled by $x_2$. 
-The other vertices on $C$ are labeled successively, see Figure \ref{labelcycle}.
+$X'$ is labeled by $x_1$; the neighbour of $x_1$ on $C$ distinct from $X$ is labeled by $x_2$;
+the other vertices on $C$ are labeled successively, see Figure \ref{labelcycle}.
 
 \begin{figure}[h]
 \begin{center}
@@ -273,17 +299,32 @@ Lemma \ref{addtec}, we obtain Theorem \ref{thm2}.
 Let $k\geq 2$.
 If $G$ has an edge-dominating cycle $C$ (or an edge, or a vertex) 
 and if $G$ is $\frac{1}{k-1}$-tough then $G$ admits a $k$-walk.
+Moreover, the latter can be found in time polynomial in $|V(G)|$.
 \end{lemma}
 \begin{proof} 
-The induced subgraph $D=G-C$ is an independent set. For any
-$D_0\subset D$, by $\frac{1}{k-1}$-toughness, $D_0$ has at least
-$\lceil\frac{|D_0|}{k-1}\rceil$ neighbours in $C$. By Hall's Theorem \cite[Theorem 16.4]{bomu08}, 
-there is
-$E'\subset E(G)$ such that each $e\in E'$ has one vertex in $D$ and the other
-in $C$. Moreover, each vertex in $D$ is incident to exactly one edge in $E'$, while
-each vertex in $C$ is incident to at most $k-1$ edges in $E'$. Then the
-(doubled) edges in $E'$ and the edges in the edge-dominating cycle 
-(respectively, the doubled edge) $C$ form a $k$-walk in $G$.  
+The induced subgraph $D=G-C$ is an independent set. Define an axiliary bipartite 
+graph $\Gamma$, with one part $V(D)$ and the other consisting of $k-1$ copies of $V(C)$, 
+so that each edge $dc\in V(D)\times V(C)$ corresponds to $k-1$ edges
+$dc_1,\dots dc_{k-1}$ of $\Gamma$. Let $\Phi$ denote the $(k-1)$-to-$1$ map
+$\Phi: E(\Gamma)\to E(G)$ sending each $dc_j$, for $1\leq j\leq k-1$, to $dc=\Phi(dc_j)$.
+
+For any $D'\subset D$, by $\frac{1}{k-1}$-toughness, $D'$ has at least
+$\lceil\frac{|D'|}{k-1}\rceil$ neighbours in $C$. Thus $D'$ has at
+least $|D'|$ neighbours in $\Gamma$.  By Hall's Theorem \cite[Theorem 16.4]{bomu08} applied
+to $\Gamma$, it has a matching $M$ saturating $D$; i.e.  each $v\in V(D)$ is
+incident to an $e\in M$, and each $v$ in the other part of $\Gamma$ is
+incident to at most one $e\in M$.
+
+Hence for each $e\in\Phi(M)\subset E(G)$ we have $e\in D\times C$. 
+Moreover, each $v\in V(D)$ is incident to
+exactly one $e\in \Phi(M)$, while each $v\in V(C)$ is incident to at most
+$k-1$ edges in $\Phi(M)$. Then the (doubled) edges in $\Phi(M)$ and the edges
+in the edge-dominating cycle (respectively, the doubled edge in the case of existence of a dominating edge) $C$ form a
+$k$-walk in $G$.
+
+To show the last claim, it suffices to notice that $M$ (a maximum matching
+in a bipartite graph) can be found in time polynomial
+in $|V(G)|$. \qed
 \end{proof}
 
 %\medskip
@@ -356,7 +397,7 @@ there is a matching $M$ between $D$ and $C-\{v_1\}$.  This means that for any ve
 there is a vertex $v_{i_j}$ in $C-\{v_1\}$ adjacent to $u_j$ in $M$.
 
 Clearly, we have a Hamiltonian cycle in $\bar{C}$, namely $$v_1v_2v'_2v'_3v_3\cdots v_{2q-1}v_{2q}v'_{2q}v'_1v'_{2q+1}v_{2q+1}\cdots v_{2p+1}v_1.$$
-Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju'_jv'_{i_j}$ (or $v'_{i_j}u'_ju_jv_{i_j}$) to get a Hamilton cycle in $\bar{G}$.
+Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju'_jv'_{i_j}$ (or $v'_{i_j}u'_ju_jv_{i_j}$) to get a Hamilton cycle in $\bar{G}$. \qed
 \end{proof}
 
 \begin{figure}[h]
@@ -402,7 +443,8 @@ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju
 \caption{$G$ has an edge-dominating cycle of odd length}\label{fig2}
 \end{figure}
 
-Now, suppose $G$ is a triangle-free $2K_2$-free graph. By \cite[Theorem 4]{broersma2014toughness},
+Now we complete the proof of Theorem \ref{thm1}.
+Suppose $G$ is a triangle-free $2K_2$-free graph. By \cite[Theorem 4]{broersma2014toughness},
 if $|V(G)|\geq 3$ then 
 $G$ is Hamiltonian, and so prism-Hamiltonian.
 If $|V(G)|=2$, i.e. $G$ is a single edge, and obviously prism-Hamiltonian.
