@@ -22,7 +22,14 @@
 Department of Computer Science, The University of Oxford, UK,\\ 
 \email{dimpase@cs.ox.ac.uk}}
 
+
+
+
 \maketitle
+
+\begin{flushright}
+    \textit{To the memory of Sergei Duzhin.}
+\end{flushright}
 
 \begin{abstract}
 We show that an edge-dominating cycle in a $2K_2$-free graph can be found
@@ -241,7 +248,7 @@ can set $C'$ to be the 5-cycle $v_1X'XX''X'''$.  In both cases, we have three su
 vertices $X'XX''$ forming a triangle, as required.
 
 From now on we can assume $k\geq 5$.
-By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$. 
+By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$,
 and thus to at least one of $\{X',X''\}$.  Suppose,
 without loss of generality, that $v_1X'\in E(G)$; label the vertices in $C$ in the following way:
 $X'$ is labeled by $x_1$; the neighbour of $x_1$ on $C$ distinct from $X$ is labeled by $x_2$;
@@ -302,7 +309,7 @@ and if $G$ is $\frac{1}{k-1}$-tough then $G$ admits a $k$-walk.
 Moreover, the latter can be found in time polynomial in $|V(G)|$.
 \end{lemma}
 \begin{proof} 
-The induced subgraph $D=G-C$ is an independent set. Define an axiliary bipartite 
+The induced subgraph $D=G-C$ is an independent set. Define an auxiliary bipartite 
 graph $\Gamma$, with one part $V(D)$ and the other consisting of $k-1$ copies of $V(C)$, 
 so that each edge $dc\in V(D)\times V(C)$ corresponds to $k-1$ edges
 $dc_1,\dots dc_{k-1}$ of $\Gamma$. Let $\Phi$ denote the $(k-1)$-to-$1$ map
@@ -326,14 +333,6 @@ To show the last claim, it suffices to notice that $M$ (a maximum matching
 in a bipartite graph) can be found in time polynomial
 in $|V(G)|$. \qed
 \end{proof}
-
-%\medskip
-%
-%Now, let us state a related conjecture, to close this section.
-%\begin{conjecture}
-%Every $3/2$-tough $2K_2$-free graph with at least 3 vertices has a 2-trail, i.e. a 2-walk with each edge appearing in the walk at most once.
-%\end{conjecture}
-
 
 \section{Proof of Theorem \ref{thm1}}
 The following lemma is the key technique in the proof of Theorem \ref{thm1}.
@@ -390,7 +389,7 @@ Obviously, we have a Hamiltonian cycle in $\bar{C}$, the prism over $C$, namely 
 \end{figure}
 
 
-For the second part, denote $C=v_1v_2\cdot v_{2p+1}v_1$ (see Figure \ref{fig2}). 
+For the second part, denote $C=v_1v_2\cdots v_{2p+1}v_1$ (see Figure \ref{fig2}). 
 The set $D=V(G)-V(C)$ of vertices outside $C$
 is an independent set. By Hall's Theorem, and $(1+\epsilon)$-toughness, 
 there is a matching $M$ between $D$ and $C-\{v_1\}$.  This means that for any vertex $u_j$ in $D$, 
@@ -446,10 +445,24 @@ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju
 Now we complete the proof of Theorem \ref{thm1}.
 Suppose $G$ is a triangle-free $2K_2$-free graph. By \cite[Theorem 4]{broersma2014toughness},
 if $|V(G)|\geq 3$ then 
-$G$ is Hamiltonian, and so prism-Hamiltonian.
+$G$ is Hamiltonian,\footnote{
+We only need to rely on  \cite[Theorem 4]{broersma2014toughness}
+for the case of $G$ not having a dominating cycle $C$ of even length, for 
+otherwise we have case 1 of Lemma \ref{keylem} at our disposal; $|C|$ can be odd
+only in the case of $G$ not bipartite; such a $G$ is, by \cite[Lemma 2]{broersma2014toughness},
+of $C_5^*$-type, i.e. it has a rather special structure.}
+and so prism-Hamiltonian.
+A polynomial-time algorithm to construct a Hamiltonian cycle in $G$ is
+implicit in the proof of  \cite[Theorem 4]{broersma2014toughness}, and
+building up a Hamiltonian cycle in the prism over $G$ from a Hamiltonian
+cycle $C=v_1v_2\cdots v_{m}v_1$ in $G$ is trivially (and in time polynomial in $|V(G)|$)
+done by concatenating the path $v_1\dots v_{m-1}v_m$, i.e. $C$ without the last edge, with the
+path $v'_m v'_{m-1}\cdots v'_1$.
+
 If $|V(G)|=2$, i.e. $G$ is a single edge, and obviously prism-Hamiltonian.
 Finally, if $G$ is not triangle-free then we are done by 
-Theorem \ref{addgen1} (2) and Lemma \ref{keylem}.
+Theorem \ref{addgen1} (2) and Lemma \ref{keylem}, and noting that the
+corresponding construction can be done in  time polynomial in $|V(G)|$.
 \qed
 
 \section{Concluding remarks}
@@ -482,8 +495,8 @@ Then $G$ has  an edge-dominating cycle. \qed
 \end{theorem}
 
 \subsection*{Acknowledgements.}
-The authors thank Nick Gravin and Edith Elkind
-for helpful comments on drafts of this text.
+The authors thank Nick Gravin, Edith Elkind, and the anonymous referee
+for helpful comments on versions of this text.
 Research supported by Singapore MOE Tier 2 Grant MOE2011-T2-1-090 (ARC 19/11). 
 
 \bibliography{reftough}

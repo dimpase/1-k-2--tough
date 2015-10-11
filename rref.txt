@@ -1,0 +1,21 @@
+Reply to the referee.
+
+We thank the referee for valuable comments.
+In the revision we have addressed them all.
+In particular, we
+
+* added a proof requested in comment 2.
+
+* fixed the missing case noted in comment 3.
+
+* rewrote the place mentioned in comment 4 so that
+ it only used the standard Hall's theorem
+
+* explained why the algorithm in Thm 2 is polynomial;
+ indeed, one case needs to be extracted from the proof
+ of Theorem 4 in [6]. We feel it suffices to say that
+ the polynomiality of the construction is implicit in the proof
+ in [6]. Surely, if needed, we can provide an appendix
+ with details.
+
+The authors, 10.10.2015.
