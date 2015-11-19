@@ -185,7 +185,7 @@ a 3-path, $xyuv$, without loss of generality. Now we claim that $yu$ is a domina
 Indeed, suppose to the contrary that an edge $ab$ does not intersect $yu$. Then, as they
 cannot form $2K_2$, $abyu$ is a 3-path, without loss of generality. As $G$ is a tree, $by$
 is the only edge connecting vertices of $ab$ and $yu$. Thus either
-$ab$ and $uw$ form a $2K_2$, or $b$ lies in a cycle; in both cases this is a contradiction, 
+$ab$ and $uv$ form a $2K_2$, or $b$ lies in a cycle; in both cases this is a contradiction,
 proving that $yu$ is a dominating edge.
 
 Otherwise, $G$ has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
@@ -228,24 +228,33 @@ E(G)$, with neither $u_1$ nor $u_2$  on $w_1w_2w_3$.  Then, by the
 $2K_2$-freeness, we either can connect $w_1w_2w_3$ and $u_1u_2$ together, to get a
 5-cycle $C$, with $w_{\pi(1)}$, $w_{\pi(2)}$ and $w_{\pi(3)}$ successive on $C$
 for some permutation $\pi$ of $\{1,2,3\}$, or else (without loss in generality)
-$u_1$ is adjacent to $w_1$, $w_2$, and $w_3$. In the latter case set $C=u_1w_1w_2w_3$.
+$u_1$ is adjacent to $w_1$ and $w_2$. In the latter case set $C=u_1w_1w_3w_2$.
 
 If $C$ is edge-dominating, then we are done. Otherwise, we proceed by induction on
 $k:=|V(C)|$. 
 Suppose $k\ge 4$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$. 
+Let $v_1v_2\in E(G)$ such that neither $v_1$ nor $v_2$ is on $C$.
 We claim that then we can find a cycle $C'$ such that $C'$ dominates more edges than $C$ (perhaps all), 
 and $X'$, $X$ and $X''$ are also successive on $C'$.
-Let $v_1v_2\in E(G)$ such that neither $v_1$ nor $v_2$ is on $C$.
 
-Now we dispense with the case $k=4$. Note that by construction the subgraph
-induced on $C$ is complete.  Let $e=XX'$ and $f=X''X'''$ be an pair of
-non-intersecting edges of this subgraph.  By $2K_2$-freeness, $v_1v_2$ is
-joined by edges to $e$ and $f$.  Without loss of generality, either $v_1$ is
-joined to both of them (say, $v_1X', v_1X'''\in E(G)$), or $v_1$ is joined to
-$e$ and $v_2$ is joined to $f$ (say, $v_1X', v_2X''\in E(G)$).  In the latter
-case, we can set $C'$ to be the 5-cycle $v_1X'XX''v_2$.  In the former case, we
-can set $C'$ to be the 5-cycle $v_1X'XX''X'''$.  In both cases, we have three successive
-vertices $X'XX''$ forming a triangle, as required.
+Now we dispense with the case $k=4$. By construction, there is an edge $u_1u_2$
+with $u_2$ not in $C$. If $u_2$ is joined to a vertex $w\neq u_1$ on $C$,
+then we use this extra edge to turn $C$ into a 5-cycle through $u_1u_2$
+and $w_j$ ($j=1,2,3$); we still have enough edges from $C$ in the new cycle to see
+that it will have three successive vertices $X'XX''$ forming a triangle, as required.
+Thus, we are left with the case where the only edge joining $u_2$ and $C$ is $u_1u_2$.
+
+First, consider the case $v_2=u_2$. Then $v_1$ must be adjacent to the edge $w_1w_2$,
+otherwise $v_1u_2$ and $w_1w_2$ form a $2K_2$. Thus we obtain a 5-cycle $\Omega(u_2)$
+through $u_1u_2$, $v_1$, $w_1$, and $w_2$, with $\{X,X',X''\}=\{u_1,w_1,w_2\}$.
+
+It remains to consider the case of $v_i\neq u_2$ ($i=1,2$).
+As $u_1u_2$ and $v_1v_2$ cannot form a $2K_2$, and as we already considered
+the case of $u_2$ adjacent to a vertex not on $C$, we may assume that
+$v_2$ is adjacent to $u_1$. This gives us the already considered configuration,
+with $u_2$ replaced by $v_2$, from which we obtain a 5-cycle $\Omega(v_2)$.
+
+\medskip
 
 From now on we can assume $k\geq 5$.
 By $2K_2$-freeness, $v_1$ and $v_2$ are adjacent to at least two of $\{X,X',X''\}$,
