@@ -3,7 +3,7 @@
 \usepackage{enumerate}
 \usepackage{xcolor}
 \usepackage{tikz}
-   \usetikzlibrary{calc} 
+   \usetikzlibrary{calc}
 \usepackage{float}
 \usepackage{wrapfig}
 
@@ -19,7 +19,7 @@
 \author{Gao Mou\inst{1} \and Dmitrii V. Pasechnik\inst{2}}
 \institute{School of Physical and Mathematical Sciences, Nanyang Technological University, Singapore,\\
 \email{gaom0002@e.ntu.edu.sg} \and
-Department of Computer Science, The University of Oxford, UK,\\ 
+Department of Computer Science, The University of Oxford, UK,\\
 \email{dimpase@cs.ox.ac.uk}}
 
 
@@ -45,33 +45,33 @@ along with few other similar results.
 
 \section{Introduction}
 A graph $G$ is called $\beta$-{\em tough}, for a real $\beta>0$, if for any $p\geq 2$ it
-cannot be split into $p$ components by removing less than $p\beta$ vertices.  
+cannot be split into $p$ components by removing less than $p\beta$ vertices.
 This concept, a measure of graph connectivity and ``resilience'' under vertex subsets removal,
 was introduced in 1973 by Chv\'{a}tal \cite{chvatal1973tough},
 while studying   Hamiltonicity of graphs. For a survey of results on graph toughness till 2006
-see \cite{MR2221006}. 
+see \cite{MR2221006}.
 
-In general, toughness of a graph is NP-hard to compute 
+In general, toughness of a graph is NP-hard to compute
 \cite{MR1074858}. Considerable work went into investigating this computational problem for
 various classes of graphs. In particular, recently, Broersma, Patel and Pyatkin proved
 \cite{broersma2014toughness} that toughness of a $2K_2$-free graph, i.e. a graph that
 does not contain an induced copy of the disjoint union of two edges,
-can be found in polynomial time. 
+can be found in polynomial time.
 
-Note that $2K_2$-free graphs are an interesting 
+Note that $2K_2$-free graphs are an interesting
 class from algorithmic complexity point of view; most classical algorithmic problems for them are
-hard, with a notable exception of the maximum weighted independent set problem 
-\cite{balasyu1989}, \cite[Graphclass: $2K_2$-free]{isgci}. In particular 
-Hamiltonian cycle problem is NP-complete already for a subclass of $2K_2$-free graphs, 
+hard, with a notable exception of the maximum weighted independent set problem
+\cite{balasyu1989}, \cite[Graphclass: $2K_2$-free]{isgci}. In particular
+Hamiltonian cycle problem is NP-complete already for a subclass of $2K_2$-free graphs,
 the {\em split} graphs---graphs for which the set of vertices can be partitioned into
 a clique and an independent set \cite[Exercise 6.2]{Golum}.
-Due to the latter,  for $2K_2$-free graphs it makes sense to study computational complexity 
-of concepts which are generalisations of the Hamiltonian cycle 
+Due to the latter,  for $2K_2$-free graphs it makes sense to study computational complexity
+of concepts which are generalisations of the Hamiltonian cycle
 problem, such as $k$-walk.
 
-Let $p\times G$ denote the multigraph obtained from $G$ by taking each edge $p$ times. 
-A $k$-{\em walk} is a spanning subgraph $W$ of $2k\times G$ such that each vertex of $W$ 
-has even degree at most $2k$. % (the evenness says that $W$ is Eulerian). 
+Let $p\times G$ denote the multigraph obtained from $G$ by taking each edge $p$ times.
+A $k$-{\em walk} is a spanning subgraph $W$ of $2k\times G$ such that each vertex of $W$
+has even degree at most $2k$. % (the evenness says that $W$ is Eulerian).
 In particular a graph has a $1$-walk if and only if it is $K_2$ (i.e. one edge) or Hamiltonian.
 {For a survey of results on walks in graphs till 2005 see \cite{kouider2005connected}.}
 In 1990 Jackson and Wormald conjectured \cite{jackson1990k} that for any integer $k\ge2$ a
@@ -80,7 +80,7 @@ $\frac{1}{k-1}$-tough graph $G$ admits a $k$-walk.
 In this paper, we prove that Jackson and Wormald's Conjecture is true under the
 assumption that $G$ is  $2K_2$-free.
 
-\begin{theorem}\label{thm2} 
+\begin{theorem}\label{thm2}
 For any integer $k\ge2$, every $\frac{1}{k-1}$-tough $2K_2$-free graph $G$
 admits a $k$-walk.
 Moreover, the latter can be found in time polynomial in $|V(G)|$.
@@ -99,23 +99,23 @@ However, the converse is not true already for $k=1$ (there even exist $2$-tough 
 not Hamiltonian, cf. \cite{bauer2000not}).
 
 This more or less summarises the situation with $t$-tough graphs, $t\leq 1$.
-On the $t>1$ side 
+On the $t>1$ side
 a famous conjecture of Chv\'{a}tal \cite{chvatal1973tough} claims
 that there exists a constant $\beta$ such that every
-$\beta$-tough graph is Hamiltonian.  
-Towards this, 
+$\beta$-tough graph is Hamiltonian.
+Towards this,
 Ellingham and Zha \cite{ellingham2000toughness} proved that
 every 4-tough graph has a 2-walk (cf. Theorem~\ref{thm1} below).
 
-It was recently shown \cite{broersma2014toughness} that 
+It was recently shown \cite{broersma2014toughness} that
 every 25-tough 2$K_2$-free graph on at least three vertices is Hamiltonian.
-Our Theorem~\ref{thm2} was inspired by this result.  
-However, our approach is technically quite different. 
+Our Theorem~\ref{thm2} was inspired by this result.
+However, our approach is technically quite different.
 
-\medskip 
+\medskip
 
-Our next result concerns a structure that is half-way between 1- and 2-walks. 
-The {\em prism} over a graph $G$ is the Cartesian product 
+Our next result concerns a structure that is half-way between 1- and 2-walks.
+The {\em prism} over a graph $G$ is the Cartesian product
 \begin{wrapfigure}[6]{r}{.3\textwidth}
 \centering
 \setlength{\unitlength}{.5mm}
@@ -133,13 +133,13 @@ The {\em prism} over a graph $G$ is the Cartesian product
 \end{picture}
 \label{fignoprism}
 \end{wrapfigure}
-$G\square K_2$ of $G$ with the complete graph $K_2$. 
-$G$ is called 
-{\em prism-Hamiltonian} if $G\square K_2$ is Hamiltonian. 
-If $G$ is Hamiltonian, then $G\square K_2$ is also Hamiltonian, but the converse does not hold in general, 
-cf. \cite{kaiser2007hamilton}. 
+$G\square K_2$ of $G$ with the complete graph $K_2$.
+$G$ is called
+{\em prism-Hamiltonian} if $G\square K_2$ is Hamiltonian.
+If $G$ is Hamiltonian, then $G\square K_2$ is also Hamiltonian, but the converse does not hold in general,
+cf. \cite{kaiser2007hamilton}.
 As well, this property is stronger than having a $2$-walk: cf. figure on the right, where
-we have a 
+we have a
 $2K_2$-free graph with  a $2$-walk, but without Hamiltonian prism.
 
 \begin{theorem}\label{thm1}
@@ -154,12 +154,12 @@ for its Hamiltonicity, see \cite[Sect.~4]{broersma2014toughness}.
 To prove Theorem~\ref{thm2} and Theorem \ref{thm1}, we first prove
 a result on edge-dominating subgraphs (a subgraph $S$ of $G$ is called {\em edge-dominating}
 if each edge of $G$ contains at least one vertex from $V(S)$).
-\begin{theorem}\label{addgen1} 
+\begin{theorem}\label{addgen1}
 Let $G$ be a $2K_2$-free graph. Then
 \begin{enumerate}
-\item $G$ admits an edge-dominating cycle (or an edge, or a vertex) $C$; 
-\item if $G$ contains a triangle, then $G$ admits 
-an edge-dominating cycle $C$, with three successive vertices on $C$ forming a triangle in $G$. 
+\item $G$ admits an edge-dominating cycle (or an edge, or a vertex) $C$;
+\item if $G$ contains a triangle, then $G$ admits
+an edge-dominating cycle $C$, with three successive vertices on $C$ forming a triangle in $G$.
 \end{enumerate}
 Moreover, $C$ can be found in time polynomial in $|V(G)|$.
 \end{theorem}
@@ -169,7 +169,7 @@ edge-dominating cycles for $2K_2$-free graphs. However, his proof is based on
 contraposition, so it neither tells how to find $C$ in (1), nor
 allows to restrict $C$ as in (2).
 
-In the remainder of the paper we provide the proofs, and then discuss related 
+In the remainder of the paper we provide the proofs, and then discuss related
 open questions.
 
 
@@ -178,7 +178,7 @@ open questions.
 \subsection{The proof of the first part of Theorem \ref{addgen1}}
 If $G$ is a tree, then, as it is $2K_2$-free, it must either have an edge-dominating
 vertex, or an edge-dominating edge.
-Indeed, in this case, if any two edges intersect, then, as $G$ has no cycles, 
+Indeed, in this case, if any two edges intersect, then, as $G$ has no cycles,
 they all must intersect in a vertex, which will be dominating. Now, assume that there are
 two non-intersecting edges, say $xy$ and $uv$. As they cannot form a $2K_2$, they are on
 a 3-path, $xyuv$, without loss of generality. Now we claim that $yu$ is a dominating edge.
@@ -189,22 +189,22 @@ $ab$ and $uv$ form a $2K_2$, or $b$ lies in a cycle; in both cases this is a con
 proving that $yu$ is a dominating edge.
 
 Otherwise, $G$ has a cycle, say $C=x_1x_2\cdots x_kx_1$, where $k\ge3$.
-If $C$ is edge-dominating, then we are done. 
+If $C$ is edge-dominating, then we are done.
 Otherwise
-there must be an edge $v_1v_2$ (assume there are $t>0$ such edges), 
-with neither $v_1$ nor $v_2$ on $C$. 
-Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two distinct neighbours on $C$. 
-Let $x_1v_1\in E(G)$ without loss of generality; 
+there must be an edge $v_1v_2$ (assume there are $t>0$ such edges),
+with neither $v_1$ nor $v_2$ on $C$.
+Since $G$ is $2K_2$-free, $v_1$ and $v_2$ have at least two distinct neighbours on $C$.
+Let $x_1v_1\in E(G)$ without loss of generality;
 \begin{enumerate}
 \item if $x_2v_1\in E(G)$, then $C'=x_1v_1x_2x_3\cdots x_kx_1$ is a longer cycle;
-\item if $x_2v_2\in E(G)$, then $x_1v_1v_2x_2x_3\cdots x_kx_1$ is a longer cycle; 
-\item if $x_2v_1,x_2v_2\not\in E(G)$, then applying $2K_2$-freeness to $v_1v_2$ and $x_2x_3$, 
+\item if $x_2v_2\in E(G)$, then $x_1v_1v_2x_2x_3\cdots x_kx_1$ is a longer cycle;
+\item if $x_2v_1,x_2v_2\not\in E(G)$, then applying $2K_2$-freeness to $v_1v_2$ and $x_2x_3$,
 we get either $x_3v_1\in E(G)$ or $x_3v_2\in E(G)$.
 \begin{enumerate}
 \item If $x_3v_2\in E(G)$, then $C'=x_1v_1v_2x_3\cdots x_kx_1$ is a longer cycle;
 \item if $x_3v_2\not\in E(G)$, then $x_3v_1\in E(G)$.
 \begin{enumerate}
-\item if $x_2$ is adjacent to no vertex outside $C$, then use $C'=x_1v_1x_3\cdots x_kx_1$ instead of $C$. 
+\item if $x_2$ is adjacent to no vertex outside $C$, then use $C'=x_1v_1x_3\cdots x_kx_1$ instead of $C$.
 We know that $C$ and $C'$ have the same length, but $C'$ dominates all the edges that
 are dominated by $C$, and $C'$ also dominates $v_1v_2$, which is not dominated by $C$. So replacing $C$ by $C'$
 decreases $t$.
@@ -215,7 +215,7 @@ Otherwise $C'=x_1v_1v_2zx_2x_3\cdots x_kx_1$ is a longer cycle.
 \end{enumerate}
 \end{enumerate}
 Repeat the process above. At each iteration either $|V(C)|$ increases, or $t$ decreases.
-Thus the process will stop, with $t=0$, in at most $|E(G)|^2$ steps. 
+Thus the process will stop, with $t=0$, in at most $|E(G)|^2$ steps.
 \qed
 
 \subsection{The proof of the second part of Theorem  \ref{addgen1}}
@@ -231,17 +231,19 @@ for some permutation $\pi$ of $\{1,2,3\}$, or else (without loss in generality)
 $u_1$ is adjacent to $w_1$ and $w_2$. In the latter case set $C=u_1w_1w_3w_2$.
 
 If $C$ is edge-dominating, then we are done. Otherwise, we proceed by induction on
-$k:=|V(C)|$. 
-Suppose $k\ge 4$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$. 
+$k:=|V(C)|$.
+Suppose $k\ge 4$, and there are three successive vertices on $C$, namely $X'$, $X$ and $X''$ forming a triangle in $G$.
 Let $v_1v_2\in E(G)$ such that neither $v_1$ nor $v_2$ is on $C$.
-We claim that then we can find a cycle $C'$ such that $C'$ dominates more edges than $C$ (perhaps all), 
+We claim that then we can find a cycle $C'$ such that $C'$ dominates more edges than $C$ (perhaps all),
 and $X'$, $X$ and $X''$ are also successive on $C'$.
 
 Now we dispense with the case $k=4$. By construction, there is an edge $u_1u_2$
-with $u_2$ not in $C$. If $u_2$ is joined to a vertex $w\neq u_1$ on $C$,
+with $u_2$ not in $C=u_1w_1w_3w_2$. If $u_2$ is joined to a vertex $w\neq u_1$ on $C$,
 then we use this extra edge to turn $C$ into a 5-cycle through $u_1u_2$
-and $w_j$ ($j=1,2,3$); we still have enough edges from $C$ in the new cycle to see
-that it will have three successive vertices $X'XX''$ forming a triangle, as required.
+and $w_j$ ($j=1,2,3$). Indeed, as $w_j$ ($j=1,2,3$) form a triangle, they will give,
+in some order, three successive vertices $X'XX''$ forming a triangle, as required.
+Namely, if $w=w_1$ or $w=w_2$, we will have $X'XX''=w_1w_3w_2$, whereas for $w=w_3$
+we will have $X'XX''=w_3w_2w_1$.
 Thus, we are left with the case where the only edge joining $u_2$ and $C$ is $u_1u_2$.
 
 First, consider the case $v_2=u_2$. Then $v_1$ must be adjacent to the edge $w_1w_2$,
@@ -297,11 +299,11 @@ the other vertices on $C$ are labeled successively, see Figure \ref{labelcycle}.
 \caption{The cycle $C$ of length $k$}\label{labelcycle}
 \end{figure}
 
-Note that for $k\geq 5$ the operation used 
-in the proof of the first part of Theorem \ref{addgen1} 
-of replacing  $C$ by $C'$ (enlarging $|V(C)|$ or reducing $t$) 
-does not touch the edges $x_{k-1}x_k$ and $x_kx_1$. Thus the triangle-forming 
-vertices $X''$, $X$ and $X'$ are always successive on $C$ in our process. 
+Note that for $k\geq 5$ the operation used
+in the proof of the first part of Theorem \ref{addgen1}
+of replacing  $C$ by $C'$ (enlarging $|V(C)|$ or reducing $t$)
+does not touch the edges $x_{k-1}x_k$ and $x_kx_1$. Thus the triangle-forming
+vertices $X''$, $X$ and $X'$ are always successive on $C$ in our process.
 Then they are on the edge-dominating cycle we obtain there.  \qed
 
 
@@ -313,13 +315,13 @@ Lemma \ref{addtec}, we obtain Theorem \ref{thm2}.
 
 \begin{lemma}\label{addtec}
 Let $k\geq 2$.
-If $G$ has an edge-dominating cycle $C$ (or an edge, or a vertex) 
+If $G$ has an edge-dominating cycle $C$ (or an edge, or a vertex)
 and if $G$ is $\frac{1}{k-1}$-tough then $G$ admits a $k$-walk.
 Moreover, the latter can be found in time polynomial in $|V(G)|$.
 \end{lemma}
-\begin{proof} 
-The induced subgraph $D=G-C$ is an independent set. Define an auxiliary bipartite 
-graph $\Gamma$, with one part $V(D)$ and the other consisting of $k-1$ copies of $V(C)$, 
+\begin{proof}
+The induced subgraph $D=G-C$ is an independent set. Define an auxiliary bipartite
+graph $\Gamma$, with one part $V(D)$ and the other consisting of $k-1$ copies of $V(C)$,
 so that each edge $dc\in V(D)\times V(C)$ corresponds to $k-1$ edges
 $dc_1,\dots dc_{k-1}$ of $\Gamma$. Let $\Phi$ denote the $(k-1)$-to-$1$ map
 $\Phi: E(\Gamma)\to E(G)$ sending each $dc_j$, for $1\leq j\leq k-1$, to $dc=\Phi(dc_j)$.
@@ -331,7 +333,7 @@ to $\Gamma$, it has a matching $M$ saturating $D$; i.e.  each $v\in V(D)$ is
 incident to an $e\in M$, and each $v$ in the other part of $\Gamma$ is
 incident to at most one $e\in M$.
 
-Hence for each $e\in\Phi(M)\subset E(G)$ we have $e\in D\times C$. 
+Hence for each $e\in\Phi(M)\subset E(G)$ we have $e\in D\times C$.
 Moreover, each $v\in V(D)$ is incident to
 exactly one $e\in \Phi(M)$, while each $v\in V(C)$ is incident to at most
 $k-1$ edges in $\Phi(M)$. Then the (doubled) edges in $\Phi(M)$ and the edges
@@ -354,10 +356,10 @@ Let $G$ be $(1+\epsilon)$-tough, for some $\epsilon>0$.
 \end{lemma}
 
 \begin{proof}
-For the first part (see Figure~\ref{fig:evenprism}), 
-denote $C=v_1v_2\cdots v_{2p}v_1$. The set 
+For the first part (see Figure~\ref{fig:evenprism}),
+denote $C=v_1v_2\cdots v_{2p}v_1$. The set
 $D=V(G)-V(C)$ of vertices outside $C$
-is an independent set. By Hall's Theorem and 1-toughness, there is a matching $M$ between 
+is an independent set. By Hall's Theorem and 1-toughness, there is a matching $M$ between
 $D$ and $C$. That means that for any vertex $u_j$ in $D$, there is a vertex $v_{i_j}$ on $C$ adjacent to $u_j$ in $M$.
 
 Obviously, we have a Hamiltonian cycle in $\bar{C}$, the prism over $C$, namely $$v_1v'_1v'_2v_2\cdots v_{2p-1}v'_{2p-1}v'_{2p}v_{2p}v_1.$$ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju'_jv'_{i_j}$ (or $v'_{i_j}u'_ju_jv_{i_j}$) to get a Hamilton cycle in $\bar{G}$.
@@ -398,10 +400,10 @@ Obviously, we have a Hamiltonian cycle in $\bar{C}$, the prism over $C$, namely 
 \end{figure}
 
 
-For the second part, denote $C=v_1v_2\cdots v_{2p+1}v_1$ (see Figure \ref{fig2}). 
+For the second part, denote $C=v_1v_2\cdots v_{2p+1}v_1$ (see Figure \ref{fig2}).
 The set $D=V(G)-V(C)$ of vertices outside $C$
-is an independent set. By Hall's Theorem, and $(1+\epsilon)$-toughness, 
-there is a matching $M$ between $D$ and $C-\{v_1\}$.  This means that for any vertex $u_j$ in $D$, 
+is an independent set. By Hall's Theorem, and $(1+\epsilon)$-toughness,
+there is a matching $M$ between $D$ and $C-\{v_1\}$.  This means that for any vertex $u_j$ in $D$,
 there is a vertex $v_{i_j}$ in $C-\{v_1\}$ adjacent to $u_j$ in $M$.
 
 Clearly, we have a Hamiltonian cycle in $\bar{C}$, namely $$v_1v_2v'_2v'_3v_3\cdots v_{2q-1}v_{2q}v'_{2q}v'_1v'_{2q+1}v_{2q+1}\cdots v_{2p+1}v_1.$$
@@ -453,10 +455,10 @@ Now, we change every  $v_{i_j}v'_{i_j}$ (or $v'_{i_j}v_{i_j}$) into $v_{i_j}u_ju
 
 Now we complete the proof of Theorem \ref{thm1}.
 Suppose $G$ is a triangle-free $2K_2$-free graph. By \cite[Theorem 4]{broersma2014toughness},
-if $|V(G)|\geq 3$ then 
+if $|V(G)|\geq 3$ then
 $G$ is Hamiltonian,\footnote{
 We only need to rely on  \cite[Theorem 4]{broersma2014toughness}
-for the case of $G$ not having a dominating cycle $C$ of even length, for 
+for the case of $G$ not having a dominating cycle $C$ of even length, for
 otherwise we have case 1 of Lemma \ref{keylem} at our disposal; $|C|$ can be odd
 only in the case of $G$ not bipartite; such a $G$ is, by \cite[Lemma 2]{broersma2014toughness},
 of $C_5^*$-type, i.e. it has a rather special structure.}
@@ -469,14 +471,14 @@ done by concatenating the path $v_1\dots v_{m-1}v_m$, i.e. $C$ without the last 
 path $v'_m v'_{m-1}\cdots v'_1$.
 
 If $|V(G)|=2$, i.e. $G$ is a single edge, and obviously prism-Hamiltonian.
-Finally, if $G$ is not triangle-free then we are done by 
+Finally, if $G$ is not triangle-free then we are done by
 Theorem \ref{addgen1} (2) and Lemma \ref{keylem}, and noting that the
 corresponding construction can be done in  time polynomial in $|V(G)|$.
 \qed
 
 \section{Concluding remarks}
 
-Lemma \ref{addtec} can be used to prove existence of 2-walks in 
+Lemma \ref{addtec} can be used to prove existence of 2-walks in
 classes of graphs wider than $2K_2$-free.
 For instance, it is immediate from \cite[Corollary 3.2]{veldman83} that each 2-connected
 $3K_2$-free graph admits  an edge-dominating cycle. From the latter and Lemma \ref{addtec},
@@ -489,13 +491,13 @@ It would be interesting to find out whether Theorem~\ref{2w3k2f} and similar res
 of this type can be made
 effective. Towards this end, we would like to propose the following
 \begin{conjecture}
-Let $\ell\geq 2$ be a fixed constant. 
+Let $\ell\geq 2$ be a fixed constant.
 Then for the $\ell-1$-connected $\ell K_2$-free
 graphs there is a polynomial time algorithm finding an edge-dominating cycle.
 \end{conjecture}
 
-Of independent interest would be finding out whether more general results from \cite{veldman83}, 
-in particular Theorem~\ref{thm:veld}, can be made algorithmic. 
+Of independent interest would be finding out whether more general results from \cite{veldman83},
+in particular Theorem~\ref{thm:veld}, can be made algorithmic.
 \begin{theorem}\label{thm:veld}
 {\rm \cite[Theorem~3]{veldman83}.} Let $G$ be an $\ell-1$-connected graph such that
 for every induced $\ell K_2$-subgraph $H$ of $G$ one has the
