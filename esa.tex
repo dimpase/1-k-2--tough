@@ -1,6 +1,8 @@
-\documentclass[runningheads,a4paper]{llncs}
+\documentclass{ws-jktr}
+%\documentclass[runningheads,a4paper]{llncs}
 \usepackage{amsfonts}
 \usepackage{enumerate}
+\usepackage{url}
 \usepackage{xcolor}
 \usepackage{tikz}
    \usetikzlibrary{calc}
@@ -8,19 +10,22 @@
 \usepackage{wrapfig}
 
 \newcommand{\ncc}{c}
+\newcommand{\qed}{\prbox}
 
 \begin{document}
 
-\mainmatter
+%\mainmatter
 
 \title{Edge-dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
-\titlerunning{Dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
+%\titlerunning{Dominating cycles, $k$-walks and Hamilton prisms in $2K_2$-free graphs}
 
-\author{Gao Mou\inst{1} \and Dmitrii V. Pasechnik\inst{2}}
-\institute{School of Physical and Mathematical Sciences, Nanyang Technological University, Singapore,\\
-\email{gaom0002@e.ntu.edu.sg} \and
-Department of Computer Science, The University of Oxford, UK,\\
-\email{dimpase@cs.ox.ac.uk}}
+\author{Gao Mou}
+\address{School of Physical and Mathematical Sciences, Nanyang Technological University, Singapore,\\
+\url{gaom0002@e.ntu.edu.sg}}
+
+\author{Dmitrii V. Pasechnik}
+\address{Department of Computer Science, The University of Oxford, UK,
+\url{dimpase@cs.ox.ac.uk}}
 
 
 
@@ -42,6 +47,9 @@ and give an effective construction of a Hamiltonian cycle in the corresponding p
 along with few other similar results.
 \end{abstract}
 
+\keywords{$2K_2$-free graphs; $t$-tough graphs; $k$-walk; prism-Hamiltonicity}
+
+\ccode{Mathematics Subject Classification 2000: 05C45, 05C85}
 
 \section{Introduction}
 A graph $G$ is called $\beta$-{\em tough}, for a real $\beta>0$, if for any $p\geq 2$ it
@@ -513,6 +521,6 @@ and by the EU Horizon 2020 research and innovation programme, grant agreement
 OpenDreamKit No 676541.
 
 \bibliography{reftough}
-\bibliographystyle{splncs03}
+\bibliographystyle{abbrv}
 %\bibliographystyle{plain}
 \end{document}
